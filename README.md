@@ -1,2 +1,2 @@
-# UIX_MSDash_Skin
+# UIX MSDash Skin
 A customized skin for User Interface X
