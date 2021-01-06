@@ -1,4 +1,3 @@
-
 var nCurClockMenuItem;
 var strEnterPassword, strVerifyPassword;
 var nMoviePCLevel, nGamePCLevel;
@@ -18,65 +17,65 @@ var nCurLockItem;
 var showFileManager;
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 function GetCellWallType()
 {
-    var IniFile = new Settings;
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
 	var a = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
 
 function initialize()
 {
-    GetCellWallType();
-    nCurSettingsMenuItem = 0;
-    nCurClockMenuItem = 0;
-    monthnames = new Array("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
-    GetCurrentTime();
-    showFileManager = true;
+	GetCellWallType();
+	nCurSettingsMenuItem = 0;
+	nCurClockMenuItem = 0;
+	monthnames = new Array("january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december");
+	GetCurrentTime();
+	showFileManager = true;
 }
 
 var curIcon;
 
 function ShowIcon(icon)
 {
-    if(curIcon == icon) { return; }
-    if(curIcon != null)
-    {
-        curIcon.SetAlpha(0);
-        curIcon.SetScale(0.5, 0.5, 0.5);
-    }
-    curIcon = icon;
-    icon.SetAlpha(1);
-    icon.SetScale(1, 1, 1);
+	if(curIcon == icon) { return; }
+	if(curIcon != null)
+	{
+		curIcon.SetAlpha(0);
+		curIcon.SetScale(0.5, 0.5, 0.5);
+	}
+	curIcon = icon;
+	icon.SetAlpha(1);
+	icon.SetScale(1, 1, 1);
 }
 
 function ProcessDiscOnForceSettings()
 {
-    theDiscDrive.locked = false;
-    bForceSetLanguage = false;
-    bForceSetTimeZone = false;
-    bForceSetClock = false;
-    if(theDiscDrive.discType == "none" )
-    {
+	theDiscDrive.locked = false;
+	bForceSetLanguage = false;
+	bForceSetTimeZone = false;
+	bForceSetClock = false;
+	if(theDiscDrive.discType == "none" )
+	{
 		theMainMenu.GoTo();
 		EnableAudio();
-    }
-    else { AutoLaunchCheck(); }
+	}
+	else { AutoLaunchCheck(); }
 }
 
 var nClockHour, nClockMinute, nClockAMPM, nClockMonth, nClockDay, nClockYear;
@@ -85,365 +84,365 @@ var monthnames;
 
 function UpdateClockMenu()
 {
-    var c = theSetClockMenu.children[0].children[0];
-    if(nCurClockMenuItem < 3)
-    {
-        c.theBigClock.SetScale(5, 5, 5);
-        c.theBigClock.SetAlpha(1);
-        c.calendar.SetScale(7.5, 7.5, 7.5);
-        c.calendar.SetAlpha(0);
-    }
-    else
-    {
-        c.calendar.SetScale(15, 15, 15);
-        c.calendar.SetAlpha(1);
-        c.theBigClock.SetScale(2.5, 2.5, 2.5);
-        c.theBigClock.SetAlpha(0);
-    }
-    var n = nCurClockMenuItem;
-    var x = 0.1104;
-    var dx = 0.55;
-    if(n >= 3)
-    {
-        n = n - 3;
-        x = 2.32;
-        dx = 0.63;
-    }
+	var c = theSetClockMenu.children[0].children[0];
+	if(nCurClockMenuItem < 3)
+	{
+		c.theBigClock.SetScale(5, 5, 5);
+		c.theBigClock.SetAlpha(1);
+		c.calendar.SetScale(7.5, 7.5, 7.5);
+		c.calendar.SetAlpha(0);
+	}
+	else
+	{
+		c.calendar.SetScale(15, 15, 15);
+		c.calendar.SetAlpha(1);
+		c.theBigClock.SetScale(2.5, 2.5, 2.5);
+		c.theBigClock.SetAlpha(0);
+	}
+	var n = nCurClockMenuItem;
+	var x = 0.1104;
+	var dx = 0.55;
+	if(n >= 3)
+	{
+		n = n - 3;
+		x = 2.32;
+		dx = 0.63;
+	}
 	c.Clock_morearrow_up.children[0].appearance.material.name = "Material #133";
 	c.Clock_morearrow_down.children[0].appearance.material.name = "Material #133";
-    c.Clock_morearrow_up.SetTranslation(x + n * dx, -0.6111, 1.893);
-    c.Clock_morearrow_down.SetTranslation(x - 0.105 + n * dx, -1.222, 1.893);
-    c.Clock_time_panel_03.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_time_panel_01.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_time_panel_04.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_date_panel_01.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_date_panel_03.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_date_panel_05.children[0].appearance.material.name = "FlatSurfaces";
-    c.Clock_text_time_twelve_W.children[0].appearance.material.name = "NavType";
-    c.Clock_text_time_fifteen_W.children[0].appearance.material.name = "NavType";
-    c.Clock_text_time_pm__W.children[0].appearance.material.name = "NavType";
-    c.Clock_text_date_twelve_W.children[0].appearance.material.name = "NavType";
-    c.Clock_text_date_ten.children[0].appearance.material.name = "NavType";
-    c.Clock_text_date_doublezero.children[0].appearance.material.name = "NavType";
-    c.Clock_time_panel_04.children[0].visible = b24hour == false;
-    c.Clock_text_time_pm__W.children[0].visible = b24hour == false;
-    if(nCurClockMenuItem == 0)
-    {
-        c.Clock_time_panel_03.children[0].appearance.material.name = "GameHilite";
+	c.Clock_morearrow_up.SetTranslation(x + n * dx, -0.6111, 1.893);
+	c.Clock_morearrow_down.SetTranslation(x - 0.105 + n * dx, -1.222, 1.893);
+	c.Clock_time_panel_03.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_time_panel_01.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_time_panel_04.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_date_panel_01.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_date_panel_03.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_date_panel_05.children[0].appearance.material.name = "FlatSurfaces";
+	c.Clock_text_time_twelve_W.children[0].appearance.material.name = "NavType";
+	c.Clock_text_time_fifteen_W.children[0].appearance.material.name = "NavType";
+	c.Clock_text_time_pm__W.children[0].appearance.material.name = "NavType";
+	c.Clock_text_date_twelve_W.children[0].appearance.material.name = "NavType";
+	c.Clock_text_date_ten.children[0].appearance.material.name = "NavType";
+	c.Clock_text_date_doublezero.children[0].appearance.material.name = "NavType";
+	c.Clock_time_panel_04.children[0].visible = b24hour == false;
+	c.Clock_text_time_pm__W.children[0].visible = b24hour == false;
+	if(nCurClockMenuItem == 0)
+	{
+		c.Clock_time_panel_03.children[0].appearance.material.name = "GameHilite";
 		c.Clock_time_panel_03.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_time_twelve_W.children[0].appearance.material.name = "Material #133";
-    }
-    else if(nCurClockMenuItem == 1)
-    {
-        c.Clock_time_panel_01.children[0].appearance.material.name = "GameHilite";
+		c.Clock_text_time_twelve_W.children[0].appearance.material.name = "Material #133";
+	}
+	else if(nCurClockMenuItem == 1)
+	{
+		c.Clock_time_panel_01.children[0].appearance.material.name = "GameHilite";
 		c.Clock_time_panel_01.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_time_fifteen_W.children[0].appearance.material.name = "Material #133";
-    }
-    else if(nCurClockMenuItem == 2)
-    {
-        c.Clock_time_panel_04.children[0].appearance.material.name = "GameHilite";
+		c.Clock_text_time_fifteen_W.children[0].appearance.material.name = "Material #133";
+	}
+	else if(nCurClockMenuItem == 2)
+	{
+		c.Clock_time_panel_04.children[0].appearance.material.name = "GameHilite";
 		c.Clock_time_panel_04.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_time_pm__W.children[0].appearance.material.name = "Material #133";
-    }
-    else if(nCurClockMenuItem == 3)
-    {
-        c.Clock_date_panel_01.children[0].appearance.material.name = "GameHilite";
+		c.Clock_text_time_pm__W.children[0].appearance.material.name = "Material #133";
+	}
+	else if(nCurClockMenuItem == 3)
+	{
+		c.Clock_date_panel_01.children[0].appearance.material.name = "GameHilite";
 		c.Clock_date_panel_01.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_date_twelve_W.children[0].appearance.material.name = "Material #133";
-    }
-    else if(nCurClockMenuItem == 4)
-    {
-        c.Clock_date_panel_03.children[0].appearance.material.name = "GameHilite";
+		c.Clock_text_date_twelve_W.children[0].appearance.material.name = "Material #133";
+	}
+	else if(nCurClockMenuItem == 4)
+	{
+		c.Clock_date_panel_03.children[0].appearance.material.name = "GameHilite";
 		c.Clock_date_panel_03.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_date_ten.children[0].appearance.material.name = "Material #133";
-    }
-    else if(nCurClockMenuItem == 5)
-    {
-        c.Clock_date_panel_05.children[0].appearance.material.name = "GameHilite";
+		c.Clock_text_date_ten.children[0].appearance.material.name = "Material #133";
+	}
+	else if(nCurClockMenuItem == 5)
+	{
+		c.Clock_date_panel_05.children[0].appearance.material.name = "GameHilite";
 		c.Clock_date_panel_05.children[0].appearance.texture.url = "menu_hilight.xbx";
-        c.Clock_text_date_doublezero.children[0].appearance.material.name = "Material #133";
-    }
+		c.Clock_text_date_doublezero.children[0].appearance.material.name = "Material #133";
+	}
 }
 
 function UpdateTime()
 {
-    var c = theSetClockMenu.children[0].children[0];
-    c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
-    c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
-    c.MonthText.text = theTranslator.Translate(monthnames[nClockMonth - 1]);
-    c.DayText.text = nClockDay;
-    c.txtHour.text = nClockHour;
-    if(nClockMinute < 10) { c.txtMinute.text = "0" + nClockMinute; }
-    else { c.txtMinute.text = nClockMinute; }
-    if(b24hour == false) { c.txtAMPM.text = nClockAMPM; }
-    var nLanguage = theConfig.GetLanguage();
-    if(nLanguage == 1)
-    {
-        if(theConfig.GetGameRegion() == "NA")
-        {
-            if(nClockMonth < 10) { c.txtMonth.text = "0" + nClockMonth; }
-            else { c.txtMonth.text = nClockMonth; }
-            if(nClockDay < 10) { c.txtDay.text = "0" + nClockDay; }
-            else { c.txtDay.text = nClockDay; }
-            if(nClockYear < 10) { c.txtYear.text = "0" + nClockYear; }
-            else { c.txtYear.text = nClockYear; }
-            return;
-        }
-    }
-    if(nLanguage == 2)
-    {
-        if(nClockYear < 10) { c.txtMonth.text = "0" + nClockYear; }
-        else { c.txtMonth.text = nClockYear; }
-        if(nClockDay < 10) { c.txtYear.text = "0" + nClockDay; }
-        else { c.txtYear.text = nClockDay; }
-        if(nClockMonth < 10) { c.txtDay.text = "0" + nClockMonth; }
-        else { c.txtDay.text = nClockMonth; }
-    }
-    else
-    {
-        if(nClockDay < 10) { c.txtMonth.text = "0" + nClockDay; }
-        else {c.txtMonth.text = nClockDay; }
-        if(nClockMonth < 10) { c.txtDay.text = "0" + nClockMonth; }
-        else { c.txtDay.text = nClockMonth; }
-        if(nClockYear < 10) { c.txtYear.text = "0" + nClockYear; }
-        else { c.txtYear.text = nClockYear; }
-    }
+	var c = theSetClockMenu.children[0].children[0];
+	c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
+	c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
+	c.MonthText.text = theTranslator.Translate(monthnames[nClockMonth - 1]);
+	c.DayText.text = nClockDay;
+	c.txtHour.text = nClockHour;
+	if(nClockMinute < 10) { c.txtMinute.text = "0" + nClockMinute; }
+	else { c.txtMinute.text = nClockMinute; }
+	if(b24hour == false) { c.txtAMPM.text = nClockAMPM; }
+	var nLanguage = theConfig.GetLanguage();
+	if(nLanguage == 1)
+	{
+		if(theConfig.GetGameRegion() == "NA")
+		{
+			if(nClockMonth < 10) { c.txtMonth.text = "0" + nClockMonth; }
+			else { c.txtMonth.text = nClockMonth; }
+			if(nClockDay < 10) { c.txtDay.text = "0" + nClockDay; }
+			else { c.txtDay.text = nClockDay; }
+			if(nClockYear < 10) { c.txtYear.text = "0" + nClockYear; }
+			else { c.txtYear.text = nClockYear; }
+			return;
+		}
+	}
+	if(nLanguage == 2)
+	{
+		if(nClockYear < 10) { c.txtMonth.text = "0" + nClockYear; }
+		else { c.txtMonth.text = nClockYear; }
+		if(nClockDay < 10) { c.txtYear.text = "0" + nClockDay; }
+		else { c.txtYear.text = nClockDay; }
+		if(nClockMonth < 10) { c.txtDay.text = "0" + nClockMonth; }
+		else { c.txtDay.text = nClockMonth; }
+	}
+	else
+	{
+		if(nClockDay < 10) { c.txtMonth.text = "0" + nClockDay; }
+		else {c.txtMonth.text = nClockDay; }
+		if(nClockMonth < 10) { c.txtDay.text = "0" + nClockMonth; }
+		else { c.txtDay.text = nClockMonth; }
+		if(nClockYear < 10) { c.txtYear.text = "0" + nClockYear; }
+		else { c.txtYear.text = nClockYear; }
+	}
 }
 
 function CheckClockDay(bIgnoreLeapYear)
 {
-    var dt = new Date;
-    var d = dt.getDaysInMonth(nClockMonth, nClockYear);
-    if(bIgnoreLeapYear) { if(nClockMonth == 2) { d = 29; } }
-    if(nClockDay >= d) { nClockDay = d; }
+	var dt = new Date;
+	var d = dt.getDaysInMonth(nClockMonth, nClockYear);
+	if(bIgnoreLeapYear) { if(nClockMonth == 2) { d = 29; } }
+	if(nClockDay >= d) { nClockDay = d; }
 }
 
 function IncrementClock()
 {
-    var nClockPart = nCurClockMenuItem;
-    var nLanguage = theConfig.GetLanguage();
+	var nClockPart = nCurClockMenuItem;
+	var nLanguage = theConfig.GetLanguage();
 
-    if(nLanguage == 2)
-    {
-        if(nCurClockMenuItem == 3) { nClockPart = 5; }
-        else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-        else if(nCurClockMenuItem == 5) { nClockPart = 4; }
-    }
-    else if(nLanguage == 1)
-    {
-        if(theConfig.GetGameRegion() != "NA")
-        {
-            if(nCurClockMenuItem == 3) { nClockPart = 4; }
-            else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-        }
-    }
-    else
-    {
-        if(nCurClockMenuItem == 3) { nClockPart = 4; }
-        else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-    }
+	if(nLanguage == 2)
+	{
+		if(nCurClockMenuItem == 3) { nClockPart = 5; }
+		else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+		else if(nCurClockMenuItem == 5) { nClockPart = 4; }
+	}
+	else if(nLanguage == 1)
+	{
+		if(theConfig.GetGameRegion() != "NA")
+		{
+			if(nCurClockMenuItem == 3) { nClockPart = 4; }
+			else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+		}
+	}
+	else
+	{
+		if(nCurClockMenuItem == 3) { nClockPart = 4; }
+		else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+	}
 
-    if(nClockPart == 0)
-    {
-        if(b24hour)
-        {
-            if(nClockHour >= 23) { nClockHour = 0; }
-            else { nClockHour = nClockHour + 1; }
-        }
-        else
-        {
-            if(nClockHour == 12) { nClockHour = 1; }
-            else { nClockHour = nClockHour + 1; }
-        }
-    }
-    else if(nClockPart == 1)
-    {
-        if(nClockMinute == 59) { nClockMinute = 0; }
-        else { nClockMinute = nClockMinute + 1; }
-    }
-    else if(nClockPart == 2)
-    {
-        if(nClockAMPM == "AM") { nClockAMPM = "PM"; }
-        else { nClockAMPM = "AM"; }
-    }
-    else if(nClockPart == 3)
-    {
-        if(nClockMonth == 12) { nClockMonth = 1; }
-        else { nClockMonth = nClockMonth + 1; }
-        CheckClockDay(true);
-    }
-    else if(nClockPart == 4)
-    {
-        var d;
-        if(nClockMonth == 2) { d = 29; }
-        else
-        {
-            var dt = new Date;
-            d = dt.getDaysInMonth(nClockMonth, nClockYear);
-        }
-        if(nClockDay >= d) { nClockDay = 1; }
-        else { nClockDay = nClockDay + 1; }
-    }
-    else if(nClockPart == 5)
-    {
-        if(nClockYear == 99) { nClockYear = 1; }
-        else { nClockYear = nClockYear + 1; }
-    }
-    UpdateTime();
+	if(nClockPart == 0)
+	{
+		if(b24hour)
+		{
+			if(nClockHour >= 23) { nClockHour = 0; }
+			else { nClockHour = nClockHour + 1; }
+		}
+		else
+		{
+			if(nClockHour == 12) { nClockHour = 1; }
+			else { nClockHour = nClockHour + 1; }
+		}
+	}
+	else if(nClockPart == 1)
+	{
+		if(nClockMinute == 59) { nClockMinute = 0; }
+		else { nClockMinute = nClockMinute + 1; }
+	}
+	else if(nClockPart == 2)
+	{
+		if(nClockAMPM == "AM") { nClockAMPM = "PM"; }
+		else { nClockAMPM = "AM"; }
+	}
+	else if(nClockPart == 3)
+	{
+		if(nClockMonth == 12) { nClockMonth = 1; }
+		else { nClockMonth = nClockMonth + 1; }
+		CheckClockDay(true);
+	}
+	else if(nClockPart == 4)
+	{
+		var d;
+		if(nClockMonth == 2) { d = 29; }
+		else
+		{
+			var dt = new Date;
+			d = dt.getDaysInMonth(nClockMonth, nClockYear);
+		}
+		if(nClockDay >= d) { nClockDay = 1; }
+		else { nClockDay = nClockDay + 1; }
+	}
+	else if(nClockPart == 5)
+	{
+		if(nClockYear == 99) { nClockYear = 1; }
+		else { nClockYear = nClockYear + 1; }
+	}
+	UpdateTime();
 }
 
 function DecrementClock()
 {
-    var nClockPart = nCurClockMenuItem;
-    var nLanguage = theConfig.GetLanguage();
-    if(nLanguage == 2)
-    {
-        if(nCurClockMenuItem == 3) { nClockPart = 5; }
-        else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-        else if(nCurClockMenuItem == 5) { nClockPart = 4; }
-    }
-    else if(nLanguage == 1)
-    {
-        if(theConfig.GetGameRegion() != "NA")
-        {
-            if(nCurClockMenuItem == 3) { nClockPart = 4; }
-            else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-        }
-    }
-    else
-    {
-        if(nCurClockMenuItem == 3) { nClockPart = 4; }
-        else if(nCurClockMenuItem == 4) { nClockPart = 3; }
-    }
+	var nClockPart = nCurClockMenuItem;
+	var nLanguage = theConfig.GetLanguage();
+	if(nLanguage == 2)
+	{
+		if(nCurClockMenuItem == 3) { nClockPart = 5; }
+		else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+		else if(nCurClockMenuItem == 5) { nClockPart = 4; }
+	}
+	else if(nLanguage == 1)
+	{
+		if(theConfig.GetGameRegion() != "NA")
+		{
+			if(nCurClockMenuItem == 3) { nClockPart = 4; }
+			else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+		}
+	}
+	else
+	{
+		if(nCurClockMenuItem == 3) { nClockPart = 4; }
+		else if(nCurClockMenuItem == 4) { nClockPart = 3; }
+	}
 
-    if(nClockPart == 0)
-    {
-        if(b24hour)
-        {
-            if(nClockHour <= 0) { nClockHour = 23; }
-            else { nClockHour = nClockHour - 1; }
-        }
-        else
-        {
-            if(nClockHour == 1) { nClockHour = 12; }
-            else { nClockHour = nClockHour - 1; }
-        }
-    }
-    else if(nClockPart == 1)
-    {
-        if(nClockMinute == 0) { nClockMinute = 59; }
-        else { nClockMinute = nClockMinute - 1; }
-    }
-    else if(nClockPart == 2)
-    {
-        if(nClockAMPM == "AM") { nClockAMPM = "PM"; }
-        else { nClockAMPM = "AM"; }
-    }
-    else if(nClockPart == 3)
-    {
+	if(nClockPart == 0)
+	{
+		if(b24hour)
+		{
+			if(nClockHour <= 0) { nClockHour = 23; }
+			else { nClockHour = nClockHour - 1; }
+		}
+		else
+		{
+			if(nClockHour == 1) { nClockHour = 12; }
+			else { nClockHour = nClockHour - 1; }
+		}
+	}
+	else if(nClockPart == 1)
+	{
+		if(nClockMinute == 0) { nClockMinute = 59; }
+		else { nClockMinute = nClockMinute - 1; }
+	}
+	else if(nClockPart == 2)
+	{
+		if(nClockAMPM == "AM") { nClockAMPM = "PM"; }
+		else { nClockAMPM = "AM"; }
+	}
+	else if(nClockPart == 3)
+	{
 		if(nClockMonth == 1) { nClockMonth = 12; }
-        else { nClockMonth = nClockMonth - 1; }
-        CheckClockDay(true);
-    }
-    else if(nClockPart == 4)
-    {
-        var d;
-        if(nClockMonth == 2) { d = 29; }
-        else
-        {
-            var dt = new Date;
-            d = dt.getDaysInMonth(nClockMonth, nClockYear);
-        }
-        if(nClockDay == 1) { nClockDay = d; }
-        else { nClockDay = nClockDay - 1; }
-    }
-    else if(nClockPart == 5)
-    {
-        if(nClockYear == 1) { nClockYear = 99; }
-        else { nClockYear = nClockYear - 1; }
-    }
-    UpdateTime();
+		else { nClockMonth = nClockMonth - 1; }
+		CheckClockDay(true);
+	}
+	else if(nClockPart == 4)
+	{
+		var d;
+		if(nClockMonth == 2) { d = 29; }
+		else
+		{
+			var dt = new Date;
+			d = dt.getDaysInMonth(nClockMonth, nClockYear);
+		}
+		if(nClockDay == 1) { nClockDay = d; }
+		else { nClockDay = nClockDay - 1; }
+	}
+	else if(nClockPart == 5)
+	{
+		if(nClockYear == 1) { nClockYear = 99; }
+		else { nClockYear = nClockYear - 1; }
+	}
+	UpdateTime();
 }
 
 function GetCurrentTime()
 {
-    var d = new Date;
+	var d = new Date;
 
-    nClockHour = d.getHours();
-    nClockMinute = d.getMinutes();
+	nClockHour = d.getHours();
+	nClockMinute = d.getMinutes();
 
-    if(b24hour == false)
-    {
-        nClockAMPM = "AM";
-        if(nClockHour >= 12)
-        {
-            nClockHour = nClockHour - 12;
-            nClockAMPM = "PM";
-        }
-        if(nClockHour == 0) { nClockHour = 12; }
-    }
-    nClockMonth = d.getMonth() + 1;
-    nClockDay = d.getDate();
-    nClockYear = d.getFullYear();
-    if(nClockYear < 2001) { nClockYear = 2001; }
-    else if(nClockYear > 2099)
-    {
-        nClockYear = 2001;
-        nClockMonth = 11;
-        nClockDay = 15;
-        nClockMinute = 0;
+	if(b24hour == false)
+	{
+		nClockAMPM = "AM";
+		if(nClockHour >= 12)
+		{
+			nClockHour = nClockHour - 12;
+			nClockAMPM = "PM";
+		}
+		if(nClockHour == 0) { nClockHour = 12; }
+	}
+	nClockMonth = d.getMonth() + 1;
+	nClockDay = d.getDate();
+	nClockYear = d.getFullYear();
+	if(nClockYear < 2001) { nClockYear = 2001; }
+	else if(nClockYear > 2099)
+	{
+		nClockYear = 2001;
+		nClockMonth = 11;
+		nClockDay = 15;
+		nClockMinute = 0;
 
-        if(b24hour) { nClockHour = 0; }
-        else
-        {
-            nClockAMPM = "AM";
-            nClockHour = 12;
-        }
-    }
-    nClockYear = nClockYear - 2000;
+		if(b24hour) { nClockHour = 0; }
+		else
+		{
+			nClockAMPM = "AM";
+			nClockHour = 12;
+		}
+	}
+	nClockYear = nClockYear - 2000;
 }
 
 function StartClockSettings()
 {
-    var c = theSetClockMenu.children[0].children[0];
-    c.theBackButton.visible = 1 - bForceSetClock;
-    nCurClockMenuItem = 0;
-    c.txtDateSep.text = theTranslator.GetDateSeparator();
-    GetCurrentTime();
-    UpdateTime();
-    UpdateClockMenu();
+	var c = theSetClockMenu.children[0].children[0];
+	c.theBackButton.visible = 1 - bForceSetClock;
+	nCurClockMenuItem = 0;
+	c.txtDateSep.text = theTranslator.GetDateSeparator();
+	GetCurrentTime();
+	UpdateTime();
+	UpdateClockMenu();
 }
 
 DEF theSetClockMenu Level
 {
-    archive "Settings_Clock.xip"
-    children
-    [
-        Inline
-        {
-            url "Settings_Clock/default.xap"
-            function onLoad() { StartClockSettings(); }
-        }
-    ]
-    path Viewpoint
-    {
+	archive "Settings_Clock.xip"
+	children
+	[
+		Inline
+		{
+			url "Settings_Clock/default.xap"
+			function onLoad() { StartClockSettings(); }
+		}
+	]
+	path Viewpoint
+	{
 		fieldOfView 1.287000
 		orientation -0.201100 -0.979500 0.014710 -0.149100
 		position 101.199997 3.965000 -250.500000
-        jump false
-    }
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 99.97 4.819000 -253.370003
-        children
-        [
-            DEF theSettingsMenuShellSpinner Spinner
-            {
+		jump false
+	}
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 99.97 4.819000 -253.370003
+		children
+		[
+			DEF theSettingsMenuShellSpinner Spinner
+			{
 				rpm 0
 				axis 0 0 0
-                children
-                [
+				children
+				[
 					DEF theSettingsMenuShellWaver Waver
 					{
 						rpm 2.25//rpm 0.75
@@ -467,97 +466,97 @@ DEF theSetClockMenu Level
 					}
 				]
 			}
-        ]
-    }
-    control Joystick
-    {
-        function OnADown()
-        {
-            theSetClockMenu.children[0].children[0].Clock_select_pod_HL.children[0].appearance.material.param = 1;
-            PlaySoundA();
-            CheckClockDay(false);
-            UpdateTime();
-            var nHour = nClockHour;
-            if(b24hour == false)
-            {
-                if(nHour == 12) { nHour = 0; }
-                if(nClockAMPM == "PM") { nHour = nHour + 12; }
-            }
-            var d = new Date(nClockYear + 2000, nClockMonth - 1, nClockDay, nHour, nClockMinute);
-            d.SetSystemClock();
-            if(bForceSetClock)
-            {
-                bForceSetClock = false;
-                ProcessDiscOnForceSettings();
-            }
-            else
-            {
+		]
+	}
+	control Joystick
+	{
+		function OnADown()
+		{
+			theSetClockMenu.children[0].children[0].Clock_select_pod_HL.children[0].appearance.material.param = 1;
+			PlaySoundA();
+			CheckClockDay(false);
+			UpdateTime();
+			var nHour = nClockHour;
+			if(b24hour == false)
+			{
+				if(nHour == 12) { nHour = 0; }
+				if(nClockAMPM == "PM") { nHour = nHour + 12; }
+			}
+			var d = new Date(nClockYear + 2000, nClockMonth - 1, nClockDay, nHour, nClockMinute);
+			d.SetSystemClock();
+			if(bForceSetClock)
+			{
+				bForceSetClock = false;
+				ProcessDiscOnForceSettings();
+			}
+			else
+			{
 				strPrevMenu = "TIME DATE";
 				strCurMenu = "CLOCK";
-                theChooseClockMenu.GoBackTo();
-                theSettingsSubMenuOut.Play();
-            }
-        }
+				theChooseClockMenu.GoBackTo();
+				theSettingsSubMenuOut.Play();
+			}
+		}
 
-        function OnBDown()
-        {
-            if(bForceSetClock) { return; }
-            theSetClockMenu.children[0].children[0].Clock_back_pod_HL.children[0].appearance.material.param = 1;
-            PlaySoundB();
-            GetCurrentTime();
-            UpdateTime();
+		function OnBDown()
+		{
+			if(bForceSetClock) { return; }
+			theSetClockMenu.children[0].children[0].Clock_back_pod_HL.children[0].appearance.material.param = 1;
+			PlaySoundB();
+			GetCurrentTime();
+			UpdateTime();
 			strPrevMenu = "TIME DATE";
 			strCurMenu = "CLOCK";
-            theChooseClockMenu.GoBackTo();
-            theSettingsSubMenuOut.Play();
-        }
+			theChooseClockMenu.GoBackTo();
+			theSettingsSubMenuOut.Play();
+		}
 
-        function OnLeftThumbMoveLeft()
-        {
-            if(nCurClockMenuItem > 0)
-            {
-                PlaySoundMenuChange();
-                nCurClockMenuItem = nCurClockMenuItem - 1;
-                if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem - 1; } }
-                UpdateClockMenu();
-            }
-        }
-        function OnLeftThumbMoveRight()
-        {
-            if(nCurClockMenuItem < 5)
-            {
-                PlaySoundMenuChange();
-                nCurClockMenuItem = nCurClockMenuItem + 1;
-                if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem + 1; } }
-                UpdateClockMenu();
-            }
-        }
-        function OnLeftThumbMoveUp()
-        {
-            theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "Typesdsafsda";
-            theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "HilightedType";
-            IncrementClock();
-            PlaySoundMenuChange();
-        }
-        function OnLeftThumbMoveDown()
-        {
-            theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "Typesdsafsda";
-            theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
-            DecrementClock();
-            PlaySoundMenuChange();
-        }
-        function OnMoveCenter()
-        {
-            theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
-            theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "HilightedType";
-        }
-    }
+		function OnLeftThumbMoveLeft()
+		{
+			if(nCurClockMenuItem > 0)
+			{
+				PlaySoundMenuChange();
+				nCurClockMenuItem = nCurClockMenuItem - 1;
+				if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem - 1; } }
+				UpdateClockMenu();
+			}
+		}
+		function OnLeftThumbMoveRight()
+		{
+			if(nCurClockMenuItem < 5)
+			{
+				PlaySoundMenuChange();
+				nCurClockMenuItem = nCurClockMenuItem + 1;
+				if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem + 1; } }
+				UpdateClockMenu();
+			}
+		}
+		function OnLeftThumbMoveUp()
+		{
+			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "Typesdsafsda";
+			theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "HilightedType";
+			IncrementClock();
+			PlaySoundMenuChange();
+		}
+		function OnLeftThumbMoveDown()
+		{
+			theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "Typesdsafsda";
+			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
+			DecrementClock();
+			PlaySoundMenuChange();
+		}
+		function OnMoveCenter()
+		{
+			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
+			theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "HilightedType";
+		}
+	}
 
-    function OnActivate()
-    {
+	function OnActivate()
+	{
 		EnableAudio();
-        if(children[0].children.length() > 0) { StartClockSettings(); }
-    }
+		if(children[0].children.length() > 0) { StartClockSettings(); }
+	}
 }
 
 var nCurTimezoneMenuItem;
@@ -717,23 +716,23 @@ DEF theSetTimezoneMenu Level
 		position 101.599998 4.466000 -250.899994
 		jump false
 	}
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 101.97 4.819000 -253.370003
-        children
-        [
-            USE theSettingsMenuShellSpinner 
-        ]
-    }
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 101.97 4.819000 -253.370003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
 	control Joystick
 	{
 		function OnADown()
 		{
 			PlaySoundA();
 			theSetTimezoneMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
-            nTimeZone = nCurTimezoneMenuItem;
-	        theConfig.SetTimeZone(nTimeZone);
+			nTimeZone = nCurTimezoneMenuItem;
+			theConfig.SetTimeZone(nTimeZone);
 			if(bForceSetTimeZone)
 			{
 				if(theConfig.GetDSTAllowed())
@@ -782,8 +781,8 @@ DEF theSetTimezoneMenu Level
 			if(nCurTimezoneMenuItem <= 0) { return; }
 			PlaySoundMenuChange();
 			nCurTimezoneMenuItem = nCurTimezoneMenuItem - 1;
-            if(nCurTimezoneMenuButton == 0) { nTimezoneScroll = nTimezoneScroll - 1; }
-            else { nCurTimezoneMenuButton = nCurTimezoneMenuButton - 1; }
+			if(nCurTimezoneMenuButton == 0) { nTimezoneScroll = nTimezoneScroll - 1; }
+			else { nCurTimezoneMenuButton = nCurTimezoneMenuButton - 1; }
 			UpdateTimezoneMenu();
 		}
 
@@ -793,7 +792,7 @@ DEF theSetTimezoneMenu Level
 			PlaySoundMenuChange();
 			nCurTimezoneMenuItem = nCurTimezoneMenuItem + 1;
 			if(nCurTimezoneMenuButton == nNumTimezoneMenuItems - 1) { nTimezoneScroll = nTimezoneScroll + 1; }
-            else { nCurTimezoneMenuButton = nCurTimezoneMenuButton + 1; }
+			else { nCurTimezoneMenuButton = nCurTimezoneMenuButton + 1; }
 			UpdateTimezoneMenu();
 		}
 	}
@@ -808,28 +807,28 @@ var nCurListItemCount;
 
 function UpdateListClockHands()
 {
-    var c = theChooseClockMenu.children[0].children[0];
-    var d = new Date;
-    nClockHour = d.getHours();
-    nClockMinute = d.getMinutes();
-    c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
-    c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
+	var c = theChooseClockMenu.children[0].children[0];
+	var d = new Date;
+	nClockHour = d.getHours();
+	nClockMinute = d.getMinutes();
+	c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
+	c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
 }
 
 DEF fourButtonViewpoint Viewpoint
 {
-    fieldOfView 1.287000
-    orientation 0.030790 0.999500 0.003006 -0.116200
-    position 98.430000 3.632000 -218.600006
-    jump false
+	fieldOfView 1.287000
+	orientation 0.030790 0.999500 0.003006 -0.116200
+	position 98.430000 3.632000 -218.600006
+	jump false
 }
 
 DEF threeButtonViewpoint Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.280200 0.959800 -0.016980 -0.133900
-    position 98.209999 3.905000 -218.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.280200 0.959800 -0.016980 -0.133900
+	position 98.209999 3.905000 -218.899994
+	jump false
 }
 
 function ShowTwoListItems()
@@ -903,15 +902,15 @@ function ShowFourListItems()
 
 function SetupListSettings()
 {
-    var c = theChooseClockMenu.children[0].children[0];
+	var c = theChooseClockMenu.children[0].children[0];
 	ShowIcon(c.ClockIcon);
-    ShowIcon(c.GlobeIcon);
-    ShowIcon(c.StereoIcon);
-    ShowIcon(c.MonoIcon);
-    ShowIcon(c.FullscreenIcon);
-    ShowIcon(c.LetterboxIcon);
-    ShowIcon(c.WidescreenIcon);
-    ShowIcon(c.LockIcon);
+	ShowIcon(c.GlobeIcon);
+	ShowIcon(c.StereoIcon);
+	ShowIcon(c.MonoIcon);
+	ShowIcon(c.FullscreenIcon);
+	ShowIcon(c.LetterboxIcon);
+	ShowIcon(c.WidescreenIcon);
+	ShowIcon(c.LockIcon);
 	if(strPrevMenu == "SETTINGS") { nCurListItems = 0; }
 	SetupListMenu();
 }
@@ -958,7 +957,7 @@ function SetupListMenu()
 		UpdateListHighlight();
 	}
 	if(strCurMenu == "VIDEO")
-	{		
+	{
 		c.Menu_Buttons.children[0].children[0].children[0].geometry.text = theTranslator.Translate("VIDEO MODE");
 		c.Menu_Buttons.children[2].children[0].children[0].geometry.text = "480p";
 		c.Menu_Buttons.children[4].children[0].children[0].geometry.text = "720p";
@@ -1062,31 +1061,31 @@ function UpdateListHighlight()
 
 DEF theChooseClockMenu Level
 {
-    archive "Settings_List.xip"
-    children
-    [
-        Inline
-        {
-            url "Settings_List/default.xap"
+	archive "Settings_List.xip"
+	children
+	[
+		Inline
+		{
+			url "Settings_List/default.xap"
 
-            function onLoad() { SetupListSettings(); }
-        }
-    ]
-    path USE threeButtonViewpoint
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 100.399997 4.815000 -221.800003
-        children
-        [
-            USE theSettingsMenuShellSpinner
-        ]
-    }
-    control Joystick
-    {
-        function OnADown()
-        {
-            PlaySoundA();
+			function onLoad() { SetupListSettings(); }
+		}
+	]
+	path USE threeButtonViewpoint
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 100.399997 4.815000 -221.800003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
+	control Joystick
+	{
+		function OnADown()
+		{
+			PlaySoundA();
 			theChooseClockMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			if(strCurMenu == "CLOCK")
 			{
@@ -1188,44 +1187,44 @@ DEF theChooseClockMenu Level
 					theSettingsSubMenuIn.Play();
 				}
 			}
-        }
-        function OnBDown()
-        {
-            PlaySoundB();
+		}
+		function OnBDown()
+		{
+			PlaySoundB();
 			strPrevMenu = strCurMenu;
 			strCurMenu = "SETTINGS";
 			theChooseClockMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
-            theSettingsMenu.GoBackTo();
-            theSettingsSubMenuOut.Play();
-        }
-        function OnLeftThumbMoveUp()
-        {
+			theSettingsMenu.GoBackTo();
+			theSettingsSubMenuOut.Play();
+		}
+		function OnLeftThumbMoveUp()
+		{
 			if(nCurListItems <= 0) { return; }
-            PlaySoundMenuChange();
-            nCurListItems = nCurListItems - 1;
-            UpdateListHighlight();
-        }
-        function OnLeftThumbMoveDown()
-        {
+			PlaySoundMenuChange();
+			nCurListItems = nCurListItems - 1;
+			UpdateListHighlight();
+		}
+		function OnLeftThumbMoveDown()
+		{
 			if(nCurListItems >= (nCurListItemCount - 1)) { return; }
-            PlaySoundMenuChange();
+			PlaySoundMenuChange();
 			nCurListItems = nCurListItems + 1;
 			UpdateListHighlight();
-        }
-    }
+		}
+	}
 
-    function OnActivate()
-    {
+	function OnActivate()
+	{
 		EnableAudio();
 		if((strCurMenu == "VIDEO") & (theConfig.GetAVRegion() != "PAL_I")) { fourButtonViewpoint.isBound = true; }
 		else { threeButtonViewpoint.isBound = true; }
 		if(children[0].children.length() > 0)
-        {
+		{
 			UpdateListIcons();
-            SetupListSettings();
-        }
+			SetupListSettings();
+		}
 
-    }
+	}
 }
 
 var nCurPanelMenuItem;
@@ -1236,20 +1235,20 @@ var bInRecoveryKeySequence;
 
 DEF theRecovery Recovery
 {
-    function OnRecoveryComplete() { CompleteRecovery(); }
-    function OnRecoveryProgressChanged() { SetProgress(recoveryProgress); }
+	function OnRecoveryComplete() { CompleteRecovery(); }
+	function OnRecoveryProgressChanged() { SetProgress(recoveryProgress); }
 }
 
 function ConfirmRecovery()
 {
-    ShowProgress(theTranslator.Translate("RECOVERY IN PROGRESS"));
-    theRecovery.StartRecovery();
+	ShowProgress(theTranslator.Translate("RECOVERY IN PROGRESS"));
+	theRecovery.StartRecovery();
 }
 
 function CompleteRecovery()
 {
-    CloseMessage();
-    TellUser("RECOVERY COMPLETE", "theSettingsInline.children[0].theRecovery.FinishRecovery()");
+	CloseMessage();
+	TellUser("RECOVERY COMPLETE", "theSettingsInline.children[0].theRecovery.FinishRecovery()");
 }
 
 function UpdatePanelMenu()
@@ -1337,22 +1336,22 @@ function StartPanelMenu()
 		if(theConfig.GetGameRegion() == "JAPAN") { c.QuestionText.text = theTranslator.Translate("JapanSystemInfo"); }
 		else
 		{
-			var theSysInfoFile = new File;			
+			var theSysInfoFile = new File;
 			theSysInfoFile.path = "A:\\system\\systeminfo.dat";
 			c.QuestionText.text = theSysInfoFile.readText();
 		}
-        c.QuestionText.text = c.QuestionText.text + "\nK:" + theConfig.GetROMVersion();
-        c.QuestionText.text = c.QuestionText.text + "\rD:" + theConfig.GetXdashVersion();
+		c.QuestionText.text = c.QuestionText.text + "\nK:" + theConfig.GetROMVersion();
+		c.QuestionText.text = c.QuestionText.text + "\rD:" + theConfig.GetXdashVersion();
 		c.ButtonGroup.visible = false;
 		c.ConsoleIcon.visible = true;
 		c.Group07.visible = false;
-        if(g_nRec == 2)
-        {
-            c.Group02_supports.SetTranslation(-1030.15, 0.3773, 61.650002);
-            c.QuestionText.text = "";
-            g_nRec = 0;
-        }
-        else { c.Group02_supports.SetTranslation(-6.15, 0.3773, 61.650002); }
+		if(g_nRec == 2)
+		{
+			c.Group02_supports.SetTranslation(-1030.15, 0.3773, 61.650002);
+			c.QuestionText.text = "";
+			g_nRec = 0;
+		}
+		else { c.Group02_supports.SetTranslation(-6.15, 0.3773, 61.650002); }
 	}
 	else if(strCurMenu == "DAYLIGHT SAVINGS TIME")
 	{
@@ -1450,49 +1449,49 @@ function MismatchedPassword() { TellUser("MismatchedPassword", "theSettingsInlin
 
 function PasswordChar(ch)
 {
-    var c = theSetPanelMenu.children[0].children[0];
-    strEnterPassword = strEnterPassword + ch;
-    log("Password: " + strEnterPassword);
-    var n = strEnterPassword.length();
-    log(" len = " + n);
-    var s = "****";
-    c.PasswordText.text = s.substr(0, n) + " ";
-    if(n >= 4)
-    {
-        if(strCurMenu == "ENTER PASSWORD")
-        {
-            if(theConfig.CheckParentPassword(strEnterPassword))
+	var c = theSetPanelMenu.children[0].children[0];
+	strEnterPassword = strEnterPassword + ch;
+	log("Password: " + strEnterPassword);
+	var n = strEnterPassword.length();
+	log(" len = " + n);
+	var s = "****";
+	c.PasswordText.text = s.substr(0, n) + " ";
+	if(n >= 4)
+	{
+		if(strCurMenu == "ENTER PASSWORD")
+		{
+			if(theConfig.CheckParentPassword(strEnterPassword))
 			{
 				strCurMenu = "PARENTAL CONTROL";
 				theChooseClockMenu.GoBackTo();
 				theSettingsSubMenuOut.Play();
 			}
-            else if(strEnterPassword == "xyLx")
+			else if(strEnterPassword == "xyLx")
 			{
 				strCurMenu = "PARENTAL CONTROL";
 				theChooseClockMenu.GoBackTo();
 				theSettingsSubMenuOut.Play();
 			}
-            else { WrongPassword(); }
-        }
-        else if(strCurMenu == "SET PASSWORD")
-        {
+			else { WrongPassword(); }
+		}
+		else if(strCurMenu == "SET PASSWORD")
+		{
 			strCurMenu = "VERIFY PASSWORD";
 			StartPanelMenu();
-        }
-        else if(strCurMenu == "VERIFY PASSWORD")
-        {
-            if(strEnterPassword != strVerifyPassword)
-            { MismatchedPassword(); }
-            else
-            {
-                theConfig.SetParentPassword(strEnterPassword);
+		}
+		else if(strCurMenu == "VERIFY PASSWORD")
+		{
+			if(strEnterPassword != strVerifyPassword)
+			{ MismatchedPassword(); }
+			else
+			{
+				theConfig.SetParentPassword(strEnterPassword);
 				strCurMenu = "PARENTAL CONTROL";
 				theChooseClockMenu.GoBackTo();
 				theSettingsParentSound.Play();
-            }
-        }
-    }
+			}
+		}
+	}
 }
 
 function DeletePassword()
@@ -1522,15 +1521,15 @@ DEF theSetPanelMenu Level
 		position 96.940002 4.728000 -248.600006
 		jump false
 	}
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 97.67 4.819000 -251.870003
-        children
-        [
-            USE theSettingsMenuShellSpinner
-        ]
-    }
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 97.67 4.819000 -251.870003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
 	control DEF thePanelJoystick Joystick
 	{
 		function OnADown()
@@ -1598,7 +1597,7 @@ DEF theSetPanelMenu Level
 				theSettingsSubMenuOut.Play();
 			}
 			else if((strCurMenu == "480p") + (strCurMenu == "720p") + (strCurMenu == "1080i") + (strCurMenu == "PAL-60"))
-			{	
+			{
 				if(strCurMenu == "480p")
 				{
 					b480p = nCurPanelMenuItem;
@@ -1626,23 +1625,23 @@ DEF theSetPanelMenu Level
 				theSettingsSubMenuOut.Play();
 			}
 			else if(strCurMenu == "SET PASSWORD")
-            {
-                if(strEnterPassword.length()) { PlaySoundError(); }
-                else { AskQuestion("ConfirmDeletePassword", "theSettingsInline.children[0].DeletePassword()", "", 1); }
-            }
-            else if(strCurMenu == "VERIFY PASSWORD") { PlaySoundError(); }
-            else if(strCurMenu == "WRONG PASSWORD")
-            {
-                strCurMenu = "ENTER PASSWORD";
+			{
+				if(strEnterPassword.length()) { PlaySoundError(); }
+				else { AskQuestion("ConfirmDeletePassword", "theSettingsInline.children[0].DeletePassword()", "", 1); }
+			}
+			else if(strCurMenu == "VERIFY PASSWORD") { PlaySoundError(); }
+			else if(strCurMenu == "WRONG PASSWORD")
+			{
+				strCurMenu = "ENTER PASSWORD";
 				theSetPanelMenu.GoTo();
 				theSettingsSubMenuOut.Play();
-            }
-            else if(strCurMenu == "MISMATCHED PASSWORD")
-            {
-                strCurMenu = "ENTER PASSWORD";
+			}
+			else if(strCurMenu == "MISMATCHED PASSWORD")
+			{
+				strCurMenu = "ENTER PASSWORD";
 				theSetPanelMenu.GoTo();
 				theSettingsSubMenuOut.Play();
-            }
+			}
 		}
 		function OnBDown()
 		{
@@ -1672,17 +1671,17 @@ DEF theSetPanelMenu Level
 				strCurMenu = "VIDEO";
 				theChooseClockMenu.GoBackTo();
 			}
-            else if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "MISMATCHED PASSWORD") + (strCurMenu == "WRONG PASSWORD"))
-            {
+			else if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "MISMATCHED PASSWORD") + (strCurMenu == "WRONG PASSWORD"))
+			{
 				strCurMenu = "SETTINGS";
 				theSettingsMenu.GoBackTo();
-            }
-            else if((strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
+			}
+			else if((strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
 				strCurMenu = "PARENTAL CONTROL";
 				theChooseClockMenu.GoBackTo();
 				theSettingsSubMenuOut.Play();
-            }
+			}
 			else if(strCurMenu == "SYSTEM INFO")
 			{
 				thePanelJoystick.enableSecretKey = false;
@@ -1696,32 +1695,32 @@ DEF theSetPanelMenu Level
 			}
 			theSettingsSubMenuOut.Play();
 		}
-        function OnLeftThumbMoveUp()
-        {
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("u");
-                return;
-            }
+		function OnLeftThumbMoveUp()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("u");
+				return;
+			}
 		}
-        function OnLeftThumbMoveDown()
-        {
-            if((strCurMenu == "ENTER PASSWORD") +  (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("d");
-                return;
-            }
+		function OnLeftThumbMoveDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD") +  (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("d");
+				return;
+			}
 		}
 		function OnLeftThumbMoveLeft()
 		{
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("l");
-                return;
-            }
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("l");
+				return;
+			}
 			else if(strCurMenu == "SYSTEM INFO") { }
 			else
 			{
@@ -1735,12 +1734,12 @@ DEF theSetPanelMenu Level
 		}
 		function OnLeftThumbMoveRight()
 		{
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("r");
-                return;
-            }
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("r");
+				return;
+			}
 			else if(strCurMenu == "SYSTEM INFO") { }
 			else
 			{
@@ -1752,45 +1751,45 @@ DEF theSetPanelMenu Level
 				UpdatePanelMenu();
 			}
 		}
-        function OnXDown()
-        {
-            if((strCurMenu == "ENTER PASSWORD")+ (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("x");
-            }
-        }
-        function OnYDown()
-        {
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("y");
-            }
-        }
-        function OnLeftDown()
-        {
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("L");
-            }
-        }
-        function OnRightDown()
-        {
-            if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
-            {
-                PlaySoundA();
-                PasswordChar("R");
-            }
-        }
-        function OnKeyVerificationEnter() { bInRecoveryKeySequence = true; }
-        function OnKeyVerificationExit() { bInRecoveryKeySequence = false; }
-        function OnKeyVerified()
-        {
+		function OnXDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD")+ (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("x");
+			}
+		}
+		function OnYDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("y");
+			}
+		}
+		function OnLeftDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("L");
+			}
+		}
+		function OnRightDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("R");
+			}
+		}
+		function OnKeyVerificationEnter() { bInRecoveryKeySequence = true; }
+		function OnKeyVerificationExit() { bInRecoveryKeySequence = false; }
+		function OnKeyVerified()
+		{
 			AskQuestion("CONFIRM RECOVERY", "theSettingsInline.children[0].ConfirmRecovery()", "", 1);
-            thePanelJoystick.enableSecretKey = false;
-        }
+			thePanelJoystick.enableSecretKey = false;
+		}
 	}
 	function OnActivate()
 	{
@@ -1829,7 +1828,7 @@ function UpdatePCMenu()
 			c.TextRatings.children[delta - i].children[0].appearance.material.name = "NavType";
 		}
 		if((delta - i) == nCurPCMenuItem)
-		{	
+		{
 			var temp = i;
 			if(strCurMenu == "GAMES") { temp = temp + 1; }
 			c.NumberRatings.children[delta - i].children[0].appearance.material.name = "JwlSrfc01/InfoPnls";
@@ -1919,15 +1918,15 @@ DEF theSetPCMenu Level
 		position 100.900002 4.318000 -249.500000
 		jump false
 	}
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 100.07 4.819000 -252.870003
-        children
-        [
-            USE theSettingsMenuShellSpinner
-        ]
-    }
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 100.07 4.819000 -252.870003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
 	control Joystick
 	{
 		function OnADown()
@@ -2085,22 +2084,22 @@ DEF theSetLanguageMenu Level
 		position 101.199997 4.422000 -219.600006
 		jump false
 	}
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 100.399997 4.815000 -222.400003
-        children
-        [
-            USE theSettingsMenuShellSpinner
-        ]
-    }
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 100.399997 4.815000 -222.400003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
 	control Joystick
 	{
 		function OnADown()
 		{
 			PlaySoundA();
 			theSetLanguageMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
-            theTranslator.SetLanguage(nCurLanguageMenuItem);
+			theTranslator.SetLanguage(nCurLanguageMenuItem);
 			SetLanguage(nCurLanguageMenuItem + 1);
 			if(nCurLanguageMenuItem == 0) { b24hour = false; }
 			else if(nCurLanguageMenuItem == 1) { b24hour = false; }
@@ -2110,16 +2109,16 @@ DEF theSetLanguageMenu Level
 			{
 				bForceSetLanguage = false;
 				if(bForceSetTimeZone)
-                {
- 					strCurMenu = "TIME ZONE";
+				{
+					strCurMenu = "TIME ZONE";
 					theSetTimezoneMenu.GoTo();
-                }
-                else if(bForceSetClock)
-                {
+				}
+				else if(bForceSetClock)
+				{
 					strCurMenu = "TIME DATE";
-                    theSetClockMenu.GoTo();
-                }
-                else { ProcessDiscOnForceSettings(); }
+					theSetClockMenu.GoTo();
+				}
+				else { ProcessDiscOnForceSettings(); }
 			}
 			else
 			{
@@ -2159,7 +2158,7 @@ DEF theSetLanguageMenu Level
 		}
 	}
 	function OnActivate() { if(children[0].children.length() > 0) { StartLanguageMenu(); } }
-    function OnArrival() { theSettingsLangSound.Play(); }
+	function OnArrival() { theSettingsLangSound.Play(); }
 }
 
 var nStartModeMenuItem;
@@ -2168,15 +2167,15 @@ var curModeIcon;
 
 function ShowModeIcon(icon)
 {
-    if(curModeIcon == icon) { return; }
-    if(curModeIcon != null)
-    {
-        curModeIcon.SetAlpha(0);
-        curModeIcon.SetScale(0.5, 0.5, 0.5);
-    }
-    curModeIcon = icon;
-    icon.SetAlpha(1);
-    icon.SetScale(1, 1, 1);
+	if(curModeIcon == icon) { return; }
+	if(curModeIcon != null)
+	{
+		curModeIcon.SetAlpha(0);
+		curModeIcon.SetScale(0.5, 0.5, 0.5);
+	}
+	curModeIcon = icon;
+	icon.SetAlpha(1);
+	icon.SetScale(1, 1, 1);
 }
 
 function UpdateModeIcons()
@@ -2274,15 +2273,15 @@ DEF theSetModeMenu Level
 		position 100.900002 4.456000 -250.600006
 		jump false
 	}
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 99.67 4.819000 -253.770003
-        children
-        [
-            USE theSettingsMenuShellSpinner			
-        ]
-    }
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 99.67 4.819000 -253.770003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
 	control Joystick
 	{
 		function OnADown()
@@ -2334,7 +2333,7 @@ DEF theSetModeMenu Level
 		{
 			PlaySoundB();
 			theSetModeMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
-            if(strCurMenu == "VIDEO MODE")
+			if(strCurMenu == "VIDEO MODE")
 			{
 				if(strPrevMenu == "VIDEO")
 				{
@@ -2404,12 +2403,12 @@ var sSettingsElements;
 
 function UpdateClockHands()
 {
-    var c = theSettingsMenu.children[0].children[0];
-    var d = new Date;
-    nClockHour = d.getHours();
-    nClockMinute = d.getMinutes();
-    c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
-    c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
+	var c = theSettingsMenu.children[0].children[0];
+	var d = new Date;
+	nClockHour = d.getHours();
+	nClockMinute = d.getMinutes();
+	c.ClockHourHand.SetRotation(0, 0, -1, (nClockHour + nClockMinute / 60) * 6.283 / 12);
+	c.ClockMinuteHand.SetRotation(0, 0, -1, (nClockMinute - 15) * 6.283 / 60);
 }
 
 function UpdateSettingsMenu()
@@ -2460,7 +2459,7 @@ function StartSettingsMenu()
 	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("MEMORY MANAGER");
 	index = index + 1;
-    sSettingsMenu[index] = theTranslator.Translate("DASH CONFIGURATION");
+	sSettingsMenu[index] = theTranslator.Translate("DASH CONFIGURATION");
 	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("NETWORK SETTINGS");
 	index = index + 1;
@@ -2473,7 +2472,7 @@ function StartSettingsMenu()
 	if(theConfig.GetAVPackType() != "RFU")
 	{
 		sSettingsMenu[index] = theTranslator.Translate("AUDIO");
-		index = index + 1;	
+		index = index + 1;
 	}
 	sSettingsMenu[index] = theTranslator.Translate("VIDEO");
 	index = index + 1;
@@ -2522,53 +2521,53 @@ function StartSettingsMenu()
 
 function SetAudioModeIcon(nMode)
 {
-    var c = theSettingsMenu.children[0].children[0];
-    if(nMode == 0) { ShowIcon(c.MonoIcon); }
-    else if(nMode == 1) { ShowIcon(c.StereoIcon); }
-    else if(nMode == 2) { ShowIcon(c.StereoIcon); }
+	var c = theSettingsMenu.children[0].children[0];
+	if(nMode == 0) { ShowIcon(c.MonoIcon); }
+	else if(nMode == 1) { ShowIcon(c.StereoIcon); }
+	else if(nMode == 2) { ShowIcon(c.StereoIcon); }
 }
 
 function SetVideoModeIcon(nMode)
 {
-    var c = theSettingsMenu.children[0].children[0];
-    if(nMode == 0) { ShowIcon(c.FullscreenIcon); }
-    else if(nMode == 1) { ShowIcon(c.LetterboxIcon); }
-    else if(nMode == 2) { ShowIcon(c.WidescreenIcon); }
+	var c = theSettingsMenu.children[0].children[0];
+	if(nMode == 0) { ShowIcon(c.FullscreenIcon); }
+	else if(nMode == 1) { ShowIcon(c.LetterboxIcon); }
+	else if(nMode == 2) { ShowIcon(c.WidescreenIcon); }
 }
 
 function MenuIcon()
 {
-    var c = theSettingsMenu.children[0].children[0];
+	var c = theSettingsMenu.children[0].children[0];
 		 if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { ShowIcon(c.ConsoleIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { ShowIcon(c.GlobeIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { ShowIcon(c.ConsoleIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { ShowIcon(c.GlobeIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SKINS")) { SetVideoModeIcon(nCurVideoMode); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE")) { ShowIcon(c.GlobeIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUDIO")) { SetAudioModeIcon(nCurAudioMode); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO")) { SetVideoModeIcon(nCurVideoMode); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL")) { ShowIcon(c.LockIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF")) { ShowIcon(c.AutoOffIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT")) { ShowIcon(c.AutoOffIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF")) { ShowIcon(c.AutoOffIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE")) { ShowIcon(c.GlobeIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUDIO")) { SetAudioModeIcon(nCurAudioMode); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO")) { SetVideoModeIcon(nCurVideoMode); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL")) { ShowIcon(c.LockIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF")) { ShowIcon(c.AutoOffIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT")) { ShowIcon(c.AutoOffIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF")) { ShowIcon(c.AutoOffIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE")) { ShowIcon(c.AutoOffIcon); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART")) { ShowIcon(c.AutoOffIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART")) { ShowIcon(c.AutoOffIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CLOCK"))
-    {
+	{
 		UpdateClockHands();
-        ShowIcon(c.ClockIcon);
-    }
+		ShowIcon(c.ClockIcon);
+	}
 }
 
 function UpdateRootMeta()
 {
-    var c = theSettingsMenu.children[0].children[0];
+	var c = theSettingsMenu.children[0].children[0];
 	var metaString = "";
 		 if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { metaString = theTranslator.Translate("FILE MANAGER"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { metaString = theTranslator.Translate("NETWORK SETTINGS"); }
-    else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { metaString = theTranslator.Translate("DASH CONFIGURATION"); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { metaString = theTranslator.Translate("NETWORK SETTINGS"); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { metaString = theTranslator.Translate("DASH CONFIGURATION"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SKINS"))  { metaString = theTranslator.Translate("SKINS"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CLOCK")) { metaString = "<clock>"; }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE"))
@@ -2599,7 +2598,7 @@ function UpdateRootMeta()
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL"))
 	{
 		if(nMoviePCLevel + nGamePCLevel == 13) { metaString = theTranslator.Translate("OFF"); }
-		else { metaString = theTranslator.Translate("ON"); } 
+		else { metaString = theTranslator.Translate("ON"); }
 	}
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF"))
 	{
@@ -2616,118 +2615,118 @@ function UpdateRootMeta()
 
 DEF theSettingsMenu Level
 {
-    archive "Settings.xip"
-    children
-    [
-        Inline
-        {
-            url "Settings/default.xap"
-            function onLoad()
-            {
-                var nLanguage = theConfig.GetLanguage();
-                if(nLanguage != 0) { nLanguage = nLanguage - 1; }
-                b24hour = true;
-                if(nLanguage == 0) { b24hour = false; }
-                else if(nLanguage == 1) { b24hour = false; }
-                nMoviePCLevel = theConfig.GetMoviePCFlags();
-                nGamePCLevel = theConfig.GetGamePCFlags();
-                bDolbyDigital = theConfig.GetDolbyDigitalSupport();
-                bDTS = theConfig.GetDTSSupport();
+	archive "Settings.xip"
+	children
+	[
+		Inline
+		{
+			url "Settings/default.xap"
+			function onLoad()
+			{
+				var nLanguage = theConfig.GetLanguage();
+				if(nLanguage != 0) { nLanguage = nLanguage - 1; }
+				b24hour = true;
+				if(nLanguage == 0) { b24hour = false; }
+				else if(nLanguage == 1) { b24hour = false; }
+				nMoviePCLevel = theConfig.GetMoviePCFlags();
+				nGamePCLevel = theConfig.GetGamePCFlags();
+				bDolbyDigital = theConfig.GetDolbyDigitalSupport();
+				bDTS = theConfig.GetDTSSupport();
 				b480p = theConfig.Get480Support();
 				b720p = theConfig.Get720Support();
 				b1080i = theConfig.Get1080Support();
-                bPAL60 = theConfig.GetPAL60Support();
-                nCurAudioMode = theConfig.GetAudioMode();
-                nCurVideoMode = theConfig.GetVideoMode();
-                nTimeZone = theConfig.GetTimeZone();
-                bDaylightSavingsTime = theConfig.GetDST();
+				bPAL60 = theConfig.GetPAL60Support();
+				nCurAudioMode = theConfig.GetAudioMode();
+				nCurVideoMode = theConfig.GetVideoMode();
+				nTimeZone = theConfig.GetTimeZone();
+				bDaylightSavingsTime = theConfig.GetDST();
 				var c = theSettingsMenu.children[0].children[0];
-                c.ClockIcon.SetAlpha(0);
-                c.GlobeIcon.SetAlpha(0);
-                c.StereoIcon.SetAlpha(0);
-                c.MonoIcon.SetAlpha(0);
-                c.FullscreenIcon.SetAlpha(0);
-                c.LetterboxIcon.SetAlpha(0);
-                c.WidescreenIcon.SetAlpha(0);
-                c.LockIcon.SetAlpha(0);
-                c.AutoOffIcon.SetAlpha(0);
+				c.ClockIcon.SetAlpha(0);
+				c.GlobeIcon.SetAlpha(0);
+				c.StereoIcon.SetAlpha(0);
+				c.MonoIcon.SetAlpha(0);
+				c.FullscreenIcon.SetAlpha(0);
+				c.LetterboxIcon.SetAlpha(0);
+				c.WidescreenIcon.SetAlpha(0);
+				c.LockIcon.SetAlpha(0);
+				c.AutoOffIcon.SetAlpha(0);
 				c.ConsoleIcon.SetAlpha(0);
-                c.ClockIcon.SetScale(0.5, 0.5, 0.5);
-                c.GlobeIcon.SetScale(0.5, 0.5, 0.5);
-                c.StereoIcon.SetScale(0.5, 0.5, 0.5);
-                c.MonoIcon.SetScale(0.5, 0.5, 0.5);
-                c.FullscreenIcon.SetScale(0.5, 0.5, 0.5);
-                c.LetterboxIcon.SetScale(0.5, 0.5, 0.5);
-                c.WidescreenIcon.SetScale(0.5, 0.5, 0.5);
-                c.LockIcon.SetScale(0.5, 0.5, 0.5);
-                c.AutoOffIcon.SetScale(0.5, 0.5, 0.5);
+				c.ClockIcon.SetScale(0.5, 0.5, 0.5);
+				c.GlobeIcon.SetScale(0.5, 0.5, 0.5);
+				c.StereoIcon.SetScale(0.5, 0.5, 0.5);
+				c.MonoIcon.SetScale(0.5, 0.5, 0.5);
+				c.FullscreenIcon.SetScale(0.5, 0.5, 0.5);
+				c.LetterboxIcon.SetScale(0.5, 0.5, 0.5);
+				c.WidescreenIcon.SetScale(0.5, 0.5, 0.5);
+				c.LockIcon.SetScale(0.5, 0.5, 0.5);
+				c.AutoOffIcon.SetScale(0.5, 0.5, 0.5);
 				c.ConsoleIcon.SetScale(0.5, 0.5, 0.5);
 				strCurMenu = "SETTINGS";
 				strPrevMenu = "SETTINGS";
-                StartSettingsMenu();
-                if(bForceSetLanguage)
-                {
+				StartSettingsMenu();
+				if(bForceSetLanguage)
+				{
 					strCurMenu = "LANGUAGE";
 					theSetLanguageMenu.GoTo();
-                }
-                else if(bForceSetTimeZone)
-                {
+				}
+				else if(bForceSetTimeZone)
+				{
 					strCurMenu = "TIME ZONE";
 					theSetTimezoneMenu.GoTo();
-                }
-                else if(bForceSetClock)
-                {
+				}
+				else if(bForceSetClock)
+				{
 					strCurMenu = "TIME DATE";
 					theSetClockMenu.GoTo();
-                }
-                else if(nSettingArea != 0)
-                {
-                    if(nSettingArea == 8)
-                    {
-                        if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVRegion() == "PAL_I"))
-        				{
-        					strCurMenu = "VIDEO";
-        					theChooseClockMenu.GoTo();
-        				}
-                        else
-        				{
-        					strCurMenu = "VIDEO MODE";
-                            theSetModeMenu.GoTo();
-        				}
-                    }
-                    else if(nSettingArea == 16)
-                    {
-                        if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVPackType() == "SVIDEO") + (theConfig.GetAVPackType() == "VGA") + (theConfig.GetAVPackType() == "SCART"))
-        				{
-        					strCurMenu = "AUDIO";
-        					theChooseClockMenu.GoTo();
-        				}
-                        else
-        				{
-        					strCurMenu = "AUDIO MODE";
-        					theSetModeMenu.GoTo();
-        				}
-                    }
-                }
-            }
-        }
-    ]
-    shell Transform
-    {
-        scale 75 75 75
-        translation 123.2 1.041 -190.3
-        children
-        [
-            Spinner USE theSettingsMenuShellSpinner
-        ]
-    }
-    path Viewpoint
-    {
+				}
+				else if(nSettingArea != 0)
+				{
+					if(nSettingArea == 8)
+					{
+						if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVRegion() == "PAL_I"))
+						{
+							strCurMenu = "VIDEO";
+							theChooseClockMenu.GoTo();
+						}
+						else
+						{
+							strCurMenu = "VIDEO MODE";
+							theSetModeMenu.GoTo();
+						}
+					}
+					else if(nSettingArea == 16)
+					{
+						if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVPackType() == "SVIDEO") + (theConfig.GetAVPackType() == "VGA") + (theConfig.GetAVPackType() == "SCART"))
+						{
+							strCurMenu = "AUDIO";
+							theChooseClockMenu.GoTo();
+						}
+						else
+						{
+							strCurMenu = "AUDIO MODE";
+							theSetModeMenu.GoTo();
+						}
+					}
+				}
+			}
+		}
+	]
+	shell Transform
+	{
+		scale 75 75 75
+		translation 123.2 1.041 -190.3
+		children
+		[
+			Spinner USE theSettingsMenuShellSpinner
+		]
+	}
+	path Viewpoint
+	{
 		fieldOfView 1.287000
 		orientation 0.130300 -0.991400 -0.007829 -0.121100
 		position 123.300003 -0.918000 -152.600006
-        jump false
-    }
+		jump false
+	}
 	control DEF theSettingsJoystick Joystick
 	{
 		function OnADown()
@@ -2735,22 +2734,22 @@ DEF theSettingsMenu Level
 			PlaySoundA();
 			theSettingsMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			strPrevMenu = "SETTINGS";
-            if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER"))
+			if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER"))
 			{
 				strCurMenu = "FILE MANAGER";
 				GoToFileManager();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER"))
 			{
 				strCurMenu = "MEMORY MANAGER";
-                GoToMemory();
+				GoToMemory();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS"))
 			{
 				strCurMenu = "NETWORK SETTINGS";
 				theNetworkMenu.GoTo();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION"))
 			{
 				strCurMenu = "CONFIGURATION";
 				GoToConfig();
@@ -2760,77 +2759,77 @@ DEF theSettingsMenu Level
 				strCurMenu = "SKINS";
 				GoToSkins();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CLOCK"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CLOCK"))
 			{
 				strCurMenu = "CLOCK";
 				theChooseClockMenu.GoTo();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE"))
 			{
 				strCurMenu = "LANGUAGE";
 				theSetLanguageMenu.GoTo();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUDIO"))
-            {
-                if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVPackType() == "SVIDEO") + (theConfig.GetAVPackType() == "VGA") + (theConfig.GetAVPackType() == "SCART"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUDIO"))
+			{
+				if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVPackType() == "SVIDEO") + (theConfig.GetAVPackType() == "VGA") + (theConfig.GetAVPackType() == "SCART"))
 				{
 					strCurMenu = "AUDIO";
 					theChooseClockMenu.GoTo();
 				}
-                else
+				else
 				{
 					strCurMenu = "AUDIO MODE";
 					theSetModeMenu.GoTo();
 				}
-            }
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO"))
-            {
-                if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVRegion() == "PAL_I"))
+			}
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO"))
+			{
+				if((theConfig.GetAVPackType() == "HDTV") + (theConfig.GetAVRegion() == "PAL_I"))
 				{
 					strCurMenu = "VIDEO";
 					theChooseClockMenu.GoTo();
 				}
-                else
+				else
 				{
 					strCurMenu = "VIDEO MODE";
-                    theSetModeMenu.GoTo();
+					theSetModeMenu.GoTo();
 				}
-            }
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL"))
-            {
-                if(theConfig.CheckParentPassword(""))
+			}
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL"))
+			{
+				if(theConfig.CheckParentPassword(""))
 				{
 					strCurMenu = "PARENTAL CONTROL";
 					theChooseClockMenu.GoTo();
 				}
-                else
+				else
 				{
 					strCurMenu = "ENTER PASSWORD";
 					theSetPanelMenu.GoTo();
 				}
-            }
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF"))
+			}
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF"))
 			{
 				strCurMenu = "AUTO OFF";
 				theSetPanelMenu.GoTo();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT"))
 			{
 				theConfig.Reset();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF"))
 			{
 				theConfig.PowerOff();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE"))
 			{
 				theConfig.PowerCycle();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART"))
 			{
 				theConfig.ReStartDash();
 			}
-            else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO"))
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO"))
 			{
 				strCurMenu = "SYSTEM INFO";
 				theSetPanelMenu.GoTo();
@@ -2843,12 +2842,12 @@ DEF theSettingsMenu Level
 			PlaySoundB();
 			theSettingsMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
 			if(bBackToDVDPlayer)
-            {
+			{
 				theDVDPlayerInline.children[0].theDVDLevel.GoBackTo();
-                theSettingsMenu.visible = false;
-            }
-            else if(bBackToLauncher) { theLauncherLevel.GoTo(); }
-            else
+				theSettingsMenu.visible = false;
+			}
+			else if(bBackToLauncher) { theLauncherLevel.GoTo(); }
+			else
 			{
 				strCurMenu = "SETTINGS";
 				strPrevMenu = "SETTINGS";
@@ -2861,8 +2860,8 @@ DEF theSettingsMenu Level
 			if(nCurSettingsMenuItem <= 0) { return; }
 			PlaySoundMenuChange();
 			nCurSettingsMenuItem = nCurSettingsMenuItem - 1;
-            if(nCurSettingsMenuButton == 0) { nSettingsScroll = nSettingsScroll - 1; }
-            else { nCurSettingsMenuButton = nCurSettingsMenuButton - 1; }
+			if(nCurSettingsMenuButton == 0) { nSettingsScroll = nSettingsScroll - 1; }
+			else { nCurSettingsMenuButton = nCurSettingsMenuButton - 1; }
 			UpdateSettingsMenu();
 		}
 		function OnLeftThumbMoveDown()
@@ -2871,19 +2870,19 @@ DEF theSettingsMenu Level
 			PlaySoundMenuChange();
 			nCurSettingsMenuItem = nCurSettingsMenuItem + 1;
 			if(nCurSettingsMenuButton == nNumSettingsMenuItems - 1)  { nSettingsScroll = nSettingsScroll + 1; }
-            else { nCurSettingsMenuButton = nCurSettingsMenuButton + 1; }
+			else { nCurSettingsMenuButton = nCurSettingsMenuButton + 1; }
 			UpdateSettingsMenu();
 		}
 	}
 	function OnActivate() { if(children[0].children.length() > 0) { StartSettingsMenu(); } }
-    behavior
-    {
-        sleep 15;
-        if(children[0].children.length() > 0)
-        {
-            if(theSettingsMenu.visible) { if(curIcon == children[0].children[0].ClockIcon) { UpdateClockHands(); } }
-        }
-    }
+	behavior
+	{
+		sleep 15;
+		if(children[0].children.length() > 0)
+		{
+			if(theSettingsMenu.visible) { if(curIcon == children[0].children[0].ClockIcon) { UpdateClockHands(); } }
+		}
+	}
 }
 
 var nCurNetworkItems;
@@ -2952,57 +2951,57 @@ function UpdateNetworkValues()
 
 DEF fourButtonNetworkViewpoint Viewpoint
 {
-    fieldOfView 1.287000
-    orientation 0.030790 0.999500 0.003006 -0.116200
-    position 98.430000 3.632000 -218.600006
-    jump false
+	fieldOfView 1.287000
+	orientation 0.030790 0.999500 0.003006 -0.116200
+	position 98.430000 3.632000 -218.600006
+	jump false
 }
 
 DEF threeButtonNetworkViewpoint Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.280200 0.959800 -0.016980 -0.133900
-    position 98.209999 3.905000 -218.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.280200 0.959800 -0.016980 -0.133900
+	position 98.209999 3.905000 -218.899994
+	jump false
 }
 
 function ShowNetworkListItems()
 {
-    var c = theNetworkMenu.children[0].children[0];
-    c.button3.visible = true;
-    c.S_Aud_text_mono07.visible = true;
-    c.S_Aud_text_stereo02.visible = true;
-    c.button4.visible = true;
-    c.S_Aud_text_mono17.visible = true;
-    c.S_Aud_text_stereo12.visible = true;
-    c.settings_panel_backing2.visible = false;
-    c.settings_panel_2button.visible = false;
-    c.S_Aud_panel_backing.visible = false;
-    c.panel_support_3button.visible = false;
-    c.S_Aud_panel_backing4.visible = true;
-    c.panel_support_4button.visible = true;
-    c.S_Aud_panel_support_05.visible = false;
-    c.S_Aud_panel_support_4button.visible = true;
-    c.Group06.SetTranslation(95.970001, 0.459000, -222.300003);
-    c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.026180);
-    c.Group07.SetTranslation(101.400002, 0.367700, -221.800003);
-    c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.244300);
+	var c = theNetworkMenu.children[0].children[0];
+	c.button3.visible = true;
+	c.S_Aud_text_mono07.visible = true;
+	c.S_Aud_text_stereo02.visible = true;
+	c.button4.visible = true;
+	c.S_Aud_text_mono17.visible = true;
+	c.S_Aud_text_stereo12.visible = true;
+	c.settings_panel_backing2.visible = false;
+	c.settings_panel_2button.visible = false;
+	c.S_Aud_panel_backing.visible = false;
+	c.panel_support_3button.visible = false;
+	c.S_Aud_panel_backing4.visible = true;
+	c.panel_support_4button.visible = true;
+	c.S_Aud_panel_support_05.visible = false;
+	c.S_Aud_panel_support_4button.visible = true;
+	c.Group06.SetTranslation(95.970001, 0.459000, -222.300003);
+	c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.026180);
+	c.Group07.SetTranslation(101.400002, 0.367700, -221.800003);
+	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.244300);
 }
 
 function SetupNetworkSettings()
 {
-    var c = theNetworkMenu.children[0].children[0];
-    ShowIcon(c.ClockIcon);
-    ShowIcon(c.GlobeIcon);
-    ShowIcon(c.StereoIcon);
-    ShowIcon(c.MonoIcon);
-    ShowIcon(c.FullscreenIcon);
-    ShowIcon(c.LetterboxIcon);
-    ShowIcon(c.WidescreenIcon);
-    ShowIcon(c.LockIcon);
+	var c = theNetworkMenu.children[0].children[0];
+	ShowIcon(c.ClockIcon);
+	ShowIcon(c.GlobeIcon);
+	ShowIcon(c.StereoIcon);
+	ShowIcon(c.MonoIcon);
+	ShowIcon(c.FullscreenIcon);
+	ShowIcon(c.LetterboxIcon);
+	ShowIcon(c.WidescreenIcon);
+	ShowIcon(c.LockIcon);
 	if(strPrevMenu == "SETTINGS") { nCurNetworkItems = 0; }
-    virgin = true;
-    SetupNetworkListMenu();
+	virgin = true;
+	SetupNetworkListMenu();
 }
 
 function SetupNetworkListMenu()
@@ -3027,17 +3026,17 @@ function SetupNetworkListMenu()
 
 function UpdateNetworkListIcons()
 {
-    var c = theNetworkMenu.children[0].children[0];
-    ShowIcon(c.GlobeIcon);
+	var c = theNetworkMenu.children[0].children[0];
+	ShowIcon(c.GlobeIcon);
 }
 
 function UpdateNetworkListHighlight()
 {
-    var c = theNetworkMenu.children[0].children[0];
-    var buttons = new Array(c.button1.children[0].children[0],
-                            c.button2.children[0].children[0],
-                            c.button3.children[0].children[0],
-                            c.button4.children[0].children[0]);
+	var c = theNetworkMenu.children[0].children[0];
+	var buttons = new Array(c.button1.children[0].children[0],
+							c.button2.children[0].children[0],
+							c.button3.children[0].children[0],
+							c.button4.children[0].children[0]);
 	if(nCurNetworkItems == -1 ) { c.Menu_Buttons.children[8].children[0].children[0].appearance.material.name = "RedType"; }
 	else { c.Menu_Buttons.children[8].children[0].children[0].appearance.material.name = "NavType"; }
 	for (var i = 0; i < nCurNetworkItemCount; i = i + 1)
@@ -3062,36 +3061,36 @@ function DoRestart()
 
 DEF theNetworkMenu Level
 {
-    archive "settings_list.xip"
-    children
-    [
-        Inline
-        {
-            url "settings_list/default2.xap"
-            function onLoad()
-            {
-                strCurMenu = "PARENTAL CONTROL";
-                SetupNetworkSettings();
-            }
-        }
-    ]
-    path USE threeButtonNetworkViewpoint
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 100.399997 4.815000 -221.800003
-        children
-        [    
-            USE theSettingsMenuShellSpinner			
-        ]
-    }
-    control Joystick
-    {
-        function OnADown()
-        {
-            PlaySoundA();
+	archive "settings_list.xip"
+	children
+	[
+		Inline
+		{
+			url "settings_list/default2.xap"
+			function onLoad()
+			{
+				strCurMenu = "PARENTAL CONTROL";
+				SetupNetworkSettings();
+			}
+		}
+	]
+	path USE threeButtonNetworkViewpoint
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 100.399997 4.815000 -221.800003
+		children
+		[
+			USE theSettingsMenuShellSpinner
+		]
+	}
+	control Joystick
+	{
+		function OnADown()
+		{
+			PlaySoundA();
 			virgin = false;
-            theNetworkMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
+			theNetworkMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			strPrevMenu = "PARENTAL CONTROL";
 			if(nCurNetworkItems == -1)
 			{
@@ -3130,38 +3129,38 @@ DEF theNetworkMenu Level
 					theSettingsSubMenuIn.Play();
 				}
 			}
-        }
-        function OnBDown()
-        {
+		}
+		function OnBDown()
+		{
 			PlaySoundB();
 			if(virgin == true) { theSettingsMenu.GoBackTo(); }
 			else { AskQuestion("Settings will not take effect until you restart the dash.  Would you like to restart now?", "theSettingsInline.children[0].DoRestart()", "GoToSettings()", 0); }
 			theSettingsSubMenuOut.Play();
-        }
-        function OnLeftThumbMoveUp()
-        {
+		}
+		function OnLeftThumbMoveUp()
+		{
 			if(nCurNetworkItems <= -1) { return; }
-            PlaySoundMenuChange();
-            nCurNetworkItems = nCurNetworkItems - 1;
-            UpdateNetworkListHighlight();
-        }
-        function OnLeftThumbMoveDown()
-        {
+			PlaySoundMenuChange();
+			nCurNetworkItems = nCurNetworkItems - 1;
+			UpdateNetworkListHighlight();
+		}
+		function OnLeftThumbMoveDown()
+		{
 			if(nCurNetworkItems >= (nCurNetworkItemCount - 1)) { return; }
-            PlaySoundMenuChange();
-            nCurNetworkItems = nCurNetworkItems + 1;
-            UpdateNetworkListHighlight();
-        }
-    }
-    function OnActivate()
-    {
+			PlaySoundMenuChange();
+			nCurNetworkItems = nCurNetworkItems + 1;
+			UpdateNetworkListHighlight();
+		}
+	}
+	function OnActivate()
+	{
 		EnableAudio();
-        if((strCurMenu == "VIDEO") & (theConfig.GetAVRegion() != "PAL_I")) { fourButtonNetworkViewpoint.isBound = true; }
-        else { fourButtonNetworkViewpoint.isBound = true; }
-        if(children[0].children.length() > 0)
-        {
-            UpdateNetworkListIcons();
-            SetupNetworkSettings();
-        }
-    }
+		if((strCurMenu == "VIDEO") & (theConfig.GetAVRegion() != "PAL_I")) { fourButtonNetworkViewpoint.isBound = true; }
+		else { fourButtonNetworkViewpoint.isBound = true; }
+		if(children[0].children.length() > 0)
+		{
+			UpdateNetworkListIcons();
+			SetupNetworkSettings();
+		}
+	}
 }

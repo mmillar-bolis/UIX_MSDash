@@ -1,4 +1,3 @@
-
 var CurrentMenuItem;
 var NumberOfMenuItems;
 var CurrentMenuButton;
@@ -10,26 +9,26 @@ var theTextures;
 var theMenuName;
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 function GetCellWallType()
 {
-    var IniFile = new Settings;
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
 	var a = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
 
 function initialize() { GetCellWallType(); }
@@ -104,10 +103,10 @@ function StartSettingsStyleMenu()
 
 DEF theSettingsStyleMenu Level
 {
-    archive "settings.xip"
-    children
-    [
-        Inline
+	archive "settings.xip"
+	children
+	[
+		Inline
 		{
 			url "settings/menu.xap"
 			function onLoad()
@@ -125,19 +124,19 @@ DEF theSettingsStyleMenu Level
 				StartSettingsStyleMenu();
 			}
 		}
-    ]
-    shell Transform
-    {
-        scale 150 150 150
-        translation 123.2 1.041 -190.3
-        children
-        [
-            DEF theSettingsStyleMenuShellSpinner Spinner
-            {
+	]
+	shell Transform
+	{
+		scale 150 150 150
+		translation 123.2 1.041 -190.3
+		children
+		[
+			DEF theSettingsStyleMenuShellSpinner Spinner
+			{
 				rpm 0
 				axis 0 0 0
-                children
-                [
+				children
+				[
 					DEF theSettingsStyleMenuShellWaver Waver
 					{
 						rpm 2.25//rpm 1.75
@@ -165,34 +164,34 @@ DEF theSettingsStyleMenu Level
 					}
 				]
 			}
-        ]
-    }
+		]
+	}
 
 
-    path Viewpoint
-    {
+	path Viewpoint
+	{
 		fieldOfView 1.275000
 		orientation 0.130300 -0.991400 -0.007829 -0.121100
 		position 123.300003 -0.918000 -151.600006
-        jump false
-    }
+		jump false
+	}
 
-    control DEF joy Joystick
-    {
-        function OnADown()
-        {
+	control DEF joy Joystick
+	{
+		function OnADown()
+		{
 			PlaySoundA();
 			theSettingsStyleMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			theGamesMenu.LaunchTitle(CurrentMenuItem);
-        }
+		}
 		function OnBDown()
 		{
 			PlaySoundB();
 			MenuContents = "";
 			theSettingsSubMenuOut.Play();
-	    	theMainMenu.GoBackTo();
+			theMainMenu.GoBackTo();
 		}
-        function OnLeftThumbMoveUp()
+		function OnLeftThumbMoveUp()
 		{
 			if (CurrentMenuItem == 0) { return; }
 			else
@@ -204,7 +203,7 @@ DEF theSettingsStyleMenu Level
 				UpdateSettingsStyleMenu();
 			}
 		}
-        function OnLeftThumbMoveDown()
+		function OnLeftThumbMoveDown()
 		{
 			if (CurrentMenuItem == TotalMenuItems - 1) { return; }
 			else
@@ -216,10 +215,10 @@ DEF theSettingsStyleMenu Level
 				UpdateSettingsStyleMenu();
 			}
 		}
-    }
-    function OnActivate()
-    {
+	}
+	function OnActivate()
+	{
 		EnableAudio();
 		StartSettingsStyleMenu();
-    }
+	}
 }

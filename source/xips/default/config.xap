@@ -10,31 +10,31 @@ var inLV2;
 var settChanged;
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 function GetCellWallType()
 {
-    var IniFile = new Settings;
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
 	var a = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
 
 function initialize()
 {
-    GetCellWallType();
+	GetCellWallType();
 	inSubs = true;
 	LV1Item = 0;
 	LV1Hold = 0;
@@ -108,11 +108,11 @@ function BuildMainList()
 	configValues[i] = "c-Dashboard Settings-Dash Style";
 	configSelect[i] = "ToggleMM()";
 	i = i + 1;
-    configList[i] = "Menus Use Names From xbe:";
+	configList[i] = "Menus Use Names From xbe:";
 	configValues[i] = "c-Naming Method-use xbe names";
 	configSelect[i] = "ToggleUseXBENames()";
 	i = i + 1;
-    configList[i] = "AutoLaunch Inserted Media:";
+	configList[i] = "AutoLaunch Inserted Media:";
 	configValues[i] = "c-AutoLaunch Media-Launch On Insert";
 	configSelect[i] = "ToggleAutoLaunchMedia()";
 	i = i + 1;
@@ -399,14 +399,14 @@ function ClearText()
 
 DEF theConfigPanel Level
 {
-    archive "config.xip"
-    children
-    [
+	archive "config.xip"
+	children
+	[
 		Inline
 		{
 			url "config/default.xap"
 			function onLoad()
-			{	
+			{
 				MakeTemp();
 				BuildConfigList();
 				inSubs = true;
@@ -416,47 +416,47 @@ DEF theConfigPanel Level
 				c.GlobeIcon.visible = true;
 			}
 		}
-    ]
-    shell Transform
-    {
-        scale 7 7 7 //150
-        translation 108.8 1.022000 -223.050006
-        children
-        [
-            Waver
-            {
-                rpm 0.75
-                children
-                [
-                    Shape
-                    {
-                        appearance Appearance
-                        {
-                            material MaxMaterial { name "InnerWall_01" }
-                            texture ImageTexture
-                            {
-                                alpha true
-                                url "shell.xbx"
-                            }
-                        }
-                        geometry USE theCellWallMesh
-                    }
-                    Shape
-                    {
-                        appearance Appearance { material MaxMaterial { name "InnerWall_02" } }
-                        geometry Sphere { radius 1 }
-                    }
-                ]
-            }
-        ]
-    }
-    path Viewpoint
-    {
+	]
+	shell Transform
+	{
+		scale 7 7 7 //150
+		translation 108.8 1.022000 -223.050006
+		children
+		[
+			Waver
+			{
+				rpm 0.75
+				children
+				[
+					Shape
+					{
+						appearance Appearance
+						{
+							material MaxMaterial { name "InnerWall_01" }
+							texture ImageTexture
+							{
+								alpha true
+								url "shell.xbx"
+							}
+						}
+						geometry USE theCellWallMesh
+					}
+					Shape
+					{
+						appearance Appearance { material MaxMaterial { name "InnerWall_02" } }
+						geometry Sphere { radius 1 }
+					}
+				]
+			}
+		]
+	}
+	path Viewpoint
+	{
 		position 107.8 1.422000 -219.050006
 		orientation 0.03682 0.9993 0.00299 -0.1622
 		fieldOfView 1.287
-    jump false
-    }
+	jump false
+	}
 
 	control DEF theConfigJoystick Joystick
 	{
@@ -502,10 +502,10 @@ DEF theConfigPanel Level
 				eval(configSelect[LV2Item]);
 			}
 		}
-		
+
 		function OnLeftThumbMoveDown() { SelectConfigDown(); }
 		function OnLeftThumbMoveUp() { SelectConfigUp(); }
-		
+
 		function OnBDown()
 		{
 			PlaySoundB();
@@ -529,7 +529,7 @@ DEF theConfigPanel Level
 			}
 		}
 	}
-	
+
 	function OnArrival()
 	{
 		MakeTemp();
@@ -596,7 +596,7 @@ function SelectConfigDown()
 			}
 		}
 		if(configList.length == curItem + 1) { c.theDownArrow.visible = false; }
-	}	
+	}
 	else if(curHold < 11)
 	{
 		UnTabSlot(curHold);
@@ -661,7 +661,7 @@ function SelectConfigUp()
 			TabSlot(curHold);
 			c.theLeftSlots.children[curHold].children[0].appearance.name = "NavType";
 		}
-	}	
+	}
 	if(inSubs == true)
 	{
 		LV1Item = curItem;

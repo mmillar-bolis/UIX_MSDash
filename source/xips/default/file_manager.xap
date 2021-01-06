@@ -42,31 +42,31 @@ var sfileType;
 var dfileType;
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 function GetCellWallType()
 {
-    var IniFile = new Settings;
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
 	var a = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
 
 function initialize()
 {
-    GetCellWallType();
+	GetCellWallType();
 	InSource = true;
 	InDestination = false;
 	InSourceRoot = true;
@@ -75,20 +75,20 @@ function initialize()
 
 function GetMainDirListing()
 {
-    var d = theFileManager.children[0].children[0];
+	var d = theFileManager.children[0].children[0];
 	d.theSourcePathListing.text = "Xbox Root";
 	d.theDestinationPathListing.text = "Xbox Root";
 	RootDirectory = new Array;
 	var GExists;
 	var FExists;
-	
+
 	RootDirectory[0] = "C";
 	RootDirectory[1] = "D";
 	RootDirectory[2] = "E";
-    	
+
 	FExists = theHardDrive.DoesFExist();
 	GExists = theHardDrive.DoesGExist();
-	
+
 	if( (FExists == true) & (GExists == true) )
 	{
 		RootDirectory[3] = "F";
@@ -122,50 +122,50 @@ function GetMainDirListing()
 
 function UpdateDestinationFileManager()
 {
-    var d = theFileManager.children[0].children[0];
-    if(InDestinationRoot)
-    {
-        for(var i = 0; i < 9; i = i + 1)
-        {
-        	var n = dfmScroll + i;
-        	
-        	if(n >= rootlength)
-        	{
-        		d.DestinationFileNames.children[i].visible = false;
-        		d.DestinationFileImages.children[i].visible = false;
-        	}
-        	else
-        	{
-        		var str;
-        		str = RootDirectory[n];
+	var d = theFileManager.children[0].children[0];
+	if(InDestinationRoot)
+	{
+		for(var i = 0; i < 9; i = i + 1)
+		{
+			var n = dfmScroll + i;
+
+			if(n >= rootlength)
+			{
+				d.DestinationFileNames.children[i].visible = false;
+				d.DestinationFileImages.children[i].visible = false;
+			}
+			else
+			{
+				var str;
+				str = RootDirectory[n];
 				d.DestinationFileImages.children[i].visible = true;
 				d.DestinationFileNames.children[i].visible = true;
 				d.DestinationFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
 				d.DestinationFileNames.children[i].children[0].geometry.text = str;
 				d.DestinationFileImages.children[i].children[0].appearance.texture.url = "folder.xbx";
-             	
+
 				if(i == dfmButton)
 				{
 					d.DestinationFileNames.children[i].children[0].appearance.material.name = "NavType";
 				}
 			}
-        }
-    }
-    else
-    {
-        for(var i = 0; i < 9; i = i + 1)
-        {
-        	var n = dfmScroll + i;
-        	
-        	if(n >= ddirlength)
-        	{
-        		d.DestinationFileNames.children[i].visible = false;
-        		d.DestinationFileImages.children[i].visible = false;
-        	}
-        	else
-        	{
-        		var str;
-        		str = CurDestinationDirectory[n];
+		}
+	}
+	else
+	{
+		for(var i = 0; i < 9; i = i + 1)
+		{
+			var n = dfmScroll + i;
+
+			if(n >= ddirlength)
+			{
+				d.DestinationFileNames.children[i].visible = false;
+				d.DestinationFileImages.children[i].visible = false;
+			}
+			else
+			{
+				var str;
+				str = CurDestinationDirectory[n];
 				d.DestinationFileImages.children[i].visible = true;
 				d.DestinationFileNames.children[i].visible = true;
 				d.DestinationFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
@@ -177,7 +177,7 @@ function UpdateDestinationFileManager()
 				else
 				{
 					d.DestinationFileImages.children[i].children[0].appearance.texture.url = "folder.xbx";
-				}             		
+				}
 				if(i == dfmButton)
 				{
 					d.DestinationFileNames.children[i].children[0].appearance.material.name = "NavType";
@@ -187,57 +187,57 @@ function UpdateDestinationFileManager()
 					d.DestinationFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
 				}
 			}
-        }
-        d.theDestinationPathListing.text = CurDestinationPath;
-    }
+		}
+		d.theDestinationPathListing.text = CurDestinationPath;
+	}
 }
 
 function UpdateSourceFileManager()
 {
-    var d = theFileManager.children[0].children[0];
-    if(InSourceRoot)
-    {
-        for(var i = 0; i < 9; i = i + 1)
-        {
-        	var n = sfmScroll + i;
-        	
-        	if(n >= rootlength)
-        	{
-        		d.SourceFileNames.children[i].visible = false;
-        		d.SourceFileImages.children[i].visible = false;
-        	}
-        	else
-        	{
-        		var str;
-        		str = RootDirectory[n];
+	var d = theFileManager.children[0].children[0];
+	if(InSourceRoot)
+	{
+		for(var i = 0; i < 9; i = i + 1)
+		{
+			var n = sfmScroll + i;
+
+			if(n >= rootlength)
+			{
+				d.SourceFileNames.children[i].visible = false;
+				d.SourceFileImages.children[i].visible = false;
+			}
+			else
+			{
+				var str;
+				str = RootDirectory[n];
 				d.SourceFileImages.children[i].visible = true;
 				d.SourceFileNames.children[i].visible = true;
 				d.SourceFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
 				d.SourceFileNames.children[i].children[0].geometry.text = str;
 				d.SourceFileImages.children[i].children[0].appearance.texture.url = "folder.xbx";
-             		
+
 				if(i == sfmButton)
 				{
 					d.SourceFileNames.children[i].children[0].appearance.material.name = "NavType";
 				}
 			}
-        }
-    }
-    else
-    {
-        for(var i = 0; i < 9; i = i + 1)
-        {
-        	var n = sfmScroll + i;
-        	
-        	if(n >= sdirlength)
-        	{
-        		d.SourceFileNames.children[i].visible = false;
-        		d.SourceFileImages.children[i].visible = false;
-        	}
-        	else
-        	{
-        		var str;
-        		str = CurSourceDirectory[n];
+		}
+	}
+	else
+	{
+		for(var i = 0; i < 9; i = i + 1)
+		{
+			var n = sfmScroll + i;
+
+			if(n >= sdirlength)
+			{
+				d.SourceFileNames.children[i].visible = false;
+				d.SourceFileImages.children[i].visible = false;
+			}
+			else
+			{
+				var str;
+				str = CurSourceDirectory[n];
 				d.SourceFileImages.children[i].visible = true;
 				d.SourceFileNames.children[i].visible = true;
 				d.SourceFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
@@ -249,7 +249,7 @@ function UpdateSourceFileManager()
 				else
 				{
 					d.SourceFileImages.children[i].children[0].appearance.texture.url = "folder.xbx";
-				}             		
+				}
 				if(i == sfmButton)
 				{
 					d.SourceFileNames.children[i].children[0].appearance.material.name = "NavType";
@@ -259,100 +259,100 @@ function UpdateSourceFileManager()
 					d.SourceFileNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
 				}
 			}
-        }
-        d.theSourcePathListing.text = CurSourcePath;
-    }
+		}
+		d.theSourcePathListing.text = CurSourcePath;
+	}
 }
 
 function GoBackDirectory()
 {
 	var d = theFileManager.children[0].children[0];
-    if(InSource)
-    {
-    	if(CurSourcePath.length() == 2)
-    	{
-    		sfmScroll = 0;
-    		sfmSelect = 0;
-    		sfmButton = 0;
-    	    InSourceRoot = true;
-    	    UpdateSourceFileManager();
-    	    d.theSourcePathListing.text = "Xbox Root";
-    	}
-    	else
-    	{
-    	    PrevSourcePath = CurSourcePath.substr(0, CurSourcePath.lastIndexOf("\\"));
-    	    CurSourcePath = PrevSourcePath;
-    	    GetSourceDirectoryListing(CurSourcePath);
-    	}
-    }
-    if(InDestination)
-    {
-    	if(CurDestinationPath.length() == 2)
-    	{
-	    	dfmScroll = 0;
-    		dfmSelect = 0;
-    		dfmButton = 0;
-    	    InDestinationRoot = true;
-    	    UpdateDestinationFileManager();
-    	    d.theDestinationPathListing.text = "Xbox Root";
-    	}
-    	else
-    	{
-    	    PrevDestinationPath = CurDestinationPath.substr(0, CurDestinationPath.lastIndexOf("\\"));
-    	    CurDestinationPath = PrevDestinationPath;
-    	    GetDestinationDirectoryListing(CurDestinationPath);
-    	}
-    }
+	if(InSource)
+	{
+		if(CurSourcePath.length() == 2)
+		{
+			sfmScroll = 0;
+			sfmSelect = 0;
+			sfmButton = 0;
+			InSourceRoot = true;
+			UpdateSourceFileManager();
+			d.theSourcePathListing.text = "Xbox Root";
+		}
+		else
+		{
+			PrevSourcePath = CurSourcePath.substr(0, CurSourcePath.lastIndexOf("\\"));
+			CurSourcePath = PrevSourcePath;
+			GetSourceDirectoryListing(CurSourcePath);
+		}
+	}
+	if(InDestination)
+	{
+		if(CurDestinationPath.length() == 2)
+		{
+			dfmScroll = 0;
+			dfmSelect = 0;
+			dfmButton = 0;
+			InDestinationRoot = true;
+			UpdateDestinationFileManager();
+			d.theDestinationPathListing.text = "Xbox Root";
+		}
+		else
+		{
+			PrevDestinationPath = CurDestinationPath.substr(0, CurDestinationPath.lastIndexOf("\\"));
+			CurDestinationPath = PrevDestinationPath;
+			GetDestinationDirectoryListing(CurDestinationPath);
+		}
+	}
 }
 
 function ChangeDirectory(x)
 {
-    if(InSource)
-    {
-    	if(InSourceRoot)
-    	{
+	if(InSource)
+	{
+		if(InSourceRoot)
+		{
 			CurSourcePath = x + ":";
 			InSourceRoot = false;
 		}
 		else
 		{
-    	    PrevSourcePath = CurSourcePath + "\\" + x;
-    	    CurSourcePath = PrevSourcePath;
-    	}
-    	GetSourceDirectoryListing(CurSourcePath);
-    }
-    if(InDestination)
-    {
-    	if(InDestinationRoot)
-    	{
+			PrevSourcePath = CurSourcePath + "\\" + x;
+			CurSourcePath = PrevSourcePath;
+		}
+		GetSourceDirectoryListing(CurSourcePath);
+	}
+	if(InDestination)
+	{
+		if(InDestinationRoot)
+		{
 			CurDestinationPath = x + ":";
 			InDestinationRoot = false;
 		}
 		else
 		{
-    	    PrevDestinationPath = CurDestinationPath + "\\" + x;
-    	    CurDestinationPath = PrevDestinationPath;
-    	}
-    	GetDestinationDirectoryListing(CurDestinationPath);
-    }
+			PrevDestinationPath = CurDestinationPath + "\\" + x;
+			CurDestinationPath = PrevDestinationPath;
+		}
+		GetDestinationDirectoryListing(CurDestinationPath);
+	}
 }
 
 function GetSourceDirectoryListing(x)
 {
-    sfmScroll = 0;
-    sfmSelect = 0;
-    sfmButton = 0;
-    var c = new Folder;
-    c.path = x;
+	sfmScroll = 0;
+	sfmSelect = 0;
+	sfmButton = 0;
+	var c = new Folder;
+	c.path = x;
 	sfileType = new Array;
-    var CurFiles = new Array;
-    CurSourceDirectory = new Array;
-    sfoldercount = c.subFolders.length();
-    sfilecount = c.files.length();
-    var arraycount = sfoldercount + sfilecount;
-    var folderend;
-    if(sfoldercount > 0)
-    {
+	var CurFiles = new Array;
+	CurSourceDirectory = new Array;
+	sfoldercount = c.subFolders.length();
+	sfilecount = c.files.length();
+	var arraycount = sfoldercount + sfilecount;
+	var folderend;
+	if(sfoldercount > 0)
+	{
 		for(var i = 0; i < sfoldercount; i = i + 1)
 		{
 			CurSourceDirectory[i] = c.subFolders[i].name.charAt(0).toUpperCase() + c.subFolders[i].name.substr(1, c.subFolders[i].name.length());
@@ -360,44 +360,44 @@ function GetSourceDirectoryListing(x)
 		}
 		CurSourceDirectory = CurSourceDirectory.sort();
 		sfolderlength = sfoldercount;
-    }
-    folderend = sfoldercount;
-    if(sfilecount > 0)
-    {
-    	for(var i = 0; i < sfilecount; i = i + 1)
-    	{
-    	    CurFiles[i] = c.files[i].name.charAt(0).toUpperCase() + c.files[i].name.substr(1, c.files[i].name.length()) + "." + c.files[i].type;
-    	}
-    	CurFiles = CurFiles.sort();
-    	sfilelength = sfilecount;
-    }
-    for(var j = 0; j < sfilecount; j = j + 1)
-    {
-    	var tempDir = CurFiles[j];
-    	CurSourceDirectory[folderend] = tempDir;
+	}
+	folderend = sfoldercount;
+	if(sfilecount > 0)
+	{
+		for(var i = 0; i < sfilecount; i = i + 1)
+		{
+			CurFiles[i] = c.files[i].name.charAt(0).toUpperCase() + c.files[i].name.substr(1, c.files[i].name.length()) + "." + c.files[i].type;
+		}
+		CurFiles = CurFiles.sort();
+		sfilelength = sfilecount;
+	}
+	for(var j = 0; j < sfilecount; j = j + 1)
+	{
+		var tempDir = CurFiles[j];
+		CurSourceDirectory[folderend] = tempDir;
 		sfileType[folderend] = tempDir.substr(tempDir.lastIndexOf(".") + 1, tempDir.length());
-    	folderend = folderend + 1;
-    }
-    sdirlength = arraycount;
-    UpdateSourceFileManager();
+		folderend = folderend + 1;
+	}
+	sdirlength = arraycount;
+	UpdateSourceFileManager();
 }
 
 function GetDestinationDirectoryListing(x)
 {
-    dfmScroll = 0;
-    dfmSelect = 0;
-    dfmButton = 0;
-    var c = new Folder;
-    c.path = x;
-    var CurFiles = new Array;
-    dfileType = new Array;
-    CurDestinationDirectory = new Array;
-    dfoldercount = c.subFolders.length();
-    dfilecount = c.files.length();
-    var arraycount = dfoldercount + dfilecount;
-    var folderend;
-    if(dfoldercount > 0)
-    {
+	dfmScroll = 0;
+	dfmSelect = 0;
+	dfmButton = 0;
+	var c = new Folder;
+	c.path = x;
+	var CurFiles = new Array;
+	dfileType = new Array;
+	CurDestinationDirectory = new Array;
+	dfoldercount = c.subFolders.length();
+	dfilecount = c.files.length();
+	var arraycount = dfoldercount + dfilecount;
+	var folderend;
+	if(dfoldercount > 0)
+	{
 		for(var i = 0; i < dfoldercount; i = i + 1)
 		{
 			CurDestinationDirectory[i] = c.subFolders[i].name.charAt(0).toUpperCase() + c.subFolders[i].name.substr(1, c.subFolders[i].name.length());
@@ -406,25 +406,25 @@ function GetDestinationDirectoryListing(x)
 		CurDestinationDirectory = CurDestinationDirectory.sort();
 		dfolderlength = dfoldercount;
 	}
-    folderend = dfoldercount;
-    if(dfilecount > 0)
-    {
-    	for(var i = 0; i < dfilecount; i = i + 1)
-    	{
-    	    CurFiles[i] = c.files[i].name.charAt(0).toUpperCase() + c.files[i].name.substr(1, c.files[i].name.length()) + "." + c.files[i].type;
-    	}
-    	CurFiles = CurFiles.sort();
-    	dfilelength = dfilecount;
-    }
-    for(var j = 0; j < dfilecount; j = j + 1)
-    {
-    	var tempDir = CurFiles[j];
-    	CurDestinationDirectory[folderend] = tempDir;
+	folderend = dfoldercount;
+	if(dfilecount > 0)
+	{
+		for(var i = 0; i < dfilecount; i = i + 1)
+		{
+			CurFiles[i] = c.files[i].name.charAt(0).toUpperCase() + c.files[i].name.substr(1, c.files[i].name.length()) + "." + c.files[i].type;
+		}
+		CurFiles = CurFiles.sort();
+		dfilelength = dfilecount;
+	}
+	for(var j = 0; j < dfilecount; j = j + 1)
+	{
+		var tempDir = CurFiles[j];
+		CurDestinationDirectory[folderend] = tempDir;
 			dfileType[folderend] = tempDir.substr(tempDir.lastIndexOf(".") + 1, tempDir.length());
-    	folderend = folderend + 1;
-    }
-    ddirlength = arraycount;
-    UpdateDestinationFileManager();
+		folderend = folderend + 1;
+	}
+	ddirlength = arraycount;
+	UpdateDestinationFileManager();
 }
 
 var tempItems;
@@ -456,47 +456,47 @@ function ReturnItems()
 
 DEF theFileManager Level
 {
-    archive "settings_panel.xip"
+	archive "settings_panel.xip"
 
-    children
-    [
-        Inline
-        {
-            url "settings_panel/default2.xap"
+	children
+	[
+		Inline
+		{
+			url "settings_panel/default2.xap"
 
-            function onLoad()
-            {
-            	sfmScroll = 0;
-            	sfmSelect = 0;
-            	sfmButton = 0;
-            	dfmScroll = 0;
-            	dfmSelect = 0;
-            	dfmButton = 0;
-            	tempItemNumber = 0;
-           		InSource = true;
-            	InDestination = false;
-            	InSourceRoot = true;
-            	InDestinationRoot = true;
-            	GetMainDirListing();
-           		UpdateSourceFileManager();
-           		UpdateDestinationFileManager();
-            }
+			function onLoad()
+			{
+				sfmScroll = 0;
+				sfmSelect = 0;
+				sfmButton = 0;
+				dfmScroll = 0;
+				dfmSelect = 0;
+				dfmButton = 0;
+				tempItemNumber = 0;
+				InSource = true;
+				InDestination = false;
+				InSourceRoot = true;
+				InDestinationRoot = true;
+				GetMainDirListing();
+				UpdateSourceFileManager();
+				UpdateDestinationFileManager();
+			}
 
-        }
-    ]
+		}
+	]
 
-    shell Transform
-    {
-        scale 6.15 6.15 6.15
-        translation 97.67 4.819000 -251.870003
-        children
-        [
-            DEF theFileManagerShellSpinner Spinner
-            {
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 97.67 4.819000 -251.870003
+		children
+		[
+			DEF theFileManagerShellSpinner Spinner
+			{
 				rpm 0
 				axis 0 0 0
-                children
-                [
+				children
+				[
 					DEF theFileManagerShellWaver Waver
 					{
 						rpm 2.25//rpm 0.75
@@ -520,60 +520,60 @@ DEF theFileManager Level
 					}
 				]
 			}
-        ]
-    }
+		]
+	}
 
-    path Viewpoint
-    {
+	path Viewpoint
+	{
 		fieldOfView 1.287000
 		orientation 0.103700 0.994600 0.006310 -0.122200
 		position 96.940002 4.728000 -248.600006
 		jump false
-    }
+	}
 
-    control DEF theSettingsJoystick Joystick
-    {
-	
-        function OnADown()
-        {
-	        theFileManager.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
-	        PlaySoundA();
-            if(InSource)
-            {
-            	if(InSourceRoot) { ChangeDirectory(RootDirectory[sfmSelect]); }
-            	else
-            	{
+	control DEF theSettingsJoystick Joystick
+	{
+
+		function OnADown()
+		{
+			theFileManager.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
+			PlaySoundA();
+			if(InSource)
+			{
+				if(InSourceRoot) { ChangeDirectory(RootDirectory[sfmSelect]); }
+				else
+				{
 					if(sfileType[sfmSelect] == "folder") { ChangeDirectory(CurSourceDirectory[sfmSelect]); }
 					else if(sfileType[sfmSelect] == "xbe") { theHardDrive.ExecuteFile(CurSourcePath + "\\" + CurSourceDirectory[sfmSelect]); }
 					else { return; }
-            	}
-            }
-            if(InDestination)
-            {
-                if(InDestinationRoot) { ChangeDirectory(RootDirectory[dfmSelect]); }
-                else
-                {
+				}
+			}
+			if(InDestination)
+			{
+				if(InDestinationRoot) { ChangeDirectory(RootDirectory[dfmSelect]); }
+				else
+				{
 					if(dfileType[dfmSelect] == "folder") { ChangeDirectory(CurDestinationDirectory[dfmSelect]); }
 					else if(dfileType[dfmSelect] == "xbe") { theHardDrive.ExecuteFile(CurDestinationPath + "\\" + CurDestinationDirectory[dfmSelect]); }
 					else { return; }
 				}
 			}
-        }
+		}
 
 		function OnBDown()
-        {
-	        PlaySoundB();
-	        theFileManager.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
-            if((InSourceRoot) & (InDestinationRoot))
-            {
-				GoToSettings(); 
+		{
+			PlaySoundB();
+			theFileManager.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
+			if((InSourceRoot) & (InDestinationRoot))
+			{
+				GoToSettings();
 				theSettingsSubMenuOut.Play();
 			}
 			else { GoBackDirectory(); }
-        }
+		}
 
-        function OnXDown()
-        {
+		function OnXDown()
+		{
 			if(InSource)
 			{
 				if(InSourceRoot) { return; }
@@ -581,9 +581,9 @@ DEF theFileManager Level
 				{
 					CurrentMenuItem = sfileType[sfmSelect];
 					ShowFileManagerFunctions();
-				}										
+				}
 			}
-        }
+		}
 
 		function OnLeftThumbMoveRight()
 		{
@@ -594,7 +594,7 @@ DEF theFileManager Level
 				InDestination = true;
 			}
 		}
-	
+
 		function OnLeftThumbMoveLeft()
 		{
 			PlaySoundMenuChange();
@@ -604,9 +604,9 @@ DEF theFileManager Level
 				InDestination = false;
 			}
 		}
-	
-        function OnLeftThumbMoveUp()
-        {
+
+		function OnLeftThumbMoveUp()
+		{
 			if(InSource)
 			{
 				if (sfmSelect <= 0) { return; }
@@ -625,10 +625,10 @@ DEF theFileManager Level
 				else { dfmButton = dfmButton - 1; }
 				UpdateDestinationFileManager();
 			}
-        }
-         
-        function OnLeftThumbMoveDown()
-        {
+		}
+
+		function OnLeftThumbMoveDown()
+		{
 			if(InSource)
 			{
 				if(InSourceRoot)
@@ -661,7 +661,7 @@ DEF theFileManager Level
 				else { dfmButton = dfmButton + 1; }
 				UpdateDestinationFileManager();
 			}
-        }
+		}
 	}
 }
 
@@ -692,7 +692,7 @@ DEF theFileManagerJoystick Joystick
 			else
 			{
 				if(InDestinationRoot) { ShowFileManagerError(); }
-				else { ConfirmFileManager( "Do You Want To Copy:\n" + CurSourcePath + "\\" + CurSourceDirectory[sfmSelect], "To:\n" + CurDestinationPath + "\\" + CurSourceDirectory[sfmSelect] + "?" ); }						
+				else { ConfirmFileManager( "Do You Want To Copy:\n" + CurSourcePath + "\\" + CurSourceDirectory[sfmSelect], "To:\n" + CurDestinationPath + "\\" + CurSourceDirectory[sfmSelect] + "?" ); }
 			}
 		}
 		if(nCurManagerButton == 1)
@@ -798,7 +798,7 @@ DEF theFileManagerJoystick Joystick
 				renameCancel = "";
 				CloseFileManagerFunctions();
 			}
-		}	
+		}
 	}
 	function OnBDown()
 	{
@@ -828,7 +828,7 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerButtonHighlight();
 		}
 	}
-	
+
 	function OnLeftThumbMoveLeft()
 	{
 		if(bInConfirm)
@@ -842,7 +842,7 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerButtonHighlight();
 		}
 	}
-	
+
 	function OnLeftThumbMoveUp()
 	{
 		if(bInConfirm) { return; }
@@ -857,7 +857,7 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerFunctionsMenu();
 		}
 	}
-	
+
 	function OnLeftThumbMoveDown()
 	{
 		if(bInConfirm) { return; }

@@ -1,37 +1,36 @@
-
 //only need these if you are going to use the old drop down style hd menus...
-//DEF theGamesMenu 			TitleMenu 
-//DEF theApplicationsMenu 	TitleMenu
-//DEF theEmulatorsMenu 		TitleMenu
-//DEF theDashboardsMenu 	TitleMenu
+//DEF theGamesMenu			TitleMenu
+//DEF theApplicationsMenu	TitleMenu
+//DEF theEmulatorsMenu		TitleMenu
+//DEF theDashboardsMenu		TitleMenu
 
-DEF theConfig 			Config
-DEF theHardDrive 		HardDrive
-DEF theTranslator 		Translator
-DEF theXboxNetwork 		XboxNetwork
+DEF theConfig			Config
+DEF theHardDrive		HardDrive
+DEF theTranslator		Translator
+DEF theXboxNetwork		XboxNetwork
 
 DEF theMusicInline Inline
 {
-    visible false
-    url "music.xap"
-    function onLoad() { theMusicInline.children[0].theMusicMenu.GoTo(); }
+	visible false
+	url "music.xap"
+	function onLoad() { theMusicInline.children[0].theMusicMenu.GoTo(); }
 }
 
 function GoToMusic()
 {
-    if(theMusicInline.visible) { theMusicInline.children[0].theMusicMenu.GoTo(); }
-    else
-    {
-        BlockMemoryUnitInsert();
-        theMusicInline.visible = true;
-    }
+	if(theMusicInline.visible) { theMusicInline.children[0].theMusicMenu.GoTo(); }
+	else
+	{
+		BlockMemoryUnitInsert();
+		theMusicInline.visible = true;
+	}
 }
 
 function StartBackGroundMusicPlayer()
 {
 	if (theMusicPlayer.transportMode != 1) { MusicPlayerRandom(); }
 }
-	
+
 function MusicPlayerPlay()
 {
 	theMusicPlayer.url = "st:" + theMusicCollection.GetSoundtrackSongID( currentAlbum, currentTrack );
@@ -69,19 +68,19 @@ function MusicPlayerFastForward()
 
 DEF theMusicCollection  MusicCollection
 {
-    function OnCopyComplete() { theMusicInline.children[0].OnMusicCopyComplete(); }
+	function OnCopyComplete() { theMusicInline.children[0].OnMusicCopyComplete(); }
 
-    function OnCopyProgressChanged()
-    {
+	function OnCopyProgressChanged()
+	{
 		UpdateProgressText(theMusicCollection.GetUpdateString());
-        SetProgress(copyProgress);
-    }
+		SetProgress(copyProgress);
+	}
 
-    function OnAddSoundtrackNewSongFailed(ErrorCode)
-    {
-        g_nRec = ErrorCode;
-        if (ErrorCode == 1) { theLauncherLevel.GoTo(); }
-    }
+	function OnAddSoundtrackNewSongFailed(ErrorCode)
+	{
+		g_nRec = ErrorCode;
+		if (ErrorCode == 1) { theLauncherLevel.GoTo(); }
+	}
 }
 
 //new addition: AudioClip playbackModes
@@ -96,45 +95,45 @@ DEF theMusicCollection  MusicCollection
 
 DEF theMusicPlayer AudioClip
 {
-    url "cd:"
-    sendProgress true
+	url "cd:"
+	sendProgress true
 	volume 0.86
-    function OnProgressChanged() 	  { if (bInMusicMenu == true) { theMusicInline.children[0].SetMusicPlayPos(progress); } }
-    function OnTransportModeChanged() { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTransportIndicators(); } }
-    function OnTrackChanged() 	  	  { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTrackList(); } }
-    function OnEndOfAudio()
-    {
+	function OnProgressChanged()	  { if (bInMusicMenu == true) { theMusicInline.children[0].SetMusicPlayPos(progress); } }
+	function OnTransportModeChanged() { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTransportIndicators(); } }
+	function OnTrackChanged()		  { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTrackList(); } }
+	function OnEndOfAudio()
+	{
 		if (bInMusicMenu == true) { theMusicInline.children[0].DoEndOfAudio(); }
 		else
 		{
 			if( theMusicPlayer.playbackMode == 0 ) { MusicPlayerFastForward(); }
 			if( theMusicPlayer.playbackMode == 2 ) { MusicPlayerRandom(); }
-		}			
-    }
+		}
+	}
 }
 
 DEF audioVisualizer DynamicTexture
 {
-    palette Palette { type 7 changePeriod 3 }
-    size 352
-    erase false
-    fps 60
-    children
-    [
-        ImageFader { changePeriod 10 }
-        StarField
-        AudioVisualizer
-        {
-            source USE theMusicPlayer
-            type "circle"
-            scale 1.5
-        }
-        AudioVisualizer
-        {
-            source USE theMusicPlayer
-            type "analyzer"
-        }
-    ]
+	palette Palette { type 7 changePeriod 3 }
+	size 352
+	erase false
+	fps 60
+	children
+	[
+		ImageFader { changePeriod 10 }
+		StarField
+		AudioVisualizer
+		{
+			source USE theMusicPlayer
+			type "circle"
+			scale 1.5
+		}
+		AudioVisualizer
+		{
+			source USE theMusicPlayer
+			type "analyzer"
+		}
+	]
 }
 
 function MusicPlayerVolumeUp()
@@ -151,7 +150,7 @@ function MusicPlayerVolumeDown()
 
 function MusicOnBootCheck()
 {
-	var IniFile = new Settings; 
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Music On Boot" );
 	var a = IniFile.GetIniValue( "enabled" );
 	var b = IniFile.GetIniValue( "volume" );
@@ -164,86 +163,86 @@ function MusicOnBootCheck()
 
 //Start and Back buttons are no longer bound to be the same as A and B buttons
 //putting these functions here saves alot of pasting to make them all global
-function OnBackDown() 	{ MusicPlayerVolumeUp();   } //back and start buttons
-function OnStartDown() 	{ MusicPlayerVolumeDown(); } //repeat when held down
-function OnBlackDown() 	{ theDiscDrive.OpenTray(); }
-function OnWhiteDown() 	{ theDiscDrive.CloseTray();}
+function OnBackDown()	{ MusicPlayerVolumeUp();   } //back and start buttons
+function OnStartDown()	{ MusicPlayerVolumeDown(); } //repeat when held down
+function OnBlackDown()	{ theDiscDrive.OpenTray(); }
+function OnWhiteDown()	{ theDiscDrive.CloseTray();}
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 DEF theSkinsInline Inline
 {
-    visible false
-    url "skins.xap"
-    function onLoad() { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
+	visible false
+	url "skins.xap"
+	function onLoad() { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
 }
 
 function GoToSkins()
 {
-    theSettingsMenuIn.Play();
+	theSettingsMenuIn.Play();
 	if( theSkinsInline.visible ) { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
-    else { theSkinsInline.visible = true; }
+	else { theSkinsInline.visible = true; }
 }
 
 DEF theConfigInline Inline
 {
-    visible false
-    url "config.xap"
-    function onLoad() { theConfigInline.children[0].theConfigPanel.GoTo(); }
+	visible false
+	url "config.xap"
+	function onLoad() { theConfigInline.children[0].theConfigPanel.GoTo(); }
 }
 
 function GoToConfig()
 {
-    if(theConfigInline.visible) { theConfigInline.children[0].theConfigPanel.GoTo(); }
-    else { theConfigInline.visible = true; }
+	if(theConfigInline.visible) { theConfigInline.children[0].theConfigPanel.GoTo(); }
+	else { theConfigInline.visible = true; }
 }
 
 DEF theMusicPlayWithSubsInline Inline
 {
-    visible false
-    url "music_play_with_subs.xap"
-    function onLoad()  { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
+	visible false
+	url "music_play_with_subs.xap"
+	function onLoad()  { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
 }
 
 function GoToMusicPlayWithSubs()
 {
 	if(theMusicPlayWithSubsInline.visible) { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
-    else { theMusicPlayWithSubsInline.visible = true; }
+	else { theMusicPlayWithSubsInline.visible = true; }
 }
 
 DEF theSettingsStyleMenuInline Inline
 {
-    visible false
-    url "settings_style_menu.xap"
-    function onLoad()  { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
+	visible false
+	url "settings_style_menu.xap"
+	function onLoad()  { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
 }
 
 function GoToSettingsStyleMenu()
 {
-    if(theSettingsStyleMenuInline.visible) { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
-    else { theSettingsStyleMenuInline.visible = true; }
+	if(theSettingsStyleMenuInline.visible) { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
+	else { theSettingsStyleMenuInline.visible = true; }
 }
 
 function AutoLaunchCheck()
-{	
-	var IniFile = new Settings; 
+{
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "AutoLaunch Media" );
 	var a = IniFile.GetIniValue( "Launch On Insert" );
 	IniFile.CloseIniFile();
-	
+
 	if( a == "true" ) { AutoLaunch(); }
 	else if( a == "ask" )
 	{
@@ -298,7 +297,7 @@ function RefreshCaches()
 
 function UpDateMainMenuButtonsText()
 {
-	var IniFile = new Settings; 
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Main Menu Tabs" );
 	var c = theMainMenu.children[0].children[0];
 	c.Button_01_Text.geometry.text = IniFile.GetIniValue( "Main Tab 1" );
@@ -314,25 +313,25 @@ function MainMenuAttract()
 	var c = theMainMenu.children[0].children[0];
 	var d = theMainMenu.children[0].children[0].theMainMenuLevel.children[0];
 	d.fade = a * 1.5;
-	c.Rotating_Large_X.fade = a; 
-	c.ring.fade = a; 
-	c.main_pod1.fade = a; 
-	c.main_poda.fade = a; 
-	c.main_podb.fade = a; 
-	c.main_pod2.fade = a; 
-	c.Stock_Orb.fade = a; 
-	c.Modded_Orb.fade = a; 
+	c.Rotating_Large_X.fade = a;
+	c.ring.fade = a;
+	c.main_pod1.fade = a;
+	c.main_poda.fade = a;
+	c.main_podb.fade = a;
+	c.main_pod2.fade = a;
+	c.Stock_Orb.fade = a;
+	c.Modded_Orb.fade = a;
 	d.SetRotation(0,0,0,0);
 	d.SetTranslation(0,0,0);
 	c.Rotating_Large_X.SetTranslation(0,0,0);
 	c.ring.SetTranslation(-57.980000,-13.690000,-84.760002);
-	c.main_pod1.SetTranslation(-61.689999 ,-13.400000 ,0.337400); 
-	c.main_poda.SetTranslation(-61.689999 ,-13.400000 ,0.337400); 
-	c.main_podb.SetTranslation(-61.689999 ,-13.400000 ,0.337400); 
-	c.main_pod2.SetTranslation(-61.689999 ,-13.400000 ,0.337400); 
+	c.main_pod1.SetTranslation(-61.689999 ,-13.400000 ,0.337400);
+	c.main_poda.SetTranslation(-61.689999 ,-13.400000 ,0.337400);
+	c.main_podb.SetTranslation(-61.689999 ,-13.400000 ,0.337400);
+	c.main_pod2.SetTranslation(-61.689999 ,-13.400000 ,0.337400);
 	c.Stock_Orb.SetScale(1.44,1.44,1.44);
 	c.Modded_Orb.SetScale(43,43,43);
-	c.Rotating_Large_X.fade = 0.43; 
+	c.Rotating_Large_X.fade = 0.43;
 }
 
 DEF theMainMenuViewpoint Viewpoint
@@ -344,42 +343,42 @@ DEF theMainMenuViewpoint Viewpoint
 }
 
 function ApplyDashStyle()
-{				
+{
 	var c = theMainMenu.children[0].children[0];
 	if( dashStyle == "modded" )//we're using the modded look so enable all the eye candy
-	{				
+	{
 		theScreen.MotionStart();
-		c.Large_X_Spinner.rpm 	= 1;
-		c.Pod_1_Spinner.rpm 	= 1.3;
-		c.Pod_1a_Spinner.rpm 	= 5.75;
-		c.Pod_1b_Spinner.rpm 	= 5.75;
-		c.Pod_2_Spinner.rpm 	= 1.3;
-		c.Pod_2a_Spinner.rpm 	= 5.75;
-		c.Pod_2b_Spinner.rpm 	= 5.75;
-		c.Pod_3_Spinner.rpm 	= 1.3;
-		c.Pod_3a_Spinner.rpm 	= 5.75;
-		c.Pod_3b_Spinner.rpm 	= 5.75;
-		c.Pod_4_Spinner.rpm 	= 1.3;
-		c.Pod_4a_Spinner.rpm 	= 5.75;
-		c.Pod_4b_Spinner.rpm 	= 5.75;
+		c.Large_X_Spinner.rpm	= 1;
+		c.Pod_1_Spinner.rpm		= 1.3;
+		c.Pod_1a_Spinner.rpm	= 5.75;
+		c.Pod_1b_Spinner.rpm	= 5.75;
+		c.Pod_2_Spinner.rpm		= 1.3;
+		c.Pod_2a_Spinner.rpm	= 5.75;
+		c.Pod_2b_Spinner.rpm	= 5.75;
+		c.Pod_3_Spinner.rpm		= 1.3;
+		c.Pod_3a_Spinner.rpm	= 5.75;
+		c.Pod_3b_Spinner.rpm	= 5.75;
+		c.Pod_4_Spinner.rpm		= 1.3;
+		c.Pod_4a_Spinner.rpm	= 5.75;
+		c.Pod_4b_Spinner.rpm	= 5.75;
 		c.MainPod_1_Spinner.rpm = -1;
 		c.MainPod_2_Spinner.rpm = 1.3;
 		c.MainPod_3_Spinner.rpm = -2.3;
 		c.MainPod_4_Spinner.rpm = -1.0;
-		c.Stock_Orb.visible 	   = false;
+		c.Stock_Orb.visible		   = false;
 		c.podsupport_ring.visible  = false;
 	}
 	else//we're going with the stock look so make sure it'll pass the 'Gcue stock test' ;)
 	{
-		c.Modded_Orb.visible 	   = false; 
-		c.Dark_Pod_Backing.visible = false; 
+		c.Modded_Orb.visible	   = false;
+		c.Dark_Pod_Backing.visible = false;
 	}
 }
-	
+
 function InitializeMenus() //use this to setpaths for any TitleMenu objects you create
 {
 	var IniFile = new Settings; //read in storage settings from the main data file uix.ini
-	
+
 	IniFile.SetIniSection( "Games" );
 	var a = IniFile.GetIniValue( "Path" );
 	theGamesMenu.SetPath( a );
@@ -414,7 +413,7 @@ function QuickLaunchA()
 
 function QuickLaunchB()
 {
-	
+
 }
 
 function QuickLaunchX()
@@ -425,7 +424,7 @@ function QuickLaunchX()
 function QuickLaunchY()
 {
 	if( true == b_InWireFrame )
-	{		
+	{
 		theScreen.WireFrameStop();
 		b_InWireFrame = false;
 	}
@@ -492,132 +491,132 @@ function MainMenuPositionThree()
 
 DEF theScreen Screen
 {
-    width 640
-    height 480
+	width 640
+	height 480
 }
 
 DEF theAmbientSounds Group
 {
-    children
-    [
-        DEF theAmbientSound0 AudioClip { url "audio/ambient audio/amb_12_hydrothunder_lr.wav" loop true volume 0 fade 2 }
-        DEF theAmbientSound1 AudioClip { url "audio/ambient audio/amb_12_hydrothunder_lr.wav" loop true volume 0 fade 2 }
-        DEF theAmbientSound2 AudioClip { url "audio/ambient audio/amb_06_communication_lr.wav" loop true volume 0 fade 2 }
-        DEF theAmbientSound3 AudioClip { url "audio/ambient audio/amb_05_engineroom_lr.wav" loop true volume 0 fade 2 }
-    ]
+	children
+	[
+		DEF theAmbientSound0 AudioClip { url "audio/ambient audio/amb_12_hydrothunder_lr.wav" loop true volume 0 fade 2 }
+		DEF theAmbientSound1 AudioClip { url "audio/ambient audio/amb_12_hydrothunder_lr.wav" loop true volume 0 fade 2 }
+		DEF theAmbientSound2 AudioClip { url "audio/ambient audio/amb_06_communication_lr.wav" loop true volume 0 fade 2 }
+		DEF theAmbientSound3 AudioClip { url "audio/ambient audio/amb_05_engineroom_lr.wav" loop true volume 0 fade 2 }
+	]
 }
 
 DEF thePeriodicSounds Group
 {
-    children
-    [
-        PeriodicAudioGroup
-        {
-            period 60 // how many seconds between sounds (minimum)
-            periodNoise 20 // maximum random seconds to add to period
-            children
-            [
-                AudioClip { url "audio/ambient audio/amb_ec_steam1.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam2.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam3.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam4.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam5.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam6.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_steam7.wav" volume 0.80 }
-            ]
-        }
+	children
+	[
+		PeriodicAudioGroup
+		{
+			period 60 // how many seconds between sounds (minimum)
+			periodNoise 20 // maximum random seconds to add to period
+			children
+			[
+				AudioClip { url "audio/ambient audio/amb_ec_steam1.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam2.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam3.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam4.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam5.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam6.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_steam7.wav" volume 0.80 }
+			]
+		}
 
-        PeriodicAudioGroup
-        {
-            period 120 // how many seconds between sounds (minimum)
-            periodNoise 30 // maximum random seconds to add to period
-            children
-            [
-                AudioClip { url "audio/ambient audio/amb_ec_voices1.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices2.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices3.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices4.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices5.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices6.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices7.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices8.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices9.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices10.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices11.wav" volume 0.80 }
-                AudioClip { url "audio/ambient audio/amb_ec_voices12.wav" volume 0.80 }
-            ]
-        }
+		PeriodicAudioGroup
+		{
+			period 120 // how many seconds between sounds (minimum)
+			periodNoise 30 // maximum random seconds to add to period
+			children
+			[
+				AudioClip { url "audio/ambient audio/amb_ec_voices1.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices2.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices3.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices4.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices5.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices6.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices7.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices8.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices9.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices10.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices11.wav" volume 0.80 }
+				AudioClip { url "audio/ambient audio/amb_ec_voices12.wav" volume 0.80 }
+			]
+		}
 
-        PeriodicAudioGroup
-        {
-            period 45 // how many seconds between sounds (minimum)
-            periodNoise 15 // maximum random seconds to add to period
-            children
-            [
-                AudioClip { url "audio/ambient audio/comm voice 1.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 2.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm static 1.wav" fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 3.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 4.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm static 2.wav" fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 5.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 6.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm static 3.wav" fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 7.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 8.wav"  fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm static 4.wav" fade 2 volume 0.85 }
-                AudioClip { url "audio/ambient audio/comm voice 9.wav"  fade 2 volume 0.85 }
-            ]
-        }
+		PeriodicAudioGroup
+		{
+			period 45 // how many seconds between sounds (minimum)
+			periodNoise 15 // maximum random seconds to add to period
+			children
+			[
+				AudioClip { url "audio/ambient audio/comm voice 1.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 2.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm static 1.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 3.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 4.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm static 2.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 5.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 6.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm static 3.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 7.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 8.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm static 4.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 9.wav"  fade 2 volume 0.85 }
+			]
+		}
 
-        PeriodicAudioGroup
-        {
-            period 300
-            periodNoise 60
-            children
-            [
-                AudioClip { url "audio/ambient audio/amb_ec_pinger1.wav" volume 0.85 }
-                AudioClip { url "audio/ambient audio/control room loop.wav" volume 0.85 }
-                AudioClip { url "audio/ambient audio/control room loop ver2.wav" volume 0.85 }
-            ]
-        }
-    ]
+		PeriodicAudioGroup
+		{
+			period 300
+			periodNoise 60
+			children
+			[
+				AudioClip { url "audio/ambient audio/amb_ec_pinger1.wav" volume 0.85 }
+				AudioClip { url "audio/ambient audio/control room loop.wav" volume 0.85 }
+				AudioClip { url "audio/ambient audio/control room loop ver2.wav" volume 0.85 }
+			]
+		}
+	]
 }
 
 function EnableAmbientAudio()
 {
-    var n = Math.round(Math.random() * (theAmbientSounds.children.length() - 1));
-    log("Picking ambient track " + (n + 1));
-    for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
-    theAmbientSounds.children[n].volume = 0.95;
-    for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
+	var n = Math.round(Math.random() * (theAmbientSounds.children.length() - 1));
+	log("Picking ambient track " + (n + 1));
+	for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
+	theAmbientSounds.children[n].volume = 0.95;
+	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
 }
 
 function AmbientAudioOn(Area)
 {
-    var n = 0;
-    if(Area == "MAIN MENU") { n = 0; }
-    else if(Area == "MEMORY") { n = 1; }
-    else if(Area == "MUSIC") { n = 2; }
-    else if(Area == "SETTINGS") { n = 3; }
-    log("Picking ambient track " + (n + 1));
-    for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
-    theAmbientSounds.children[n].volume = 0.95;
-    for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
+	var n = 0;
+	if(Area == "MAIN MENU") { n = 0; }
+	else if(Area == "MEMORY") { n = 1; }
+	else if(Area == "MUSIC") { n = 2; }
+	else if(Area == "SETTINGS") { n = 3; }
+	log("Picking ambient track " + (n + 1));
+	for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
+	theAmbientSounds.children[n].volume = 0.95;
+	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
 }
 
 function AmbientAudioOff()
 {
-    log("Disabling ambient audio...");
-    for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
-    for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = false; }
+	log("Disabling ambient audio...");
+	for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
+	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = false; }
 }
 
 function DisableAmbientAudio()
 {
-    log("Disabling ambient audio...");
-    for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
-    for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = false; }
+	log("Disabling ambient audio...");
+	for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
+	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = false; }
 }
 
 DEF theGamesMenuIn AudioClip { url "audio/transition audio/games main menu in_lr.wav" volume 0.92 }
@@ -656,371 +655,371 @@ DEF theMemorySaveSelectSound AudioClip { url "audio/memory audio/memory memory s
 DEF theSettingsLangSound AudioClip { url "audio/settings audio/settings lang submenu sel.wav" volume 0.90 }
 DEF theSettingsParentSound AudioClip { url "audio/settings audio/settings parent submenu sel.wav" volume 0.90 }
 
-function PlaySoundError()  		{ theErrorSound.Play(); 	 }
-function PlaySoundDelete() 		{ theDeleteSound.Play(); 	 }
-function PlaySoundA() 			{ theASound.Play(); 		 }
-function PlaySoundB() 			{ theBSound.Play(); 		 }
-function PlaySoundMenuChange() 	{ theMenuChangeSound.Play(); }
+function PlaySoundError()		{ theErrorSound.Play();		 }
+function PlaySoundDelete()		{ theDeleteSound.Play();	 }
+function PlaySoundA()			{ theASound.Play();			 }
+function PlaySoundB()			{ theBSound.Play();			 }
+function PlaySoundMenuChange()	{ theMenuChangeSound.Play(); }
 
 
 DEF theScreenSaver ScreenSaver
 {
-    function OnStart()
-    {	
+	function OnStart()
+	{
 		if( dashStyle == "modded" ) { StartScreenSaverView();  }
 		else { theScreen.brightness = 0.1; }
-    }
+	}
 
-    function OnEnd()
-    {
+	function OnEnd()
+	{
 		if( dashStyle == "modded" ) { StopScreenSaverView();   }
 		else { theScreen.brightness = 1; }
-    }
-	
-    function OnDelay2() { if( dashStyle == "modded" ) { MainMenuPositionTwo();   } }
-    function OnDelay3() { if( dashStyle == "modded" ) { MainMenuPositionThree(); } }
+	}
+
+	function OnDelay2() { if( dashStyle == "modded" ) { MainMenuPositionTwo();   } }
+	function OnDelay3() { if( dashStyle == "modded" ) { MainMenuPositionThree(); } }
 }
 
 NavigationInfo
 {
-    type "sample"
-    headlight false
+	type "sample"
+	headlight false
 }
 
 DEF HighlightTexture ImageTexture { url "menu_hilight.xbx" }
 
-function GetLanguage() 			{ return theConfig.GetLanguage(); }
+function GetLanguage()			{ return theConfig.GetLanguage(); }
 function SetLanguage(nLanguage) { return theConfig.SetLanguage(nLanguage); }
 
 DEF theBackground Background
 {
-    skyColor 0 0 0
-    //backdrop ImageTexture { url "xboxlogo.xbx" }
+	skyColor 0 0 0
+	//backdrop ImageTexture { url "xboxlogo.xbx" }
 }
 
 function ClosePopup()
 {
-    if (g_bKeyboardDisplayed) 	{ CloseKeyboard(); }
-    if (g_bPanelDisplayed) 		{ CloseMessage();  }
+	if (g_bKeyboardDisplayed)	{ CloseKeyboard(); }
+	if (g_bPanelDisplayed)		{ CloseMessage();  }
 }
 
 DEF theDVDPlayerInline Inline
 {
-    visible false
-    url "dvd.xap"
-    function onLoad() { theDVDPlayerInline.children[0].theDVDLevel.GoTo(); }
+	visible false
+	url "dvd.xap"
+	function onLoad() { theDVDPlayerInline.children[0].theDVDLevel.GoTo(); }
 }
 
 DEF theDiscDrive DiscDrive
 {
-    function OnDiscRemoved()
-    {
-        if (theDVDPlayerInline.visible)
-        {
-            bShowDVDStopBackground = false;
-            theDVDPlayerInline.children[0].theDVDPlayer.stop();
-            theDVDPlayerInline.children[0].ClearOnScreenInfo();
-            if (g_bPanelDisplayed) { CloseMessage(); }
-            theLauncherLevel.GoTo();
-            return;
-        }
-        else if (theMusicInline.visible)
-        {
-            var c = theMusicInline.children[0];
-            ClosePopup();
-            if (c.musicSelect != 0) { return; }
-            if (c.theMusicPlayMenu.visible)
-            {
-                c.DoMusicStop();
-                c.InitPlaylist();
-                c.UpdateTrackList();
-            }
-            else if (c.theMusicCopyMenu.visible)
-            {
-                c.theMusicCollection.error = 3; 
-                c.OnMusicCopyComplete();
-            }
-            else if (c.theMusicMenu.visible) { c.UpdateMusicMetaData(); }
-        }
-        else { CloseMessage(); }
-    }
+	function OnDiscRemoved()
+	{
+		if (theDVDPlayerInline.visible)
+		{
+			bShowDVDStopBackground = false;
+			theDVDPlayerInline.children[0].theDVDPlayer.stop();
+			theDVDPlayerInline.children[0].ClearOnScreenInfo();
+			if (g_bPanelDisplayed) { CloseMessage(); }
+			theLauncherLevel.GoTo();
+			return;
+		}
+		else if (theMusicInline.visible)
+		{
+			var c = theMusicInline.children[0];
+			ClosePopup();
+			if (c.musicSelect != 0) { return; }
+			if (c.theMusicPlayMenu.visible)
+			{
+				c.DoMusicStop();
+				c.InitPlaylist();
+				c.UpdateTrackList();
+			}
+			else if (c.theMusicCopyMenu.visible)
+			{
+				c.theMusicCollection.error = 3;
+				c.OnMusicCopyComplete();
+			}
+			else if (c.theMusicMenu.visible) { c.UpdateMusicMetaData(); }
+		}
+		else { CloseMessage(); }
+	}
 
-    function OnDiscInserted() { AutoLaunchCheck(); }
+	function OnDiscInserted() { AutoLaunchCheck(); }
 }
 
 function StartDVDPlayer()
 {
-    log("Starting the DVD player!");
-    theDVDPlayerInline.visible = true;
+	log("Starting the DVD player!");
+	theDVDPlayerInline.visible = true;
 }
 
 function StartCDPlayer()
 {
-    log("Should start the CD player now!");
-    bGoToCDPlayer = true;
-    EnableInput(false); 
-    GoToMusic();
+	log("Should start the CD player now!");
+	bGoToCDPlayer = true;
+	EnableInput(false);
+	GoToMusic();
 }
 
 DEF theMemoryInline Inline
 {
-    visible false
-    url "memory.xap"
-    function onLoad() { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
+	visible false
+	url "memory.xap"
+	function onLoad() { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
 }
 
 function GoToMemory()
 {
-    if(theMemoryInline.visible) { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
-    else { theMemoryInline.visible = true; }
+	if(theMemoryInline.visible) { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
+	else { theMemoryInline.visible = true; }
 }
 
 DEF theHardDriveInline Inline
 {
-    visible false
-    url "hard_drive.xap"
-    function onLoad() { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
+	visible false
+	url "hard_drive.xap"
+	function onLoad() { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
 }
 
 function GoToHardDrive()
 {
-    if(theHardDriveInline.visible) { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
-    else { theHardDriveInline.visible = true; }
+	if(theHardDriveInline.visible) { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
+	else { theHardDriveInline.visible = true; }
 }
 
 
 DEF theFileManagerInline Inline
 {
-    visible false
-    url "file_manager.xap"
-    function onLoad() { theFileManagerInline.children[0].theFileManager.GoTo(); }
+	visible false
+	url "file_manager.xap"
+	function onLoad() { theFileManagerInline.children[0].theFileManager.GoTo(); }
 }
 
 function GoToFileManager()
 {
-    theSettingsMenuIn.Play();
-    if(theFileManagerInline.visible) { theFileManagerInline.children[0].theFileManager.GoTo(); }
-    else
-    {
-        BlockMemoryUnitInsert();
-        theFileManagerInline.visible = true;
-    }
+	theSettingsMenuIn.Play();
+	if(theFileManagerInline.visible) { theFileManagerInline.children[0].theFileManager.GoTo(); }
+	else
+	{
+		BlockMemoryUnitInsert();
+		theFileManagerInline.visible = true;
+	}
 }
 
 DEF theSettingsInline Inline
 {
-    visible false
-    url "settings.xap"
-    function onLoad() { theSettingsInline.children[0].theSettingsMenu.GoTo(); }
+	visible false
+	url "settings.xap"
+	function onLoad() { theSettingsInline.children[0].theSettingsMenu.GoTo(); }
 }
 
 function GoToSettings()
 {
-    bBackToDVDPlayer = false;
-    if(theSettingsInline.visible) { theSettingsInline.children[0].theSettingsMenu.GoTo(); }
-    else { theSettingsInline.visible = true; }
+	bBackToDVDPlayer = false;
+	if(theSettingsInline.visible) { theSettingsInline.children[0].theSettingsMenu.GoTo(); }
+	else { theSettingsInline.visible = true; }
 }
 
 var nCurMainMenuItem;
 
 function UpdateMainMenu()
 {
-    if( m_nbuttons == 4 ) { Update4ButtonMainMenu(); }
-    else  { Update3ButtonMainMenu(); }
+	if( m_nbuttons == 4 ) { Update4ButtonMainMenu(); }
+	else  { Update3ButtonMainMenu(); }
 }
 
 function Update4ButtonMainMenu()
 {
-    var c = theMainMenu.children[0].children[0];
-    c.game_select_pod_inner02.visible = false;      // Button 1 Flashing Orb
-    c.game_select_pod_inner.visible = false;        // Button 2 Flashing Orb
-    c.game_select_pod_inner04.visible = false;      // Button 3 Flashing Orb
-    c.game_select_pod_inner03.visible = false;      // Button 4 Flashing Orb
+	var c = theMainMenu.children[0].children[0];
+	c.game_select_pod_inner02.visible = false;      // Button 1 Flashing Orb
+	c.game_select_pod_inner.visible = false;        // Button 2 Flashing Orb
+	c.game_select_pod_inner04.visible = false;      // Button 3 Flashing Orb
+	c.game_select_pod_inner03.visible = false;      // Button 4 Flashing Orb
 
-    if (nCurMainMenuItem == 0)  // Button 1
-    {
-        c.game_select_pod_inner02.visible = true;
+	if (nCurMainMenuItem == 0)  // Button 1
+	{
+		c.game_select_pod_inner02.visible = true;
 		//simple 'if' check to make the pod supports move with menu change to comply with stock look
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, -0.25); }
-        c.theMenuItems.SetRotation(0, 0, 1, -0.25);
-        c.theMemoryItem.SetRotation(0, 1, 0, -0.25);
-        c.theMusicItem.SetRotation(0, 1, 0, -0.25);
-        c.theOnlineItem.SetRotation(0, 1, 0, -0.25);
-        c.theSettingsItem.SetRotation(0, 1, 0, -0.25);
-        c.MemoryPanelMaterial.name = "GameHilite";
-        c.MusicPanelMaterial.name = "FlatSurfaces2sided";
-        c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
-        c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
-        c.MemoryTextMaterial.name = "HilightedType";
-        c.MusicTextMaterial.name = "NavType";
-        c.OnlineTextMaterial.name = "NavType";
-        c.SettingsTextMaterial.name = "NavType";
+		c.theMenuItems.SetRotation(0, 0, 1, -0.25);
+		c.theMemoryItem.SetRotation(0, 1, 0, -0.25);
+		c.theMusicItem.SetRotation(0, 1, 0, -0.25);
+		c.theOnlineItem.SetRotation(0, 1, 0, -0.25);
+		c.theSettingsItem.SetRotation(0, 1, 0, -0.25);
+		c.MemoryPanelMaterial.name = "GameHilite";
+		c.MusicPanelMaterial.name = "FlatSurfaces2sided";
+		c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
+		c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
+		c.MemoryTextMaterial.name = "HilightedType";
+		c.MusicTextMaterial.name = "NavType";
+		c.OnlineTextMaterial.name = "NavType";
+		c.SettingsTextMaterial.name = "NavType";
 
-    }
-    else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
-    {
-        c.game_select_pod_inner.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, 0.0);
+	}
+	else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
+	{
+		c.game_select_pod_inner.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, 0.0);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, 0.0); }
-        c.theMemoryItem.SetRotation(0, 1, 0, 0.0);
-        c.theMusicItem.SetRotation(0, 1, 0, 0.0);
-        c.theOnlineItem.SetRotation(0, 1, 0, 0.0);
-        c.theSettingsItem.SetRotation(0, 1, 0, 0.0);
-        c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
-        c.MusicPanelMaterial.name = "GameHilite";
-        c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
-        c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
-        c.MemoryTextMaterial.name = "NavType";
-        c.MusicTextMaterial.name = "HilightedType";
-        c.OnlineTextMaterial.name = "NavType";
-        c.SettingsTextMaterial.name = "NavType";
-    }
-    else if (nCurMainMenuItem == 2) // Button 3
-    {
-        c.game_select_pod_inner04.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, 0.25);
+		c.theMemoryItem.SetRotation(0, 1, 0, 0.0);
+		c.theMusicItem.SetRotation(0, 1, 0, 0.0);
+		c.theOnlineItem.SetRotation(0, 1, 0, 0.0);
+		c.theSettingsItem.SetRotation(0, 1, 0, 0.0);
+		c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
+		c.MusicPanelMaterial.name = "GameHilite";
+		c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
+		c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
+		c.MemoryTextMaterial.name = "NavType";
+		c.MusicTextMaterial.name = "HilightedType";
+		c.OnlineTextMaterial.name = "NavType";
+		c.SettingsTextMaterial.name = "NavType";
+	}
+	else if (nCurMainMenuItem == 2) // Button 3
+	{
+		c.game_select_pod_inner04.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, 0.25);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, 0.25); }
-        c.theMemoryItem.SetRotation(0, 1, 0, 0.25);
-        c.theMusicItem.SetRotation(0, 1, 0, 0.25);
-        c.theOnlineItem.SetRotation(0, 1, 0, 0.25);
-        c.theSettingsItem.SetRotation(0, 1, 0, 0.25);
-        c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
-        c.MusicPanelMaterial.name = "FlatSurfaces2sided";
-        c.OnlinePanelMaterial.name = "GameHilite";
-        c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
-        c.MemoryTextMaterial.name = "NavType";
-        c.MusicTextMaterial.name = "NavType";
-        c.OnlineTextMaterial.name = "HilightedType";
-        c.SettingsTextMaterial.name = "NavType";
-    }
-    else if (nCurMainMenuItem == 3) // Button 4
-    {
-        c.game_select_pod_inner03.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, 0.50);
+		c.theMemoryItem.SetRotation(0, 1, 0, 0.25);
+		c.theMusicItem.SetRotation(0, 1, 0, 0.25);
+		c.theOnlineItem.SetRotation(0, 1, 0, 0.25);
+		c.theSettingsItem.SetRotation(0, 1, 0, 0.25);
+		c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
+		c.MusicPanelMaterial.name = "FlatSurfaces2sided";
+		c.OnlinePanelMaterial.name = "GameHilite";
+		c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
+		c.MemoryTextMaterial.name = "NavType";
+		c.MusicTextMaterial.name = "NavType";
+		c.OnlineTextMaterial.name = "HilightedType";
+		c.SettingsTextMaterial.name = "NavType";
+	}
+	else if (nCurMainMenuItem == 3) // Button 4
+	{
+		c.game_select_pod_inner03.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, 0.50);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, 0.50); }
-        c.theMemoryItem.SetRotation(0, 1, 0, 0.50);
-        c.theMusicItem.SetRotation(0, 1, 0, 0.50);
-        c.theOnlineItem.SetRotation(0, 1, 0, 0.50);
-        c.theSettingsItem.SetRotation(0, 1, 0, 0.50);
-        c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
-        c.MusicPanelMaterial.name = "FlatSurfaces2sided";
-        c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
-        c.SettingsPanelMaterial.name = "GameHilite";
-        c.MemoryTextMaterial.name = "NavType";
-        c.MusicTextMaterial.name = "NavType";
-        c.OnlineTextMaterial.name = "NavType";
-        c.SettingsTextMaterial.name = "HilightedType";
-    }
+		c.theMemoryItem.SetRotation(0, 1, 0, 0.50);
+		c.theMusicItem.SetRotation(0, 1, 0, 0.50);
+		c.theOnlineItem.SetRotation(0, 1, 0, 0.50);
+		c.theSettingsItem.SetRotation(0, 1, 0, 0.50);
+		c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
+		c.MusicPanelMaterial.name = "FlatSurfaces2sided";
+		c.OnlinePanelMaterial.name = "FlatSurfaces2sided";
+		c.SettingsPanelMaterial.name = "GameHilite";
+		c.MemoryTextMaterial.name = "NavType";
+		c.MusicTextMaterial.name = "NavType";
+		c.OnlineTextMaterial.name = "NavType";
+		c.SettingsTextMaterial.name = "HilightedType";
+	}
 }
 
 function Update3ButtonMainMenu()
 {
-    var c = theMainMenu.children[0].children[0];
-    c.game_select_pod_inner02.visible = false;      // Button 1 Flashing Orb
-    c.game_select_pod_inner.visible = false;        // Button 2 Flashing Orb
-    c.game_select_pod_inner03.visible = false;      // Button 3 Flashing Orb
+	var c = theMainMenu.children[0].children[0];
+	c.game_select_pod_inner02.visible = false;      // Button 1 Flashing Orb
+	c.game_select_pod_inner.visible = false;        // Button 2 Flashing Orb
+	c.game_select_pod_inner03.visible = false;      // Button 3 Flashing Orb
 
-    if (nCurMainMenuItem == 0)  // Button 1
-    {
-        c.game_select_pod_inner02.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, -0.45);
+	if (nCurMainMenuItem == 0)  // Button 1
+	{
+		c.game_select_pod_inner02.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, -0.45);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, -0.45); }
-        c.theMemoryItem.SetRotation(0, 1, 0, -0.45);
-        c.theMusicItem.SetRotation(0, 1, 0, -0.45);
-        c.theSettingsItem.SetRotation(0, 1, 0, -0.45);
-        c.MemoryPanelMaterial.name = "GameHilite";
-        c.MusicPanelMaterial.name = "FlatSurfaces2sided";
-        c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
-        c.MemoryTextMaterial.name = "HilightedType";
-        c.MusicTextMaterial.name = "NavType";
-        c.SettingsTextMaterial.name = "NavType";
+		c.theMemoryItem.SetRotation(0, 1, 0, -0.45);
+		c.theMusicItem.SetRotation(0, 1, 0, -0.45);
+		c.theSettingsItem.SetRotation(0, 1, 0, -0.45);
+		c.MemoryPanelMaterial.name = "GameHilite";
+		c.MusicPanelMaterial.name = "FlatSurfaces2sided";
+		c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
+		c.MemoryTextMaterial.name = "HilightedType";
+		c.MusicTextMaterial.name = "NavType";
+		c.SettingsTextMaterial.name = "NavType";
 
-    }
-    else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
-    {
-        c.game_select_pod_inner.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, 0.0);
+	}
+	else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
+	{
+		c.game_select_pod_inner.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, 0.0);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, 0.0); }
-        c.theMemoryItem.SetRotation(0, 1, 0, 0.0);
-        c.theMusicItem.SetRotation(0, 1, 0, 0.0);
-        c.theSettingsItem.SetRotation(0, 1, 0, 0.0);
-        c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
-        c.MusicPanelMaterial.name = "GameHilite";
-        c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
-        c.MemoryTextMaterial.name = "NavType";
-        c.MusicTextMaterial.name = "HilightedType";
-        c.SettingsTextMaterial.name = "NavType";
-    }
-    else if (nCurMainMenuItem == 2) // Button 3
-    {
-        nCurMainMenuItem = 1;
-        UpdateMainMenu();
-    }
-    else if (nCurMainMenuItem == 3) // Button 4
-    {
-        c.game_select_pod_inner03.visible = true;
-        c.theMenuItems.SetRotation(0, 0, 1, 0.45);
+		c.theMemoryItem.SetRotation(0, 1, 0, 0.0);
+		c.theMusicItem.SetRotation(0, 1, 0, 0.0);
+		c.theSettingsItem.SetRotation(0, 1, 0, 0.0);
+		c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
+		c.MusicPanelMaterial.name = "GameHilite";
+		c.SettingsPanelMaterial.name = "FlatSurfaces2sided";
+		c.MemoryTextMaterial.name = "NavType";
+		c.MusicTextMaterial.name = "HilightedType";
+		c.SettingsTextMaterial.name = "NavType";
+	}
+	else if (nCurMainMenuItem == 2) // Button 3
+	{
+		nCurMainMenuItem = 1;
+		UpdateMainMenu();
+	}
+	else if (nCurMainMenuItem == 3) // Button 4
+	{
+		c.game_select_pod_inner03.visible = true;
+		c.theMenuItems.SetRotation(0, 0, 1, 0.45);
 		if( dashStyle != "modded" ) { c.Rotating_Large_X.SetRotation(0, 0, 1, 0.45); }
-        c.theMemoryItem.SetRotation(0, 1, 0, 0.45);
-        c.theMusicItem.SetRotation(0, 1, 0, 0.45);
-        c.theSettingsItem.SetRotation(0, 1, 0, 0.45);
-        c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
-        c.MusicPanelMaterial.name = "FlatSurfaces2sided";
-        c.SettingsPanelMaterial.name = "GameHilite";
-        c.MemoryTextMaterial.name = "NavType";
-        c.MusicTextMaterial.name = "NavType";
-        c.SettingsTextMaterial.name = "HilightedType";
-    }
+		c.theMemoryItem.SetRotation(0, 1, 0, 0.45);
+		c.theMusicItem.SetRotation(0, 1, 0, 0.45);
+		c.theSettingsItem.SetRotation(0, 1, 0, 0.45);
+		c.MemoryPanelMaterial.name = "FlatSurfaces2sided";
+		c.MusicPanelMaterial.name = "FlatSurfaces2sided";
+		c.SettingsPanelMaterial.name = "GameHilite";
+		c.MemoryTextMaterial.name = "NavType";
+		c.MusicTextMaterial.name = "NavType";
+		c.SettingsTextMaterial.name = "HilightedType";
+	}
 }
 
 DEF theMainMenu Level
 {
-    archive "main_menu.xip"
-    unloadable false
-    children
-    [
-        Inline
-        {
-            url "main_menu/default.xap"
-            function onLoad()
-            {
+	archive "main_menu.xip"
+	unloadable false
+	children
+	[
+		Inline
+		{
+			url "main_menu/default.xap"
+			function onLoad()
+			{
 				var c = theMainMenu.children[0].children[0];
 				ApplyDashStyle();
-                if( m_nbuttons == 4 )
-                {
-                    c.Main_memory_ringpin_3.SetTranslation(62.779999, 13.892000, 102.000000);
-                    c.Main_memory_ringpin_2.SetTranslation(56.830002, 33.290001, 101.900002);
-                    c.Main_Online_ringpin.SetTranslation(62.779999, -6.092000, 102.000000);
-                    c.Main_memory_ringpin_4.SetTranslation(57.430000, -24.379999, 101.500000);
-                }
-                else
-                {
-                    c.Main_Online_ringpin.visible = false;
-                    c.Main_memory_ringpin_3.SetTranslation(62.779999, 4.492000, 102.000000);
-                    c.Main_memory_ringpin_2.SetTranslation(56.830002, 32.290001, 101.900002);
-                    c.Main_memory_ringpin_4.SetTranslation(57.430000, -23.379999, 101.500000);
-                }
+				if( m_nbuttons == 4 )
+				{
+					c.Main_memory_ringpin_3.SetTranslation(62.779999, 13.892000, 102.000000);
+					c.Main_memory_ringpin_2.SetTranslation(56.830002, 33.290001, 101.900002);
+					c.Main_Online_ringpin.SetTranslation(62.779999, -6.092000, 102.000000);
+					c.Main_memory_ringpin_4.SetTranslation(57.430000, -24.379999, 101.500000);
+				}
+				else
+				{
+					c.Main_Online_ringpin.visible = false;
+					c.Main_memory_ringpin_3.SetTranslation(62.779999, 4.492000, 102.000000);
+					c.Main_memory_ringpin_2.SetTranslation(56.830002, 32.290001, 101.900002);
+					c.Main_memory_ringpin_4.SetTranslation(57.430000, -23.379999, 101.500000);
+				}
 				MusicOnBootCheck();
-                UpdateMainMenu();
-                UpDateMainMenuButtonsText();
+				UpdateMainMenu();
+				UpDateMainMenuButtonsText();
 				MainMenuAttract();
 				EnableAudio();
-            }
-        }
-    ]
+			}
+		}
+	]
 
-    shell Transform
-    {
-        scale 150 150 150
-        translation 0 -20 80
-        children
-        [
-            DEF theMainMenuSpinner Spinner
-            {
+	shell Transform
+	{
+		scale 150 150 150
+		translation 0 -20 80
+		children
+		[
+			DEF theMainMenuSpinner Spinner
+			{
 				rpm 0
 				axis 0 1 0
-                children
-                [
+				children
+				[
 					DEF theMainMenuWaver Waver
 					{
 						rpm 2.25//rpm 0.75
@@ -1030,7 +1029,7 @@ DEF theMainMenu Level
 							{
 								appearance Appearance
 								{
-									material MaxMaterial { name "InnerWall_01" }                    
+									material MaxMaterial { name "InnerWall_01" }
 									texture ImageTexture
 									{
 										alpha true
@@ -1048,70 +1047,70 @@ DEF theMainMenu Level
 					}
 				]
 			}
-        ]
-    }
-    path USE theMainMenuViewpoint
-	
-    control DEF theMainMenuJoy Joystick
-    {
-        function OnADown()
-        {
-            PlaySoundA();
-            if(nCurMainMenuItem == 0)
-            {
-                theMusicMenuIn.Play();
-                GoToMusic();
-            }
-            else if(nCurMainMenuItem == 1)
-            {
-                theSettingsMenuIn.Play();
-                GoToHardDrive();
-            }
-            else if(nCurMainMenuItem == 2)
-            {
-            }
-            else if(nCurMainMenuItem == 3)
-            {
-                theSettingsMenuIn.Play();
-                GoToSettings();
-            }
-        }
+		]
+	}
+	path USE theMainMenuViewpoint
 
-        function OnLeftThumbMoveUp()
-        {
-            if (nCurMainMenuItem > 0)
-            {
-                nCurMainMenuItem = nCurMainMenuItem - 1;
-                if( m_nbuttons == 3)
-                {
-                    if( 2 == nCurMainMenuItem ) {nCurMainMenuItem = nCurMainMenuItem - 1; }
-                }
-                theMainMenuBackward.Play();
-                UpdateMainMenu();
-            }
-        }
+	control DEF theMainMenuJoy Joystick
+	{
+		function OnADown()
+		{
+			PlaySoundA();
+			if(nCurMainMenuItem == 0)
+			{
+				theMusicMenuIn.Play();
+				GoToMusic();
+			}
+			else if(nCurMainMenuItem == 1)
+			{
+				theSettingsMenuIn.Play();
+				GoToHardDrive();
+			}
+			else if(nCurMainMenuItem == 2)
+			{
+			}
+			else if(nCurMainMenuItem == 3)
+			{
+				theSettingsMenuIn.Play();
+				GoToSettings();
+			}
+		}
 
-        function OnLeftThumbMoveDown()
-        {
-            if (nCurMainMenuItem < 3)
-            {
-                nCurMainMenuItem = nCurMainMenuItem + 1;
-                if( m_nbuttons == 3 )
-                {
-                    if( 2 == nCurMainMenuItem ) { nCurMainMenuItem = nCurMainMenuItem + 1; }
-                }
-                theMainMenuForward.Play();
-                UpdateMainMenu();
-            }
-        }
-    }
+		function OnLeftThumbMoveUp()
+		{
+			if (nCurMainMenuItem > 0)
+			{
+				nCurMainMenuItem = nCurMainMenuItem - 1;
+				if( m_nbuttons == 3)
+				{
+					if( 2 == nCurMainMenuItem ) {nCurMainMenuItem = nCurMainMenuItem - 1; }
+				}
+				theMainMenuBackward.Play();
+				UpdateMainMenu();
+			}
+		}
 
-    function OnActivate()
-    {
+		function OnLeftThumbMoveDown()
+		{
+			if (nCurMainMenuItem < 3)
+			{
+				nCurMainMenuItem = nCurMainMenuItem + 1;
+				if( m_nbuttons == 3 )
+				{
+					if( 2 == nCurMainMenuItem ) { nCurMainMenuItem = nCurMainMenuItem + 1; }
+				}
+				theMainMenuForward.Play();
+				UpdateMainMenu();
+			}
+		}
+	}
+
+	function OnActivate()
+	{
 		EnableAudio();
 		CurrentViewpoint = theMainMenuViewpoint;
 		CurrentAltViewpoint = theMainMenuAlternateViewpoint;
-    }
+	}
 }
 
 var bBackToDVDPlayer;
@@ -1161,159 +1160,159 @@ function initialize()
 	IniFile.SetIniSection( "Dashboard Settings" );
 	dashStyle = IniFile.GetIniValue( "Dash Style" );
 	skinName = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm"; 
-    
+	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm";
+
 	theScreenSaver.StartAfter(  600  );
-	theScreenSaver.SetDelay2 (  900  ); 
+	theScreenSaver.SetDelay2 (  900  );
 	theScreenSaver.SetDelay3 (  1200 );
 	theConfig.SetAutoOffTime( 3.0 ); //how long till system powers itself off after inactivity
-    //InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
-    m_nbuttons = 3;//number of buttons in main menu
-    b_InWireFrame = false;
-    bInScreenSaverView = false;
-    bBackToDVDPlayer = false;
-    bGoToCDPlayer = false;
-    bBackToLauncher = false;
-    bShowErrorPanel = false;
-    bShowInvalidDisc = false;
-    nCurMainMenuItem = 1; // start with hd selected
-    g_bKeyboardDisplayed = false;
-    g_bPanelDisplayed = false;
+	//InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
+	m_nbuttons = 3;//number of buttons in main menu
+	b_InWireFrame = false;
+	bInScreenSaverView = false;
+	bBackToDVDPlayer = false;
+	bGoToCDPlayer = false;
+	bBackToLauncher = false;
+	bShowErrorPanel = false;
+	bShowInvalidDisc = false;
+	nCurMainMenuItem = 1; // start with hd selected
+	g_bKeyboardDisplayed = false;
+	g_bPanelDisplayed = false;
 	bTrackListVisible = false;
 	bInMusicMenu = false;
-    g_bAboutToReboot = false;
+	g_bAboutToReboot = false;
 	b_restart = false;
 	b_dvd = false;
-    bShowDVDStopBackground = true;
-    bCleanupSpecifiedDrive = false;
-    nSettingArea = 0;
-    g_nRec = 0;
-    strMessageYesFunction = "";
-    strMessageNoFunction = "";
-    strKeyboardDoneFunction = "";
-    strKeyboardCancelFunction = "";
-    RightThumb = false;
-    LeftThumb = false;
-    LeftTrigger = false;
-    RightTrigger = false;
-	
-    theAmbientSound0.Play();
-    theAmbientSound1.Play();
-    theAmbientSound2.Play();
-    theAmbientSound3.Play();
+	bShowDVDStopBackground = true;
+	bCleanupSpecifiedDrive = false;
+	nSettingArea = 0;
+	g_nRec = 0;
+	strMessageYesFunction = "";
+	strMessageNoFunction = "";
+	strKeyboardDoneFunction = "";
+	strKeyboardCancelFunction = "";
+	RightThumb = false;
+	LeftThumb = false;
+	LeftTrigger = false;
+	RightTrigger = false;
+
+	theAmbientSound0.Play();
+	theAmbientSound1.Play();
+	theAmbientSound2.Play();
+	theAmbientSound3.Play();
 
 	theXboxNetwork.StartServices();
 	theXboxNetwork.StartFTPServices();
 
-    var nLanguage = theConfig.GetLanguage();
-    if (nLanguage != 0) nLanguage = nLanguage - 1;
-    theTranslator.SetLanguage(nLanguage);
-    bForceSetLanguage = theConfig.ForceSetLanguage();
-    bForceSetTimeZone = theConfig.ForceSetTimeZone();
-    bForceSetClock = theConfig.ForceSetClock();
+	var nLanguage = theConfig.GetLanguage();
+	if (nLanguage != 0) nLanguage = nLanguage - 1;
+	theTranslator.SetLanguage(nLanguage);
+	bForceSetLanguage = theConfig.ForceSetLanguage();
+	bForceSetTimeZone = theConfig.ForceSetTimeZone();
+	bForceSetClock = theConfig.ForceSetClock();
 
-    if ((bForceSetLanguage + bForceSetTimeZone + bForceSetClock) != false)
-    {
-        theDiscDrive.locked = true;
-        BlockMemoryUnitInsert();
-        EnableInput(true);
-        GoToSettings();
-        return;
-    }
+	if ((bForceSetLanguage + bForceSetTimeZone + bForceSetClock) != false)
+	{
+		theDiscDrive.locked = true;
+		BlockMemoryUnitInsert();
+		EnableInput(true);
+		GoToSettings();
+		return;
+	}
 
-    MainInitPart3();
+	MainInitPart3();
 }
 
 function MainInitPart3()
 {
-    var reason = theConfig.GetLaunchReason();
-    log("Launch reason: " + reason);
+	var reason = theConfig.GetLaunchReason();
+	log("Launch reason: " + reason);
 
-    if (reason == "Error")
-    {
-        EnableInput(true);
-        theMainMenu.GoTo();
+	if (reason == "Error")
+	{
+		EnableInput(true);
+		theMainMenu.GoTo();
 		EnableAudio();
-        bShowErrorPanel = true;
-    }
-    else if (reason == "Memory")
-    {
-        if (theConfig.CanDriveBeCleanup(theConfig.GetLaunchParameter1())) { bCleanupSpecifiedDrive = true; }
-        bBackToLauncher = true;
-        EnableInput(true);
-		EnableAudio();
-        GoToMemory();
-    }
-    else if (reason == "Settings")
-    {
-        bBackToLauncher = true;
-        nSettingArea = theConfig.GetLaunchParameter1();
-        EnableInput(true);
-		EnableAudio();
-        GoToSettings();
-    }
-    else if (reason == "Music")
-    {
-        bBackToLauncher = true;
-        EnableInput(true);
-		EnableAudio();
-        GoToMusic();
-    }
-    else if (theDiscDrive.discType == "Video")
-    {
-        EnableInput(true);
-        //StartDVDPlayer();
-		
-		b_dvd = true;
-		theLauncherLevel.GoTo(); 
-    }
-    else if (theDiscDrive.discType == "Audio")
-    {
-        nCurMainMenuItem = 1;
-        StartCDPlayer();
-    }
-	else if (theDiscDrive.discType == "Title")   
-	{ 
-		theLauncherLevel.GoTo(); 
+		bShowErrorPanel = true;
 	}
-    else
-    {
-        EnableInput(true);
-		if (theDiscDrive.discType == "unknown") { bShowInvalidDisc = true; }
-        theMainMenu.GoTo();
+	else if (reason == "Memory")
+	{
+		if (theConfig.CanDriveBeCleanup(theConfig.GetLaunchParameter1())) { bCleanupSpecifiedDrive = true; }
+		bBackToLauncher = true;
+		EnableInput(true);
 		EnableAudio();
-    }
+		GoToMemory();
+	}
+	else if (reason == "Settings")
+	{
+		bBackToLauncher = true;
+		nSettingArea = theConfig.GetLaunchParameter1();
+		EnableInput(true);
+		EnableAudio();
+		GoToSettings();
+	}
+	else if (reason == "Music")
+	{
+		bBackToLauncher = true;
+		EnableInput(true);
+		EnableAudio();
+		GoToMusic();
+	}
+	else if (theDiscDrive.discType == "Video")
+	{
+		EnableInput(true);
+		//StartDVDPlayer();
+
+		b_dvd = true;
+		theLauncherLevel.GoTo();
+	}
+	else if (theDiscDrive.discType == "Audio")
+	{
+		nCurMainMenuItem = 1;
+		StartCDPlayer();
+	}
+	else if (theDiscDrive.discType == "Title")
+	{
+		theLauncherLevel.GoTo();
+	}
+	else
+	{
+		EnableInput(true);
+		if (theDiscDrive.discType == "unknown") { bShowInvalidDisc = true; }
+		theMainMenu.GoTo();
+		EnableAudio();
+	}
 }
 
 DEF theJapaneseKeyboardLayer Layer
 {
-    visible false
-    transparency 1
-    fade 0.25
+	visible false
+	transparency 1
+	fade 0.25
 
-    viewpoint Viewpoint
-    {
-        fieldOfView 1.2
+	viewpoint Viewpoint
+	{
+		fieldOfView 1.2
 		position 10 9 145
-    }
+	}
 
-    children
-    [
-        DEF theJapaneseKeyboardTransform Transform
-        {
-            fade 0.25
+	children
+	[
+		DEF theJapaneseKeyboardTransform Transform
+		{
+			fade 0.25
 //          fade 1
-            scale 0 0 0
-            children
-            [
-                Inline
-                {
-                    preload true
-                    url "jkeyboard/default.xap"
-                }
-            ]
-        }
-    ]
+			scale 0 0 0
+			children
+			[
+				Inline
+				{
+					preload true
+					url "jkeyboard/default.xap"
+				}
+			]
+		}
+	]
 }
 
 var strKeyboardTitle, strKeyboardEdit;
@@ -1321,57 +1320,57 @@ var strKeyboardDoneFunction, strKeyboardCancelFunction;
 
 DEF theKeyboardLayer Layer
 {
-    visible false
-    transparency 1
-    fade 0.25
-    viewpoint Viewpoint
-    {
-        fieldOfView 1.2
-        position 10 6 150
-    }
-    children
-    [
-        DEF theKeyboardTransform Transform
-        {
-            fade 0.25
-            scale 0 0 0
-            children
-            [
-                Inline
-                {
-                    preload true
-                    url "keyboard/default.xap"
-                }
-            ]
-        }
-    ]
+	visible false
+	transparency 1
+	fade 0.25
+	viewpoint Viewpoint
+	{
+		fieldOfView 1.2
+		position 10 6 150
+	}
+	children
+	[
+		DEF theKeyboardTransform Transform
+		{
+			fade 0.25
+			scale 0 0 0
+			children
+			[
+				Inline
+				{
+					preload true
+					url "keyboard/default.xap"
+				}
+			]
+		}
+	]
 }
 
 function KeyboardDone()
 {
-    var strDoneFunction = strKeyboardDoneFunction;
-    CloseKeyboard();
+	var strDoneFunction = strKeyboardDoneFunction;
+	CloseKeyboard();
 	if(strDoneFunction != "") { eval(strDoneFunction); }
 }
 
 function KeyboardCancel()
 {
-    var strCancelFunction = strKeyboardCancelFunction;
-    CloseKeyboard();
-    if(strCancelFunction != "") { eval(strCancelFunction); }
+	var strCancelFunction = strKeyboardCancelFunction;
+	CloseKeyboard();
+	if(strCancelFunction != "") { eval(strCancelFunction); }
 }
 
 function CloseKeyboard()
 {
-    if (g_bKeyboardDisplayed == false) { return; }
+	if (g_bKeyboardDisplayed == false) { return; }
 
 	var nKeyboardLanguage = theConfig.GetLanguage();
 	if (nKeyboardLanguage == 2)  // Japanese Language
 	{
 		var c = theJapaneseKeyboardTransform.children[0].children[0];
-	    strKeyboardEdit = c.theJKeyboard.string;
-	    c.theJKeyboardJoystick.isBound = false;
-		
+		strKeyboardEdit = c.theJKeyboard.string;
+		c.theJKeyboardJoystick.isBound = false;
+
 		theJapaneseKeyboardTransform.SetScale(0, 0, 0);
 		theJapaneseKeyboardTransform.SetAlpha(0);
 		theJapaneseKeyboardLayer.transparency = 1;
@@ -1387,35 +1386,35 @@ function CloseKeyboard()
 		theKeyboardLayer.transparency = 1;
 	}
 
-    strKeyboardTitle = "";
-    strKeyboardDoneFunction = "";
-    strKeyboardCancelFunction = "";
+	strKeyboardTitle = "";
+	strKeyboardDoneFunction = "";
+	strKeyboardCancelFunction = "";
 
-    if (theDiscDrive.locked) { theDiscDrive.locked = false; }
-    UnblockMemoryUnitInsert();
+	if (theDiscDrive.locked) { theDiscDrive.locked = false; }
+	UnblockMemoryUnitInsert();
 
-    g_bKeyboardDisplayed = false;
-    if(rename)
-    {
+	g_bKeyboardDisplayed = false;
+	if(rename)
+	{
 		ShowFileManagerFunctions();
 		ConfirmFileManager( "Rename:\n" + renameEdit, "To:\n" + strKeyboardEdit);
-    }
-    if(create)
-    {
+	}
+	if(create)
+	{
 		ShowFileManagerFunctions();
 		ConfirmFileManager( "Create Folder:\n" + strKeyboardEdit, "");
-    }
+	}
 }
 
 function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 {
-    theDiscDrive.locked = true;
-    BlockMemoryUnitInsert();
+	theDiscDrive.locked = true;
+	BlockMemoryUnitInsert();
 
-    strKeyboardTitle = strTitle;
-    strKeyboardEdit = strEdit;
-    strKeyboardDoneFunction = strDoneFunction;
-    strKeyboardCancelFunction = strCancelFunction;
+	strKeyboardTitle = strTitle;
+	strKeyboardEdit = strEdit;
+	strKeyboardDoneFunction = strDoneFunction;
+	strKeyboardCancelFunction = strCancelFunction;
 
 	var nKeyboardLanguage = theConfig.GetLanguage();
 	if (nKeyboardLanguage == 2)  // Japanese Language
@@ -1450,55 +1449,55 @@ function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 		theKeyboardTransform.SetScale(1, 1, 1);
 		theKeyboardTransform.SetAlpha(1);
 	}
-    g_bKeyboardDisplayed = true;
+	g_bKeyboardDisplayed = true;
 }
 
 DEF theMessageLayer Layer
 {
-    fade 0.25
-    transparency 1
-    viewpoint Viewpoint
-    {
-        fieldOfView 0.602400
-        orientation 0.000000 -1.000000 0.000000 -0.003534
-        position 0.424700 0.000000 6.052000
-    }
-    children
-    [
-        Transform
-        {
-            children
-            [
-                DEF theMessageInline Inline
-                {
-                    preload true
-                    url "message/default.xap"
+	fade 0.25
+	transparency 1
+	viewpoint Viewpoint
+	{
+		fieldOfView 0.602400
+		orientation 0.000000 -1.000000 0.000000 -0.003534
+		position 0.424700 0.000000 6.052000
+	}
+	children
+	[
+		Transform
+		{
+			children
+			[
+				DEF theMessageInline Inline
+				{
+					preload true
+					url "message/default.xap"
 
-                    function onLoad()
-                    {
-                        var c = children[0];
-                        c.button_yes.visible = false;
-                        c.button_no.visible = false;
-                        c.button_center.visible = false;
-                        c.slider_slot.visible = false;
-                        c.slider.visible = false;
+					function onLoad()
+					{
+						var c = children[0];
+						c.button_yes.visible = false;
+						c.button_no.visible = false;
+						c.button_center.visible = false;
+						c.slider_slot.visible = false;
+						c.slider.visible = false;
 
-                        if (bShowErrorPanel)
-                        {
-                            var e = theConfig.GetLaunchParameter1();
-                            bShowErrorPanel = false;
-                            if(e == 2) { TellUser("ERROR MESSAGE 2", "theMainMenu.GoTo()"); }
-                            else { BlockUser("ERROR MESSAGE " + e); }
-                        }
-                        else if (bShowInvalidDisc)
-                        {
-                            if (theDiscDrive.discType == "unknown") { BlockUser("ERROR MESSAGE 1"); }
-                        }
-                    }
-                }
-            ]
-        }
-    ]
+						if (bShowErrorPanel)
+						{
+							var e = theConfig.GetLaunchParameter1();
+							bShowErrorPanel = false;
+							if(e == 2) { TellUser("ERROR MESSAGE 2", "theMainMenu.GoTo()"); }
+							else { BlockUser("ERROR MESSAGE " + e); }
+						}
+						else if (bShowInvalidDisc)
+						{
+							if (theDiscDrive.discType == "unknown") { BlockUser("ERROR MESSAGE 1"); }
+						}
+					}
+				}
+			]
+		}
+	]
 }
 
 var strMessageText;
@@ -1509,327 +1508,327 @@ var nMessageButtonCount;
 
 function UpdateMessageButtonHighlight()
 {
-    var c = theMessageInline.children[0];
-    if (nCurMessageButton == 0)
-    {
-        c.button_yes.children[0].appearance.material.name = "GameHilite";
-        c.text_yes.children[0].appearance.material.name = "Material #133";
-        c.button_no.children[0].appearance.material.name = "FlatSurfaces";
-        c.text_no.children[0].appearance.material.name = "NavType";
-    }
-    else
-    {
-        c.button_yes.children[0].appearance.material.name = "FlatSurfaces";
-        c.text_yes.children[0].appearance.material.name = "NavType";
-        c.button_no.children[0].appearance.material.name = "GameHilite";
-        c.text_no.children[0].appearance.material.name = "Material #133";
-    }
+	var c = theMessageInline.children[0];
+	if (nCurMessageButton == 0)
+	{
+		c.button_yes.children[0].appearance.material.name = "GameHilite";
+		c.text_yes.children[0].appearance.material.name = "Material #133";
+		c.button_no.children[0].appearance.material.name = "FlatSurfaces";
+		c.text_no.children[0].appearance.material.name = "NavType";
+	}
+	else
+	{
+		c.button_yes.children[0].appearance.material.name = "FlatSurfaces";
+		c.text_yes.children[0].appearance.material.name = "NavType";
+		c.button_no.children[0].appearance.material.name = "GameHilite";
+		c.text_no.children[0].appearance.material.name = "Material #133";
+	}
 }
 
 DEF theMessageJoystick Joystick
 {
-    function OnADown()
-    {
-        if (nCurMessageButton != -1)
-        {
-            PlaySoundA();
-            if(nCurMessageButton == 0) { OnQuestionYes(); }
-            else { OnQuestionNo(); }
-        }
-    }
+	function OnADown()
+	{
+		if (nCurMessageButton != -1)
+		{
+			PlaySoundA();
+			if(nCurMessageButton == 0) { OnQuestionYes(); }
+			else { OnQuestionNo(); }
+		}
+	}
 
-    function OnBDown()
-    {
-        if (nMessageButtonCount == 1)
-        {
-            OnADown();
-            return;
-        }
+	function OnBDown()
+	{
+		if (nMessageButtonCount == 1)
+		{
+			OnADown();
+			return;
+		}
 
-        if (nCurMessageButton != -1)
-        {
-            PlaySoundB();
-            nCurMessageButton = 1;
-            UpdateMessageButtonHighlight();
-            OnQuestionNo();
-        }
-    }
+		if (nCurMessageButton != -1)
+		{
+			PlaySoundB();
+			nCurMessageButton = 1;
+			UpdateMessageButtonHighlight();
+			OnQuestionNo();
+		}
+	}
 
-    function OnLeftThumbMoveLeft()
-    {
-        if (nMessageButtonCount < 2) { return; }
-        if (nCurMessageButton == 1)
-        {
-            PlaySoundMenuChange();
-            nCurMessageButton = 0;
-            UpdateMessageButtonHighlight();
-        }
-    }
+	function OnLeftThumbMoveLeft()
+	{
+		if (nMessageButtonCount < 2) { return; }
+		if (nCurMessageButton == 1)
+		{
+			PlaySoundMenuChange();
+			nCurMessageButton = 0;
+			UpdateMessageButtonHighlight();
+		}
+	}
 
-    function OnLeftThumbMoveRight()
-    {
-        if (nMessageButtonCount < 2) { return; }
-        if (nCurMessageButton == 0)
-        {
-            PlaySoundMenuChange();
-            nCurMessageButton = 1;
-            UpdateMessageButtonHighlight();
-        }
-    }
+	function OnLeftThumbMoveRight()
+	{
+		if (nMessageButtonCount < 2) { return; }
+		if (nCurMessageButton == 0)
+		{
+			PlaySoundMenuChange();
+			nCurMessageButton = 1;
+			UpdateMessageButtonHighlight();
+		}
+	}
 }
 
 function AskQuestion(strQuestion, strYesFunction, strNoFunction, nDefaultButton)
 {
-    theDiscDrive.locked = true;
-    BlockMemoryUnitInsert();
-    var c = theMessageInline.children[0];
-    c.MessagePanel.SetRotation(0, 0, 1, 0);
-    c.MessagePanel.SetAlpha(1);
+	theDiscDrive.locked = true;
+	BlockMemoryUnitInsert();
+	var c = theMessageInline.children[0];
+	c.MessagePanel.SetRotation(0, 0, 1, 0);
+	c.MessagePanel.SetAlpha(1);
 
-    strMessageText = strQuestion;
-    strMessageYesFunction = strYesFunction;
-    strMessageNoFunction = strNoFunction;
+	strMessageText = strQuestion;
+	strMessageYesFunction = strYesFunction;
+	strMessageNoFunction = strNoFunction;
 
-    c.button_yes.visible = true;
-    c.button_no.visible = true;
-    c.button_center.visible = false;
-    c.slider_slot.visible = false;
-    c.slider.visible = false;
+	c.button_yes.visible = true;
+	c.button_no.visible = true;
+	c.button_center.visible = false;
+	c.slider_slot.visible = false;
+	c.slider.visible = false;
 
-    c.MessageText.text = strQuestion;
-    nCurMessageButton = nDefaultButton;
-    nMessageButtonCount = 2;
-    UpdateMessageButtonHighlight();
+	c.MessageText.text = strQuestion;
+	nCurMessageButton = nDefaultButton;
+	nMessageButtonCount = 2;
+	UpdateMessageButtonHighlight();
 
-    if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
+	if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
 
-    theMessageLayer.transparency = 0.25;
-    g_bPanelDisplayed = true;
+	theMessageLayer.transparency = 0.25;
+	g_bPanelDisplayed = true;
 }
 
 function TellUser(strMessage, strDoneFunction)
 {
-    theDiscDrive.locked = true;
-    BlockMemoryUnitInsert();
+	theDiscDrive.locked = true;
+	BlockMemoryUnitInsert();
 
-    var c = theMessageInline.children[0];
+	var c = theMessageInline.children[0];
 
-    c.MessagePanel.SetRotation(0, 0, 1, 0);
-    c.MessagePanel.SetAlpha(1);
+	c.MessagePanel.SetRotation(0, 0, 1, 0);
+	c.MessagePanel.SetAlpha(1);
 
-    strMessageText = strMessage;
-    strMessageYesFunction = strDoneFunction;
-    strMessageNoFunction = strDoneFunction;
+	strMessageText = strMessage;
+	strMessageYesFunction = strDoneFunction;
+	strMessageNoFunction = strDoneFunction;
 
-    c.button_yes.visible = false;
-    c.button_no.visible = false;
-    c.button_center.visible = true;
-    c.slider_slot.visible = false;
-    c.slider.visible = false;
-    c.MessageText.text = strMessage;
+	c.button_yes.visible = false;
+	c.button_no.visible = false;
+	c.button_center.visible = true;
+	c.slider_slot.visible = false;
+	c.slider.visible = false;
+	c.MessageText.text = strMessage;
 
-    nCurMessageButton = 0;
-    nMessageButtonCount = 1;
-    UpdateMessageButtonHighlight();
+	nCurMessageButton = 0;
+	nMessageButtonCount = 1;
+	UpdateMessageButtonHighlight();
 
-    if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
+	if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
 
-    theMessageLayer.transparency = 0.25;
-    g_bPanelDisplayed = true;
+	theMessageLayer.transparency = 0.25;
+	g_bPanelDisplayed = true;
 }
 
 function BlockUser(strMessage)
 {
-    BlockMemoryUnitInsert();
-    var c = theMessageInline.children[0];
+	BlockMemoryUnitInsert();
+	var c = theMessageInline.children[0];
 
-    c.MessagePanel.SetRotation(0, 0, 1, 0);
-    c.MessagePanel.SetAlpha(1);
+	c.MessagePanel.SetRotation(0, 0, 1, 0);
+	c.MessagePanel.SetAlpha(1);
 
-    strMessageText = strMessage;
-    strMessageYesFunction = "";
-    strMessageNoFunction = "";
+	strMessageText = strMessage;
+	strMessageYesFunction = "";
+	strMessageNoFunction = "";
 
-    c.button_yes.visible = false;
-    c.button_no.visible = false;
-    c.button_center.visible = false;
-    c.slider_slot.visible = false;
-    c.slider.visible = false;
+	c.button_yes.visible = false;
+	c.button_no.visible = false;
+	c.button_center.visible = false;
+	c.slider_slot.visible = false;
+	c.slider.visible = false;
 
-    c.MessageText.text = strMessage;
-    nCurMessageButton = -1;
-    nMessageButtonCount = 0;
-    UpdateMessageButtonHighlight();
+	c.MessageText.text = strMessage;
+	nCurMessageButton = -1;
+	nMessageButtonCount = 0;
+	UpdateMessageButtonHighlight();
 
-    if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
+	if (g_bPanelDisplayed == false) { theMessageJoystick.isBound = true; }
 
-    theMessageLayer.transparency = 0.25;
-    g_bPanelDisplayed = true;
+	theMessageLayer.transparency = 0.25;
+	g_bPanelDisplayed = true;
 }
 
 function ShowProgress(strMessage)
 {
-    theDiscDrive.locked = true;
-    BlockMemoryUnitInsert();
+	theDiscDrive.locked = true;
+	BlockMemoryUnitInsert();
 
-    var c = theMessageInline.children[0];
+	var c = theMessageInline.children[0];
 
-    c.MessagePanel.SetRotation(0, 0, 1, 0);
-    c.MessagePanel.SetAlpha(1);
+	c.MessagePanel.SetRotation(0, 0, 1, 0);
+	c.MessagePanel.SetAlpha(1);
 
-    c.button_yes.visible = false;
-    c.button_no.visible = false;
-    c.button_center.visible = false;
-    c.slider_slot.visible = true;
-    c.slider.visible = true;
-    c.MessageText.text = strMessage;
+	c.button_yes.visible = false;
+	c.button_no.visible = false;
+	c.button_center.visible = false;
+	c.slider_slot.visible = true;
+	c.slider.visible = true;
+	c.MessageText.text = strMessage;
 
-    SetProgress(0);
-    nCurMessageButton = -1;
-    nMessageButtonCount = 0;
+	SetProgress(0);
+	nCurMessageButton = -1;
+	nMessageButtonCount = 0;
 
-    theMessageJoystick.isBound = true;
-    theMessageLayer.transparency = 0.25;
-    g_bPanelDisplayed = true;
+	theMessageJoystick.isBound = true;
+	theMessageLayer.transparency = 0.25;
+	g_bPanelDisplayed = true;
 }
 
 function UpdateProgressText(strMessage)
 {
-    var c = theMessageInline.children[0];
-    c.MessageText.text = strMessage;
+	var c = theMessageInline.children[0];
+	c.MessageText.text = strMessage;
 }
 
 function SetProgress(nProgress)
 {
-    var nTempProgress = (nProgress * 1.665) - 0.165;
-    var c = theMessageInline.children[0];
-    c.slider.children[0].appearance.material.param = nTempProgress;
+	var nTempProgress = (nProgress * 1.665) - 0.165;
+	var c = theMessageInline.children[0];
+	c.slider.children[0].appearance.material.param = nTempProgress;
 }
 
 function CloseMessage()
 {
-    if (g_bPanelDisplayed == false) { return; }
+	if (g_bPanelDisplayed == false) { return; }
 
-    var c = theMessageInline.children[0];
+	var c = theMessageInline.children[0];
 
-    c.MessagePanel.SetRotation(0, 0, 1, 1.5);
-    c.MessagePanel.SetAlpha(0.0);
+	c.MessagePanel.SetRotation(0, 0, 1, 1.5);
+	c.MessagePanel.SetAlpha(0.0);
 
-    theMessageJoystick.isBound = false;
-    theMessageLayer.transparency = 1;
+	theMessageJoystick.isBound = false;
+	theMessageLayer.transparency = 1;
 
-    strMessageText = "";
-    strMessageYesFunction = "";
-    strMessageNoFunction = "";
+	strMessageText = "";
+	strMessageYesFunction = "";
+	strMessageNoFunction = "";
 
-    if (theProgressSound.transportMode != 0) { theProgressSound.Stop(); }
-    theCompleteSound.Play();
+	if (theProgressSound.transportMode != 0) { theProgressSound.Stop(); }
+	theCompleteSound.Play();
 
-    theDiscDrive.locked = false;
-    UnblockMemoryUnitInsert();
-    g_bPanelDisplayed = false;
+	theDiscDrive.locked = false;
+	UnblockMemoryUnitInsert();
+	g_bPanelDisplayed = false;
 }
 
 function OnQuestionYes()
 {
-    var strYesFunction = strMessageYesFunction;
-    CloseMessage();
-    if(strYesFunction != "") { eval(strYesFunction); }
+	var strYesFunction = strMessageYesFunction;
+	CloseMessage();
+	if(strYesFunction != "") { eval(strYesFunction); }
 }
 
 function OnQuestionNo()
 {
-    var strNoFunction = strMessageNoFunction;
-    CloseMessage();
-    if(strNoFunction != "") {  eval(strNoFunction); }
+	var strNoFunction = strMessageNoFunction;
+	CloseMessage();
+	if(strNoFunction != "") {  eval(strNoFunction); }
 }
 
 DEF theXboxLogo4x3Background Background
 {
-    skyColor 0 0 0
-    backdrop ImageTexture { url "xboxlogo.xbx" }
+	skyColor 0 0 0
+	backdrop ImageTexture { url "xboxlogo.xbx" }
 }
 
 DEF theXboxLogo16x9Background Background
 {
-    skyColor 0 0 0
-    backdrop ImageTexture { url "xboxlogow.xbx" }
+	skyColor 0 0 0
+	backdrop ImageTexture { url "xboxlogow.xbx" }
 }
 
 DEF theLauncherLevel Level
 {
-    function OnArrival()
-    {
-        DisableAmbientAudio();
-        BlockMemoryUnitEnumeration();
-        ClosePopup();
-        g_bAboutToReboot = true;
-        if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
-        else { theXboxLogo4x3Background.isBound = true; }
-    }
+	function OnArrival()
+	{
+		DisableAmbientAudio();
+		BlockMemoryUnitEnumeration();
+		ClosePopup();
+		g_bAboutToReboot = true;
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
 
-    behavior
-    {
-        sleep 1.1;
-        if(g_bAboutToReboot)
-        {
+	behavior
+	{
+		sleep 1.1;
+		if(g_bAboutToReboot)
+		{
 			if( b_restart == true ) { theConfig.ReStartDash(); }
 			else if( b_dvd == true ) { StartDVDPlayer(); }
 			else { theDiscDrive.LaunchDisc(); }
-        }
-    }
+		}
+	}
 
-    function OnActivate()
-    {
-        DisableAmbientAudio();
-        BlockMemoryUnitEnumeration();
-        ClosePopup();
-        //EnableInput(false);
-        if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
-        else { theXboxLogo4x3Background.isBound = true; }
-    }
+	function OnActivate()
+	{
+		DisableAmbientAudio();
+		BlockMemoryUnitEnumeration();
+		ClosePopup();
+		//EnableInput(false);
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
 }
 
 function BlockMemoryUnitInsert()
 {
-    if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = true; }
+	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = true; }
 }
 
 function UnblockMemoryUnitInsert()
 {
-    if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = false; }
+	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = false; }
 }
 
 function BlockMemoryUnitEnumeration()
 {
-    if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
+	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
 }
 
 function UnblockMemoryUnitEnumeration()
 {
-    if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
+	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
 }
 
 function ReturnInteger( x )
 {
-    var a = x;
-    var b = Math.abs(a);
-    if(a.charCodeAt(0) == 45)
-    {
-        var c = b * 2;
-        b = b - c;
-    }
-    return b;
+	var a = x;
+	var b = Math.abs(a);
+	if(a.charCodeAt(0) == 45)
+	{
+		var c = b * 2;
+		b = b - c;
+	}
+	return b;
 }
 
 function EnableCurrentAlternateViewpoint()
 {
-    CurrentAltViewpoint.isBound = true;
+	CurrentAltViewpoint.isBound = true;
 }
 
 function DisableCurrentAlternateViewpoint()
 {
-    CurrentViewpoint.isBound = true;
+	CurrentViewpoint.isBound = true;
 }
 
 DEF theMainMenuAlternateViewpoint Viewpoint
@@ -1842,12 +1841,12 @@ DEF theMainMenuAlternateViewpoint Viewpoint
 
 function EnableAudio()
 {
-	if( musicOnBoot == true ) 
-	{  
-		StartBackGroundMusicPlayer(); 
+	if( musicOnBoot == true )
+	{
+		StartBackGroundMusicPlayer();
 		musicOnBoot = false;
 	}
-	else if( musicOnBoot == false )  
+	else if( musicOnBoot == false )
 	{
 		if( theMusicPlayer.transportMode == 1 ) { return; }
 		else { EnableAmbientAudio(); }
@@ -1871,105 +1870,105 @@ var create;
 
 DEF theFileManagerLayer Layer
 {
-    fade 0.25
-    transparency 1
-    viewpoint Viewpoint
-    {
-        fieldOfView 0.602400
-        orientation 0.000000 -1.000000 0.000000 -0.003534
-        position 0.424700 0.000000 6.052000
-    }
-    children
-    [
-        Transform
-        {
-            children
-            [
-                DEF theFileManagerLayerInline Inline
-                {
-                    preload true
-                    url "message/default2.xap"
+	fade 0.25
+	transparency 1
+	viewpoint Viewpoint
+	{
+		fieldOfView 0.602400
+		orientation 0.000000 -1.000000 0.000000 -0.003534
+		position 0.424700 0.000000 6.052000
+	}
+	children
+	[
+		Transform
+		{
+			children
+			[
+				DEF theFileManagerLayerInline Inline
+				{
+					preload true
+					url "message/default2.xap"
 
-                    function onLoad()
-                    {
-                        var c = children[0];
-                        c.button_yes.visible = false;
-                        c.button_no.visible = false;
-                        c.button_center.visible = false;
-                        c.slider_slot.visible = false;
-                        c.slider.visible = false;
-                    }
-                }
-            ]
-        }
-    ]
+					function onLoad()
+					{
+						var c = children[0];
+						c.button_yes.visible = false;
+						c.button_no.visible = false;
+						c.button_center.visible = false;
+						c.slider_slot.visible = false;
+						c.slider.visible = false;
+					}
+				}
+			]
+		}
+	]
 }
 
 function ShowFileManagerFunctions()
 {
-    bInConfirm = false;
-    goToKeyboard = false;
-    var c = theFileManagerLayerInline.children[0];
-    c.MessagePanel.SetRotation(0, 0, 1, 0);
-    c.MessagePanel.SetAlpha(1);
-    c.button_yes.visible = false;
-    c.button_no.visible = false;
-    c.button_center.visible = false;
-    c.slider_slot.visible = false;
-    c.slider.visible = false;
-    c.MessageText1.text = "Copy";
-    c.MessageText2.text = "Move";
-    c.MessageText3.text = "Delete";
-    c.MessageText4.text = "Rename";
-    c.MessageText5.text = "New Folder";
-    if(rename) { nCurManagerButton = 3; }
-    else if(create) { nCurManagerButton = 4; }
-    else  { nCurManagerButton = 0; }
-    nManagerButtonCount = 4;
-    UpdateFileManagerFunctionsMenu();
-    if (g_bPanelDisplayed == false) { theFileManagerInline.children[0].theFileManagerJoystick.isBound = true; }
-    theFileManagerLayer.transparency = 0.25;
-    g_bPanelDisplayed = true;
+	bInConfirm = false;
+	goToKeyboard = false;
+	var c = theFileManagerLayerInline.children[0];
+	c.MessagePanel.SetRotation(0, 0, 1, 0);
+	c.MessagePanel.SetAlpha(1);
+	c.button_yes.visible = false;
+	c.button_no.visible = false;
+	c.button_center.visible = false;
+	c.slider_slot.visible = false;
+	c.slider.visible = false;
+	c.MessageText1.text = "Copy";
+	c.MessageText2.text = "Move";
+	c.MessageText3.text = "Delete";
+	c.MessageText4.text = "Rename";
+	c.MessageText5.text = "New Folder";
+	if(rename) { nCurManagerButton = 3; }
+	else if(create) { nCurManagerButton = 4; }
+	else  { nCurManagerButton = 0; }
+	nManagerButtonCount = 4;
+	UpdateFileManagerFunctionsMenu();
+	if (g_bPanelDisplayed == false) { theFileManagerInline.children[0].theFileManagerJoystick.isBound = true; }
+	theFileManagerLayer.transparency = 0.25;
+	g_bPanelDisplayed = true;
 }
 
 function UpdateFileManagerButtonHighlight()
 {
-    var c = theFileManagerLayerInline.children[0];
-    if (nCurFMButton == 0)
-    {
-        c.button_yes.children[0].appearance.material.name = "GameHilite";
-        c.text_yes.children[0].appearance.material.name = "Material #133";
-        c.button_no.children[0].appearance.material.name = "FlatSurfaces";
-        c.text_no.children[0].appearance.material.name = "NavType";
-    }
-    else
-    {
-        c.button_yes.children[0].appearance.material.name = "FlatSurfaces";
-        c.text_yes.children[0].appearance.material.name = "NavType";
-        c.button_no.children[0].appearance.material.name = "GameHilite";
-        c.text_no.children[0].appearance.material.name = "Material #133";
-    }
+	var c = theFileManagerLayerInline.children[0];
+	if (nCurFMButton == 0)
+	{
+		c.button_yes.children[0].appearance.material.name = "GameHilite";
+		c.text_yes.children[0].appearance.material.name = "Material #133";
+		c.button_no.children[0].appearance.material.name = "FlatSurfaces";
+		c.text_no.children[0].appearance.material.name = "NavType";
+	}
+	else
+	{
+		c.button_yes.children[0].appearance.material.name = "FlatSurfaces";
+		c.text_yes.children[0].appearance.material.name = "NavType";
+		c.button_no.children[0].appearance.material.name = "GameHilite";
+		c.text_no.children[0].appearance.material.name = "Material #133";
+	}
 }
 
 function ConfirmFileManager( x, y )//text 1, text 2
 {
-    bInConfirm = true;
-    rename = false;
-    create = false;
-    var c = theFileManagerLayerInline.children[0];
-    var text1 = x;
-    var text2 = y;
-    c.button_yes.visible = true;
-    c.button_no.visible = true;
+	bInConfirm = true;
+	rename = false;
+	create = false;
+	var c = theFileManagerLayerInline.children[0];
+	var text1 = x;
+	var text2 = y;
+	c.button_yes.visible = true;
+	c.button_no.visible = true;
 	c.message_Text01.children[0].children[0].appearance.material.name = "CellEgg/Partsz";
-    c.MessageText1.text = text1 + "\n" + text2;
-    c.MessageText2.text = "";
-    c.MessageText3.text = "";
-    c.MessageText4.text = "";
-    c.MessageText5.text = "";
-    nCurFMButton = 1;
-    nFMButtonCount = 2;
-    UpdateFileManagerButtonHighlight();
+	c.MessageText1.text = text1 + "\n" + text2;
+	c.MessageText2.text = "";
+	c.MessageText3.text = "";
+	c.MessageText4.text = "";
+	c.MessageText5.text = "";
+	nCurFMButton = 1;
+	nFMButtonCount = 2;
+	UpdateFileManagerButtonHighlight();
 }
 
 function ShowFileManagerError()
@@ -1977,28 +1976,28 @@ function ShowFileManagerError()
 	inError = true;
 	var c = theFileManagerLayerInline.children[0];
 	c.message_Text02.children[0].children[0].appearance.material.name = "CellEgg/Partsz";
-    c.MessageText1.text = "";
-    c.MessageText2.text = "You Must Select A Destination Folder";
-    c.MessageText3.text = "";
-    c.MessageText4.text = "";
-    c.MessageText5.text = "";
+	c.MessageText1.text = "";
+	c.MessageText2.text = "You Must Select A Destination Folder";
+	c.MessageText3.text = "";
+	c.MessageText4.text = "";
+	c.MessageText5.text = "";
 }
 
 function CloseFileManagerFunctions()
 {
-    if (g_bPanelDisplayed == false) { return; }
-    var c = theFileManagerLayerInline.children[0];
-    c.MessagePanel.SetRotation(0, 0, 1, 1.5);
-    c.MessagePanel.SetAlpha(0.0);
-    theFileManagerJoystick.isBound = false;
-    theFileManagerLayer.transparency = 1;
-    g_bPanelDisplayed = false;
-    if(goToKeyboard)
-    {
+	if (g_bPanelDisplayed == false) { return; }
+	var c = theFileManagerLayerInline.children[0];
+	c.MessagePanel.SetRotation(0, 0, 1, 1.5);
+	c.MessagePanel.SetAlpha(0.0);
+	theFileManagerJoystick.isBound = false;
+	theFileManagerLayer.transparency = 1;
+	g_bPanelDisplayed = false;
+	if(goToKeyboard)
+	{
 		if(nCurManagerButton == 3) { rename = true; }
 		else { create = true; }
 		ShowKeyboard( renameText, renameEdit, renameDone, renameCancel);
-    }
+	}
 }
 
 function UpdateFileManagerFunctionsMenu()
@@ -2009,7 +2008,7 @@ function UpdateFileManagerFunctionsMenu()
 	c.message_Text03.children[0].children[0].appearance.material.name = "NavType";
 	c.message_Text04.children[0].children[0].appearance.material.name = "NavType";
 	c.message_Text05.children[0].children[0].appearance.material.name = "NavType";
-	
+
 		 if(nCurManagerButton == 0) { c.message_Text01.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 1) { c.message_Text02.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 2) { c.message_Text03.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }

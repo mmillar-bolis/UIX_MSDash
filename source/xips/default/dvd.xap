@@ -12,62 +12,62 @@ function initialize()
 	nZoom = 1;
 	xZoom = 0;
 	yZoom = 0;
-    bRemoteInserted = 1;
-    oldPlaybackMode = 3;
-    bInitialized = 0;
+	bRemoteInserted = 1;
+	oldPlaybackMode = 3;
+	bInitialized = 0;
 }
 
 function PromptForRemote()
 {
-    // Don't show the text if we are about to reboot
-    if (bShowDVDStopBackground)
-    {
-        theErrorText.text = "NoDongle2";
-    }
+	// Don't show the text if we are about to reboot
+	if (bShowDVDStopBackground)
+	{
+		theErrorText.text = "NoDongle2";
+	}
 }
 
 function CheckForRemote()
 {
-    if (bRemoteInserted != 1)
-    {
-        theDVDPlayer.pause();
-        PromptForRemote();
-    }
+	if (bRemoteInserted != 1)
+	{
+		theDVDPlayer.pause();
+		PromptForRemote();
+	}
 }
 
 function OperationProhibited()
 {
-    SetStatusText(theTranslator.Translate("Prohibited"));
+	SetStatusText(theTranslator.Translate("Prohibited"));
 }
 
 function PlaybackModeChange()
 {
-    if (theDVDPlayer.playbackMode == 0)
-    {
-        theDVDPlayer.visible = false;
+	if (theDVDPlayer.playbackMode == 0)
+	{
+		theDVDPlayer.visible = false;
 
-        if (bShowDVDStopBackground)
-        {
-            if (theConfig.GetVideoMode() == 2)
-            {
-                theDVDPlayer.enableWideScreen();
-                theDVDStop16x9Background.isBound = true;
-            }
-            else
-            {
-                theDVDPlayer.disableWideScreen();
-                theDVDStop4x3Background.isBound = true;
-            }
-        }
-    }
-    else
-    {
-        theBackground.isBound = true;
-        theDVDPlayer.visible = true;
-    }
+		if (bShowDVDStopBackground)
+		{
+			if (theConfig.GetVideoMode() == 2)
+			{
+				theDVDPlayer.enableWideScreen();
+				theDVDStop16x9Background.isBound = true;
+			}
+			else
+			{
+				theDVDPlayer.disableWideScreen();
+				theDVDStop4x3Background.isBound = true;
+			}
+		}
+	}
+	else
+	{
+		theBackground.isBound = true;
+		theDVDPlayer.visible = true;
+	}
 
-    UpdateOSD();
-    CheckForRemote();
+	UpdateOSD();
+	CheckForRemote();
 }
 
 DEF theDVDStop4x3Background Background
@@ -91,40 +91,40 @@ HUD
 			function OnNoDongle()
 			{
 				BlockUser("NoDongle");
-                theDVDPlayer.visible = false;
+				theDVDPlayer.visible = false;
 			}
 
 			function OnXboxDVDRegionViolation()
 			{
 				BlockUser("XboxDVDRegionViolation");
-                theDVDPlayer.visible = false;
+				theDVDPlayer.visible = false;
 			}
 
 			function OnDiscDVDRegionViolation()
 			{
 				BlockUser("DiscDVDRegionViolation");
-                theDVDPlayer.visible = false;
+				theDVDPlayer.visible = false;
 			}
 
-            function OnParentalLevelViolation()
-            {
+			function OnParentalLevelViolation()
+			{
 				BlockUser("ERROR MESSAGE 4");
-                theDVDPlayer.visible = false;
-            }
+				theDVDPlayer.visible = false;
+			}
 
 			function OnProhibited()
 			{
-                OperationProhibited();
+				OperationProhibited();
 			}
 
-            function OnUserOpAllowed()
-            {
-                SetStatusText("");
-            }
+			function OnUserOpAllowed()
+			{
+				SetStatusText("");
+			}
 
 			function OnPlaybackModeChange()
 			{
-                PlaybackModeChange();
+				PlaybackModeChange();
 			}
 
 			function OnTimeChange()
@@ -135,13 +135,13 @@ HUD
 			function OnTitleChange()
 			{
 				UpdateOSD();
-                CheckForRemote();
+				CheckForRemote();
 			}
 
 			function OnChapterChange()
 			{
 				UpdateOSD();
-                CheckForRemote();
+				CheckForRemote();
 			}
 
 			function OnDomainChange()
@@ -151,7 +151,7 @@ HUD
 					HideMenu();
 				}
 
-                CheckForRemote();
+				CheckForRemote();
 			}
 
 			function OnAudioChange()
@@ -172,15 +172,15 @@ HUD
 					UpdateMenuHilight();
 			}
 
-            function OnValidUOPChange()
-            {
-                CheckForRemote();
-            }
+			function OnValidUOPChange()
+			{
+				CheckForRemote();
+			}
 
-            function OnMenuCall()
-            {
-                HideMenu();
-            }
+			function OnMenuCall()
+			{
+				HideMenu();
+			}
 		}
 
 		DEF theStatusFader Transform
@@ -199,7 +199,7 @@ HUD
 
 		Transform
 		{
-            fade 0
+			fade 0
 			translation -270 120 0
 			scale 30 30 30
 			children
@@ -217,11 +217,11 @@ HUD
 function SetStatusText(str)
 {
 	theStatusText.text = str;
-    if (str != "")
+	if (str != "")
 	{
-        theStatusFader.SetAlpha(1);
-        theStatusFader.DisappearAfter(5); // Alpha will be set to zero after 5 seconds
-    }
+		theStatusFader.SetAlpha(1);
+		theStatusFader.DisappearAfter(5); // Alpha will be set to zero after 5 seconds
+	}
 }
 
 function SetZoom(nNewZoom)
@@ -303,18 +303,18 @@ function UpdateMenuHilight()
 
 	if (curMenuItem == 0)
 	{
-        if (theDVDPlayer.domain == 3) // TT_DOM
-        {
-    		str = theTranslator.Translate("sub title:") + " ";
-    		if (theDVDPlayer.subTitle == 0)
-    			str = str + theTranslator.Translate("OFF");
-    		else
-    			str = str + theDVDPlayer.subTitleLanguage;
-        }
-        else
-        {
-            str = theTranslator.TranslateStripColon("sub title:");
-        }
+		if (theDVDPlayer.domain == 3) // TT_DOM
+		{
+			str = theTranslator.Translate("sub title:") + " ";
+			if (theDVDPlayer.subTitle == 0)
+				str = str + theTranslator.Translate("OFF");
+			else
+				str = str + theDVDPlayer.subTitleLanguage;
+		}
+		else
+		{
+			str = theTranslator.TranslateStripColon("sub title:");
+		}
 	}
 	else if (curMenuItem == 1)
 	{
@@ -322,34 +322,34 @@ function UpdateMenuHilight()
 	}
 	else if (curMenuItem == 2)
 	{
-        if (theDVDPlayer.domain == 3) // TT_DOM
-        {
-    		str = theTranslator.Translate("Audio:") + " ";
+		if (theDVDPlayer.domain == 3) // TT_DOM
+		{
+			str = theTranslator.Translate("Audio:") + " ";
 
-    		if (theDVDPlayer.audioFormat == 0)
-    		{
-    			str = str + theTranslator.Translate("DOLBY DIGITAL");
-    			if (theDVDPlayer.audioChannels == 6)
-    				str = str + " 5.1";
-    		}
-    		else if (theDVDPlayer.audioFormat == 1)
-    			str = str + theTranslator.Translate("MPEG1");
-    		else if (theDVDPlayer.audioFormat == 2)
-    			str = str + theTranslator.Translate("MPEG2");
-    		else if (theDVDPlayer.audioFormat == 3)
-    			str = str + theTranslator.Translate("STEREO");
-    		else if (theDVDPlayer.audioFormat == 4)
-    			str = str + theTranslator.Translate("DTS");
-    		else if (theDVDPlayer.audioFormat == 5)
-    			str = str + theTranslator.Translate("SDDS");
+			if (theDVDPlayer.audioFormat == 0)
+			{
+				str = str + theTranslator.Translate("DOLBY DIGITAL");
+				if (theDVDPlayer.audioChannels == 6)
+					str = str + " 5.1";
+			}
+			else if (theDVDPlayer.audioFormat == 1)
+				str = str + theTranslator.Translate("MPEG1");
+			else if (theDVDPlayer.audioFormat == 2)
+				str = str + theTranslator.Translate("MPEG2");
+			else if (theDVDPlayer.audioFormat == 3)
+				str = str + theTranslator.Translate("STEREO");
+			else if (theDVDPlayer.audioFormat == 4)
+				str = str + theTranslator.Translate("DTS");
+			else if (theDVDPlayer.audioFormat == 5)
+				str = str + theTranslator.Translate("SDDS");
 
-    		if (theDVDPlayer.audioLanguage != "")
-    			str = str + " (" + theDVDPlayer.audioLanguage + ")";
-        }
-        else
-        {
-            str = theTranslator.TranslateStripColon("Audio:");
-        }
+			if (theDVDPlayer.audioLanguage != "")
+				str = str + " (" + theDVDPlayer.audioLanguage + ")";
+		}
+		else
+		{
+			str = theTranslator.TranslateStripColon("Audio:");
+		}
 	}
 	else if (curMenuItem == 3)
 		str = theTranslator.Translate("SETTINGS");
@@ -394,28 +394,28 @@ function DoMenuCommand()
 	else if (curMenuItem == 3)
 	{
 		// Settings...
-        if (theDVDPlayer.playbackMode != 0)
-        {
-            theDVDPlayer.stop();
-        }
+		if (theDVDPlayer.playbackMode != 0)
+		{
+			theDVDPlayer.stop();
+		}
 
-        theDVDPlayer.autoStop = false;
+		theDVDPlayer.autoStop = false;
 		theDVDPlayer.visible = false;
 		theBackground.isBound = true;
-        OldVideoMode = theConfig.GetVideoMode();
-        OldMoviePCFlags = theConfig.GetMoviePCFlags();
-        HideMenu();
+		OldVideoMode = theConfig.GetVideoMode();
+		OldMoviePCFlags = theConfig.GetMoviePCFlags();
+		HideMenu();
 		GoToSettings();
 		bBackToDVDPlayer = true;
 
-        if (theConfig.GetVideoMode() == 2)
-        {
-            theDVDPlayer.enableWideScreen();
-        }
-        else
-        {
-            theDVDPlayer.disableWideScreen();
-        }
+		if (theConfig.GetVideoMode() == 2)
+		{
+			theDVDPlayer.enableWideScreen();
+		}
+		else
+		{
+			theDVDPlayer.disableWideScreen();
+		}
 	}
 	else if (curMenuItem == 4)
 	{
@@ -424,8 +424,8 @@ function DoMenuCommand()
 	}
 	else if (curMenuItem == 5)
 	{
-        if(theDVDPlayer.playbackMode != 0)
-        {
+		if(theDVDPlayer.playbackMode != 0)
+		{
 			// All of the DVD zoom code
 			if (nZoom == 1)
 			{
@@ -439,11 +439,11 @@ function DoMenuCommand()
 			{
 				SetZoom(1);
 			}
-        }
-        else
-        {
-            OperationProhibited();
-        }
+		}
+		else
+		{
+			OperationProhibited();
+		}
 	}
 
 	UpdateMenuHilight();
@@ -451,39 +451,39 @@ function DoMenuCommand()
 
 function ClearOnScreenInfo()
 {
-    theErrorText.text = "";
-    theDVDPlayer.visible = false;
-    SetStatusText("");
+	theErrorText.text = "";
+	theDVDPlayer.visible = false;
+	SetStatusText("");
 }
 
 function UpdateScanText()
 {
-    if (theDVDPlayer.scanSpeed == 1)
-    {
-        SetStatusText("");
-        return;
-    }
+	if (theDVDPlayer.scanSpeed == 1)
+	{
+		SetStatusText("");
+		return;
+	}
 
-    if (theDVDPlayer.bScanBackward)
-    {
-        if (theDVDPlayer.scanSlow)
-            SetStatusText(theTranslator.Translate("ScanBackward:") + " 1/" + theDVDPlayer.scanSpeed + "x");
-        else
-            SetStatusText(theTranslator.Translate("ScanBackward:") + " " + theDVDPlayer.scanSpeed + "x");
-    }
-    else
-    {
-        if (theDVDPlayer.scanSlow)
-            SetStatusText(theTranslator.Translate("ScanForward:") + " 1/" + theDVDPlayer.scanSpeed + "x");
-        else
-            SetStatusText(theTranslator.Translate("ScanForward:") + " " + theDVDPlayer.scanSpeed + "x");
-    }
+	if (theDVDPlayer.bScanBackward)
+	{
+		if (theDVDPlayer.scanSlow)
+			SetStatusText(theTranslator.Translate("ScanBackward:") + " 1/" + theDVDPlayer.scanSpeed + "x");
+		else
+			SetStatusText(theTranslator.Translate("ScanBackward:") + " " + theDVDPlayer.scanSpeed + "x");
+	}
+	else
+	{
+		if (theDVDPlayer.scanSlow)
+			SetStatusText(theTranslator.Translate("ScanForward:") + " 1/" + theDVDPlayer.scanSpeed + "x");
+		else
+			SetStatusText(theTranslator.Translate("ScanForward:") + " " + theDVDPlayer.scanSpeed + "x");
+	}
 }
 
 DEF theDVDLevel Level
 {
 	archive "dvd.xip"
-    fade false
+	fade false
 
 	children
 	[
@@ -494,7 +494,7 @@ DEF theDVDLevel Level
 				DEF theDVDMenu Inline
 				{
 					visible false
-                    fadeInDelayLoad false
+					fadeInDelayLoad false
 					url "dvd/default.xap"
 
 					function onLoad()
@@ -514,11 +514,11 @@ DEF theDVDLevel Level
 							scale 30 30 30
 							children
 							[
-                                Shape
-                                {
-                                    appearance MaxMaterial { name "NavType" }
-                                    geometry DEF theDVDInfoText Text { font "Heading" translate false }
-                                }
+								Shape
+								{
+									appearance MaxMaterial { name "NavType" }
+									geometry DEF theDVDInfoText Text { font "Heading" translate false }
+								}
 							]
 						}
 					]
@@ -640,17 +640,17 @@ DEF theDVDLevel Level
 
 		function OnBlackDown()
 		{
-            OnStop();
+			OnStop();
 		}
 
 		function OnLeftDown()
 		{
-            OnSkipBack();
+			OnSkipBack();
 		}
 
 		function OnRightDown()
 		{
-            OnSkipForward();
+			OnSkipForward();
 		}
 
 		function OnBDown()
@@ -664,7 +664,7 @@ DEF theDVDLevel Level
 			{
 				HideMenu();
 				theOSD.visible = false;
-                SetStatusText("");
+				SetStatusText("");
 			}
 			else if (nZoom > 1)
 			{
@@ -672,14 +672,14 @@ DEF theDVDLevel Level
 			}
 			else
 			{
-                if (theDVDPlayer.isUOPValid(1<<4)) // UOP_GO_UP
-                {
-    				theDVDPlayer.goUp();
-                }
-                else
-                {
-                    OperationProhibited();
-                }
+				if (theDVDPlayer.isUOPValid(1<<4)) // UOP_GO_UP
+				{
+					theDVDPlayer.goUp();
+				}
+				else
+				{
+					OperationProhibited();
+				}
 			}
 		}
 
@@ -695,7 +695,7 @@ DEF theDVDLevel Level
 
 		function OnYDown()
 		{
-            OnMenu();
+			OnMenu();
 		}
 
 		function OnPower()
@@ -708,46 +708,46 @@ DEF theDVDLevel Level
 
 		function OnReverse()
 		{
-            if (theDVDPlayer.isPlaybackDomain() == 0)
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.isPlaybackDomain() == 0)
+			{
+				OperationProhibited();
+				return;
+			}
 
-            if (theDVDPlayer.isUOPValid(1<<9)) // UOP_BACKWARD_SCAN
-            {
-    			theDVDPlayer.backwardScan();
-                UpdateScanText();
-            }
-            else
-            {
-                OperationProhibited();
-            }
+			if (theDVDPlayer.isUOPValid(1<<9)) // UOP_BACKWARD_SCAN
+			{
+				theDVDPlayer.backwardScan();
+				UpdateScanText();
+			}
+			else
+			{
+				OperationProhibited();
+			}
 		}
 
 		function OnForward()
 		{
-            if (theDVDPlayer.isPlaybackDomain() == 0)
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.isPlaybackDomain() == 0)
+			{
+				OperationProhibited();
+				return;
+			}
 
-            if (theDVDPlayer.isUOPValid(1<<8)) // UOP_FORWARD_SCAN
-            {
-    			theDVDPlayer.forwardScan();
-                UpdateScanText();
-            }
-            else
-            {
-                OperationProhibited();
-            }
+			if (theDVDPlayer.isUOPValid(1<<8)) // UOP_FORWARD_SCAN
+			{
+				theDVDPlayer.forwardScan();
+				UpdateScanText();
+			}
+			else
+			{
+				OperationProhibited();
+			}
 		}
 
 		function OnPlay()
 		{
-            if (bRemoteInserted != 1)
-                return;
+			if (bRemoteInserted != 1)
+				return;
 
 			theDVDPlayer.play();
 
@@ -762,11 +762,11 @@ DEF theDVDLevel Level
 
 		function OnSkipBack()
 		{
-            if (theDVDPlayer.isPlaybackDomain() == 0)
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.isPlaybackDomain() == 0)
+			{
+				OperationProhibited();
+				return;
+			}
 
 			if (theDVDPlayer.playbackMode == 1) // DPM_PAUSED
 			{
@@ -787,23 +787,23 @@ DEF theDVDLevel Level
 
 			if (theDVDPlayer.scanSlow)
 			{
-                OperationProhibited();
+				OperationProhibited();
 				return;
 			}
 
-            if (theDVDPlayer.isUOPValid(1<<6)) // UOP_PREV_TOP_PG_SEARCH
-            {
-    			theDVDPlayer.prevChapter();
+			if (theDVDPlayer.isUOPValid(1<<6)) // UOP_PREV_TOP_PG_SEARCH
+			{
+				theDVDPlayer.prevChapter();
 
-    			if (theDVDPlayer.chapter != 0)
-    			{
-    				SetStatusText(theTranslator.Translate("Chapter") + " " + theDVDPlayer.chapter);
-    			}
-            }
-            else
-            {
-                OperationProhibited();
-            }
+				if (theDVDPlayer.chapter != 0)
+				{
+					SetStatusText(theTranslator.Translate("Chapter") + " " + theDVDPlayer.chapter);
+				}
+			}
+			else
+			{
+				OperationProhibited();
+			}
 
 			if(theDVDMenu.visible == true)
 				UpdateMenuHilight();
@@ -811,82 +811,82 @@ DEF theDVDLevel Level
 
 		function OnStop()
 		{
-            if (theDVDPlayer.isPlaybackDomain())
-            {
-                if (theDVDPlayer.isUOPValid(1<<3)) // UOP_STOP
-                {
-        			theDVDPlayer.stop();
+			if (theDVDPlayer.isPlaybackDomain())
+			{
+				if (theDVDPlayer.isUOPValid(1<<3)) // UOP_STOP
+				{
+					theDVDPlayer.stop();
 					SetStatusText("");
-                }
-                else
-                {
-                    OperationProhibited();
-                }
-            }
-            else
-            {
-    			theDVDPlayer.stop();
+				}
+				else
+				{
+					OperationProhibited();
+				}
+			}
+			else
+			{
+				theDVDPlayer.stop();
 				SetStatusText("");
-            }
+			}
 		}
 
 		function OnPause()
 		{
-            if (bRemoteInserted != 1)
-                return;
+			if (bRemoteInserted != 1)
+				return;
 
-            if (theDVDPlayer.isPlaybackDomain() == 0)
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.isPlaybackDomain() == 0)
+			{
+				OperationProhibited();
+				return;
+			}
 
-            // REVIEW: This is ugly for now, we don't have logical OR/AND operator
+			// REVIEW: This is ugly for now, we don't have logical OR/AND operator
 
-            if (theDVDPlayer.playbackMode == 1) // DPM_PAUSED
-            {
-                theDVDPlayer.play();
-                SetStatusText(theTranslator.Translate("Play:"));
-                return;
-            }
+			if (theDVDPlayer.playbackMode == 1) // DPM_PAUSED
+			{
+				theDVDPlayer.play();
+				SetStatusText(theTranslator.Translate("Play:"));
+				return;
+			}
 
-            if (theDVDPlayer.playbackMode == 8) // DPM_TRICKPLAY
-            {
-                theDVDPlayer.play();
-                SetStatusText(theTranslator.Translate("Play:"));
-                return;
-            }
+			if (theDVDPlayer.playbackMode == 8) // DPM_TRICKPLAY
+			{
+				theDVDPlayer.play();
+				SetStatusText(theTranslator.Translate("Play:"));
+				return;
+			}
 
-            if (theDVDPlayer.playbackMode == 2) // DPM_STILL
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.playbackMode == 2) // DPM_STILL
+			{
+				OperationProhibited();
+				return;
+			}
 
-            if (theDVDPlayer.playbackMode == 4) // DPM_NONE
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.playbackMode == 4) // DPM_NONE
+			{
+				OperationProhibited();
+				return;
+			}
 
-            if (theDVDPlayer.isUOPValid(1<<19)) // UOP_PAUSE_ON
-            {
-			    theDVDPlayer.pause();
-			    SetStatusText(theTranslator.Translate("Pause:"));
-            }
-            else
-            {
-                OperationProhibited();
-            }
+			if (theDVDPlayer.isUOPValid(1<<19)) // UOP_PAUSE_ON
+			{
+				theDVDPlayer.pause();
+				SetStatusText(theTranslator.Translate("Pause:"));
+			}
+			else
+			{
+				OperationProhibited();
+			}
 		}
 
 		function OnSkipForward()
 		{
-            if (theDVDPlayer.isPlaybackDomain() == 0)
-            {
-                OperationProhibited();
-                return;
-            }
+			if (theDVDPlayer.isPlaybackDomain() == 0)
+			{
+				OperationProhibited();
+				return;
+			}
 
 			if (theDVDPlayer.playbackMode == 1) // DPM_PAUSED
 			{
@@ -907,23 +907,23 @@ DEF theDVDLevel Level
 
 			if (theDVDPlayer.scanSlow)
 			{
-                OperationProhibited();
+				OperationProhibited();
 				return;
 			}
 
-            if (theDVDPlayer.isUOPValid(1<<7)) // UOP_NEXT_PG_SEARCH
-            {
-    			theDVDPlayer.nextChapter();
+			if (theDVDPlayer.isUOPValid(1<<7)) // UOP_NEXT_PG_SEARCH
+			{
+				theDVDPlayer.nextChapter();
 
-    			if (theDVDPlayer.chapter != 0)
-    			{
-    				SetStatusText(theTranslator.Translate("Chapter") + " " + theDVDPlayer.chapter);
-    			}
-            }
-            else
-            {
-                OperationProhibited();
-            }
+				if (theDVDPlayer.chapter != 0)
+				{
+					SetStatusText(theTranslator.Translate("Chapter") + " " + theDVDPlayer.chapter);
+				}
+			}
+			else
+			{
+				OperationProhibited();
+			}
 
 			if(theDVDMenu.visible == true)
 				UpdateMenuHilight();
@@ -931,14 +931,14 @@ DEF theDVDLevel Level
 
 		function OnGuide()
 		{
-            if (theDVDPlayer.isUOPValid(1<<10)) // UOP_MENU_CALL_TITLE
-            {
-    			theDVDPlayer.titleMenu();
-            }
-            else
-            {
-                OperationProhibited();
-            }
+			if (theDVDPlayer.isUOPValid(1<<10)) // UOP_MENU_CALL_TITLE
+			{
+				theDVDPlayer.titleMenu();
+			}
+			else
+			{
+				OperationProhibited();
+			}
 		}
 
 		function OnInfo()
@@ -950,20 +950,20 @@ DEF theDVDLevel Level
 			}
 
 			theOSD.visible = 1 - theOSD.visible;
-            if (theOSD.visible == false)
-                SetStatusText("");
+			if (theOSD.visible == false)
+				SetStatusText("");
 		}
 
 		function OnMenu()
 		{
-            if (theDVDPlayer.isUOPValid(1<<11)) // UOP_MENU_CALL_ROOT
-            {
-    			theDVDPlayer.menu();
-            }
-            else
-            {
-                OperationProhibited();
-            }
+			if (theDVDPlayer.isUOPValid(1<<11)) // UOP_MENU_CALL_ROOT
+			{
+				theDVDPlayer.menu();
+			}
+			else
+			{
+				OperationProhibited();
+			}
 		}
 
 		function On0()
@@ -1036,38 +1036,38 @@ DEF theDVDLevel Level
 				SetStatusText(theTranslator.Translate("Chapter") + " " + theDVDPlayer.number);
 		}
 
-        function OnRemoveRemote()
-        {
-            bRemoteInserted = 0;
-            oldPlaybackMode = theDVDPlayer.playbackMode;
-            if (theDVDPlayer.isUOPValid(1<<19)) // UOP_PAUSE_ON
-                theDVDPlayer.pause();
-            else if(oldPlaybackMode != 0) // DPM_STOPPED
+		function OnRemoveRemote()
+		{
+			bRemoteInserted = 0;
+			oldPlaybackMode = theDVDPlayer.playbackMode;
+			if (theDVDPlayer.isUOPValid(1<<19)) // UOP_PAUSE_ON
+				theDVDPlayer.pause();
+			else if(oldPlaybackMode != 0) // DPM_STOPPED
 			{
-                theDVDPlayer.stop();
+				theDVDPlayer.stop();
 				SetStatusText("");
 			}
-            theErrorText.text = "";
-            PromptForRemote();
-        }
+			theErrorText.text = "";
+			PromptForRemote();
+		}
 
-        function OnInsertRemote()
-        {
-            theErrorText.text = "";
-            bRemoteInserted = 1;
+		function OnInsertRemote()
+		{
+			theErrorText.text = "";
+			bRemoteInserted = 1;
 
-            if(oldPlaybackMode == 0) // DPM_STOPPED
-            {
-            	return;
-            }
-
-            if(oldPlaybackMode == 1) // DPM_PAUSED
-            {
+			if(oldPlaybackMode == 0) // DPM_STOPPED
+			{
 				return;
-            }
+			}
 
-            theDVDPlayer.play();
-        }
+			if(oldPlaybackMode == 1) // DPM_PAUSED
+			{
+				return;
+			}
+
+			theDVDPlayer.play();
+		}
 	}
 
 	function OnActivate()
@@ -1076,58 +1076,58 @@ DEF theDVDLevel Level
 
 		if (bBackToDVDPlayer)
 		{
-            oldPlaybackMode = theDVDPlayer.playbackMode;
+			oldPlaybackMode = theDVDPlayer.playbackMode;
 			bBackToDVDPlayer = false;
-            theDVDPlayer.autoStop = true;
-            theDVDPlayer.visible = true;
+			theDVDPlayer.autoStop = true;
+			theDVDPlayer.visible = true;
 
-            if (theConfig.GetVideoMode() != OldVideoMode)
-            {
-                theDVDPlayer.videoModePreferrence = theConfig.GetVideoMode();
+			if (theConfig.GetVideoMode() != OldVideoMode)
+			{
+				theDVDPlayer.videoModePreferrence = theConfig.GetVideoMode();
 
-                // Changing video modes makes the player play, so we have to restrain it
-                // Only seems to be relevant if it wasn't stopped.
-                if (oldPlaybackMode != 0)
-                {
-                    theDVDPlayer.pause();
-                }
-            }
+				// Changing video modes makes the player play, so we have to restrain it
+				// Only seems to be relevant if it wasn't stopped.
+				if (oldPlaybackMode != 0)
+				{
+					theDVDPlayer.pause();
+				}
+			}
 
-            if (theConfig.GetMoviePCFlags() != OldMoviePCFlags)
-            {
-                theDVDPlayer.parentalLevel = theConfig.GetMoviePCFlags();
-            }
+			if (theConfig.GetMoviePCFlags() != OldMoviePCFlags)
+			{
+				theDVDPlayer.parentalLevel = theConfig.GetMoviePCFlags();
+			}
 
-            theDVDPlayer.refreshAudioSettings();
-            PlaybackModeChange();
-            theDVDMenu.visible = true;
-            UpdateMenuHilight();
+			theDVDPlayer.refreshAudioSettings();
+			PlaybackModeChange();
+			theDVDMenu.visible = true;
+			UpdateMenuHilight();
 		}
-        else
-        {
-            HideMenu();
-        }
+		else
+		{
+			HideMenu();
+		}
 
 		DisableAmbientAudio();
-    }
+	}
 
 	function OnDeactivate()
 	{
-        theErrorText.text = "";
+		theErrorText.text = "";
 		theBackground.isBound = true;
 		theDVDPlayer.visible = false;
-        SetStatusText("");
+		SetStatusText("");
 		EnableAmbientAudio();
 	}
 
 	function OnArrival()
 	{
-        if (bInitialized != 1)
-        {
-            theDVDJoystick.enableGamepad = true;
-		    theDVDPlayer.init();
-		    theDVDPlayer.visible = true;
-            bInitialized = 1;
-        }
+		if (bInitialized != 1)
+		{
+			theDVDJoystick.enableGamepad = true;
+			theDVDPlayer.init();
+			theDVDPlayer.visible = true;
+			bInitialized = 1;
+		}
 	}
 }

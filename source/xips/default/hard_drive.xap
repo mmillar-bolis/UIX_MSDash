@@ -1,4 +1,3 @@
-
 var itemCount;
 var fillList;
 var gSelect;
@@ -11,26 +10,26 @@ var curMenuItem;
 var menuName;
 
 DEF theGlobal Transform
-{ 
-    visible false
- 	children
-  	[
-  		Shape
-  		{
-  			appearance Appearance { material Material {  } }
-  			geometry DEF theCellWallMesh Mesh
-  		}
-  	]
-  	scale 0 0 0
-  	translation 500 0 0
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
 }
 
 function GetCellWallType()
 {
-    var IniFile = new Settings;
+	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
 	var a = IniFile.GetIniValue( "Current Skin" );
-	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
 
 function initialize() { GetCellWallType(); }
@@ -38,52 +37,52 @@ function initialize() { GetCellWallType(); }
 var launching;
 DEF theTitleLauncherLevel Level
 {
-    function OnArrival()
-    {
-        ClosePopup();
-        launching = true;
-        if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
-        else { theXboxLogo4x3Background.isBound = true; }
-    }
+	function OnArrival()
+	{
+		ClosePopup();
+		launching = true;
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
 
-    behavior
-    {
-        sleep 1.1;
-        if (launching)
-        {
+	behavior
+	{
+		sleep 1.1;
+		if (launching)
+		{
 			var c = theTitlesMenu.children[0].children[0];
 			var nTitle = c.theTitlesGrid.curTitle;
 			c.theTitlesGrid.LaunchTitle( nTitle );
-        }
-    }
+		}
+	}
 
-    function OnActivate()
-    {
-        ClosePopup();
-        EnableInput(false);
-        if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
-        else { theXboxLogo4x3Background.isBound = true; }
-    }
+	function OnActivate()
+	{
+		ClosePopup();
+		EnableInput(false);
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
 }
 
 function RefreshCache()
 {
-    var c = theTitlesMenu.children[0].children[0];
+	var c = theTitlesMenu.children[0].children[0];
 	c.theTitlesGrid.RefreshCache();
 }
 
 function StartHardDriveMenu()
 {
 	curMenuItem = 1;
- 	var c = theHardDriveMenu.children[0].children[0];
+	var c = theHardDriveMenu.children[0].children[0];
 	var IniFile = new Settings;
-    IniFile.SetIniSection( "Applications" );
+	IniFile.SetIniSection( "Applications" );
 	c.Menu1Text.text = IniFile.GetIniValue( "Name" );
-    IniFile.SetIniSection( "Games" );
+	IniFile.SetIniSection( "Games" );
 	c.Menu2Text.text = IniFile.GetIniValue( "Name" );
-    IniFile.SetIniSection( "Dashboards" );
+	IniFile.SetIniSection( "Dashboards" );
 	c.Menu3Text.text = IniFile.GetIniValue( "Name" );
-    IniFile.SetIniSection( "Emulators" );
+	IniFile.SetIniSection( "Emulators" );
 	c.Menu4Text.text = IniFile.GetIniValue( "Name" );
 	UpdateHardDriveMenu();
 }
@@ -101,7 +100,7 @@ function UpdateHardDriveMenu()
 		c.MEM_L1_controller4_panel.children[0].appearance.texture.url = "outline.xbx";
 		c.PanelText2.text = " ";
 		c.PanelText3.text = "XBOX HARD DRIVE";
-			
+
 		if(curMenuItem == 0)
 		{
 			c.controllerText1Mat.name = "HilightedType";
@@ -130,27 +129,27 @@ function UpdateHardDriveMenu()
 
 DEF theHardDriveMenu Level
 {
-    archive "memory.xip"
-    children
-    [
-        Inline
-        {
-            url "memory/default2.xap"
-            function onLoad() { StartHardDriveMenu(); }
-        }
-    ]
-    shell Transform
-    {
-        scale 12.336 12.336 12.336
-        translation 41.549999 10.190000 -201.399994
-        children
-        [
-            DEF theHardDriveMenuShellSpinner Spinner
-            {
+	archive "memory.xip"
+	children
+	[
+		Inline
+		{
+			url "memory/default2.xap"
+			function onLoad() { StartHardDriveMenu(); }
+		}
+	]
+	shell Transform
+	{
+		scale 12.336 12.336 12.336
+		translation 41.549999 10.190000 -201.399994
+		children
+		[
+			DEF theHardDriveMenuShellSpinner Spinner
+			{
 				rpm 0
 				axis 0 0 0
-                children
-                [
+				children
+				[
 					DEF theHardDriveMenuShellWaver Waver
 					{
 						rpm 2.25//rpm 0.75
@@ -178,90 +177,90 @@ DEF theHardDriveMenu Level
 					}
 				]
 			}
-        ]
-    }
-    tunnel Transform
-    {
-        children
-        [
-            Shape
-            {
-                appearance Appearance { material MaxMaterial { name "Tubes" } }
-                geometry DEF Tunnel_01-FACES Mesh { url "Memory/Tunnel_01-FACES.xm" }
-            }
-        ]
-        rotation 0.3563 0.9235 -0.1421 -0.8156
-        translation 41.110001 7.94 -140.899994
-    }
-    path DEF theHardDriveMenuViewpoint Viewpoint
-    {
-        fieldOfView 1.438
-        orientation -0.9995 -0.031970 0.000318 -0.0199
-        position 41.650002 8.885 -194.300003
-        jump false
-    }
-	
-    control  DEF theHardDriveMenuJoy Joystick
-    {				
-        function OnLeftThumbMoveUp()
-        {
-			if((curMenuItem == 0) | (curMenuItem == 3)) { return; }
-            else if(curMenuItem == 1) { curMenuItem = 0; }
-            else if(curMenuItem == 2) { curMenuItem = 3; }
-			theMemoryControllerSelectSound.Play();
-            UpdateHardDriveMenu();
-        }
+		]
+	}
+	tunnel Transform
+	{
+		children
+		[
+			Shape
+			{
+				appearance Appearance { material MaxMaterial { name "Tubes" } }
+				geometry DEF Tunnel_01-FACES Mesh { url "Memory/Tunnel_01-FACES.xm" }
+			}
+		]
+		rotation 0.3563 0.9235 -0.1421 -0.8156
+		translation 41.110001 7.94 -140.899994
+	}
+	path DEF theHardDriveMenuViewpoint Viewpoint
+	{
+		fieldOfView 1.438
+		orientation -0.9995 -0.031970 0.000318 -0.0199
+		position 41.650002 8.885 -194.300003
+		jump false
+	}
 
-        function OnLeftThumbMoveDown()
-        {
-            if((curMenuItem == 1) | (curMenuItem == 2)) { return; }
-            else if(curMenuItem == 0) { curMenuItem = 1; } 
+	control  DEF theHardDriveMenuJoy Joystick
+	{
+		function OnLeftThumbMoveUp()
+		{
+			if((curMenuItem == 0) | (curMenuItem == 3)) { return; }
+			else if(curMenuItem == 1) { curMenuItem = 0; }
+			else if(curMenuItem == 2) { curMenuItem = 3; }
+			theMemoryControllerSelectSound.Play();
+			UpdateHardDriveMenu();
+		}
+
+		function OnLeftThumbMoveDown()
+		{
+			if((curMenuItem == 1) | (curMenuItem == 2)) { return; }
+			else if(curMenuItem == 0) { curMenuItem = 1; }
 			else if(curMenuItem == 3) { curMenuItem = 2; }
 			theMemoryControllerSelectSound.Play();
-            UpdateHardDriveMenu();
-        }
+			UpdateHardDriveMenu();
+		}
 
-        function OnLeftThumbMoveRight()
-        {
-            if((curMenuItem == 3) | (curMenuItem == 2)) { return; }
-            else if(curMenuItem == 0) { curMenuItem = 3; }
-            else if(curMenuItem == 1) { curMenuItem = 2; }
+		function OnLeftThumbMoveRight()
+		{
+			if((curMenuItem == 3) | (curMenuItem == 2)) { return; }
+			else if(curMenuItem == 0) { curMenuItem = 3; }
+			else if(curMenuItem == 1) { curMenuItem = 2; }
 			theMemoryControllerSelectSound.Play();
-            UpdateHardDriveMenu();
-        }
+			UpdateHardDriveMenu();
+		}
 
-        function OnLeftThumbMoveLeft()
-        {
-            if((curMenuItem == 0) | (curMenuItem == 1)) { return; }
-            else if(curMenuItem == 2) { curMenuItem = 1; }
-            else if(curMenuItem == 3) { curMenuItem = 0; }
+		function OnLeftThumbMoveLeft()
+		{
+			if((curMenuItem == 0) | (curMenuItem == 1)) { return; }
+			else if(curMenuItem == 2) { curMenuItem = 1; }
+			else if(curMenuItem == 3) { curMenuItem = 0; }
 			theMemoryControllerSelectSound.Play();
-            UpdateHardDriveMenu();
-        }
-	
-        function OnADown()
-        {
-            PlaySoundA();
-            theHardDriveMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
+			UpdateHardDriveMenu();
+		}
+
+		function OnADown()
+		{
+			PlaySoundA();
+			theHardDriveMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			theTitlesMenu.GoTo();
-            theGamesSubMenuIn.Play();
-        }
+			theGamesSubMenuIn.Play();
+		}
 
-        function OnBDown()
-        {
-            PlaySoundB();
-            theHardDriveMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
-            theMainMenu.GoBackTo();
-            theGamesSubMenuOut.Play();
-        }
-    }
+		function OnBDown()
+		{
+			PlaySoundB();
+			theHardDriveMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
+			theMainMenu.GoBackTo();
+			theGamesSubMenuOut.Play();
+		}
+	}
 
-    function OnActivate()
-    {
+	function OnActivate()
+	{
 		CurrentViewpoint = theHardDriveMenuViewpoint;
 		CurrentAltViewpoint = AlternateHardDriveMenuViewpoint;
 		EnableAudio();
-    }
+	}
 }
 
 var bTitlesGridActivatePending;
@@ -270,65 +269,65 @@ var nFileMenuItemCount;
 
 function ShowFileDetailView()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    if (c.theTitlesGrid.CanDetachIcon())
-    {
-        c.theTitlesGrid.detachIcon = true;
-        ResetDetailScreen();
-        c.theTitlesGrid.setSelImage();
-        UpdateFileMetaPanel();
-        bDetailView = true;
+	var c = theTitlesMenu.children[0].children[0];
+	if (c.theTitlesGrid.CanDetachIcon())
+	{
+		c.theTitlesGrid.detachIcon = true;
+		ResetDetailScreen();
+		c.theTitlesGrid.setSelImage();
+		UpdateFileMetaPanel();
+		bDetailView = true;
 		CurrentViewpoint = fileDetailView;
 		CurrentAltViewpoint = AlternatefileDetailView;
-        fileDetailView.isBound = true;
-        c.Title_Menu_Parent.SetAlpha(0);
-        c.Copy_Dest_Parent.SetAlpha(1);
-        c.mainPodPanel.SetAlpha(0);
-        c.mainPodPanel2.SetAlpha(0);
-        c.svIconPanel.SetAlpha(0);
-        c.stIconPanel.SetAlpha(0);
-        c.theTitlesGrid.renderIcons = false;
-        nCurFileMenuItem = 0;
-        InitMemoryMenuItems();
-        UpdateFileMenu();
-        return true;
-    }
-    return false;
+		fileDetailView.isBound = true;
+		c.Title_Menu_Parent.SetAlpha(0);
+		c.Copy_Dest_Parent.SetAlpha(1);
+		c.mainPodPanel.SetAlpha(0);
+		c.mainPodPanel2.SetAlpha(0);
+		c.svIconPanel.SetAlpha(0);
+		c.stIconPanel.SetAlpha(0);
+		c.theTitlesGrid.renderIcons = false;
+		nCurFileMenuItem = 0;
+		InitMemoryMenuItems();
+		UpdateFileMenu();
+		return true;
+	}
+	return false;
 }
 
 function UpdateFileMenu()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    for (var i = 0; i < 2; i = i + 1)
-    {
-        if (i < nFileMenuItemCount)
-        {
-            c.theMenuButtons.children[i].visible = true;
-            c.ButtonText.children[i].visible = true;
-            if (i == nCurFileMenuItem)
-            {
-                c.theMenuButtons.children[i].children[0].appearance.material.name = "GameHilite";
-                c.ButtonText.children[i].children[0].children[0].appearance.material.name = "Material #133";
-            }
-            else
-            {
-                c.theMenuButtons.children[i].children[0].appearance.material.name = "FlatSurfaces";
-                c.ButtonText.children[i].children[0].children[0].appearance.material.name = "NavType";
-            }
-        }
-        else
-        {
-            c.theMenuButtons.children[i].visible = false;
-            c.ButtonText.children[i].visible = false;
-        }
-    }
+	var c = theTitlesMenu.children[0].children[0];
+	for (var i = 0; i < 2; i = i + 1)
+	{
+		if (i < nFileMenuItemCount)
+		{
+			c.theMenuButtons.children[i].visible = true;
+			c.ButtonText.children[i].visible = true;
+			if (i == nCurFileMenuItem)
+			{
+				c.theMenuButtons.children[i].children[0].appearance.material.name = "GameHilite";
+				c.ButtonText.children[i].children[0].children[0].appearance.material.name = "Material #133";
+			}
+			else
+			{
+				c.theMenuButtons.children[i].children[0].appearance.material.name = "FlatSurfaces";
+				c.ButtonText.children[i].children[0].children[0].appearance.material.name = "NavType";
+			}
+		}
+		else
+		{
+			c.theMenuButtons.children[i].visible = false;
+			c.ButtonText.children[i].visible = false;
+		}
+	}
 }
 
 function InitMemoryMenuItems()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    var nTitle = c.theTitlesGrid.curTitle;
-    var nSavedGame = c.theTitlesGrid.curSavedGame;
+	var c = theTitlesMenu.children[0].children[0];
+	var nTitle = c.theTitlesGrid.curTitle;
+	var nSavedGame = c.theTitlesGrid.curSavedGame;
 	c.MenuItemText1.text = theTranslator.Translate("LAUNCH TITLE");
 	c.MenuItemText2.text = theTranslator.Translate("DELETE TITLE");
 	nFileMenuItemCount = 2;
@@ -336,110 +335,110 @@ function InitMemoryMenuItems()
 
 DEF fileDetailView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.002557 1.000000 0.000040 -0.119700
-    position 34.389999 15.300000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.002557 1.000000 0.000040 -0.119700
+	position 34.389999 15.300000 -212.899994
+	jump false
 }
 
 DEF fileCopyView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.005135 -1.000000 0.000675 -0.221000
-    position 35.630001 15.200000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.005135 -1.000000 0.000675 -0.221000
+	position 35.630001 15.200000 -212.899994
+	jump false
 }
 
 function ResetMetaPanels()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.MetaLine1.text = "";
-    c.MetaLine2.text = "";
-    c.MetaLine3.text = "";
-    c.MetaLine4.text = "";
-    c.MetaLine1a.text = "";
-    c.MetaLine2a.text = "";
-    c.MetaLine3a.text = "";
-    c.MetaLine4a.text = "";
+	var c = theTitlesMenu.children[0].children[0];
+	c.MetaLine1.text = "";
+	c.MetaLine2.text = "";
+	c.MetaLine3.text = "";
+	c.MetaLine4.text = "";
+	c.MetaLine1a.text = "";
+	c.MetaLine2a.text = "";
+	c.MetaLine3a.text = "";
+	c.MetaLine4a.text = "";
 }
 
 function ResetDetailScreen()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.ModePanel.SetRotation(0.000019, 1.000000, 0.000000, -0.008727);
-    c.ModePanel.SetTranslation(-0.063380, 0.076040, 0.060840);
-    c.ModePanel.SetAlpha(1);
-    c.copy_arm_0.SetRotation(0.0, -1.0, 0.0, -2.016000);
-    c.copy_arm_0.SetTranslation(0.109400, 0.067290, 0.229400);
-    c.copy_arm_0.SetAlpha(0);
-    c.Group06.SetTranslation(-10.370000, 3.481000, 71.800003);
-    c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.034910);
-    c.Group07.SetTranslation(-8.513000, 3.522000, 72.169998);
-    c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.279300);
+	var c = theTitlesMenu.children[0].children[0];
+	c.ModePanel.SetRotation(0.000019, 1.000000, 0.000000, -0.008727);
+	c.ModePanel.SetTranslation(-0.063380, 0.076040, 0.060840);
+	c.ModePanel.SetAlpha(1);
+	c.copy_arm_0.SetRotation(0.0, -1.0, 0.0, -2.016000);
+	c.copy_arm_0.SetTranslation(0.109400, 0.067290, 0.229400);
+	c.copy_arm_0.SetAlpha(0);
+	c.Group06.SetTranslation(-10.370000, 3.481000, 71.800003);
+	c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.034910);
+	c.Group07.SetTranslation(-8.513000, 3.522000, 72.169998);
+	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.279300);
 }
 
 function ResetCopyScreen()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.ModePanel.SetRotation(0.0, -1.0, 0.0, -3.246000);
-    c.ModePanel.SetTranslation(0.174100, 0.076040, -0.735600);
-    c.ModePanel.SetAlpha(0);
-    c.copy_arm_0.SetRotation(0.000000, 1.000000, 0.000000, -0.034910);
-    c.copy_arm_0.SetTranslation(-0.008480, 0.067290, 0.790500);
-    c.copy_arm_0.SetAlpha(1);
-    c.Group06.SetTranslation(-9.572000, 3.376000, 72.230003);
-    c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.314200);
-    c.Group07.SetTranslation(-8.542000, 3.420000, 72.209999);
-    c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.008727);
+	var c = theTitlesMenu.children[0].children[0];
+	c.ModePanel.SetRotation(0.0, -1.0, 0.0, -3.246000);
+	c.ModePanel.SetTranslation(0.174100, 0.076040, -0.735600);
+	c.ModePanel.SetAlpha(0);
+	c.copy_arm_0.SetRotation(0.000000, 1.000000, 0.000000, -0.034910);
+	c.copy_arm_0.SetTranslation(-0.008480, 0.067290, 0.790500);
+	c.copy_arm_0.SetAlpha(1);
+	c.Group06.SetTranslation(-9.572000, 3.376000, 72.230003);
+	c.Group06.SetRotation(0.000000, -1.000000, 0.000000, -0.314200);
+	c.Group07.SetTranslation(-8.542000, 3.420000, 72.209999);
+	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.008727);
 }
 
 function StartCopy()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.theCopyDestination.isActive = true;
-    fileCopyView.isBound = true;
-    ResetCopyScreen();
-    bInCopy = true;
+	var c = theTitlesMenu.children[0].children[0];
+	c.theCopyDestination.isActive = true;
+	fileCopyView.isBound = true;
+	ResetCopyScreen();
+	bInCopy = true;
 }
 
 function EndCopy()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    CloseMessage();
-    bInCopy = false;
-    bDoingCopy = false;
-    ResetDetailScreen();
-    c.theCopyDestination.isActive = false;
-    ShowFileDetailView();
+	var c = theTitlesMenu.children[0].children[0];
+	CloseMessage();
+	bInCopy = false;
+	bDoingCopy = false;
+	ResetDetailScreen();
+	c.theCopyDestination.isActive = false;
+	ShowFileDetailView();
 }
 
 function DoMemoryItemMenuCommand()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    var nTitle = c.theTitlesGrid.curTitle;
+	var c = theTitlesMenu.children[0].children[0];
+	var nTitle = c.theTitlesGrid.curTitle;
 		 if(nCurFileMenuItem == 0) { theTitleLauncherLevel.GoTo(); }
 	else if(nCurFileMenuItem == 1) { StartDelete(); }
 }
 
 function StartDelete()
 {
-    var msg = "ConfirmDeleteTitle";
-    AskQuestion( msg, "", "", 1 );
+	var msg = "ConfirmDeleteTitle";
+	AskQuestion( msg, "", "", 1 );
 }
 
 function DoDelete()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    PlaySoundDelete();
-    BlockUser("DeletingTitle");
-    c.theTitlesGrid.StartDelete();
+	var c = theTitlesMenu.children[0].children[0];
+	PlaySoundDelete();
+	BlockUser("DeletingTitle");
+	c.theTitlesGrid.StartDelete();
 }
 
 function InitializeTitles()
 {
-    bDoingCopy = false;
-    bTitlesGridActivatePending = false;
-    bConfirmingOverwrite = false;
+	bDoingCopy = false;
+	bTitlesGridActivatePending = false;
+	bConfirmingOverwrite = false;
 }
 
 var bDetailView;
@@ -450,35 +449,35 @@ var menuName;
 
 function EnterMemoryFiles()
 {
-    bInCopy = false;
-    bDoingCopy = false;
-    var tempName;
+	bInCopy = false;
+	bDoingCopy = false;
+	var tempName;
 	if(curMenuItem == 0) { tempName = "Applications"; }
 	if(curMenuItem == 1) { tempName = "Games"; }
 	if(curMenuItem == 2) { tempName = "Dashboards"; }
 	if(curMenuItem == 3) { tempName = "Emulators"; }
-			
-	
-    var IniFile = new Settings;
-    IniFile.SetIniSection(tempName);
-    var a = IniFile.GetIniValue( "Path" );
-    menuName = IniFile.GetIniValue( "Name" );
-    theTitlesMenu.children[0].children[0].theTitlesGrid.SetPath( a );
-    theTitlesMenu.children[0].children[0].MenuName.text = menuName;
-    theTitlesMenu.children[0].children[0].theCopyDestination.isActive = false;
-    ShowFileListView();
-    UpdateFileMetaPanel();
-    nCurFileMenuItem = 0;
-	    
-// 	var c = theTitlesMenu.children[0].children[0];
+
+
+	var IniFile = new Settings;
+	IniFile.SetIniSection(tempName);
+	var a = IniFile.GetIniValue( "Path" );
+	menuName = IniFile.GetIniValue( "Name" );
+	theTitlesMenu.children[0].children[0].theTitlesGrid.SetPath( a );
+	theTitlesMenu.children[0].children[0].MenuName.text = menuName;
+	theTitlesMenu.children[0].children[0].theCopyDestination.isActive = false;
+	ShowFileListView();
+	UpdateFileMetaPanel();
+	nCurFileMenuItem = 0;
+
+//	var c = theTitlesMenu.children[0].children[0];
 //     c.theCopyDestination.isActive = false;
-// 	
+//
 //     var IniFile = new Settings;
 //     IniFile.SetIniSection(tempName);
 //     var a = IniFile.GetIniValue( "Path" );
 //     menuName = IniFile.GetIniValue( "Name" );
 //     c.theTitlesGrid.SetPath( a );
-// 	
+//
 //     c.MenuName.text = menuName;
 //     ShowFileListView();
 //     UpdateFileMetaPanel();
@@ -487,88 +486,88 @@ function EnterMemoryFiles()
 
 function ShowFileListView()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.theTitlesGrid.detachIcon = false;
-    bDetailView = false;
-    CurrentViewpoint = fileListView;
-    CurrentAltViewpoint = AlternatefileListView;
-    fileListView.isBound = true;
-    c.Title_Menu_Parent.SetAlpha(1);
-    c.Copy_Dest_Parent.SetAlpha(0);
-    c.mainPodPanel.SetAlpha(1);
-    c.mainPodPanel2.SetAlpha(1);
-    c.svIconPanel.SetAlpha(1);
-    c.stIconPanel.SetAlpha(1);
-    c.theTitlesGrid.renderIcons = true;
+	var c = theTitlesMenu.children[0].children[0];
+	c.theTitlesGrid.detachIcon = false;
+	bDetailView = false;
+	CurrentViewpoint = fileListView;
+	CurrentAltViewpoint = AlternatefileListView;
+	fileListView.isBound = true;
+	c.Title_Menu_Parent.SetAlpha(1);
+	c.Copy_Dest_Parent.SetAlpha(0);
+	c.mainPodPanel.SetAlpha(1);
+	c.mainPodPanel2.SetAlpha(1);
+	c.svIconPanel.SetAlpha(1);
+	c.stIconPanel.SetAlpha(1);
+	c.theTitlesGrid.renderIcons = true;
 }
 
 function UpdateFileMetaPanel()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    var nTitle = c.theTitlesGrid.curTitle;
+	var c = theTitlesMenu.children[0].children[0];
+	var nTitle = c.theTitlesGrid.curTitle;
 	var strTitleName = c.theTitlesGrid.GetTitleName(nTitle);
 	var a = c.theTitlesGrid.GetTitleCount();
 	var b;
 	if( a < 2 ) { b = " Title"; }
 	else { b = " Titles"; }
-    c.TitleCountText.text = a + b;
-    c.MetaLine1.text = "";
-    c.MetaLine2.text = "";
-    c.MetaLine3.text = "";
-    c.MetaLine4.text = "";
-    c.MetaLine1a.text = "";
-    c.MetaLine2a.text = "";
-    c.MetaLine3a.text = "";
-    c.MetaLine4a.text = "";
-    c.MetaLine1.text = strTitleName;
-    c.MetaLine1a.text = strTitleName;
+	c.TitleCountText.text = a + b;
+	c.MetaLine1.text = "";
+	c.MetaLine2.text = "";
+	c.MetaLine3.text = "";
+	c.MetaLine4.text = "";
+	c.MetaLine1a.text = "";
+	c.MetaLine2a.text = "";
+	c.MetaLine3a.text = "";
+	c.MetaLine4a.text = "";
+	c.MetaLine1.text = strTitleName;
+	c.MetaLine1a.text = strTitleName;
 }
 
 function ResetMemoryFocus()
 {
-    var c = theTitlesMenu.children[0].children[0];
-    c.theTitlesGrid.curTitle = 0;
-    c.theTitlesGrid.curSavedGame = -1;
-    c.theTitlesGrid.iconRowScroll = 0;
-    c.theTitlesGrid.scroll = 0;
-    c.theTitlesGrid.nPrefColumn = -1;
+	var c = theTitlesMenu.children[0].children[0];
+	c.theTitlesGrid.curTitle = 0;
+	c.theTitlesGrid.curSavedGame = -1;
+	c.theTitlesGrid.iconRowScroll = 0;
+	c.theTitlesGrid.scroll = 0;
+	c.theTitlesGrid.nPrefColumn = -1;
 }
 
 DEF theTitlesMenu Level
 {
-    archive "memory_files.xip"
-    children
-    [
-        Inline
-        {
-            url "memory_files/default2.xap"
-            function onLoad()
-            {
-                bInCopy = false;
-                InitializeTitles();
-                ResetDetailScreen();
-                ResetMetaPanels();
-                var c = theTitlesMenu.children[0].children[0];
-                c.Title_Menu_Parent.SetAlpha(1);
-                c.Copy_Dest_Parent.SetAlpha(0);
-                EnterMemoryFiles();
-                if (bTitlesGridActivatePending) { children[0].theTitlesGrid.isActive = true; }
-                children[0].TotalFreeText.text = "         X B O X  H A R D  D R I V E";
-            }
-        }
-    ]
-    shell Transform
-    {
-        scale 2.4672 2.4672 2.4672
-        translation 34.559999 15.220000 -214.199997
-        children
-        [
-            DEF theTitlesMenuShellSpinner Spinner
-            {
+	archive "memory_files.xip"
+	children
+	[
+		Inline
+		{
+			url "memory_files/default2.xap"
+			function onLoad()
+			{
+				bInCopy = false;
+				InitializeTitles();
+				ResetDetailScreen();
+				ResetMetaPanels();
+				var c = theTitlesMenu.children[0].children[0];
+				c.Title_Menu_Parent.SetAlpha(1);
+				c.Copy_Dest_Parent.SetAlpha(0);
+				EnterMemoryFiles();
+				if (bTitlesGridActivatePending) { children[0].theTitlesGrid.isActive = true; }
+				children[0].TotalFreeText.text = "         X B O X  H A R D  D R I V E";
+			}
+		}
+	]
+	shell Transform
+	{
+		scale 2.4672 2.4672 2.4672
+		translation 34.559999 15.220000 -214.199997
+		children
+		[
+			DEF theTitlesMenuShellSpinner Spinner
+			{
 				rpm 0
 				axis 0 0 0
-                children
-                [
+				children
+				[
 					DEF theTitlesMenuShellWaver Waver
 					{
 						rpm 2.25//rpm 0.75
@@ -596,106 +595,106 @@ DEF theTitlesMenu Level
 					}
 				]
 			}
-        ]
-    }
-    path DEF fileListView Viewpoint
-    {
-        fieldOfView 1.287000
-        orientation -0.239300 0.970900 -0.003803 -0.032740
-        position 34.529999 15.290000 -212.300003
-        jump false
-    }
-    control DEF theTitlesMenuJoy Joystick
-    {
-        function OnADown()
-        {
-            var c = theTitlesMenu.children[0].children[0];
-            if (bDetailView)
-            {
-                c.MU_select_pod_HL2.children[0].appearance.material.param = 1;
-                DoMemoryItemMenuCommand();
-                PlaySoundA();
-            }
-            else
-            {
-                c.MU_select_pod_HL.children[0].appearance.material.param = 1;
-                PlaySoundA();
+		]
+	}
+	path DEF fileListView Viewpoint
+	{
+		fieldOfView 1.287000
+		orientation -0.239300 0.970900 -0.003803 -0.032740
+		position 34.529999 15.290000 -212.300003
+		jump false
+	}
+	control DEF theTitlesMenuJoy Joystick
+	{
+		function OnADown()
+		{
+			var c = theTitlesMenu.children[0].children[0];
+			if (bDetailView)
+			{
+				c.MU_select_pod_HL2.children[0].appearance.material.param = 1;
+				DoMemoryItemMenuCommand();
+				PlaySoundA();
+			}
+			else
+			{
+				c.MU_select_pod_HL.children[0].appearance.material.param = 1;
+				PlaySoundA();
 				ShowFileDetailView();
-            }
-        }
+			}
+		}
 
-        function OnBDown()
-        {
-            var c = theTitlesMenu.children[0].children[0];
-            if (bDetailView)
-            {
-                PlaySoundB();
-                ShowFileListView();
-                c.MU_back_pod_HL2.children[0].appearance.material.param = 1;
-            }
-            else
-            {
-                PlaySoundB();
-                c.MU_back_pod_HL.children[0].appearance.material.param = 1;
+		function OnBDown()
+		{
+			var c = theTitlesMenu.children[0].children[0];
+			if (bDetailView)
+			{
+				PlaySoundB();
+				ShowFileListView();
+				c.MU_back_pod_HL2.children[0].appearance.material.param = 1;
+			}
+			else
+			{
+				PlaySoundB();
+				c.MU_back_pod_HL.children[0].appearance.material.param = 1;
 				theHardDriveMenu.GoBackTo();
-                theGamesSubMenuOut.Play();
-            }
-        }
-		
+				theGamesSubMenuOut.Play();
+			}
+		}
+
 		function OnYDown()
-        {
+		{
 			var c = theTitlesMenu.children[0].children[0];
 			var a = c.MenuName.text;
 			AskQuestion( "\n\nRefresh " + a + " Menu Cache ?", "theHardDriveInline.children[0].RefreshCache()", "", 1 );
-        }
+		}
 
-        function OnLeftThumbMoveUp()
-        {
-            var c = theTitlesMenu.children[0].children[0];
-            if (bDetailView)
-            {
-                if (nCurFileMenuItem > 0)
-                {
-                    PlaySoundMenuChange();
-                    nCurFileMenuItem = nCurFileMenuItem - 1;
-                    UpdateFileMenu();
-                }
-            }
-            else
-            {
-                var oldCurTitle = c.theTitlesGrid.curTitle;
-                var oldCurSave = c.theTitlesGrid.curSavedGame;
-                c.theTitlesGrid.selectUp();
-				if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
-                else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
-            }
-        }
-
-        function OnLeftThumbMoveDown()
-        {
-            var c = theTitlesMenu.children[0].children[0];
+		function OnLeftThumbMoveUp()
+		{
+			var c = theTitlesMenu.children[0].children[0];
 			if (bDetailView)
-            {
-                if (nCurFileMenuItem < nFileMenuItemCount - 1)
-                {
-                    PlaySoundMenuChange();
-                    nCurFileMenuItem = nCurFileMenuItem + 1;
-                    UpdateFileMenu();
-                }
-            }
-            else
-            {
-                var oldCurTitle = c.theTitlesGrid.curTitle;
-                var oldCurSave = c.theTitlesGrid.curSavedGame;
-                c.theTitlesGrid.selectDown();
-                if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
-                else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
-            }
-        }
-    }
+			{
+				if (nCurFileMenuItem > 0)
+				{
+					PlaySoundMenuChange();
+					nCurFileMenuItem = nCurFileMenuItem - 1;
+					UpdateFileMenu();
+				}
+			}
+			else
+			{
+				var oldCurTitle = c.theTitlesGrid.curTitle;
+				var oldCurSave = c.theTitlesGrid.curSavedGame;
+				c.theTitlesGrid.selectUp();
+				if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
+				else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
+			}
+		}
 
-    function OnActivate()
-    {
+		function OnLeftThumbMoveDown()
+		{
+			var c = theTitlesMenu.children[0].children[0];
+			if (bDetailView)
+			{
+				if (nCurFileMenuItem < nFileMenuItemCount - 1)
+				{
+					PlaySoundMenuChange();
+					nCurFileMenuItem = nCurFileMenuItem + 1;
+					UpdateFileMenu();
+				}
+			}
+			else
+			{
+				var oldCurTitle = c.theTitlesGrid.curTitle;
+				var oldCurSave = c.theTitlesGrid.curSavedGame;
+				c.theTitlesGrid.selectDown();
+				if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
+				else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
+			}
+		}
+	}
+
+	function OnActivate()
+	{
 		CurrentViewpoint = fileListView;
 		CurrentAltViewpoint = AlternatefileListView;
 		EnableAudio();
@@ -707,23 +706,23 @@ DEF theTitlesMenu Level
 		//c.Title_Menu_Parent.SetAlpha(1);
 		//c.Copy_Dest_Parent.SetAlpha(0);
 		ResetMemoryFocus();
-    }
+	}
 
-    function OnDeactivate()
-    {
-        var c = theTitlesMenu.children[0].children[0];
-        c.theTitlesGrid.isActive = false;
-        bTitlesGridActivatePending = false;
-    }
+	function OnDeactivate()
+	{
+		var c = theTitlesMenu.children[0].children[0];
+		c.theTitlesGrid.isActive = false;
+		bTitlesGridActivatePending = false;
+	}
 
-    function OnArrival()
-    {
+	function OnArrival()
+	{
 		CurrentViewpoint = fileListView;
 		CurrentAltViewpoint = AlternatefileListView;
-		
+
 		var c = theTitlesMenu.children[0].children[0];
 		c.theTitlesGrid.isActive = true;
-    }
+	}
 }
 
 DEF AlternateHardDriveMenuViewpoint Viewpoint
@@ -736,40 +735,40 @@ DEF AlternateHardDriveMenuViewpoint Viewpoint
 
 DEF fileDetailView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.002557 1.000000 0.000040 -0.119700
-    position 34.389999 15.300000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.002557 1.000000 0.000040 -0.119700
+	position 34.389999 15.300000 -212.899994
+	jump false
 }
 
 DEF AlternatefileDetailView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation 1 0 0 -0.579
-    position 34.389999 15.300000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation 1 0 0 -0.579
+	position 34.389999 15.300000 -212.899994
+	jump false
 }
 
 DEF fileCopyView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation -0.005135 -1.000000 0.000675 -0.221000
-    position 35.630001 15.200000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation -0.005135 -1.000000 0.000675 -0.221000
+	position 35.630001 15.200000 -212.899994
+	jump false
 }
 
 DEF AlternatefileCopyView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation 1 0 0 -0.579
-    position 35.630001 15.200000 -212.899994
-    jump false
+	fieldOfView 1.287000
+	orientation 1 0 0 -0.579
+	position 35.630001 15.200000 -212.899994
+	jump false
 }
 
 DEF AlternatefileListView Viewpoint
 {
-    fieldOfView 1.287000
-    orientation 1 0 0 -0.579
-    position 34.529999 15.290000 -212.300003
-    jump false
+	fieldOfView 1.287000
+	orientation 1 0 0 -0.579
+	position 34.529999 15.290000 -212.300003
+	jump false
 }
