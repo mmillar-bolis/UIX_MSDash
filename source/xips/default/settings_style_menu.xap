@@ -1,0 +1,225 @@
+
+var CurrentMenuItem;
+var NumberOfMenuItems;
+var CurrentMenuButton;
+var ScrollPlaceHolder;
+var TotalMenuItems;
+var MenuContents;
+var CurrentTitleName;
+var theTextures;
+var theMenuName;
+
+DEF theGlobal Transform
+{ 
+    visible false
+ 	children
+  	[
+  		Shape
+  		{
+  			appearance Appearance { material Material {  } }
+  			geometry DEF theCellWallMesh Mesh
+  		}
+  	]
+  	scale 0 0 0
+  	translation 500 0 0
+}
+
+function GetCellWallType()
+{
+    var IniFile = new Settings;
+	IniFile.SetIniSection( "Dashboard Settings" );
+	var a = IniFile.GetIniValue( "Current Skin" );
+	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm"; 
+}
+
+function initialize() { GetCellWallType(); }
+
+function UpdateSettingsStyleMenu()
+{
+	var x = theSettingsStyleMenu.children[0].children[0];
+	var tempID = theGamesMenu.GetTitleID( CurrentMenuItem );
+	var strIconPath = "E:\\UDATA\\" + tempID + "\\TitleImage.xbx";
+	x.theIconCube.children[0].children[0].appearance.texture.url = strIconPath;
+	x.movearrow_up.visible = false;
+	x.movearrow_dn.visible = false;
+	x.movearrow_up.children[0].appearance.material.name = "NavType";
+	x.movearrow_dn.children[0].appearance.material.name = "NavType";
+	if(ScrollPlaceHolder > 0) { x.movearrow_up.visible = true; }
+	if(ScrollPlaceHolder + NumberOfMenuItems < TotalMenuItems) { x.movearrow_dn.visible = true; }
+
+	for (var i = 0; i < NumberOfMenuItems; i = i + 1)
+	{
+		if(i == CurrentMenuButton)
+		{
+			x.MenuButtons.children[i].children[0].appearance.material.name = "GameHilite";
+			x.MenuButtons.children[i].children[0].appearance.texture.url = "menu_hilight.xbx";
+			x.MenuText.children[i].children[0].appearance.material.name = "Material #133";
+			if(i == 0) { x.movearrow_up.children[0].appearance.material.name = "Material #133"; }
+			else if(i == 5) { x.movearrow_dn.children[0].appearance.material.name = "Material #133"; }
+		}
+		else
+		{
+			x.MenuButtons.children[i].children[0].appearance.material.name = "GameHilite";
+			x.MenuButtons.children[i].children[0].appearance.texture.url = "outline.xbx";
+			x.MenuText.children[i].children[0].appearance.material.name = "NavType";
+		}
+		if(TotalMenuItems > i) { x.MenuText.children[i].children[0].geometry.text = theGamesMenu.GetTitleName(ScrollPlaceHolder + i); }
+	}
+	x.metaPanel.children[0].geometry.text = theGamesMenu.GetTitleName(CurrentMenuItem);
+}
+
+function StartSettingsStyleMenu()
+{
+	TotalMenuItems = theGamesMenu.titleCount;
+	CurrentMenuItem = 0;
+	NumberOfMenuItems = 6;
+	CurrentMenuButton = 0;
+	ScrollPlaceHolder = 0;
+	//theMenuName = theGamesMenu.GetMenuName();
+	var x = theSettingsStyleMenu.children[0].children[0];
+	x.theSettingsStyleMenuHead.geometry.text = theGamesMenu.GetMenuName();
+	if(TotalMenuItems == 4)
+	{
+		x.S_Home_menubutton_07.visible = false;
+		x.S_Home_text_05.visible = false;
+		x.S_Home_menubutton_06.visible = false;
+		x.S_Home_text_06.visible = false;
+	}
+	else if(TotalMenuItems == 5)
+	{
+		x.S_Home_menubutton_07.visible = true;
+		x.S_Home_text_05.visible = true;
+		x.S_Home_menubutton_06.visible = false;
+		x.S_Home_text_06.visible = false;
+	}
+	else
+	{
+		x.S_Home_menubutton_07.visible = true;
+		x.S_Home_text_05.visible = true;
+		x.S_Home_menubutton_06.visible = true;
+		x.S_Home_text_06.visible = true;
+	}
+	UpdateSettingsStyleMenu();
+}
+
+DEF theSettingsStyleMenu Level
+{
+    archive "settings.xip"
+    children
+    [
+        Inline
+		{
+			url "settings/menu.xap"
+			function onLoad()
+			{
+				children[0].ClockIcon.visible = false;
+				children[0].GlobeIcon.visible = false;
+				children[0].StereoIcon.visible = false;
+				children[0].MonoIcon.visible = false;
+				children[0].FullscreenIcon.visible = false;
+				children[0].LetterboxIcon.visible = false;
+				children[0].WidescreenIcon.visible = false;
+				children[0].LockIcon.visible = false;
+				children[0].AutoOffIcon.visible = false;
+				children[0].ConsoleIcon.visible = false;
+				StartSettingsStyleMenu();
+			}
+		}
+    ]
+    shell Transform
+    {
+        scale 150 150 150
+        translation 123.2 1.041 -190.3
+        children
+        [
+            DEF theSettingsStyleMenuShellSpinner Spinner
+            {
+				rpm 0
+				axis 0 0 0
+                children
+                [
+					DEF theSettingsStyleMenuShellWaver Waver
+					{
+						rpm 2.25//rpm 1.75
+						children
+						[
+							Shape
+							{
+								appearance Appearance
+								{
+									material MaxMaterial { name "InnerWall_01" }
+									texture ImageTexture
+									{
+										alpha true
+										url "shell.xbx"
+									}
+								}
+								geometry USE theCellMenuMesh
+							}
+							Shape
+							{
+								appearance Appearance { material MaxMaterial { name "InnerWall_02" } }
+								geometry Sphere { radius 1 }
+							}
+						]
+					}
+				]
+			}
+        ]
+    }
+
+
+    path Viewpoint
+    {
+		fieldOfView 1.275000
+		orientation 0.130300 -0.991400 -0.007829 -0.121100
+		position 123.300003 -0.918000 -151.600006
+        jump false
+    }
+
+    control DEF joy Joystick
+    {
+        function OnADown()
+        {
+			PlaySoundA();
+			theSettingsStyleMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
+			theGamesMenu.LaunchTitle(CurrentMenuItem);
+        }
+		function OnBDown()
+		{
+			PlaySoundB();
+			MenuContents = "";
+			theSettingsSubMenuOut.Play();
+	    	theMainMenu.GoBackTo();
+		}
+        function OnLeftThumbMoveUp()
+		{
+			if (CurrentMenuItem == 0) { return; }
+			else
+			{
+				PlaySoundMenuChange();
+				if(CurrentMenuButton == 0) { ScrollPlaceHolder = ScrollPlaceHolder - 1; }
+				else { CurrentMenuButton = CurrentMenuButton - 1; }
+				CurrentMenuItem = CurrentMenuItem - 1;
+				UpdateSettingsStyleMenu();
+			}
+		}
+        function OnLeftThumbMoveDown()
+		{
+			if (CurrentMenuItem == TotalMenuItems - 1) { return; }
+			else
+			{
+				PlaySoundMenuChange();
+				if(CurrentMenuButton == ( NumberOfMenuItems - 1 ) ) { ScrollPlaceHolder = ScrollPlaceHolder + 1; }
+				else { CurrentMenuButton = CurrentMenuButton + 1; }
+				CurrentMenuItem = CurrentMenuItem + 1;
+				UpdateSettingsStyleMenu();
+			}
+		}
+    }
+    function OnActivate()
+    {
+		EnableAudio();
+		StartSettingsStyleMenu();
+    }
+}
