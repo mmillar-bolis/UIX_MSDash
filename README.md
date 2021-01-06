@@ -1,2 +1,2 @@
-# UIX MSDash Skin
-A customized skin for User Interface X
+# UIX MSDash
+A customized User Interface X for fans of the default dashboard.
