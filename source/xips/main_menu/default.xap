@@ -1,4 +1,3 @@
-
 DEF theMainMenuLevel Transform
 {
 	children
@@ -7,7 +6,7 @@ DEF theMainMenuLevel Transform
 		{
 			children
 			[
-				DEF Rotating_Large_X Transform// 4 large pod supports to main orb
+				DEF Rotating_Large_X Transform //4 large pod supports to main orb
 				{
 					children
 					[
@@ -136,14 +135,14 @@ DEF theMainMenuLevel Transform
 									scale 19.000000 2.072000 8.992000
 									scaleOrientation -0.118800 0.987900 0.100100 -0.141000
 									translation -4.415000 -41.959999 2.796000
-								}						
-								
+								}
+
 								DEF podsupport_ring Transform
 								{
 									children
 									[
 										Shape
-										{	
+										{
 											appearance Appearance
 											{
 												material MaxMaterial
@@ -169,7 +168,7 @@ DEF theMainMenuLevel Transform
 				{
 					fade 0.43
 					children
-					[	
+					[
 						DEF Main_memory_ringpin_2 Transform
 						{
 							children
@@ -359,7 +358,7 @@ DEF theMainMenuLevel Transform
 																			]
 																		}
 																	]
-																	translation -33.009998 -4.135000 -10.430000 
+																	translation -33.009998 -4.135000 -10.430000
 																}//DEF pod_rotate_structure1 Transform
 																DEF game_podshell_09 Transform
 																{
@@ -455,48 +454,48 @@ DEF theMainMenuLevel Transform
 																					appearance Appearance
 																					{
 																						material MaxMaterial { name "InnerWall_01" }
-																						texture ImageTexture 
+																						texture ImageTexture
 																						{
 																							alpha true
-                                															url "orbcellwall.xbx"
-                            															}
-                        															}
-                        															geometry Mesh { url "OrbCell-FACES.xm" }
-                    															}
-                															]
-            															}
-            															DEF Pod_1b_Spinner Spinner
-            															{
-            															    rpm 0
+																							url "orbcellwall.xbx"
+																						}
+																					}
+																					geometry Mesh { url "OrbCell-FACES.xm" }
+																				}
+																			]
+																		}
+																		DEF Pod_1b_Spinner Spinner
+																		{
+																			rpm 0
 																			axis 2 2 0
-            															    children
-            															    [
-            															        Shape
+																			children
+																			[
+																				Shape
 																				{
 																					appearance Appearance
 																					{
 																						material MaxMaterial { name "EggGlowPulse" }
 																						texture ImageTexture
 																						{
-             															                   alpha true
-             															                   url "orbcellwall.xbx"
+																						   alpha true
+																						   url "orbcellwall.xbx"
 																						}
 																					}
 																					geometry Mesh { url "OrbCell-FACES.xm" }
-            															        }
+																				}
 																			]
-            															}
+																		}
 																	]
 																	rotation -0.335200 0.920700 -0.199700 -0.424800
 																	scale 6.598800 6.598800 6.598800/*jbone*/
-																	scaleOrientation 0.000000 0.000000 0.000000 0.000000 
+																	scaleOrientation 0.000000 0.000000 0.000000 0.000000
 																	translation -31.959999 -3.733000 -3.075000
 																}
 																DEF memory_text Transform
 																{
 																	children
 																	[
-																		Transform																
+																		Transform
 																		{
 																			rotation -1 0 0 1.571
 																			children
@@ -509,7 +508,7 @@ DEF theMainMenuLevel Transform
 																					}
 																					geometry Text { font "Heading" translate true text "MEMORY" }
 																				}
-																			]		
+																			]
 																		}
 																	]
 																	rotation -1.000000 0.002966 0.003888 -1.551000
@@ -534,7 +533,7 @@ DEF theMainMenuLevel Transform
 											scaleOrientation -0.447400 0.891900 0.066360 -0.156600
 											translation -0.311500 -0.785100 0.478100
 										}//DEF music_arm03 Transform
-									]	
+									]
 								}
 							]
 							rotation 0.997500 -0.047920 0.052590 -1.573000
@@ -568,8 +567,8 @@ DEF theMainMenuLevel Transform
 																	[
 																		Shape
 																		{
-																			appearance Appearance 
-																			{ 
+																			appearance Appearance
+																			{
 																				material DEF MusicPanelMaterial MaxMaterial { name "GameHilite" }
 																				texture ImageTexture { url "menu_hilight.xbx" }
 																			}
@@ -639,7 +638,7 @@ DEF theMainMenuLevel Transform
 																					rotation -0.401400 0.864700 -0.302000 -1.753000
 																					scale 1.472000 1.472000 1.472000
 																					scaleOrientation 0.743300 -0.651100 0.153300 -0.941800
-																					translation 7.239998 3.871500 2.441000  
+																					translation 7.239998 3.871500 2.441000
 																				}
 																				DEF game_podsupport_2 Transform
 																				{
@@ -659,7 +658,7 @@ DEF theMainMenuLevel Transform
 																					rotation -0.689600 0.314600 -0.652200 -2.669000
 																					scale 1.472000 1.472000 1.472000
 																					scaleOrientation 0.988500 -0.146500 -0.036800 -0.483600
-																					translation -3.080002 7.282000 2.859000 
+																					translation -3.080002 7.282000 2.859000
 																				}
 																				DEF game_podsupport_3 Transform
 																				{
@@ -679,7 +678,7 @@ DEF theMainMenuLevel Transform
 																					rotation 0.672500 0.244000 0.698700 -2.514000
 																					scale 1.472000 1.472000 1.472000
 																					scaleOrientation 0.963700 0.251500 0.089200 -0.790000
-																					translation -5.679991 -2.973000 1.714000 
+																					translation -5.679991 -2.973000 1.714000
 																				}
 																				DEF game_podsupport_4 Transform
 																				{
@@ -699,7 +698,7 @@ DEF theMainMenuLevel Transform
 																					rotation 0.315600 0.854700 0.412200 -1.672000
 																					scale 1.472000 1.472000 1.472000
 																					scaleOrientation 0.989700 0.014320 -0.142500 -0.764200
-																					translation 4.640000 -5.295000 1.358000 
+																					translation 4.640000 -5.295000 1.358000
 																				}
 																				DEF game_podsocket_inner Transform
 																				{
@@ -719,7 +718,7 @@ DEF theMainMenuLevel Transform
 																			]
 																		}
 																	]
-																	translation -32.779999 -4.461000 -10.330000 
+																	translation -32.779999 -4.461000 -10.330000
 																}//DEF pod_rotate_structure2 Transform
 																DEF game_podshell_1 Transform
 																{
@@ -860,7 +859,7 @@ DEF theMainMenuLevel Transform
 																	]
 																	rotation -0.335200 0.920700 -0.199700 -0.424800
 																	scale 6.598800 6.598800 6.598800/*jbone*/
-																	scaleOrientation 0.000000 0.000000 0.000000 0.000000 
+																	scaleOrientation 0.000000 0.000000 0.000000 0.000000
 																	translation -31.719999 -4.059000 -2.976000
 																}//DEF game_select_pod_inner Transform
 																DEF music_text Transform
@@ -880,7 +879,7 @@ DEF theMainMenuLevel Transform
 																			]
 																		}
 																	]
-																	rotation -1.000000 0.002966 0.003888 -1.551000																	
+																	rotation -1.000000 0.002966 0.003888 -1.551000
 																	scale 7.000 0.0 7.000
 																	translation -14.665000 -10.570000 3.916000
 																}//DEF music_text Transform
@@ -911,28 +910,28 @@ DEF theMainMenuLevel Transform
 						}//DEF Main_memory_ringpin_3 Transform
 						DEF Main_Online_ringpin Transform
 						{
-							children 
+							children
 							[
-								DEF theOnlineItem Transform 
-								{ 
-									fade 0.43 
-									children 
+								DEF theOnlineItem Transform
+								{
+									fade 0.43
+									children
 									[
 										DEF game_arm1 Transform
 										{
-											children 
+											children
 											[
 												DEF game_arm_2 Transform
 												{
-													children 
+													children
 													[
 														DEF music Transform
 														{
-															children 
+															children
 															[
 																DEF games_metapanel Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -951,7 +950,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF music_panel_support Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -966,17 +965,17 @@ DEF theMainMenuLevel Transform
 																}
 																DEF pod_rotate_structure3 Transform
 																{
-    															    children
-    															    [
-    															        DEF Pod_3_Spinner Spinner
-    															        {
-    															            rpm 0
+																	children
+																	[
+																		DEF Pod_3_Spinner Spinner
+																		{
+																			rpm 0
 																			axis 0 0 2
-    															            children
-    															            [
+																			children
+																			[
 																				DEF game_podsupport_1 Transform
 																				{
-																					children 
+																					children
 																					[
 																						Shape
 																						{
@@ -996,7 +995,7 @@ DEF theMainMenuLevel Transform
 																				}
 																				DEF game_podsupport_2 Transform
 																				{
-																					children 
+																					children
 																					[
 																						Shape
 																						{
@@ -1016,7 +1015,7 @@ DEF theMainMenuLevel Transform
 																				}
 																				DEF game_podsupport_3 Transform
 																				{
-																					children 
+																					children
 																					[
 																						Shape
 																						{
@@ -1036,7 +1035,7 @@ DEF theMainMenuLevel Transform
 																				}
 																				DEF game_podsupport_4 Transform
 																				{
-																					children 
+																					children
 																					[
 																						Shape
 																						{
@@ -1056,7 +1055,7 @@ DEF theMainMenuLevel Transform
 																				}
 																				DEF game_podsocket_inner Transform
 																				{
-																					children 
+																					children
 																					[
 																						Shape
 																						{
@@ -1067,7 +1066,7 @@ DEF theMainMenuLevel Transform
 																					rotation 0.994900 -0.002650 -0.101000 -1.675000
 																					scale 0.329600 0.329600 0.329600
 																					scaleOrientation -0.749100 -0.377900 -0.544200 -0.193500
-																					translation 0.000000 0.000000 0.000000 
+																					translation 0.000000 0.000000 0.000000
 																				}
 																			]
 																		}
@@ -1076,7 +1075,7 @@ DEF theMainMenuLevel Transform
 																}//DEF pod_rotate_structure3 Transform
 																DEF game_podshell_2 Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1091,7 +1090,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF game_pod Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1106,7 +1105,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF game_podshell_3 Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1121,7 +1120,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF game_podshell_1 Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1136,7 +1135,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF gamepod_backing Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1151,7 +1150,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF games_tube Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1166,7 +1165,7 @@ DEF theMainMenuLevel Transform
 																}
 																DEF games_tube_0 Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -1219,7 +1218,7 @@ DEF theMainMenuLevel Transform
 																						{
 																							alpha true
 																							url "orbcellwall.xbx"
-																						}	
+																						}
 																					}
 																					geometry Mesh { url "OrbCell-FACES.xm" }
 																				}
@@ -1228,12 +1227,12 @@ DEF theMainMenuLevel Transform
 																	]
 																	rotation -0.335200 0.920700 -0.199700 -0.424800
 																	scale 6.598800 6.598800 6.598800/*jbone*/
-																	scaleOrientation 0.000000 0.000000 0.000000 0.000000 
+																	scaleOrientation 0.000000 0.000000 0.000000 0.000000
 																	translation -31.719999 -4.059000 -2.976000
 																}//DEF game_select_pod_inner04 Transform
 																DEF music_text Transform
 																{
-																	children 
+																	children
 																	[
 																		Transform
 																		{
@@ -1248,7 +1247,7 @@ DEF theMainMenuLevel Transform
 																			]
 																		}
 																	]
-																	rotation -1.000000 0.002966 0.003888 -1.551000																	
+																	rotation -1.000000 0.002966 0.003888 -1.551000
 																	scale 7.000 0.0 7.000
 																	translation -14.665000 -10.570000 3.916000
 																}
@@ -1281,10 +1280,10 @@ DEF theMainMenuLevel Transform
 						{
 							children
 							[
-								DEF theSettingsItem Transform 
-								{ 
-									fade 0.43 
-									children 
+								DEF theSettingsItem Transform
+								{
+									fade 0.43
+									children
 									[
 										DEF settings_arm03 Transform
 										{
@@ -1353,7 +1352,7 @@ DEF theMainMenuLevel Transform
 																					children
 																					[
 																						Shape
-																						{	
+																						{
 																							appearance Appearance { material MaxMaterial { name "FlatSrfc/PodParts" } }
 																							geometry USE game_podsupport_14-FACES
 																						}
@@ -1401,7 +1400,7 @@ DEF theMainMenuLevel Transform
 																					rotation 0.994900 -0.002650 -0.101000 -1.675000
 																					scale 0.329600 0.329600 0.329600
 																					scaleOrientation -0.310500 -0.318200 -0.895800 -0.441400
-																					translation 0.000000 0.000000 0.000000 
+																					translation 0.000000 0.000000 0.000000
 																				}
 																			]
 																		}//DEF Pod_4_Spinner Spinner
@@ -1448,7 +1447,7 @@ DEF theMainMenuLevel Transform
 																						{
 																							alpha true
 																							url "orbcellwall.xbx"
-																						}	
+																						}
 																					}
 																					geometry Mesh { url "OrbCell-FACES.xm" }
 																				}
@@ -1457,7 +1456,7 @@ DEF theMainMenuLevel Transform
 																	]
 																	rotation -0.335200 0.920700 -0.199700 -0.424800
 																	scale 6.598800 6.598800 6.598800/*jbone*/
-																	scaleOrientation 0.000000 0.000000 0.000000 0.000000 
+																	scaleOrientation 0.000000 0.000000 0.000000 0.000000
 																	translation -32.200001 -4.344000 -2.936000
 																}//DEF game_select_pod_inner03 Transform
 																DEF game_podshell_11 Transform
@@ -1637,10 +1636,8 @@ DEF theMainMenuLevel Transform
 			translation 400 0 -180
 			//translation -57.980000 -13.690000 -84.760002
 		}//DEF ring Transform
-
-/* i hate seeing this shit in any menu - if you don't know what A or B does then plz just turn your xbox off */
-/*
-		DEF select Transform
+		// i hate seeing this shit in any menu - if you don't know what A or B does then plz just turn your xbox off
+		/*DEF select Transform
 		{
 			children
 			[
@@ -1758,7 +1755,7 @@ DEF theMainMenuLevel Transform
 									rotation 1 0 0 -1.571
 									scale 15 15 15
 									translation -1 0 0
-									children			
+									children
 									[
 										Shape
 										{
@@ -1775,8 +1772,7 @@ DEF theMainMenuLevel Transform
 				}
 			]
 			translation 162.000000 -217.500000 -36.470001
-		}//DEF select Transform
-*/
+		}*/
 		DEF main_pod1 Transform
 		{
 			children
@@ -1984,7 +1980,6 @@ DEF theMainMenuLevel Transform
 			scale 1.130000 1.130000 1.130000
 			translation -61.689999 -13.400000 0.337400
 		}//DEF main_pod2 Transform
-
 		DEF Stock_Orb Transform
 		{
 			children
@@ -2004,8 +1999,7 @@ DEF theMainMenuLevel Transform
 			scale 0 0 0
 			scaleOrientation 0.036530 0.975200 0.218400 -0.396500
 			translation -58.220001 -12.680000 29.980000
-		}	
-
+		}
 		DEF Modded_Orb Transform
 		{
 			children
@@ -2025,7 +2019,7 @@ DEF theMainMenuLevel Transform
 								{
 									alpha true
 									url "orbcellwall.xbx"
-								} 
+								}
 							}
 							geometry Mesh { url "OrbCell-FACES.xm" }
 						}
@@ -2095,11 +2089,11 @@ DEF theMainMenuLevel Transform
 				}
 			]
 			rotation -0.993700 -0.088440 0.068970 -1.576000
-			//scale 47.000000 47.000000 47.000000 
+			//scale 47.000000 47.000000 47.000000
 			scale 0 0 0
-			//scale 43.000000 43.000000 43.000000 
+			//scale 43.000000 43.000000 43.000000
 			scaleOrientation 0.036530 0.975200 0.218400 -0.396500
 			translation -54.880000 -15.100000 29.980000
 		}//DEF Modded_Orb Transform
 	]
-}//DEF theMainMenuCam Transform
+}//DEF theMainMenuLevel Transform
