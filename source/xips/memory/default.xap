@@ -1,4 +1,3 @@
-
 DEF main_support Transform
 {
     children
@@ -368,7 +367,6 @@ DEF main_support Transform
     ]
     translation 41.500000 8.306000 -208.300003
 }
-
 DEF back Transform
 {
     children
@@ -771,7 +769,6 @@ DEF select Transform
     ]
     translation 55.570000 -3.609000 -205.300003
 }
-
 DEF Controller1 Transform
 {
     children
@@ -1147,7 +1144,6 @@ DEF Controller1 Transform
     ]
     translation 35.480000 8.497000 -206.000000
 }
-
 DEF Controller2 Transform
 {
     children
@@ -2470,7 +2466,6 @@ DEF InfoPanel Transform
 		}
 	]
 }
-
 DEF console Transform
 {
     children
@@ -2524,8 +2519,6 @@ DEF consoleGlow Transform
     scaleOrientation -0.673100 -0.699600 -0.239800 -0.693000
     translation 39.529999 12.080000 -207.699997
 }
-
-
 DEF MEM_L1_console_pod_outer_0 Transform
 {
     children

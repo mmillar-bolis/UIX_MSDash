@@ -1,4 +1,3 @@
-
 DEF main_support Transform
 {
     children
@@ -368,7 +367,6 @@ DEF main_support Transform
     ]
     translation 41.500000 8.306000 -208.300003
 }
-
 DEF back Transform
 {
     children
@@ -771,7 +769,6 @@ DEF select Transform
     ]
     translation 55.570000 -3.609000 -205.300003
 }
-
 DEF Controller1 Transform
 {
     children
@@ -808,26 +805,26 @@ DEF Controller1 Transform
         {
             children
             [
-        				DEF theImage1 Shape
-        				{
-            				appearance Appearance
-            				{
-                				material MaxMaterial
-                				{
-                    				name "MainMenuOrb"
+						DEF theImage1 Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "MainMenuOrb"
 
-                				}
-                				texture ImageTexture
-                				{
-                    				url "xbox4.tga"
-                				}
-            				}
-            				geometry Mesh { url "Main_pod_backing01-FACES.xm" }
-        				}
-    				]
-    				rotation -0.993700 -0.088440 0.068970 -1.576000
-    				scale 0.08000 0.08000 0.08000
-    				scaleOrientation 0.036530 0.975200 0.218400 -0.396500
+								}
+								texture ImageTexture
+								{
+									url "xbox4.tga"
+								}
+							}
+							geometry Mesh { url "Main_pod_backing01-FACES.xm" }
+						}
+					]
+					rotation -0.993700 -0.088440 0.068970 -1.576000
+					scale 0.08000 0.08000 0.08000
+					scaleOrientation 0.036530 0.975200 0.218400 -0.396500
             translation -1.697883 7.146551 0.03574
         }
         DEF MEM_L1_controller1_pod_outer01 Transform
@@ -960,7 +957,6 @@ DEF Controller1 Transform
     ]
     translation 35.480000 8.497000 -206.000000
 }
-
 DEF Controller2 Transform
 {
     children
@@ -976,28 +972,28 @@ DEF Controller2 Transform
             [
                 DEF Controller2Unit1 Transform
                 {
-            				children
-            				[
-        								DEF theImage1 Shape
-        								{
-            								appearance Appearance
-            								{
-                								material MaxMaterial
-                								{
-                    								name "MainMenuOrb"
+							children
+							[
+										DEF theImage1 Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "MainMenuOrb"
 
-                								}
-                								texture ImageTexture
-                								{
-                    								url "xbox4.tga"
-                								}
-            								}
-            								geometry Mesh { url "Main_pod_backing01-FACES.xm" }
-        								}
-    								]
-    								rotation -0.993700 -0.088440 0.068970 -1.576000
-    								scale 0.08000 0.08000 0.08000
-    								scaleOrientation 0.036530 0.975200 0.218400 -0.396500
+												}
+												texture ImageTexture
+												{
+													url "xbox4.tga"
+												}
+											}
+											geometry Mesh { url "Main_pod_backing01-FACES.xm" }
+										}
+									]
+									rotation -0.993700 -0.088440 0.068970 -1.576000
+									scale 0.08000 0.08000 0.08000
+									scaleOrientation 0.036530 0.975200 0.218400 -0.396500
                     translation -2.438001 2.828 -0.3863
                 }
                 DEF MEM_L1_controller2_podshell_00 Transform
@@ -1207,28 +1203,28 @@ DEF Controller4 Transform
 
                 DEF Controller4Unit1 Transform
                 {
-            				children
-            				[
-        								DEF theImage1 Shape
-        								{
-            								appearance Appearance
-            								{
-                								material MaxMaterial
-                								{
-                    								name "MainMenuOrb"
+							children
+							[
+										DEF theImage1 Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "MainMenuOrb"
 
-                								}
-                								texture ImageTexture
-                								{
-                    								url "xbox4.tga"
-                								}
-            								}
-            								geometry Mesh { url "Main_pod_backing01-FACES.xm" }
-        								}
-    								]
-    								rotation -1.1637 0.12656 -0.03103 -1.576
-    								scale 0.08000 0.08000 0.08000
-    								scaleOrientation 0.036530 0.975200 0.218400 -0.396500
+												}
+												texture ImageTexture
+												{
+													url "xbox4.tga"
+												}
+											}
+											geometry Mesh { url "Main_pod_backing01-FACES.xm" }
+										}
+									]
+									rotation -1.1637 0.12656 -0.03103 -1.576
+									scale 0.08000 0.08000 0.08000
+									scaleOrientation 0.036530 0.975200 0.218400 -0.396500
                     translation 2.107999 6.324 0.0275
                 }
                 DEF MEM_L1_tube_04 Transform
@@ -1413,25 +1409,25 @@ DEF Controller3 Transform
         {
             children
             [
-        				DEF theImage1 Shape
-        				{
-            				appearance Appearance
-            				{
-                				material MaxMaterial
-                				{
-                    				name "MainMenuOrb"
-                				}
-                				texture ImageTexture
-                				{
-                    				url "xbox4.tga"
-                				}
-            				}
-            				geometry Mesh { url "Main_pod_backing01-FACES.xm" }
-        				}
-    				]
-    				rotation -0.7937 0.09656 -0.12103 -1.756
-    				scale 0.08000 0.08000 0.08000
-    				scaleOrientation 0.036530 0.975200 0.218400 -0.396500
+						DEF theImage1 Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "MainMenuOrb"
+								}
+								texture ImageTexture
+								{
+									url "xbox4.tga"
+								}
+							}
+							geometry Mesh { url "Main_pod_backing01-FACES.xm" }
+						}
+					]
+					rotation -0.7937 0.09656 -0.12103 -1.756
+					scale 0.08000 0.08000 0.08000
+					scaleOrientation 0.036530 0.975200 0.218400 -0.396500
             translation 1.2601 3.189 0.072
         }
         DEF MU_panel_backing04 Transform
@@ -1632,7 +1628,7 @@ DEF InfoPanel Transform
 								}
 							}
 							geometry Text { font "Body" text "" justify "end" }
-// 							geometry Text { font "Body" text "FREE:" justify "end" }
+//							geometry Text { font "Body" text "FREE:" justify "end" }
 						}
 					]
 					//rotation -1.000000 0.000000 0.000000 -1.571000
@@ -1673,7 +1669,7 @@ DEF InfoPanel Transform
 								}
 							}
 							geometry DEF PanelText1 Text { font "Body" text "TOTAL:" justify "middle" }
-// 							geometry DEF PanelText1 Text { font "Body" text "TOTAL:" justify "end" }
+//							geometry DEF PanelText1 Text { font "Body" text "TOTAL:" justify "end" }
 						}
 					]
 					scale 0.7 0.7 0.7
@@ -1714,18 +1710,17 @@ DEF InfoPanel Transform
 							geometry DEF PanelText3 Text { font "Heading" justify "middle" }
 						}
 					]
-					
+
 					scale 0.7 0.7 0.7
 					translation -0.155800 0.666500 0.059800
-// 					scale 0.663580 0.663580 0.663580
-// 					translation 0.155800 -0.107500 0.059800
+//					scale 0.663580 0.663580 0.663580
+//					translation 0.155800 -0.107500 0.059800
 				}
 			]
 			translation 41.430000 4.111000 -203.500000
 		}
 	]
 }
-
 DEF console Transform
 {
     children
@@ -1779,8 +1774,6 @@ DEF consoleGlow Transform
     scaleOrientation -0.673100 -0.699600 -0.239800 -0.693000
     translation 39.529999 12.080000 -207.699997
 }
-
-
 DEF MEM_L1_console_pod_outer_0 Transform
 {
     children
