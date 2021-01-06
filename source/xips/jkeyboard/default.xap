@@ -4,7 +4,7 @@ DEF theJKeyPressSound AudioClip { url "audio/main audio/global keyboard stroke 2
 DEF theJapaneseKeyboard Transform
 {
 	scale 100 100 100
-    children 
+    children
     [
 		DEF theJKeyboard Keyboard
 		{
@@ -93,7 +93,7 @@ DEF theJapaneseKeyboard Transform
 				[
 					DEF Line01 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -116,7 +116,7 @@ DEF theJapaneseKeyboard Transform
 					}
 	/*				DEF Sound_2_tube_04 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -137,7 +137,7 @@ DEF theJapaneseKeyboard Transform
 					}*/
 					DEF Sound_2_panel_1 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -158,7 +158,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_panel_4 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -179,7 +179,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_tube_07 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -200,7 +200,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_tube_08 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -221,7 +221,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_panel_5 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -242,7 +242,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_panel_3 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -263,7 +263,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_panel_2 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -349,7 +349,7 @@ DEF theJapaneseKeyboard Transform
 					// Row 1
 					DEF Sound_2_num_key_1 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -384,7 +384,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_2 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -419,7 +419,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_3 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -454,7 +454,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_4 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -490,7 +490,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_num_key_5 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -526,7 +526,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_num_key_14 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -562,7 +562,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_12 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -598,7 +598,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_13 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -634,7 +634,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_10 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -670,7 +670,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_num_key_11 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -707,7 +707,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_button_09 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -747,7 +747,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_key_1 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -782,7 +782,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_2 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -817,7 +817,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_3 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -852,7 +852,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_4 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -887,7 +887,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_5 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -922,7 +922,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_37 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -958,7 +958,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_36 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -994,7 +994,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_41 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1030,7 +1030,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_39 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1066,7 +1066,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_45 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1102,7 +1102,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_10 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1137,12 +1137,12 @@ DEF theJapaneseKeyboard Transform
 						translation 0.793100 0.118900 0.085630
 					}
 
-				
+
 					// Row 3
 
 					DEF Sound_2_key_11 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1177,7 +1177,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_12 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1212,7 +1212,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_13 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1247,7 +1247,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_14 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1282,7 +1282,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_15 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1317,7 +1317,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_43 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1353,7 +1353,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_35 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1389,7 +1389,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_34 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1425,7 +1425,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_33 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1461,7 +1461,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_44 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1497,7 +1497,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_11 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1536,7 +1536,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_key_21 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1571,7 +1571,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_22 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1606,7 +1606,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_23 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1641,7 +1641,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_24 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1676,7 +1676,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_25 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1711,7 +1711,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_38 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1747,7 +1747,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_42 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1783,7 +1783,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_32 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1819,7 +1819,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_40 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1855,7 +1855,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_46 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1891,7 +1891,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_12 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1924,14 +1924,14 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.775900 -0.107600 0.085630
 						translation 0.793100 -0.107600 0.085630
-						
+
 					}
 
 					// Row 5
 
 					DEF Sound_2_key_31 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -1966,7 +1966,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_30 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2001,7 +2001,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_28 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2036,7 +2036,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_27 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2071,7 +2071,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_29 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2106,7 +2106,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_51 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2142,7 +2142,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_50 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2178,7 +2178,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_48 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2214,7 +2214,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_47 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2250,7 +2250,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_49 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2286,7 +2286,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_13 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2319,14 +2319,14 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.775900 -0.213900 0.085630
 						translation 0.793100 -0.213900 0.085630
-						
+
 					}
 
 					// Row 6
 
 					DEF Sound_2_key_63 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2361,7 +2361,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_65 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2396,7 +2396,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_67 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2431,7 +2431,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_70 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2466,7 +2466,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_66 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2501,7 +2501,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_90 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2537,7 +2537,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_87 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2573,7 +2573,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_83 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2609,7 +2609,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_84 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2645,7 +2645,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_85 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2681,7 +2681,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_14 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2721,7 +2721,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_key_69 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2756,7 +2756,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_62 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2791,7 +2791,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_59 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2826,7 +2826,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_55 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2861,7 +2861,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_71 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2896,7 +2896,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_91 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2932,7 +2932,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_78 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -2968,7 +2968,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_77 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3004,7 +3004,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_76 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3040,7 +3040,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_92 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3076,7 +3076,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_15 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3109,14 +3109,14 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.776000 -0.436300 0.085630
 						translation 0.793100 -0.436300 0.085630
-						
+
 					}
 
 					// Row 8
 
 					DEF Sound_2_key_68 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3151,7 +3151,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_61 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3186,7 +3186,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_60 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3221,7 +3221,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_57 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3256,7 +3256,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_64 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3291,7 +3291,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_88 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3327,7 +3327,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_74 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3363,7 +3363,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_75 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3399,7 +3399,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_81 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3435,7 +3435,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_86 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3471,7 +3471,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_16 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3510,7 +3510,7 @@ DEF theJapaneseKeyboard Transform
 
 					DEF Sound_2_key_73 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3545,7 +3545,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_54 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3580,7 +3580,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_56 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3615,7 +3615,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_58 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3650,7 +3650,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_72 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3685,7 +3685,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_93 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3721,7 +3721,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_79 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3757,7 +3757,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_80 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3793,7 +3793,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_82 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3829,7 +3829,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_key_89 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{
@@ -3865,7 +3865,7 @@ DEF theJapaneseKeyboard Transform
 					}
 					DEF Sound_2_button_17 Transform
 					{
-						children 
+						children
 						[
 							Shape
 							{

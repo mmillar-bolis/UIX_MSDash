@@ -197,7 +197,6 @@ DEF theEnglishKeyboard Transform
 						scaleOrientation 0.402400 -0.410400 0.818300 -0.558100
 						translation 1.001000 0.617100 0.356400
 					}
-
 					DEF Sound_2_panel_back Transform
 					{
 						children
@@ -223,7 +222,6 @@ DEF theEnglishKeyboard Transform
 						scaleOrientation 0.065650 0.935500 -0.347200 -0.408500
 						translation -0.015970 0.101500 0.205800
 					}
-
 					DEF Sound_2_panel_1 Transform
 					{
 						children
@@ -329,7 +327,6 @@ DEF theEnglishKeyboard Transform
 						scaleOrientation 0.371300 0.666500 0.646400 -0.119900
 						translation 0.759200 0.116900 0.244800
 					}
-
 					DEF Sound_2_Text_title Transform
 					{
 						children
