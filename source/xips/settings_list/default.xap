@@ -1,10 +1,10 @@
 DEF Orb Transform
 {
-    children 
-    [
+	children
+	[
 		DEF S_Home_videopod Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -25,7 +25,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_tube_01 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -46,7 +46,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_tube_02 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -67,7 +67,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_Arm_03 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -88,7 +88,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_Arm_01 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -109,11 +109,11 @@ DEF Orb Transform
 		}
 		DEF S_Home_tube_attachment_01 Transform
 		{
-			children 
+			children
 			[
 				DEF S_Home_GameModule_140 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -138,7 +138,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_pod_support_02 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -159,11 +159,11 @@ DEF Orb Transform
 		}
 		DEF S_Home_tube_attachment_03 Transform
 		{
-			children 
+			children
 			[
 				DEF S_Home_GameModule_142 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -188,7 +188,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_pod_support_01 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -209,7 +209,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_podsocket_inner Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -230,7 +230,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_Arm_02 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -251,11 +251,11 @@ DEF Orb Transform
 		}
 		DEF S_Home_tube_attachment_02 Transform
 		{
-			children 
+			children
 			[
 				DEF S_Home_GameModule_144 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -280,7 +280,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_pod_support_03 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -301,7 +301,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_podsocket_outer Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -322,7 +322,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_pod_shell_01 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -343,7 +343,7 @@ DEF Orb Transform
 		}
 		DEF S_Home_pod_support_04 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -364,14 +364,12 @@ DEF Orb Transform
 		}
 	]
 }
-
 DEF LockIcon Transform
 {
 	fade 0.25
 	translation 102.42 6.521 -225.915
-
-    children 
-    [
+	children
+	[
 		Transform
 		{
 			translation 0 1.2 0
@@ -386,7 +384,7 @@ DEF LockIcon Transform
 					[
 						DEF S_Main_lock_keyhole Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -407,7 +405,7 @@ DEF LockIcon Transform
 						}
 						DEF S_Main_lock_inner Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -426,7 +424,7 @@ DEF LockIcon Transform
 						}
 						DEF S_Main_lock_body Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -445,7 +443,7 @@ DEF LockIcon Transform
 						}
 						DEF S_Main_lock_bar Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -466,7 +464,7 @@ DEF LockIcon Transform
 						}
 						DEF S_Main_lock_keyhole01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -491,17 +489,15 @@ DEF LockIcon Transform
 		}
 	]
 }
-
 DEF ClockIcon Transform
 {
 	fade 0.25
 	translation 102.42 6.521 -225.915
-
 	children
 	[
 		Transform
 		{
-		    scale 1 1 1
+			scale 1 1 1
 			children
 			[
 				Waver
@@ -513,7 +509,7 @@ DEF ClockIcon Transform
 					[
 						DEF Clock_clock_body01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -534,7 +530,7 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_clock_face01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -553,7 +549,6 @@ DEF ClockIcon Transform
 							scaleOrientation 0.103500 -0.063420 -0.992600 -0.037570
 							translation 0.001072 -0.000773 -0.605800
 						}
-
 						DEF ClockMinuteHand Transform
 						{
 							fade 0.1
@@ -562,7 +557,7 @@ DEF ClockIcon Transform
 							[
 								DEF Clock_clock_minutehand01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -583,7 +578,6 @@ DEF ClockIcon Transform
 								}
 							]
 						}
-
 						DEF ClockHourHand Transform
 						{
 							fade 0.1
@@ -592,7 +586,7 @@ DEF ClockIcon Transform
 							[
 								DEF Clock_clock_hourhand01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -615,7 +609,7 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_clock_dial01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -636,11 +630,11 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_Group09 Transform
 						{
-							children 
+							children
 							[
 								DEF Clock_Rectangle15 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -659,7 +653,7 @@ DEF ClockIcon Transform
 								}
 								DEF Clock_Rectangle16 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -684,11 +678,11 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_Group08 Transform
 						{
-							children 
+							children
 							[
 								DEF Clock_Rectangle13 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -707,7 +701,7 @@ DEF ClockIcon Transform
 								}
 								DEF Clock_Rectangle14 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -732,11 +726,11 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_Group07 Transform
 						{
-							children 
+							children
 							[
 								DEF Clock_Rectangle11 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -755,7 +749,7 @@ DEF ClockIcon Transform
 								}
 								DEF Clock_Rectangle12 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -780,11 +774,11 @@ DEF ClockIcon Transform
 						}
 						DEF Clock_Group01 Transform
 						{
-							children 
+							children
 							[
 								DEF Clock_Rectangle09 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -803,7 +797,7 @@ DEF ClockIcon Transform
 								}
 								DEF Clock_Rectangle10 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -831,34 +825,31 @@ DEF ClockIcon Transform
 		}
 	]
 }
-
 DEF StereoIcon Transform
 {
 	fade 0.25
 	translation 102.62 6.521 -225.915
-
 	children
 	[
 		Waver
 		{
 			axis 0 1 0
 			rpm 5
-
 			children
 			[
 				Transform
 				{
 					translation 0.000863 -0.106800 0.047090
 					scale 0.26 0.26 0.26
-					children 
+					children
 					[
 						DEF S_Aud_Group02 Transform
 						{
-							children 
+							children
 							[
 								DEF S_Aud_speaker01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -879,7 +870,7 @@ DEF StereoIcon Transform
 								}
 								DEF S_Aud_speaker_ball01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -906,11 +897,11 @@ DEF StereoIcon Transform
 						}
 						DEF S_Aud_Group05 Transform
 						{
-							children 
+							children
 							[
 								DEF S_Aud_speaker_ball05 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -931,7 +922,7 @@ DEF StereoIcon Transform
 								}
 								DEF S_Aud_speaker05 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -962,15 +953,12 @@ DEF StereoIcon Transform
 		}
 	]
 }
-
-
 DEF GlobeIcon Transform
 {
 	fade 0.25
 	translation 102.42 6.521 -225.915
-
-    children 
-    [
+	children
+	[
 		Spinner
 		{
 			rpm 2
@@ -979,15 +967,15 @@ DEF GlobeIcon Transform
 				Transform
 				{
 					scale 1.25 1.25 1.25
-					children 
+					children
 					[
 						DEF globe Transform
 						{
-							children 
+							children
 							[
 								DEF Loft01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1008,7 +996,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft14 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1029,7 +1017,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft23 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1050,7 +1038,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft16 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1071,7 +1059,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft17 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1092,7 +1080,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft18 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1113,7 +1101,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft19 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1134,7 +1122,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft20 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1155,7 +1143,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft27 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1176,7 +1164,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft31 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1197,7 +1185,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft24 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1218,7 +1206,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft22 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1239,7 +1227,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft30 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1260,7 +1248,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft29 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1281,7 +1269,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft21 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1302,7 +1290,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft28 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1323,7 +1311,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft12 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1344,7 +1332,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft15 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1365,7 +1353,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft11 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1386,7 +1374,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft26 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1407,7 +1395,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft13 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1428,7 +1416,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Sphere01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1449,7 +1437,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Loft25 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1470,7 +1458,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Circle01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1489,7 +1477,7 @@ DEF GlobeIcon Transform
 								}
 								DEF Circle02 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1511,13 +1499,12 @@ DEF GlobeIcon Transform
 							translation 0.002065 -0.069590 0.002466
 						}
 					]
-//					translation -0.356600 0.012250 -0.008618
+					//translation -0.356600 0.012250 -0.008618
 				}
 			]
 		}
 	]
 }
-
 DEF MonoIcon Transform
 {
 	fade 0.25
@@ -1529,8 +1516,7 @@ DEF MonoIcon Transform
 			scale 0.23 0.23 0.23
 			scaleOrientation 0.582500 0.000000 -0.812800 -0.844000
 			translation 102.42 6.521 -225.915
-
-			children 
+			children
 			[
 				Waver
 				{
@@ -1540,7 +1526,7 @@ DEF MonoIcon Transform
 					[
 						DEF S_Aud_speaker04 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1561,7 +1547,7 @@ DEF MonoIcon Transform
 						}
 						DEF S_Aud_speaker_ball04 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1586,12 +1572,11 @@ DEF MonoIcon Transform
 		}
 	]
 }
-
 // Icons
 DEF FullscreenIcon Transform
 {
 	fade 0.25
-	children 
+	children
 	[
 		Transform
 		{
@@ -1607,7 +1592,7 @@ DEF FullscreenIcon Transform
 					[
 						DEF S_Vid__tv_tv01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1628,7 +1613,7 @@ DEF FullscreenIcon Transform
 						}
 						DEF S_Vid__tv_screen01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1653,7 +1638,6 @@ DEF FullscreenIcon Transform
 		}
 	]
 }
-
 DEF LetterboxIcon Transform
 {
 	fade 0.25
@@ -1673,11 +1657,11 @@ DEF LetterboxIcon Transform
 						Transform
 						{
 							scale 2.988000 2.988000 2.988000
-							children 
+							children
 							[
 								DEF S_Vid__letterbox_screen Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1697,7 +1681,7 @@ DEF LetterboxIcon Transform
 								}
 								DEF S_Vid__letterbox_tv Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1717,7 +1701,7 @@ DEF LetterboxIcon Transform
 								}
 								DEF S_Vid__letterbox_letterbox Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1743,7 +1727,6 @@ DEF LetterboxIcon Transform
 		}
 	]
 }
-
 DEF WidescreenIcon Transform
 {
 	fade 0.25
@@ -1763,11 +1746,11 @@ DEF WidescreenIcon Transform
 						Waver
 						{
 							rpm 5
-							children 
+							children
 							[
 								DEF S_Vid__widescreen_screen Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1787,7 +1770,7 @@ DEF WidescreenIcon Transform
 								}
 								DEF S_Vid__widescreen_tv Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -1813,461 +1796,448 @@ DEF WidescreenIcon Transform
 		}
 	]
 }
-
 DEF S_Aud_panel_backing4 Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "PanelBacking_01"
-                }
-                texture ImageTexture
-                {
-                    url "settings_4buttons_panel.xbx"
-                }
-            }
-            geometry DEF S_Aud_panel_backing4-FACES Mesh { url "S_Aud_panel_backing4-FACES.xm" }
-        }
-    ]
-    rotation -0.577300 -0.577400 0.577400 -4.189000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation 0.016730 -0.999800 -0.004536 -0.237200
-    translation 101.099998 2.466000 -222.899994
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "PanelBacking_01"
+				}
+				texture ImageTexture
+				{
+					url "settings_4buttons_panel.xbx"
+				}
+			}
+			geometry DEF S_Aud_panel_backing4-FACES Mesh { url "S_Aud_panel_backing4-FACES.xm" }
+		}
+	]
+	rotation -0.577300 -0.577400 0.577400 -4.189000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation 0.016730 -0.999800 -0.004536 -0.237200
+	translation 101.099998 2.466000 -222.899994
 }
-
 DEF S_Aud_panel_backing Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "PanelBacking_01"
-                }
-                texture ImageTexture
-                {
-                    url "settings_3buttons_panel.xbx"
-                }
-            }
-            geometry DEF S_Aud_panel_backing-FACES Mesh { url "S_Aud_panel_backing-FACES.xm" }
-        }
-    ]
-    rotation -0.577300 -0.577400 0.577400 -4.189000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation 0.016730 -0.999800 -0.004536 -0.237200
-    translation 101.099998 2.466000 -222.899994
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "PanelBacking_01"
+				}
+				texture ImageTexture
+				{
+					url "settings_3buttons_panel.xbx"
+				}
+			}
+			geometry DEF S_Aud_panel_backing-FACES Mesh { url "S_Aud_panel_backing-FACES.xm" }
+		}
+	]
+	rotation -0.577300 -0.577400 0.577400 -4.189000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation 0.016730 -0.999800 -0.004536 -0.237200
+	translation 101.099998 2.466000 -222.899994
 }
-
 DEF settings_panel_backing2 Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "PanelBacking_01"
-                }
-                texture ImageTexture
-                {
-                    url "settings_3buttons_panel2.xbx"
-                }
-            }
-            geometry DEF settings_panel_backing2-FACES Mesh { url "settings_panel_backing2-FACES.xm" }
-        }
-    ]
-    rotation 0.574800 0.581000 -0.576200 -2.091000
-    scale 0.289900 0.289900 0.289900
-    scaleOrientation -0.431000 0.785000 -0.444900 -0.062530
-    translation 101.099998 2.454000 -222.899994
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "PanelBacking_01"
+				}
+				texture ImageTexture
+				{
+					url "settings_3buttons_panel2.xbx"
+				}
+			}
+			geometry DEF settings_panel_backing2-FACES Mesh { url "settings_panel_backing2-FACES.xm" }
+		}
+	]
+	rotation 0.574800 0.581000 -0.576200 -2.091000
+	scale 0.289900 0.289900 0.289900
+	scaleOrientation -0.431000 0.785000 -0.444900 -0.062530
+	translation 101.099998 2.454000 -222.899994
 }
-
 DEF settings_panel_2button Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF settings_panel_2button-FACES Mesh { url "settings_panel_2button-FACES.xm" }
-        }
-    ]
-    rotation 0.574900 -0.578500 0.578700 -2.083000
-    scale 0.273500 0.273500 0.273500
-    scaleOrientation 0.121700 0.952500 0.279100 -0.202900
-    translation 98.949997 2.497000 -222.899994
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF settings_panel_2button-FACES Mesh { url "settings_panel_2button-FACES.xm" }
+		}
+	]
+	rotation 0.574900 -0.578500 0.578700 -2.083000
+	scale 0.273500 0.273500 0.273500
+	scaleOrientation 0.121700 0.952500 0.279100 -0.202900
+	translation 98.949997 2.497000 -222.899994
 }
-
 DEF S_Aud_panel_support_05 Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF S_Aud_panel_support_05-FACES Mesh { url "S_Aud_panel_support_05-FACES.xm" }
-        }
-    ]
-    rotation -0.575700 -0.575700 -0.580700 -2.089000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation 0.530500 -0.794600 0.295200 -0.233200
-    translation 96.879997 3.243000 -222.800003
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF S_Aud_panel_support_05-FACES Mesh { url "S_Aud_panel_support_05-FACES.xm" }
+		}
+	]
+	rotation -0.575700 -0.575700 -0.580700 -2.089000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation 0.530500 -0.794600 0.295200 -0.233200
+	translation 96.879997 3.243000 -222.800003
 }
 DEF header Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF header-FACES Mesh { url "header-FACES.xm" }
-        }
-    ]
-    rotation -1.000000 0.004360 -0.004367 -1.571000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation 0.512400 -0.242100 -0.823900 -0.085190
-    translation 99.480003 5.169000 -222.800003
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF header-FACES Mesh { url "header-FACES.xm" }
+		}
+	]
+	rotation -1.000000 0.004360 -0.004367 -1.571000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation 0.512400 -0.242100 -0.823900 -0.085190
+	translation 99.480003 5.169000 -222.800003
 }
 DEF panel_support_3button Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF panel_support_3button-FACES Mesh { url "panel_support_3button-FACES.xm" }
-        }
-    ]
-    rotation 0.575700 -0.575700 0.580700 -2.089000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation -0.802000 0.409200 0.435200 -0.068800
-    translation 99.050003 2.493000 -222.800003
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF panel_support_3button-FACES Mesh { url "panel_support_3button-FACES.xm" }
+		}
+	]
+	rotation 0.575700 -0.575700 0.580700 -2.089000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation -0.802000 0.409200 0.435200 -0.068800
+	translation 99.050003 2.493000 -222.800003
 }
-
 DEF panel_support_4button Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF panel_support_4button-FACES Mesh { url "panel_support_4button-FACES.xm" }
-        }
-    ]
-    rotation 0.575700 -0.575700 0.580700 -2.089000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation -0.802000 0.409200 0.435200 -0.068800
-    translation 99.050003 2.493000 -222.800003
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF panel_support_4button-FACES Mesh { url "panel_support_4button-FACES.xm" }
+		}
+	]
+	rotation 0.575700 -0.575700 0.580700 -2.089000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation -0.802000 0.409200 0.435200 -0.068800
+	translation 99.050003 2.493000 -222.800003
 }
 DEF S_Aud_panel_support_4button Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "FlatSurfaces"
-                }
-            }
-            geometry DEF S_Aud_panel_support_4button-FACES Mesh { url "S_Aud_panel_support_4button-FACES.xm" }
-        }
-    ]
-    rotation -0.575700 -0.575700 -0.580700 -2.089000
-    scale 0.285900 0.285900 0.285900
-    scaleOrientation 0.530500 -0.794600 0.295200 -0.233200
-    translation 96.879997 3.243000 -222.800003
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "FlatSurfaces"
+				}
+			}
+			geometry DEF S_Aud_panel_support_4button-FACES Mesh { url "S_Aud_panel_support_4button-FACES.xm" }
+		}
+	]
+	rotation -0.575700 -0.575700 -0.580700 -2.089000
+	scale 0.285900 0.285900 0.285900
+	scaleOrientation 0.530500 -0.794600 0.295200 -0.233200
+	translation 96.879997 3.243000 -222.800003
 }
-
-/* DEF S_Home_videopod_backing Transform
+/*DEF S_Home_videopod_backing Transform
 {
-    children 
-    [
-        Shape
-        {
-            appearance Appearance
-            {
-                material MaxMaterial
-                {
-                    name "DarkenBacking"
-                }
-            }
-            geometry DEF S_Home_videopod_backing-FACES Mesh { url "S_Home_videopod_backing-FACES.xm" }
-        }
-    ]
-    rotation 0.994500 0.073910 0.073910 -1.576000
-    scale 0.316400 0.316400 0.316400
-    scaleOrientation 0.000000 -0.860500 0.509500 -0.004265
-    translation 102.699997 6.129000 -226.600006
-}
-*/
-
+	children
+	[
+		Shape
+		{
+			appearance Appearance
+			{
+				material MaxMaterial
+				{
+					name "DarkenBacking"
+				}
+			}
+			geometry DEF S_Home_videopod_backing-FACES Mesh { url "S_Home_videopod_backing-FACES.xm" }
+		}
+	]
+	rotation 0.994500 0.073910 0.073910 -1.576000
+	scale 0.316400 0.316400 0.316400
+	scaleOrientation 0.000000 -0.860500 0.509500 -0.004265
+	translation 102.699997 6.129000 -226.600006
+}*/
 DEF button1 Transform
 {
-    children 
-    [
-        DEF S_Aud_panel_support_21 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_21-FACES Mesh { url "S_Aud_panel_support_21-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.489800 -0.116900 -0.005722
-        }
-        DEF S_Aud_panel_support_22 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "DarkSurfaces2"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_22-FACES Mesh { url "S_Aud_panel_support_22-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.490000 -0.098400 -0.056460
-        }
-    ]
-    translation 99.080002 4.547000 -222.800003
+	children
+	[
+		DEF S_Aud_panel_support_21 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF S_Aud_panel_support_21-FACES Mesh { url "S_Aud_panel_support_21-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.489800 -0.116900 -0.005722
+		}
+		DEF S_Aud_panel_support_22 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "DarkSurfaces2"
+						}
+					}
+					geometry DEF S_Aud_panel_support_22-FACES Mesh { url "S_Aud_panel_support_22-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.490000 -0.098400 -0.056460
+		}
+	]
+	translation 99.080002 4.547000 -222.800003
 }
 DEF button2 Transform
 {
-    children 
-    [
-        DEF S_Aud_panel_support_19 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_19-FACES Mesh { url "S_Aud_panel_support_19-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.489800 -0.116900 -0.003754
-        }
-        DEF S_Aud_panel_support_20 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "DarkSurfaces2"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_20-FACES Mesh { url "S_Aud_panel_support_20-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.490000 -0.098400 -0.056810
-        }
-    ]
-    translation 99.080002 3.701000 -222.800003
+	children
+	[
+		DEF S_Aud_panel_support_19 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF S_Aud_panel_support_19-FACES Mesh { url "S_Aud_panel_support_19-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.489800 -0.116900 -0.003754
+		}
+		DEF S_Aud_panel_support_20 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "DarkSurfaces2"
+						}
+					}
+					geometry DEF S_Aud_panel_support_20-FACES Mesh { url "S_Aud_panel_support_20-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.490000 -0.098400 -0.056810
+		}
+	]
+	translation 99.080002 3.701000 -222.800003
 }
 DEF button3 Transform
 {
-    children 
-    [
-        DEF S_Aud_panel_support_23 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_23-FACES Mesh { url "S_Aud_panel_support_23-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.489800 -0.116900 -0.006180
-        }
-        DEF S_Aud_panel_support_24 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "DarkSurfaces2"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_24-FACES Mesh { url "S_Aud_panel_support_24-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.490000 -0.098400 -0.056730
-        }
-    ]
-    translation 99.080002 2.847000 -222.800003
+	children
+	[
+		DEF S_Aud_panel_support_23 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF S_Aud_panel_support_23-FACES Mesh { url "S_Aud_panel_support_23-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.489800 -0.116900 -0.006180
+		}
+		DEF S_Aud_panel_support_24 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "DarkSurfaces2"
+						}
+					}
+					geometry DEF S_Aud_panel_support_24-FACES Mesh { url "S_Aud_panel_support_24-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.490000 -0.098400 -0.056730
+		}
+	]
+	translation 99.080002 2.847000 -222.800003
 }
 DEF button4 Transform
 {
-    children 
-    [
-        DEF S_Aud_panel_support_25 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_25-FACES Mesh { url "S_Aud_panel_support_25-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.489800 -0.116900 -0.006180
-        }
-        DEF S_Aud_panel_support_26 Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "DarkSurfaces2"
-                        }
-                    }
-                    geometry DEF S_Aud_panel_support_26-FACES Mesh { url "S_Aud_panel_support_26-FACES.xm" }
-                }
-            ]
-            rotation 1.000000 0.004367 0.004360 -1.571000
-            scale 0.183300 0.183300 0.183300
-            scaleOrientation 0.152500 0.954800 0.255000 -0.049780
-            translation 0.490000 -0.098400 -0.056730
-        }
-    ]
-    translation 99.080002 1.975000 -222.800003
+	children
+	[
+		DEF S_Aud_panel_support_25 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF S_Aud_panel_support_25-FACES Mesh { url "S_Aud_panel_support_25-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.489800 -0.116900 -0.006180
+		}
+		DEF S_Aud_panel_support_26 Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "DarkSurfaces2"
+						}
+					}
+					geometry DEF S_Aud_panel_support_26-FACES Mesh { url "S_Aud_panel_support_26-FACES.xm" }
+				}
+			]
+			rotation 1.000000 0.004367 0.004360 -1.571000
+			scale 0.183300 0.183300 0.183300
+			scaleOrientation 0.152500 0.954800 0.255000 -0.049780
+			translation 0.490000 -0.098400 -0.056730
+		}
+	]
+	translation 99.080002 1.975000 -222.800003
 }
-
-
-
-
 DEF Menu_Buttons Transform
 {
-    children 
-    [
-        DEF S_Aud_text_stereo Transform
-        {
-            children 
-            [
+	children
+	[
+		DEF S_Aud_text_stereo Transform
+		{
+			children
+			[
 				Transform
 				{
 					translation -3.0 -0.2 0
@@ -2287,17 +2257,17 @@ DEF Menu_Buttons Transform
 							geometry Text { font "Heading" text "" }
 						}
 					]
-				}	
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation -0.880200 0.971200 0.135900
-        }
-        DEF S_Aud_text_mono Transform
-        {
-            children 
-            [
+				}
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation -0.880200 0.971200 0.135900
+		}
+		DEF S_Aud_text_mono Transform
+		{
+			children
+			[
 				Transform
 				{
 					translation -6.8 -0.2 0
@@ -2318,16 +2288,16 @@ DEF Menu_Buttons Transform
 						}
 					]
 				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation 0.725200 0.593800 -0.095510
-        }
-        DEF S_Aud_text_stereo01 Transform
-        {
-            children 
-            [
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation 0.725200 0.593800 -0.095510
+		}
+		DEF S_Aud_text_stereo01 Transform
+		{
+			children
+			[
 				Transform
 				{
 					translation -2.3 -0.2 0
@@ -2348,136 +2318,16 @@ DEF Menu_Buttons Transform
 						}
 					]
 				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation -1.058000 0.135700 0.158800
-        }
-        DEF S_Aud_text_mono06 Transform
-        {
-            children 
-            [
-				Transform
-				{
-					translation -6.5 -0.2 0
-					scale 0.9 0.9 0
-					rotation -1 0 0 1.571
-					children
-					[
-						Shape
-						{
-							appearance Appearance
-							{
-								material MaxMaterial
-								{
-									name "NavType"
-								}
-							}
-							geometry Text { font "Body" text "" width -11.6}
-						}
-					]
-				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation 0.680200 -0.247100 -0.084830
-        }
-        DEF S_Aud_text_stereo02 Transform
-        {
-            children 
-            [
-				Transform
-				{
-					translation -4.0 -0.2 0
-					scale 0.85 0.85 0
-					rotation -1 0 0 1.571
-					children
-					[
-						Shape
-						{
-							appearance Appearance
-							{
-								material MaxMaterial
-								{
-									name "NavType"
-								}
-							}
-							geometry Text { font "Heading" text "" }
-						}
-					]
-				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation -0.525800 -0.715500 0.084180
-        }
-        DEF S_Aud_text_mono07 Transform
-        {
-            children 
-            [
-				Transform
-				{
-					translation -6.5 -0.2 0
-					scale 0.9 0.9 0
-					rotation -1 0 0 1.571
-					children
-					[
-						Shape
-						{
-							appearance Appearance
-							{
-								material MaxMaterial
-								{
-									name "NavType"
-								}
-							}
-							geometry Text { font "Body" text "" width -11.6 }
-						}
-					]
-				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation 0.717500 -1.094000 -0.089730
-        }
-        DEF S_Aud_text_stereo12 Transform
-        {
-            children 
-            [
-				Transform
-				{
-					translation -4.0 -0.2 0
-					scale 0.85 0.85 0
-					rotation -1 0 0 1.571
-					children
-					[
-						Shape
-						{
-							appearance Appearance
-							{
-								material MaxMaterial
-								{
-									name "NavType"
-								}
-							}
-							geometry Text { font "Heading" text "" }
-						}
-					]
-				}
-            ]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation -0.525800 -1.575000 0.084180
-        }
-        DEF S_Aud_text_mono17 Transform
-        {
-            children 
-            [
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation -1.058000 0.135700 0.158800
+		}
+		DEF S_Aud_text_mono06 Transform
+		{
+			children
+			[
 				Transform
 				{
 					translation -6.5 -0.2 0
@@ -2499,358 +2349,477 @@ DEF Menu_Buttons Transform
 					]
 				}
 			]
-            rotation -0.995100 -0.069590 0.069580 -1.576000
-            scale 0.285900 0.285900 0.285900
-            scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
-            translation 0.717500 -1.954000 -0.089730
-        }
-    ]
-    rotation 0.000000 1.000000 0.000000 -0.139600
-    translation 99.099998 3.671000 -222.699997
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation 0.680200 -0.247100 -0.084830
+		}
+		DEF S_Aud_text_stereo02 Transform
+		{
+			children
+			[
+				Transform
+				{
+					translation -4.0 -0.2 0
+					scale 0.85 0.85 0
+					rotation -1 0 0 1.571
+					children
+					[
+						Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "NavType"
+								}
+							}
+							geometry Text { font "Heading" text "" }
+						}
+					]
+				}
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation -0.525800 -0.715500 0.084180
+		}
+		DEF S_Aud_text_mono07 Transform
+		{
+			children
+			[
+				Transform
+				{
+					translation -6.5 -0.2 0
+					scale 0.9 0.9 0
+					rotation -1 0 0 1.571
+					children
+					[
+						Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "NavType"
+								}
+							}
+							geometry Text { font "Body" text "" width -11.6 }
+						}
+					]
+				}
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation 0.717500 -1.094000 -0.089730
+		}
+		DEF S_Aud_text_stereo12 Transform
+		{
+			children
+			[
+				Transform
+				{
+					translation -4.0 -0.2 0
+					scale 0.85 0.85 0
+					rotation -1 0 0 1.571
+					children
+					[
+						Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "NavType"
+								}
+							}
+							geometry Text { font "Heading" text "" }
+						}
+					]
+				}
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation -0.525800 -1.575000 0.084180
+		}
+		DEF S_Aud_text_mono17 Transform
+		{
+			children
+			[
+				Transform
+				{
+					translation -6.5 -0.2 0
+					scale 0.9 0.9 0
+					rotation -1 0 0 1.571
+					children
+					[
+						Shape
+						{
+							appearance Appearance
+							{
+								material MaxMaterial
+								{
+									name "NavType"
+								}
+							}
+							geometry Text { font "Body" text "" width -11.6}
+						}
+					]
+				}
+			]
+			rotation -0.995100 -0.069590 0.069580 -1.576000
+			scale 0.285900 0.285900 0.285900
+			scaleOrientation -0.035110 -0.665600 -0.745500 -0.037910
+			translation 0.717500 -1.954000 -0.089730
+		}
+	]
+	rotation 0.000000 1.000000 0.000000 -0.139600
+	translation 99.099998 3.671000 -222.699997
 }
-
 DEF Group07 Transform
 {
-    children 
-    [
-        DEF MU_Text_a Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "NavType"
-                        }
-                    }
-                    geometry Text { font "heading" justify "middle" translate false text "A" }
-                }
-            ]
-            //rotation -1.000000 0.000000 0.000000 -1.571000
-            scale 0.605000 0.605000 0.000
-            //scaleOrientation 0.000000 0.000000 -1.000000 -0.045050
-            translation -1.959000 2.391000 -0.443200
-        }
-        DEF MU_select_probearm Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "FlatSurfaces"
-                        }
-                    }
-                    geometry DEF MU_select_probearm-FACES Mesh { url "MU_select_probearm-FACES.xm" }
-                }
-            ]
-            rotation -0.786500 0.499900 0.362600 -1.910000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation 0.000000 0.005536 1.000000 -0.474500
-            translation -9.489000 15.920000 6.071000
-        }
-        DEF MU_text_select Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "XBOXgreen"
-                        }
-                    }
-                    geometry Text { font "Body" text "SELECT" }
-                }
-            ]
-            //rotation -1.000000 0.000000 0.000000 -1.571000
-            scale 0.375000 0.475000 0.00
-            //scaleOrientation 0.000000 0.000000 -1.000000 -0.097740
-            translation -1.238900 2.156000 -0.409300
-        }
-        DEF MU_select_probe Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "FlatSurfaces"
-                        }
-                    }
-                    geometry DEF MU_select_probe-FACES Mesh { url "MU_select_probe-FACES.xm" }
-                }
-            ]
-            rotation -0.786500 0.499900 0.362600 -1.910000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation 0.000000 0.005536 1.000000 -0.474500
-            translation -8.603000 15.060000 6.235000
-        }
-        DEF MU_select_pod_inner Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "CellEgg/Parts"
-                        }
-                    }
-                    geometry DEF MU_select_pod_inner-FACES Mesh { url "MU_select_pod_inner-FACES.xm" }
-                }
-            ]
-            scale 0.465000 0.465000 0.465000
-            translation 0.178000 -10.330000 3.150000
-        }
-        DEF MU_select_pod_outer Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "CellEgg/Parts"
-                        }
-                    }
-                    geometry DEF MU_select_pod_outer-FACES Mesh { url "MU_select_pod_outer-FACES.xm" }
-                }
-            ]
-            scale 0.465000 0.465000 0.465000
-            translation 0.178000 -10.330000 3.150000
-        }
-        DEF MU_select_tube Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "TubesFade"
-                        }
-                    }
-                    geometry DEF MU_select_tube-FACES Mesh { url "MU_select_tube-FACES.xm" }
-                }
-            ]
-            rotation -0.990900 0.095410 -0.095410 -1.580000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation -0.011110 0.412400 0.911000 -0.088980
-            translation 33.220001 -26.790001 9.817000
-        }
-        DEF MU_select_pod_HL Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "EggGlow"
-                        }
-                    }
-                    geometry DEF MU_select_pod_HL-FACES Mesh { url "MU_select_pod_HL-FACES.xm" }
-                }
-            ]
-            scale 0.465000 0.465000 0.465000
-            translation 0.178000 -10.330000 3.150000
-        }
-    ]
-    rotation 0.000000 1.000000 0.000000 -0.244300
-    scale 0.429200 0.429200 0.429200
-    translation 101.199997 0.367700 -221.500000
+	children
+	[
+		DEF MU_Text_a Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "NavType"
+						}
+					}
+					geometry Text { font "heading" justify "middle" translate false text "A" }
+				}
+			]
+			//rotation -1.000000 0.000000 0.000000 -1.571000
+			scale 0.605000 0.605000 0.000
+			//scaleOrientation 0.000000 0.000000 -1.000000 -0.045050
+			translation -1.959000 2.391000 -0.443200
+		}
+		DEF MU_select_probearm Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "FlatSurfaces"
+						}
+					}
+					geometry DEF MU_select_probearm-FACES Mesh { url "MU_select_probearm-FACES.xm" }
+				}
+			]
+			rotation -0.786500 0.499900 0.362600 -1.910000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation 0.000000 0.005536 1.000000 -0.474500
+			translation -9.489000 15.920000 6.071000
+		}
+		DEF MU_text_select Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "XBOXgreen"
+						}
+					}
+					geometry Text { font "Body" text "SELECT" }
+				}
+			]
+			//rotation -1.000000 0.000000 0.000000 -1.571000
+			scale 0.375000 0.475000 0.00
+			//scaleOrientation 0.000000 0.000000 -1.000000 -0.097740
+			translation -1.238900 2.156000 -0.409300
+		}
+		DEF MU_select_probe Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "FlatSurfaces"
+						}
+					}
+					geometry DEF MU_select_probe-FACES Mesh { url "MU_select_probe-FACES.xm" }
+				}
+			]
+			rotation -0.786500 0.499900 0.362600 -1.910000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation 0.000000 0.005536 1.000000 -0.474500
+			translation -8.603000 15.060000 6.235000
+		}
+		DEF MU_select_pod_inner Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "CellEgg/Parts"
+						}
+					}
+					geometry DEF MU_select_pod_inner-FACES Mesh { url "MU_select_pod_inner-FACES.xm" }
+				}
+			]
+			scale 0.465000 0.465000 0.465000
+			translation 0.178000 -10.330000 3.150000
+		}
+		DEF MU_select_pod_outer Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "CellEgg/Parts"
+						}
+					}
+					geometry DEF MU_select_pod_outer-FACES Mesh { url "MU_select_pod_outer-FACES.xm" }
+				}
+			]
+			scale 0.465000 0.465000 0.465000
+			translation 0.178000 -10.330000 3.150000
+		}
+		DEF MU_select_tube Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "TubesFade"
+						}
+					}
+					geometry DEF MU_select_tube-FACES Mesh { url "MU_select_tube-FACES.xm" }
+				}
+			]
+			rotation -0.990900 0.095410 -0.095410 -1.580000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation -0.011110 0.412400 0.911000 -0.088980
+			translation 33.220001 -26.790001 9.817000
+		}
+		DEF MU_select_pod_HL Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "EggGlow"
+						}
+					}
+					geometry DEF MU_select_pod_HL-FACES Mesh { url "MU_select_pod_HL-FACES.xm" }
+				}
+			]
+			scale 0.465000 0.465000 0.465000
+			translation 0.178000 -10.330000 3.150000
+		}
+	]
+	rotation 0.000000 1.000000 0.000000 -0.244300
+	scale 0.429200 0.429200 0.429200
+	translation 101.199997 0.367700 -221.500000
 }
 DEF Group06 Transform
 {
-    children 
-    [
-        DEF MU_back_probearm Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "FlatSurfaces"
-                        }
-                    }
-                    geometry DEF MU_back_probearm-FACES Mesh { url "MU_back_probearm-FACES.xm" }
-                }
-            ]
-            rotation 0.753300 0.386200 -0.532400 -1.747000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation 0.981300 0.180300 0.067500 -0.715500
-            translation 20.680000 14.960000 6.071000
-        }
-        DEF MU_back_probe Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "FlatSurfaces"
-                        }
-                    }
-                    geometry DEF MU_back_probe-FACES Mesh { url "MU_back_probe-FACES.xm" }
-                }
-            ]
-            rotation 0.753300 0.386200 -0.532400 -1.747000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation 0.981300 0.180300 0.067500 -0.715500
-            translation 19.790001 14.110000 6.235000
-        }
-        DEF MU_back_pod_inner Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "CellEgg/Parts"
-                        }
-                    }
-                    geometry DEF MU_back_pod_inner-FACES Mesh { url "MU_back_pod_inner-FACES.xm" }
-                }
-            ]
-            rotation -1.000000 0.000000 0.000000 -3.142000
-            scale 0.465000 0.465000 0.465000
-            translation 11.010000 -11.290000 3.150000
-        }
-        DEF MU_Text_b Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "NavType"
-                        }
-                    }
-                    geometry Text { font "heading" justify "middle" translate false text "B" }
-                }
-            ]
-            //rotation -1.000000 0.000000 0.000000 -1.571000
-            scale 0.605000 0.605000 0.000
-            //scaleOrientation 0.000000 0.000000 1.000000 -0.005973
-            translation 1.889000 2.422000 -0.409200
-        }
-        DEF MU_Text_back Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "XBOXgreen"
-                        }
-                    }
-                    geometry Text { font "Body" text "BACK" justify "end"}
-                }
-            ]
-            //rotation -1.000000 0.000000 0.000000 -1.571000
-            scale 0.375000 0.475000 0.00
-            //scaleOrientation 0.000000 0.000000 1.000000 -0.005973
-            translation 1.183300 2.156 -0.409200
-        }
-        DEF MU_back_pod_outer Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "CellEgg/Parts"
-                        }
-                    }
-                    geometry DEF MU_back_pod_outer-FACES Mesh { url "MU_back_pod_outer-FACES.xm" }
-                }
-            ]
-            rotation -1.000000 0.000000 0.000000 -3.142000
-            scale 0.465000 0.465000 0.465000
-            translation 11.010000 -11.290000 3.150000
-        }
-        DEF MU_back_tube Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "TubesFade"
-                        }
-                    }
-                    geometry DEF MU_back_tube-FACES Mesh { url "MU_back_tube-FACES.xm" }
-                }
-            ]
-            rotation 0.990900 -0.095410 -0.095410 -1.580000
-            scale 0.465000 0.465000 0.465000
-            scaleOrientation 0.010380 -0.285600 0.958300 -0.080610
-            translation -22.030001 -27.750000 9.817000
-        }
-        DEF MU_back_pod_HL Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "EggGlow"
-                        }
-                    }
-                    geometry DEF MU_back_pod_HL-FACES Mesh { url "MU_back_pod_HL-FACES.xm" }
-                }
-            ]
-            rotation -1.000000 0.000000 0.000000 -3.142000
-            scale 0.465000 0.465000 0.465000
-            translation 11.010000 -11.290000 3.150000
-        }
-    ]
-    rotation 0.000000 1.000000 0.000000 -0.095990
-    scale 0.429200 0.429200 0.429200
-    translation 95.919998 0.459000 -222.399994
+	children
+	[
+		DEF MU_back_probearm Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "FlatSurfaces"
+						}
+					}
+					geometry DEF MU_back_probearm-FACES Mesh { url "MU_back_probearm-FACES.xm" }
+				}
+			]
+			rotation 0.753300 0.386200 -0.532400 -1.747000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation 0.981300 0.180300 0.067500 -0.715500
+			translation 20.680000 14.960000 6.071000
+		}
+		DEF MU_back_probe Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "FlatSurfaces"
+						}
+					}
+					geometry DEF MU_back_probe-FACES Mesh { url "MU_back_probe-FACES.xm" }
+				}
+			]
+			rotation 0.753300 0.386200 -0.532400 -1.747000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation 0.981300 0.180300 0.067500 -0.715500
+			translation 19.790001 14.110000 6.235000
+		}
+		DEF MU_back_pod_inner Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "CellEgg/Parts"
+						}
+					}
+					geometry DEF MU_back_pod_inner-FACES Mesh { url "MU_back_pod_inner-FACES.xm" }
+				}
+			]
+			rotation -1.000000 0.000000 0.000000 -3.142000
+			scale 0.465000 0.465000 0.465000
+			translation 11.010000 -11.290000 3.150000
+		}
+		DEF MU_Text_b Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "NavType"
+						}
+					}
+					geometry Text { font "heading" justify "middle" translate false text "B" }
+				}
+			]
+			//rotation -1.000000 0.000000 0.000000 -1.571000
+			scale 0.605000 0.605000 0.000
+			//scaleOrientation 0.000000 0.000000 1.000000 -0.005973
+			translation 1.889000 2.422000 -0.409200
+		}
+		DEF MU_Text_back Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "XBOXgreen"
+						}
+					}
+					geometry Text { font "Body" text "BACK" justify "end"}
+				}
+			]
+			//rotation -1.000000 0.000000 0.000000 -1.571000
+			scale 0.375000 0.475000 0.00
+			//scaleOrientation 0.000000 0.000000 1.000000 -0.005973
+			translation 1.183300 2.156 -0.409200
+		}
+		DEF MU_back_pod_outer Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "CellEgg/Parts"
+						}
+					}
+					geometry DEF MU_back_pod_outer-FACES Mesh { url "MU_back_pod_outer-FACES.xm" }
+				}
+			]
+			rotation -1.000000 0.000000 0.000000 -3.142000
+			scale 0.465000 0.465000 0.465000
+			translation 11.010000 -11.290000 3.150000
+		}
+		DEF MU_back_tube Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "TubesFade"
+						}
+					}
+					geometry DEF MU_back_tube-FACES Mesh { url "MU_back_tube-FACES.xm" }
+				}
+			]
+			rotation 0.990900 -0.095410 -0.095410 -1.580000
+			scale 0.465000 0.465000 0.465000
+			scaleOrientation 0.010380 -0.285600 0.958300 -0.080610
+			translation -22.030001 -27.750000 9.817000
+		}
+		DEF MU_back_pod_HL Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "EggGlow"
+						}
+					}
+					geometry DEF MU_back_pod_HL-FACES Mesh { url "MU_back_pod_HL-FACES.xm" }
+				}
+			]
+			rotation -1.000000 0.000000 0.000000 -3.142000
+			scale 0.465000 0.465000 0.465000
+			translation 11.010000 -11.290000 3.150000
+		}
+	]
+	rotation 0.000000 1.000000 0.000000 -0.095990
+	scale 0.429200 0.429200 0.429200
+	translation 95.919998 0.459000 -222.399994
 }
