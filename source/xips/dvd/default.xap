@@ -2,48 +2,48 @@ DEF Group01 Transform
 {
 	scale 150 150 150
 	translation 0 -180 0
-    children
-    [
-        DEF texture_panel Transform
-        {
-            children
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "Black80"
-                        }
-                    }
-                    geometry DEF texture_panel-FACES Mesh { url "texture_panel-FACES.xm" }
-                }
-            ]
-            rotation -1.000000 0.000000 0.000000 -1.571000
-            translation -0.016360 0.160600 -204.600006
-        }
-        DEF text_panel Transform
-        {
-            children
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "Black80"
-                        }
-                    }
-                    geometry DEF text_panel-FACES Mesh { url "text_panel-FACES.xm" }
-                }
-            ]
-            rotation -1.000000 0.000000 0.000000 -1.571000
-            translation -1.464000 -0.189400 -204.500000
-        }
+	children
+	[
+		DEF texture_panel Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "Black80"
+						}
+					}
+					geometry DEF texture_panel-FACES Mesh { url "texture_panel-FACES.xm" }
+				}
+			]
+			rotation -1.000000 0.000000 0.000000 -1.571000
+			translation -0.016360 0.160600 -204.600006
+		}
+		DEF text_panel Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "Black80"
+						}
+					}
+					geometry DEF text_panel-FACES Mesh { url "text_panel-FACES.xm" }
+				}
+			]
+			rotation -1.000000 0.000000 0.000000 -1.571000
+			translation -1.464000 -0.189400 -204.500000
+		}
 
-        DEF dvd_shell Group
+		DEF dvd_shell Group
 		{
 			children
 			[
@@ -175,10 +175,10 @@ DEF Group01 Transform
 			]
 		}
 
-        DEF DVD_buttons Group
-        {
-            children
-            [
+		DEF DVD_buttons Group
+		{
+			children
+			[
 				DEF MU_L3_button_rewind Transform
 				{
 					children
@@ -331,26 +331,26 @@ DEF Group01 Transform
 				}
 			]
 		}
-        DEF text Transform
-        {
-            children
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "NavType"
-                        }
-                    }
+		DEF text Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "NavType"
+						}
+					}
 					geometry DEF theText Text { font "Body" width -15 translate false }
-                }
-            ]
-            scale 0.124700 0.124700 0.124700
-            scaleOrientation -0.009816 0.443700 -0.896100 -0.016070
-            translation -1.75 -0.027180 -0.000021
-        }
+				}
+			]
+			scale 0.124700 0.124700 0.124700
+			scaleOrientation -0.009816 0.443700 -0.896100 -0.016070
+			translation -1.75 -0.027180 -0.000021
+		}
 		DEF icons Group
 		{
 			children
@@ -481,5 +481,5 @@ DEF Group01 Transform
 				}
 			]
 		}
-    ]
+	]
 }

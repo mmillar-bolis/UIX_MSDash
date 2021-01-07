@@ -1,8 +1,8 @@
 DEF Title_Menu_Parent Transform
 {
 	fade 0.5
-    children
-    [
+	children
+	[
 		DEF Group16 Transform
 		{
 			children
@@ -1331,8 +1331,8 @@ DEF Title_Menu_Parent Transform
 DEF Copy_Dest_Parent Transform
 {
 	fade 0.5
-    children
-    [
+	children
+	[
 		DEF Copy_Dest Transform
 		{
 			children

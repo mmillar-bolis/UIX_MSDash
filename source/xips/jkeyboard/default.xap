@@ -4,8 +4,8 @@ DEF theJKeyPressSound AudioClip { url "audio/main audio/global keyboard stroke 2
 DEF theJapaneseKeyboard Transform
 {
 	scale 100 100 100
-    children
-    [
+	children
+	[
 		DEF theJKeyboard Keyboard
 		{
 			function OnDone()
@@ -82,10 +82,10 @@ DEF theJapaneseKeyboard Transform
 					theJKeyboard.CursorRight();
 				}
 
-                function OnLeftThumbDown()
-                {
-                    theJKeyboard.Shift();
-                }
+				function OnLeftThumbDown()
+				{
+					theJKeyboard.Shift();
+				}
 			}
 			frame Group
 			{
@@ -3903,4 +3903,4 @@ DEF theJapaneseKeyboard Transform
 			}
 		]
 		translation -0.580002 20.459999 -1.800003
-    }
+	}

@@ -4,8 +4,8 @@ DEF theKeyPressSound AudioClip { url "audio/main audio/global keyboard stroke 2.
 DEF theEnglishKeyboard Transform
 {
 	scale 100 100 100
-    children
-    [
+	children
+	[
 		DEF theKeyboard Keyboard
 		{
 			function OnDone()
@@ -82,12 +82,11 @@ DEF theEnglishKeyboard Transform
 					theKeyboard.CursorRight();
 				}
 
-                function OnLeftThumbDown()
-                {
-                    theKeyboard.Shift();
-                }
+				function OnLeftThumbDown()
+				{
+					theKeyboard.Shift();
+				}
 			}
-
 			frame Group
 			{
 				children

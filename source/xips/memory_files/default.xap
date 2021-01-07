@@ -1,8 +1,8 @@
 DEF Saved_Game_Parent Transform
 {
 	fade 0.5
-    children
-    [
+	children
+	[
 		DEF Group16 Transform
 		{
 			children
@@ -1320,8 +1320,8 @@ DEF Saved_Game_Parent Transform
 DEF Copy_Dest_Parent Transform
 {
 	fade 0.5
-    children
-    [
+	children
+	[
 		DEF Copy_Dest Transform
 		{
 			children
@@ -3504,10 +3504,10 @@ DEF Copy_Dest_Parent Transform
 					translation -9.569000 4.392000 72.059998
 				}
 			]
-            rotation 0.000000 1.000000 0.000000 -1.239000
-            translation 0.000000 0.000000 0.000000
-        }
-    ]
-    rotation 0.000000 -1.000000 0.000000 -1.344000
-    translation 36.369999 10.840000 -286.600006
+			rotation 0.000000 1.000000 0.000000 -1.239000
+			translation 0.000000 0.000000 0.000000
+		}
+	]
+	rotation 0.000000 -1.000000 0.000000 -1.344000
+	translation 36.369999 10.840000 -286.600006
 }
