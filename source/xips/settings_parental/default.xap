@@ -2,10 +2,9 @@ DEF theScene Transform
 {
 	children
 	[
-		
 		DEF S_P_tubeline_03 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -24,15 +23,15 @@ DEF theScene Transform
 		}
 		DEF orb Transform
 		{
-			children 
+			children
 			[
 				DEF S_P_tube_attachment_01 Transform
 				{
-					children 
+					children
 					[
 						DEF S_P_GameModule_140 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -56,7 +55,7 @@ DEF theScene Transform
 				}
 				DEF S_P_pod_support_01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -77,7 +76,7 @@ DEF theScene Transform
 				}
 				DEF S_P_pod_support_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -98,7 +97,7 @@ DEF theScene Transform
 				}
 				DEF S_P_podsocket_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -119,7 +118,7 @@ DEF theScene Transform
 				}
 				DEF S_P_podsocket_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -140,7 +139,7 @@ DEF theScene Transform
 				}
 				DEF S_P_parentcontrolpod Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -160,7 +159,7 @@ DEF theScene Transform
 				}
 				DEF S_P_pod_support_04 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -181,7 +180,7 @@ DEF theScene Transform
 				}
 				DEF S_P_pod_shell_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -201,7 +200,7 @@ DEF theScene Transform
 				}
 				DEF S_P_pod_support_02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -221,7 +220,7 @@ DEF theScene Transform
 				}
 				DEF Loft01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -240,7 +239,7 @@ DEF theScene Transform
 				}
 				DEF Loft02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -260,138 +259,135 @@ DEF theScene Transform
 			]
 			translation 10.970000 0.375400 73.800003
 		}
-
-DEF LockIcon Transform
-{
-	fade 0.25
-	translation 10.970000 0.375400 73.800003
-	//rotation 0 1 0 -0.35
-
-    children 
-    [
-		Transform
+		DEF LockIcon Transform
 		{
-			translation -1.2 1.1 0
-			scale 0.37 0.37 0.37
+			fade 0.25
+			translation 10.970000 0.375400 73.800003
+			//rotation 0 1 0 -0.35
 			children
 			[
-				Waver
+				Transform
 				{
-					axis 0 1 0
-					rpm 5
+					translation -1.2 1.1 0
+					scale 0.37 0.37 0.37
 					children
 					[
-						DEF S_Main_lock_keyhole Transform
+						Waver
 						{
-							children 
+							axis 0 1 0
+							rpm 5
+							children
 							[
-								Shape
+								DEF S_Main_lock_keyhole Transform
 								{
-									appearance Appearance
-									{
-										material MaxMaterial
+									children
+									[
+										Shape
 										{
-											name "IconParts1"
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "IconParts1"
+												}
+											}
+											geometry DEF S_Main_lock_keyhole-FACES Mesh { url "S_Main_lock_keyhole-FACES.xm" }
 										}
-									}
-									geometry DEF S_Main_lock_keyhole-FACES Mesh { url "S_Main_lock_keyhole-FACES.xm" }
+									]
+									rotation -1.000000 0.000000 0.000000 -1.571000
+									scale 0.742800 0.742800 0.742800
+									scaleOrientation -0.313900 -0.857600 0.407500 -0.020090
+									translation -43.790001 172.600006 100.599998
+								}
+								DEF S_Main_lock_inner Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "Material #133"
+												}
+											}
+											geometry DEF S_Main_lock_inner-FACES Mesh { url "S_Main_lock_inner-FACES.xm" }
+										}
+									]
+									scale 0.732600 0.732600 0.732600
+									translation -40.150002 8.594000 136.500000
+								}
+								DEF S_Main_lock_body Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "Metal_Chrome"
+												}
+											}
+											geometry DEF S_Main_lock_body-FACES Mesh { url "S_Main_lock_body-FACES.xm" }
+										}
+									]
+									scale 0.787400 0.787400 0.787400
+									translation -43.150002 9.385000 146.699997
+								}
+								DEF S_Main_lock_bar Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "Metal_Chrome"
+												}
+											}
+											geometry DEF S_Main_lock_bar-FACES Mesh { url "S_Main_lock_bar-FACES.xm" }
+										}
+									]
+									rotation -1.000000 0.000000 0.000000 -1.571000
+									scale 0.787400 0.787400 0.787400
+									scaleOrientation -0.000010 0.000000 -1.000000 -0.026100
+									translation -44.369999 283.799988 146.699997
+								}
+								DEF S_Main_lock_keyhole01 Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "IconParts1"
+												}
+											}
+											geometry DEF S_Main_lock_keyhole01-FACES Mesh { url "S_Main_lock_keyhole01-FACES.xm" }
+										}
+									]
+									rotation -1.000000 0.000000 0.000000 -1.571000
+									scale 0.742800 0.742800 0.742800
+									scaleOrientation -0.313900 -0.857600 0.407500 -0.020090
+									translation -43.790001 172.600006 100.599998
 								}
 							]
-							rotation -1.000000 0.000000 0.000000 -1.571000
-							scale 0.742800 0.742800 0.742800
-							scaleOrientation -0.313900 -0.857600 0.407500 -0.020090
-							translation -43.790001 172.600006 100.599998
-						}
-						DEF S_Main_lock_inner Transform
-						{
-							children 
-							[
-								Shape
-								{
-									appearance Appearance
-									{
-										material MaxMaterial
-										{
-											name "Material #133"
-										}
-									}
-									geometry DEF S_Main_lock_inner-FACES Mesh { url "S_Main_lock_inner-FACES.xm" }
-								}
-							]
-							scale 0.732600 0.732600 0.732600
-							translation -40.150002 8.594000 136.500000
-						}
-						DEF S_Main_lock_body Transform
-						{
-							children 
-							[
-								Shape
-								{
-									appearance Appearance
-									{
-										material MaxMaterial
-										{
-											name "Metal_Chrome"
-										}
-									}
-									geometry DEF S_Main_lock_body-FACES Mesh { url "S_Main_lock_body-FACES.xm" }
-								}
-							]
-							scale 0.787400 0.787400 0.787400
-							translation -43.150002 9.385000 146.699997
-						}
-						DEF S_Main_lock_bar Transform
-						{
-							children 
-							[
-								Shape
-								{
-									appearance Appearance
-									{
-										material MaxMaterial
-										{
-											name "Metal_Chrome"
-										}
-									}
-									geometry DEF S_Main_lock_bar-FACES Mesh { url "S_Main_lock_bar-FACES.xm" }
-								}
-							]
-							rotation -1.000000 0.000000 0.000000 -1.571000
-							scale 0.787400 0.787400 0.787400
-							scaleOrientation -0.000010 0.000000 -1.000000 -0.026100
-							translation -44.369999 283.799988 146.699997
-						}
-						DEF S_Main_lock_keyhole01 Transform
-						{
-							children 
-							[
-								Shape
-								{
-									appearance Appearance
-									{
-										material MaxMaterial
-										{
-											name "IconParts1"
-										}
-									}
-									geometry DEF S_Main_lock_keyhole01-FACES Mesh { url "S_Main_lock_keyhole01-FACES.xm" }
-								}
-							]
-							rotation -1.000000 0.000000 0.000000 -1.571000
-							scale 0.742800 0.742800 0.742800
-							scaleOrientation -0.313900 -0.857600 0.407500 -0.020090
-							translation -43.790001 172.600006 100.599998
 						}
 					]
 				}
 			]
 		}
-	]
-}
-
 		DEF Loft04 Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -410,11 +406,11 @@ DEF LockIcon Transform
 		}
 		DEF arm Transform
 		{
-			children 
+			children
 			[
 				DEF S_P_Arm_04 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -435,11 +431,11 @@ DEF LockIcon Transform
 				}
 				DEF arm_0 Transform
 				{
-					children 
+					children
 					[
 						DEF S_P_Arm_01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -460,7 +456,7 @@ DEF LockIcon Transform
 						}
 						DEF S_P_Arm_03 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -481,7 +477,7 @@ DEF LockIcon Transform
 						}
 						DEF S_P_Arm_02 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -508,11 +504,11 @@ DEF LockIcon Transform
 		}
 		DEF panels Transform
 		{
-			children 
+			children
 			[
 				DEF Line11 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -536,7 +532,7 @@ DEF LockIcon Transform
 				}
 				DEF Line06 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -555,7 +551,7 @@ DEF LockIcon Transform
 				}
 				DEF Line07 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -574,7 +570,7 @@ DEF LockIcon Transform
 				}
 				DEF Line08 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -593,7 +589,7 @@ DEF LockIcon Transform
 				}
 				DEF Line09 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -612,7 +608,7 @@ DEF LockIcon Transform
 				}
 				DEF Line10 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -629,10 +625,9 @@ DEF LockIcon Transform
 					rotation -1.000000 0.000000 0.000000 -1.571000
 					translation 1.783000 -0.151300 -0.054430
 				}
-
 				DEF Line05 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -651,7 +646,7 @@ DEF LockIcon Transform
 				}
 				DEF Line01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -671,10 +666,9 @@ DEF LockIcon Transform
 			]
 			translation 11.920000 -1.056000 76.250000
 		}
-
 		DEF Text_GAMES Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
@@ -694,11 +688,11 @@ DEF LockIcon Transform
 		}
 		DEF text Transform
 		{
-			children 
+			children
 			[
 				DEF Text_mature Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -716,10 +710,9 @@ DEF LockIcon Transform
 					scale 0.3 0.3 0.3
 					translation -1.180000 -0.724800 0.006958
 				}
-
 				DEF Text_PARENTAL_CONTROL Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -740,18 +733,17 @@ DEF LockIcon Transform
 			]
 			translation 12.080000 -0.847500 76.349998
 		}
-
 		DEF RatingScale Transform
 		{
 			children
 			[
 				DEF meter Transform
 				{
-					children 
+					children
 					[
 						DEF meter_7 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -774,10 +766,9 @@ DEF LockIcon Transform
 							scaleOrientation 1.000000 0.000000 0.000000 0.000000
 							translation 0.001007 1.728000 0.021640
 						}
-
 						DEF meter_6 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -802,7 +793,7 @@ DEF LockIcon Transform
 						}
 						DEF meter_5 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -825,10 +816,9 @@ DEF LockIcon Transform
 							scaleOrientation 1.000000 0.000000 0.000000 0.000000
 							translation 0.001007 1.170000 0.021640
 						}
-
 						DEF meter_4 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -851,10 +841,9 @@ DEF LockIcon Transform
 							scaleOrientation 1.000000 0.000000 0.000000 0.000000
 							translation 0.001007 0.893300 0.021640
 						}
-
 						DEF meter_3 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -879,7 +868,7 @@ DEF LockIcon Transform
 						}
 						DEF meter_2 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -904,7 +893,7 @@ DEF LockIcon Transform
 						}
 						DEF meter_1 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -930,7 +919,6 @@ DEF LockIcon Transform
 					]
 					translation 13.480000 -1.145000 76.339996
 				}
-
 				DEF meterBar Transform
 				{
 					fade 0.15
@@ -938,7 +926,7 @@ DEF LockIcon Transform
 					[
 						DEF S_P_meterscroller_inner02 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -958,7 +946,7 @@ DEF LockIcon Transform
 						}
 						DEF S_P_meterscroller_outer02 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -976,10 +964,9 @@ DEF LockIcon Transform
 							scale 0.183400 0.183400 0.183400
 							translation -0.000908 0.331700 -0.016830
 						}
-
 						DEF S_P_meterscroller_line02 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1001,19 +988,16 @@ DEF LockIcon Transform
 							scale 0.183400 0.183400 0.183400
 							translation -0.004623 0.415800 0.022020
 						}
-
 					]
 					translation 13.480000 -1.145000 76.339996
 				}
-
-
 				DEF NumberRatings Transform
 				{
 					children
 					[
 						DEF Text_NUMBER_RATINGS Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1032,7 +1016,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS2 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1051,7 +1035,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS3 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1070,7 +1054,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS4 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1089,7 +1073,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS5 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1108,7 +1092,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS6 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1127,7 +1111,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS7 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1146,7 +1130,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_NUMBER_RATINGS8 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1166,14 +1150,13 @@ DEF LockIcon Transform
 					]
 					translation 12.080000 -0.847500 76.349998
 				}
-
 				DEF TextRatings Transform
 				{
 					children
 					[
 						DEF Text_MOVIE_RATINGS Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1192,7 +1175,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS2 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1211,7 +1194,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS3 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1230,7 +1213,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS4 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1249,7 +1232,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS5 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1268,7 +1251,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS6 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1287,7 +1270,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS7 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1306,7 +1289,7 @@ DEF LockIcon Transform
 						}
 						DEF Text_MOVIE_RATINGS8 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1329,14 +1312,13 @@ DEF LockIcon Transform
 			]
 			translation 0.0 -0.08 0.0
 		}
-
 		DEF Group06 Transform
 		{
-			children 
+			children
 			[
 				DEF MU_back_probearm Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1357,7 +1339,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_back_probe Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1378,7 +1360,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_back_pod_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1398,7 +1380,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_Text_b Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1419,7 +1401,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_Text_back Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1440,7 +1422,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_back_pod_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1460,7 +1442,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_back_tube Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1481,7 +1463,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_back_pod_HL Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1500,17 +1482,17 @@ DEF LockIcon Transform
 					translation 11.010000 -11.290000 3.150000
 				}
 			]
-            rotation 0.000000 -1.000000 0.000000 -0.340300
-            scale 0.398800 0.398800 0.398800
-            translation 10.600000 -4.125000 77.400002
+			rotation 0.000000 -1.000000 0.000000 -0.340300
+			scale 0.398800 0.398800 0.398800
+			translation 10.600000 -4.125000 77.400002
 		}
 		DEF Group07 Transform
 		{
-			children 
+			children
 			[
 				DEF MU_Text_a Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1531,7 +1513,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_probearm Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1552,7 +1534,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_text_select Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1573,7 +1555,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_probe Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1594,7 +1576,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_pod_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1613,7 +1595,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_pod_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1632,7 +1614,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_tube Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1653,7 +1635,7 @@ DEF LockIcon Transform
 				}
 				DEF MU_select_pod_HL Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1671,11 +1653,10 @@ DEF LockIcon Transform
 					translation 0.178000 -10.330000 3.150000
 				}
 			]
-            rotation 0.000000 -1.000000 0.000000 -0.200700
-            scale 0.398800 0.398800 0.398800
-            translation 14.480000 -4.188000 76.309998
+			rotation 0.000000 -1.000000 0.000000 -0.200700
+			scale 0.398800 0.398800 0.398800
+			translation 14.480000 -4.188000 76.309998
 		}
-    ]
-    translation 87.489998 5.928000 -329.200012
+	]
+	translation 87.489998 5.928000 -329.200012
 }
-
