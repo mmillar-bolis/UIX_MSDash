@@ -1,6 +1,5 @@
 DEF theKeySelectSound AudioClip { url "audio/main audio/global keyboard stroke 1.wav" volume 0.88 }
 DEF theKeyPressSound AudioClip { url "audio/main audio/global keyboard stroke 2.wav" volume 0.88 }
-
 DEF theEnglishKeyboard Transform
 {
 	scale 100 100 100
@@ -12,12 +11,10 @@ DEF theEnglishKeyboard Transform
 			{
 				KeyboardDone();
 			}
-
 			function OnError()
 			{
 				PlaySoundError();
 			}
-
 			control DEF theKeyboardJoystick Joystick
 			{
 				function OnADown()
@@ -25,63 +22,52 @@ DEF theEnglishKeyboard Transform
 					theKeyboard.activate();
 					theKeyPressSound.Play();
 				}
-
 				function OnLeftThumbMoveUp()
 				{
 					theKeyboard.selectUp();
 					theKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveDown()
 				{
 					theKeyboard.selectDown();
 					theKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveLeft()
 				{
 					theKeyboard.selectLeft();
 					theKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveRight()
 				{
 					theKeyboard.selectRight();
 					theKeySelectSound.Play();
 				}
-
 				function OnWhiteDown()
 				{
 					theKeyboard.Backspace();
 					theKeyPressSound.Play();
 				}
-
 				function OnBlackDown()
 				{
 					theKeyboard.Insert(" ");
 					theKeyPressSound.Play();
 				}
-
 				function OnBDown()
 				{
 					KeyboardCancel();
 				}
-
 				function OnXDown()
 				{
 					theKeyboard.CycleMode();
 				}
-
 				function OnLeftDown()
 				{
 					theKeyboard.CursorLeft();
 				}
-
 				function OnRightDown()
 				{
 					theKeyboard.CursorRight();
 				}
-
 				function OnLeftThumbDown()
 				{
 					theKeyboard.Shift();
@@ -335,7 +321,6 @@ DEF theEnglishKeyboard Transform
 								rotation 1 0 0 -1.571
 			//					translation -0.75 0 0
 								scale 0.1 0.1 0.1
-
 								children
 								[
 									Shape
@@ -358,10 +343,8 @@ DEF theEnglishKeyboard Transform
 						scaleOrientation 0.414500 -0.531200 -0.738900 -0.225700
 						translation 0.174500 0.518400 0.274200
 					}
-
 				]
 			}
-
 			text Transform
 			{
 				children
@@ -369,7 +352,6 @@ DEF theEnglishKeyboard Transform
 					Transform
 					{
 						rotation 1 0 0 -1.571
-
 						children
 						[
 							Shape
@@ -385,7 +367,6 @@ DEF theEnglishKeyboard Transform
 				scaleOrientation 0.414500 -0.531200 -0.738900 -0.225700
 				translation -0.45 0.4 0.274200
 			}
-
 			keys
 			[
 				DEF Sound_2_button_08 Transform
@@ -403,7 +384,6 @@ DEF theEnglishKeyboard Transform
 							}
 							geometry DEF Sound_2_button_08-FACES Mesh { url "Sound_2_button_08-FACES.xm" }
 						}
-
 						Transform
 						{
 							rotation 1 0 0 -1.571

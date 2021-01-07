@@ -778,7 +778,6 @@ DEF Controller1 Transform
 			cycleInterval 24.969999
 			loop TRUE
 		}
-
 		DEF MEM_L1_controller1_podshell Transform
 		{
 			children
@@ -800,7 +799,6 @@ DEF Controller1 Transform
 			scaleOrientation 0.000000 0.992700 -0.120500 -0.418900
 			translation -3.936000 6.914000 -0.232100
 		}
-
 		DEF Controller1Unit1 Transform
 		{
 			children
@@ -812,7 +810,6 @@ DEF Controller1 Transform
 								material MaxMaterial
 								{
 									name "MainMenuOrb"
-
 								}
 								texture ImageTexture
 								{
@@ -981,7 +978,6 @@ DEF Controller2 Transform
 												material MaxMaterial
 												{
 													name "MainMenuOrb"
-
 												}
 												texture ImageTexture
 												{
@@ -1038,7 +1034,6 @@ DEF Controller2 Transform
 					scaleOrientation 1.000000 0.000000 0.000000 0.000000
 					translation -2.320000 2.788000 -1.265000
 				}
-
 				DEF MEM_L1_tube_01 Transform
 				{
 					children
@@ -1200,7 +1195,6 @@ DEF Controller4 Transform
 					scaleOrientation 1.000000 0.000000 0.000000 0.000000
 					translation 2.047000 6.172000 -0.957200
 				}
-
 				DEF Controller4Unit1 Transform
 				{
 							children
@@ -1212,7 +1206,6 @@ DEF Controller4 Transform
 												material MaxMaterial
 												{
 													name "MainMenuOrb"
-
 												}
 												texture ImageTexture
 												{
@@ -1710,7 +1703,6 @@ DEF InfoPanel Transform
 							geometry DEF PanelText3 Text { font "Heading" justify "middle" }
 						}
 					]
-
 					scale 0.7 0.7 0.7
 					translation -0.155800 0.666500 0.059800
 //					scale 0.663580 0.663580 0.663580

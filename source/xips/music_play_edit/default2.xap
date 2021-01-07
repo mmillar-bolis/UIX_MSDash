@@ -2009,7 +2009,6 @@ DEF theScreenWaver Transform
 																	appearance MaxMaterial { name "CellEgg/Partsz" }
 																	geometry DEF TrackName8 Text { font "Body" justify "left" width -15 translate false text "8."}
 																}
-
 															]
 															scale 0.13 0.13 0.13
 															//translation -0.38 -0.482 0.1

@@ -42,7 +42,6 @@ DEF Group01 Transform
 			rotation -1.000000 0.000000 0.000000 -1.571000
 			translation -1.464000 -0.189400 -204.500000
 		}
-
 		DEF dvd_shell Group
 		{
 			children
@@ -174,7 +173,6 @@ DEF Group01 Transform
 				}
 			]
 		}
-
 		DEF DVD_buttons Group
 		{
 			children

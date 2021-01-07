@@ -2,7 +2,6 @@ DEF Music_Arm Transform
 {
 	children
 	[
-
 		DEF orb Transform
 		{
 			children

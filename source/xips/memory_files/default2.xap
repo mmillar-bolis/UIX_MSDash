@@ -1510,7 +1510,6 @@ DEF Copy_Dest_Parent Transform
 								{
 									children
 									[
-
 										DEF MEM_L2_podsocket Transform
 										{
 											children
@@ -2202,7 +2201,6 @@ DEF Copy_Dest_Parent Transform
 											}
 										]
 									}
-
 									console Transform
 									{
 										children
@@ -2258,7 +2256,6 @@ DEF Copy_Dest_Parent Transform
 										scale 0.010248 0.010248 0.010248
 										translation -0.000597 0.027510 0.099250
 									}
-
 									memoryUnit Transform
 									{
 										children
@@ -2455,7 +2452,6 @@ DEF Copy_Dest_Parent Transform
 										scaleOrientation 0.420000 0.888600 0.184200 -0.755300
 										translation 0.023160 -0.155500 0.133700
 									}
-
 									panelMU Transform
 									{
 										children

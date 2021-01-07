@@ -778,7 +778,6 @@ DEF Controller1 Transform
 			cycleInterval 24.969999
 			loop TRUE
 		}
-
 		DEF MEM_L1_controller1_podshell Transform
 		{
 			children
@@ -800,7 +799,6 @@ DEF Controller1 Transform
 			scaleOrientation 0.000000 0.992700 -0.120500 -0.418900
 			translation -3.936000 6.914000 -0.232100
 		}
-
 		DEF Controller1Unit1 Transform
 		{
 			children
@@ -1305,7 +1303,6 @@ DEF Controller2 Transform
 					scaleOrientation 1.000000 0.000000 0.000000 0.000000
 					translation -2.320000 2.788000 -1.265000
 				}
-
 				DEF MEM_L1_tube_01 Transform
 				{
 					children
@@ -1573,7 +1570,6 @@ DEF Controller4 Transform
 					scaleOrientation 1.000000 0.000000 0.000000 0.000000
 					translation 2.047000 6.172000 -0.957200
 				}
-
 				DEF Controller4Unit2 Transform
 				{
 					children
@@ -2029,7 +2025,6 @@ DEF Controller3 Transform
 			]
 			translation 1.824000 3.159000 0.433600
 		}
-
 		DEF MEM_L1_controller1_pod_outer04 Transform
 		{
 			children

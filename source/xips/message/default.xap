@@ -12,7 +12,6 @@ DEF Camera01_0 Viewpoint
 	position 0.424700 -0.012960 6.052000
 	description "Camera01_0"
 }
-
 DEF theWholePanel Group
 {
 	children
@@ -35,7 +34,6 @@ DEF theWholePanel Group
 							translation 3.75 -2.4 0
 							children
 							[
-
 								DEF Group01 Transform
 								{
 									children
@@ -80,7 +78,6 @@ DEF theWholePanel Group
 											scaleOrientation 0.989600 0.133800 0.052880 -0.345300
 											translation -1.166000 0.516800 4.695000
 										}
-
 										DEF message_metapanel_back Transform
 										{
 											children
@@ -187,7 +184,6 @@ DEF theWholePanel Group
 															scaleOrientation -0.665500 -0.219900 0.713300 -0.762200
 															translation 3.310000 -1.467000 -1.813000
 														}
-
 														DEF message_Text01 Transform
 														{
 															children
@@ -581,10 +577,8 @@ DEF theWholePanel Group
 									scaleOrientation 0.150600 -0.941300 0.302200 -0.413700
 									translation -1.774000 0.960300 -0.264200
 								}
-
 							]
 						}
-
 					]
 				}
 		/*

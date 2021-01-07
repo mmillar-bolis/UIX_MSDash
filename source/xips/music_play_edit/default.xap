@@ -798,7 +798,6 @@ DEF theWholeThing Transform
 									fade 0.25
 									children
 									[
-
 										/*DEF MU_cd_04_backing Transform
 										{
 											children
@@ -1087,7 +1086,6 @@ DEF theWholeThing Transform
 							fade 1.0
 							children
 							[
-
 								DEF GM_L2_Arm01_05 Transform
 								{
 									children
@@ -1230,7 +1228,6 @@ DEF theWholeThing Transform
 																	scaleOrientation 0.499300 0.000000 -0.866400 -0.133000
 																	translation 112.300003 -115.699997 408.700012
 																}
-
 															]
 															translation -0.028750 -0.042740 -0.055150
 														}
@@ -1608,7 +1605,6 @@ DEF theWholeThing Transform
 																	}
 																	geometry USE MenuButtonMesh
 																}
-
 																Transform
 																{
 																	translation -2.5 -0.1 -0.25

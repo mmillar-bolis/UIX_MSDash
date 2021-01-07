@@ -136,7 +136,6 @@ DEF theMainMenuLevel Transform
 									scaleOrientation -0.118800 0.987900 0.100100 -0.141000
 									translation -4.415000 -41.959999 2.796000
 								}
-
 								DEF podsupport_ring Transform
 								{
 									children

@@ -506,7 +506,6 @@ DEF Saved_Game_Parent Transform
 		{
 			children
 			[
-
 				DEF MEM_L2_arm00 Transform
 				{
 					children
@@ -528,7 +527,6 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation -0.140500 0.200600 -0.969500 -0.042590
 					translation 34.220001 15.280000 -213.199997
 				}
-
 				DEF MEM_L2_arm03 Transform
 				{
 					children
@@ -550,7 +548,6 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation -0.001570 -0.000165 1.000000 -0.628100
 					translation 34.110001 15.540000 -213.199997
 				}
-
 				DEF MEM_L2_arm02 Transform
 				{
 					children
@@ -1499,7 +1496,6 @@ DEF Copy_Dest_Parent Transform
 								{
 									children
 									[
-
 										DEF MEM_L2_podsocket Transform
 										{
 											children

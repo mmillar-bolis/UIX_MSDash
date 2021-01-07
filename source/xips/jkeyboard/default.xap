@@ -1,6 +1,5 @@
 DEF theJKeySelectSound AudioClip { url "audio/main audio/global keyboard stroke 1.wav" volume 0.88 }
 DEF theJKeyPressSound AudioClip { url "audio/main audio/global keyboard stroke 2.wav" volume 0.88 }
-
 DEF theJapaneseKeyboard Transform
 {
 	scale 100 100 100
@@ -12,12 +11,10 @@ DEF theJapaneseKeyboard Transform
 			{
 				KeyboardDone();
 			}
-
 			function OnError()
 			{
 				PlaySoundError();
 			}
-
 			control DEF theJKeyboardJoystick Joystick
 			{
 				function OnADown()
@@ -25,63 +22,52 @@ DEF theJapaneseKeyboard Transform
 					theJKeyboard.activate();
 					theJKeyPressSound.Play();
 				}
-
 				function OnLeftThumbMoveUp()
 				{
 					theJKeyboard.selectUp();
 					theJKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveDown()
 				{
 					theJKeyboard.selectDown();
 					theJKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveLeft()
 				{
 					theJKeyboard.selectLeft();
 					theJKeySelectSound.Play();
 				}
-
 				function OnLeftThumbMoveRight()
 				{
 					theJKeyboard.selectRight();
 					theJKeySelectSound.Play();
 				}
-
 				function OnWhiteDown()
 				{
 					theJKeyboard.Backspace();
 					theJKeyPressSound.Play();
 				}
-
 				function OnBlackDown()
 				{
 					theJKeyboard.Insert(" ");
 					theJKeyPressSound.Play();
 				}
-
 				function OnBDown()
 				{
 					KeyboardCancel();
 				}
-
 				function OnXDown()
 				{
 					theJKeyboard.CycleMode();
 				}
-
 				function OnLeftDown()
 				{
 					theJKeyboard.CursorLeft();
 				}
-
 				function OnRightDown()
 				{
 					theJKeyboard.CursorRight();
 				}
-
 				function OnLeftThumbDown()
 				{
 					theJKeyboard.Shift();
@@ -291,7 +277,6 @@ DEF theJapaneseKeyboard Transform
 								rotation 1 0 0 -1.571
 			//					translation -0.75 0 0
 								scale 0.1 0.1 0.1
-
 								children
 								[
 									Shape
@@ -317,7 +302,6 @@ DEF theJapaneseKeyboard Transform
 					}
 				]
 			}
-
 			text Transform
 			{
 				children
@@ -325,7 +309,6 @@ DEF theJapaneseKeyboard Transform
 					Transform
 					{
 						rotation 1 0 0 -1.571
-
 						children
 						[
 							Shape
@@ -342,8 +325,6 @@ DEF theJapaneseKeyboard Transform
 				//translation -0.45 0.4 0.274200
 				translation -0.52 0.32 0.274200
 			}
-
-
 			keys
 			[
 					// Row 1
@@ -487,7 +468,6 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.400200 0.385300 -0.831500 -0.005398
 						translation -0.408700 0.223000 0.085850
 					}
-
 					DEF Sound_2_num_key_5 Transform
 					{
 						children
@@ -523,7 +503,6 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.400200 0.385300 -0.831500 -0.005398
 						translation -0.261600 0.223300 0.085240
 					}
-
 					DEF Sound_2_num_key_14 Transform
 					{
 						children
@@ -704,7 +683,6 @@ DEF theJapaneseKeyboard Transform
 						//translation 0.479900 0.223300 0.085620
 						translation 0.509900 0.223300 0.085620
 					}
-
 					DEF Sound_2_button_09 Transform
 					{
 						children
@@ -742,9 +720,7 @@ DEF theJapaneseKeyboard Transform
 						//translation 0.776100 0.235100 0.084880
 						translation 0.793100 0.235100 0.084880
 					}
-
 					// Row 2
-
 					DEF Sound_2_key_1 Transform
 					{
 						children
@@ -1136,10 +1112,7 @@ DEF theJapaneseKeyboard Transform
 						//translation 0.775900 0.118900 0.085630
 						translation 0.793100 0.118900 0.085630
 					}
-
-
 					// Row 3
-
 					DEF Sound_2_key_11 Transform
 					{
 						children
@@ -1531,9 +1504,7 @@ DEF theJapaneseKeyboard Transform
 						//translation 0.775900 0.007858 0.085630
 						translation 0.793100 0.007858 0.085630
 					}
-
 					// Row 4
-
 					DEF Sound_2_key_21 Transform
 					{
 						children
@@ -1924,11 +1895,8 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.775900 -0.107600 0.085630
 						translation 0.793100 -0.107600 0.085630
-
 					}
-
 					// Row 5
-
 					DEF Sound_2_key_31 Transform
 					{
 						children
@@ -2319,11 +2287,8 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.775900 -0.213900 0.085630
 						translation 0.793100 -0.213900 0.085630
-
 					}
-
 					// Row 6
-
 					DEF Sound_2_key_63 Transform
 					{
 						children
@@ -2714,11 +2679,8 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.775900 -0.325400 0.085630
 						translation 0.793100 -0.325400 0.085630
-
 					}
-
 					// Row 7
-
 					DEF Sound_2_key_69 Transform
 					{
 						children
@@ -3109,11 +3071,8 @@ DEF theJapaneseKeyboard Transform
 						scaleOrientation 0.146300 -0.177600 0.973200 -0.361300
 						//translation 0.776000 -0.436300 0.085630
 						translation 0.793100 -0.436300 0.085630
-
 					}
-
 					// Row 8
-
 					DEF Sound_2_key_68 Transform
 					{
 						children
@@ -3505,9 +3464,7 @@ DEF theJapaneseKeyboard Transform
 						//translation 0.776000 -0.552200 0.085630
 						translation 0.793100 -0.552200 0.085630
 					}
-
 					// Row 9
-
 					DEF Sound_2_key_73 Transform
 					{
 						children
