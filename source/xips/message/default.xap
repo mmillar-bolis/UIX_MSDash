@@ -1,16 +1,16 @@
 DEF Camera01 Viewpoint
 {
-    fieldOfView 0.602400
-    orientation 0.000000 -1.000000 0.000000 -0.003534
-    position 0.424700 0.000000 6.052000
-    description "Camera01"
+	fieldOfView 0.602400
+	orientation 0.000000 -1.000000 0.000000 -0.003534
+	position 0.424700 0.000000 6.052000
+	description "Camera01"
 }
 DEF Camera01_0 Viewpoint
 {
-    fieldOfView 0.602400
-    orientation 0.000000 -1.000000 0.000000 -0.003534
-    position 0.424700 -0.012960 6.052000
-    description "Camera01_0"
+	fieldOfView 0.602400
+	orientation 0.000000 -1.000000 0.000000 -0.003534
+	position 0.424700 -0.012960 6.052000
+	description "Camera01_0"
 }
 
 DEF theWholePanel Group
@@ -38,11 +38,11 @@ DEF theWholePanel Group
 
 								DEF Group01 Transform
 								{
-									children 
+									children
 									[
 										DEF message_support_01 Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -57,7 +57,7 @@ DEF theWholePanel Group
 												}
 												DEF message_panel_support_02 Transform
 												{
-													children 
+													children
 													[
 														Shape
 														{
@@ -83,7 +83,7 @@ DEF theWholePanel Group
 
 										DEF message_metapanel_back Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -109,7 +109,7 @@ DEF theWholePanel Group
 										}
 										DEF Rectangle01 Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -132,7 +132,7 @@ DEF theWholePanel Group
 											[
 												DEF message_metapanel Transform
 												{
-													children 
+													children
 													[
 														Shape
 														{
@@ -147,7 +147,7 @@ DEF theWholePanel Group
 														}
 														DEF message_tube Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -168,7 +168,7 @@ DEF theWholePanel Group
 														}
 														DEF message_tube_0 Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -187,10 +187,10 @@ DEF theWholePanel Group
 															scaleOrientation -0.665500 -0.219900 0.713300 -0.762200
 															translation 3.310000 -1.467000 -1.813000
 														}
-										
+
 														DEF message_Text01 Transform
 														{
-															children 
+															children
 															[
 																Transform
 																{
@@ -219,7 +219,7 @@ DEF theWholePanel Group
 														}
 														DEF button_yes Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -238,7 +238,7 @@ DEF theWholePanel Group
 																}
 																DEF text_yes Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -268,7 +268,7 @@ DEF theWholePanel Group
 														}
 														DEF button_no Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -287,7 +287,7 @@ DEF theWholePanel Group
 																}
 																DEF text_no Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -313,7 +313,7 @@ DEF theWholePanel Group
 														}
 														DEF button_center Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -332,7 +332,7 @@ DEF theWholePanel Group
 																}
 																DEF text_center Transform
 																{
-																	children 
+																	children
 																	[
 																		Shape
 																		{
@@ -358,7 +358,7 @@ DEF theWholePanel Group
 														}
 														DEF slider_slot Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -379,7 +379,7 @@ DEF theWholePanel Group
 														}
 														DEF text_frame Transform
 														{
-															children 
+															children
 															[
 																Shape
 																{
@@ -410,7 +410,7 @@ DEF theWholePanel Group
 										}
 										DEF message_clip Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -431,7 +431,7 @@ DEF theWholePanel Group
 										}
 										DEF message_clip01 Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -452,7 +452,7 @@ DEF theWholePanel Group
 										}
 										DEF message_tube_02 Transform
 										{
-											children 
+											children
 											[
 												Shape
 												{
@@ -476,7 +476,7 @@ DEF theWholePanel Group
 								}
 								DEF slider Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -499,7 +499,7 @@ DEF theWholePanel Group
 								}
 								DEF Sound_2_arm01_outer01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -520,7 +520,7 @@ DEF theWholePanel Group
 								}
 								DEF Sound_2_arm01_inner01 Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -541,7 +541,7 @@ DEF theWholePanel Group
 								}
 								DEF Sound_2_arm01_outer Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -562,7 +562,7 @@ DEF theWholePanel Group
 								}
 								DEF Sound_2_arm01_inner Transform
 								{
-									children 
+									children
 									[
 										Shape
 										{
@@ -581,7 +581,7 @@ DEF theWholePanel Group
 									scaleOrientation 0.150600 -0.941300 0.302200 -0.413700
 									translation -1.774000 0.960300 -0.264200
 								}
-				
+
 							]
 						}
 
@@ -590,7 +590,7 @@ DEF theWholePanel Group
 		/*
 		DEF slider Transform
 		{
-			children 
+			children
 			[
 				Shape
 				{
