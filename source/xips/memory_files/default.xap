@@ -350,8 +350,6 @@ DEF Saved_Game_Parent Transform
 			scale 0.123000 0.123000 0.123000
 			translation 34.220001 14.460000 -213.300003
 		}
-
-
 		DEF MEM_L2_arm01 Transform
 		{
 			children
@@ -373,7 +371,6 @@ DEF Saved_Game_Parent Transform
 			scaleOrientation -0.011890 -0.000319 0.999900 -0.481800
 			translation 34.200001 15.290000 -213.199997
 		}
-
 		DEF MEM_L2_arm04 Transform
 		{
 			children
@@ -401,7 +398,6 @@ DEF Saved_Game_Parent Transform
 			scale 0.059420 0.059420 0.059420
 			//translation 34.410000 15.330000 -213.500000
 			translation 34.445000 15.330000 -213.500000
-
 		}
 		DEF MEM_L2_arm05 Transform
 		{
@@ -463,7 +459,6 @@ DEF Saved_Game_Parent Transform
 			scale 0.059420 0.059420 0.059420
 			translation 34.189999 15.330000 -213.500000
 		}
-
 		DEF MEM_L2_tube_00 Transform
 		{
 			children
@@ -486,7 +481,6 @@ DEF Saved_Game_Parent Transform
 			//translation 33.759998 15.470000 -213.699997
 			translation 33.781998 15.448000 -213.699997
 		}
-
 		DEF MEM_L2_podsocket Transform
 		{
 			children
@@ -508,7 +502,6 @@ DEF Saved_Game_Parent Transform
 			scaleOrientation -0.039630 0.929900 -0.365700 -0.001770
 			translation 34.299999 15.450000 -213.500000
 		}
-
 		DEF ArmStructure2 Transform
 		{
 			children
@@ -581,8 +574,6 @@ DEF Saved_Game_Parent Transform
 				}
 			]
 		}
-
-
 		DEF Group03 Transform
 		{
 			children
@@ -591,94 +582,82 @@ DEF Saved_Game_Parent Transform
 				{
 					children
 					[
-							DEF SavedGame Transform
-							{
-								children
-								[
-									DEF moving_panel Transform
-									{
-										children
-										[
-
-											Transform
-											{
-												translation 0 0.7397 0
-
-												children
-												[
-													DEF theSavedGameGrid SavedGameGrid
+						DEF SavedGame Transform
+						{
+							children
+							[
+								DEF moving_panel Transform
+								{
+									children
+									[
+										Transform
+										{
+											translation 0 0.7397 0
+											children
+											[
+												DEF theSavedGameGrid SavedGameGrid
+												{
+													function OnDeviceRemoved()
 													{
-														function OnDeviceRemoved()
-														{
-															OnSavedGameDeviceRemoved();
-														}
-
-														function OnSelChange()
-														{
-
-															UpdateFileMetaPanel();
-														}
-
-														function OnCopyProgressChanged()
-														{
-															UpdateCopyProgress();
-														}
-														
-														function OnCopyError()
-														{
-															EndCopyError();
-														}
-
-														function OnCopyComplete()
-														{
-															EndCopy();
-														}
-
-														function OnUpdatingTitlesBegin()
-														{
-															OnEnumeratingTitlesBegin();
-														}
-
-														function OnUpdatingTitlesEnd()
-														{
-															OnEnumeratingTitlesEnd();
-														}
-
-                                                        function OnDeleteEnd()
-                                                        {
-                                                            OnSavedGameDeleteEnd();
-                                                        }
-
-														iconsPerRow 4
-
-														pod Transform
-														{
-															translation -4.2 0.5 0.75
-															children
-															[
-																DEF mainPodComponents Transform
-																{
-																	children
-																	[
-																		Shape // Backing
-																		{
-																			appearance Appearance { material MaxMaterial { name "DarkenBacking"	}}
-																			geometry Mesh { url "MEM_L2_sc_pod_backing-FACES.xm" }
-																		}
-																		Transform // Shell_01
-																		{
-																			children
-																			[
-																				Shape
-																				{
-																					appearance Appearance { material MaxMaterial { name "GameMenuEgg" } }
-																					geometry DEF MEM_L2_d2_podshell_01-FACES Mesh { url "MEM_L2_d2_podshell_01-FACES.xm" }
-																				}
-																			]
-																			rotation -0.123700 0.701700 0.701700 -2.895000
-																		}
-																		Transform // Shell_00
-																		{
+														OnSavedGameDeviceRemoved();
+													}
+													function OnSelChange()
+													{
+														UpdateFileMetaPanel();
+													}
+													function OnCopyProgressChanged()
+													{
+														UpdateCopyProgress();
+													}
+													function OnCopyError()
+													{
+														EndCopyError();
+													}
+													function OnCopyComplete()
+													{
+														EndCopy();
+													}
+													function OnUpdatingTitlesBegin()
+													{
+														OnEnumeratingTitlesBegin();
+													}
+													function OnUpdatingTitlesEnd()
+													{
+														OnEnumeratingTitlesEnd();
+													}
+													function OnDeleteEnd()
+													{
+														OnSavedGameDeleteEnd();
+													}
+													iconsPerRow 4
+													pod Transform
+													{
+														translation -4.2 0.5 0.75
+														children
+														[
+															DEF mainPodComponents Transform
+															{
+																children
+																[
+																	Shape // Backing
+																	{
+																		appearance Appearance { material MaxMaterial { name "DarkenBacking"	}}
+																		geometry Mesh { url "MEM_L2_sc_pod_backing-FACES.xm" }
+																	}
+																	Transform // Shell_01
+																	{
+																		children
+																		[
+																			Shape
+																			{
+																				appearance Appearance { material MaxMaterial { name "GameMenuEgg" } }
+																				geometry DEF MEM_L2_d2_podshell_01-FACES Mesh { url "MEM_L2_d2_podshell_01-FACES.xm" }
+																			}
+																		]
+																		rotation -0.123700 0.701700 0.701700 -2.895000
+																	}
+																	Transform // Shell_00
+																	{
 																			children
 																			[
 																				Shape
@@ -689,361 +668,355 @@ DEF Saved_Game_Parent Transform
 																			]
 																			rotation -0.983100 0.129400 0.129400 -1.588000
 																		}
-																		Shape // Pod
-																		{
-																			appearance Appearance { material MaxMaterial { name "GameMenuEgg" } }
-																			//appearance Appearance { material MaxMaterial { name "GameHiliteMemory" } }
-																			geometry Sphere { radius 2.500000 }
-																		}
-																	]
-																}
-															]
-														}
-														podSavePanel Transform
-														{
-															fade 0.75 
-															translation -4.2 0.5 0.75
-															children
-															[
-																DEF mainPodPanel Transform
-																{
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "TitleIcon" } }
-																			geometry DEF MEM_L2_sc_pod_icon-FACES Mesh { url "MEM_L2_sc_pod_icon-FACES.xm" }
-																			
-																		}
-																	]
-																}
-															]
-														}
-														podSoundtrackPanel Transform
-														{
-															fade 0.75 
-															translation -4.2 0.5 0.75
-															children
-															[
-																DEF mainPodPanel2 Transform
-																{
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "TitleSoundtrackIcon" } 
-																									texture ImageTexture { url "soundtracksave3.xbx" }}
-																			geometry DEF MEM_L2_sc_pod_icon-FACES Mesh { url "MEM_L2_sc_pod_icon-FACES.xm" }
-																			
-																		}
-																	]
-																}
-															]
-														}
-
-														podRing Transform
-														{
-															children
-															[
-																Transform
-																{
-																	rotation 1 0 0 -1.571
-																	translation -5.18 0 2.95
-																	scale 20 20 20
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance
-																			{
-																				material MaxMaterial
-																				{
-																					name "Black80"
-																				}
-																			}
-																			geometry DEF Torus01-FACES Mesh { url "Torus01-FACES.xm" }
-																		}
-																		Shape
-																		{
-																			appearance Appearance
-																			{
-																				material MaxMaterial
-																				{
-																					name "EggGlowPulse"
-																				}
-																			}
-																			geometry DEF Torus01-FACES Mesh { url "Torus01-FACES.xm" }
-																		}
-																	]
-																}
-															]
-															rotation -1.000000 0.000000 0.000000 -1.571000
-															//translation 34.299999 15.460000 -213.300003
-														}
-
-														podHilite Transform
-														{
-															translation -4.2 0.5 0.75
-															children
-															[
-																Shape
-																{
-																	appearance MaxMaterial { name "EggGlowPulse" }
-																	geometry Sphere { radius 2.4 }
-																}
-															]
-														}
-									
-														// Memory Unit Header
-														MUheader Transform
-														{
-															translation -0.1 -0.25 0
-															children
-															[
-																Shape
-																{
-																	appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-																	geometry Mesh { url "MEM_L2_sc_panel_header01-FACES.xm" }
-																}
-															]
-														}
-														MUhiliteHeader Transform
-														{
-															translation -0.1 -0.25 0
-															children
-															[
-																Shape
-																{
-																	appearance Appearance
+																	Shape // Pod
 																	{
-																		material MaxMaterial { name "MemoryHeader" }
-																		//material MaxMaterial { name "GameHilite" }
-																		//texture ImageTexture { url "menu_hilight.xbx" }
+																		appearance Appearance { material MaxMaterial { name "GameMenuEgg" } }
+																		//appearance Appearance { material MaxMaterial { name "GameHiliteMemory" } }
+																		geometry Sphere { radius 2.500000 }
 																	}
-																	geometry Mesh { url "MEM_L2_sc_panel_header01-FACES.xm" }
-																}
-															]
-														}
-														firstMURow Transform
-														{
-															translation 2.8 0.1 0.18
-															children
-															[
-																Shape
-																{
-																	appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-																	geometry Mesh { url "MEM_L2_sc_panel_savedgames_00-FACES.xm" }
-																}
-															]
-														}
-
-
-														// Title Headers
-														header Shape
-														{
-															appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-															geometry Mesh { url "MEM_L2_hk_panel_header-FACES.xm" }
-														}
-														hiliteHeader Shape
-														{
-															appearance Appearance
-															{
-																material MaxMaterial { name "MemoryHeader" }
-																//material MaxMaterial { name "GameHilite" }
-																//texture ImageTexture { url "menu_hilight.xbx" }
+																]
 															}
-															geometry Mesh { url "MEM_L2_hk_panel_header-FACES.xm" }
-														}
-
-														firstRow Shape
-														{
-															appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-															geometry Mesh { url "MEM_L2_hk_panel_savedgames-FACES.xm" }
-														}
-														secondRow Shape
-														{
-															appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-															geometry Mesh { url "MEM_L2_sc_panel_savedgames_01-FACES.xm" }
-														}
-														otherRow Shape
-														{
-															appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
-															geometry Mesh { url "MEM_L2_sc_panel_savedgames_02-FACES.xm" }
-														}
-
-														smallIconSpacing 0.227
-
-														smallIconHilite Transform
-														{
-															translation -5.2 0 1.2
-															children
-															[
-																Shape
-																{
-																	appearance MaxMaterial { name "EggGlowPulse" }
-																	geometry Sphere { radius 1.5 }
-																}
-															]
-														}
-
-														smallIcon Transform
-														{
-															translation -5.2 0 1.2
-															scale 1.2 1.2 1.2
-															children
-															[
-																Transform
-																{
-																	translation 0 0.1 0
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "DarkenBacking" } }
-																			geometry Mesh { url "MEM_L2_sc_savedgame_backing_08-FACES.xm" }
-																		}
-																	]
-																}
-																Transform
-																{
-																	translation 0 -0.15 0
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "SavedGameEgg" } }
-																			//appearance Appearance { material MaxMaterial { name "GameHiliteMemory" } }
-																			geometry Mesh { url "MEM_L2_hk_savedgame_pod_00-FACES.xm" }
-																		}
-																	]
-																}
-															]
-														}
-														SavedIconPanel Transform
-														{
-															fade 0.75 
-															translation -5.2 0 1.2
-															scale 1.2 1.2 1.2
-															children
-															[
-																DEF svIconPanel Transform
-																{
-																	scale 1 1 0.75
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "SavedGameIcon" }}
-																			geometry Mesh { url "MEM_L2_d2_savedgame_icon_02-FACES.xm" }
-																		}
-																	]
-																}
-															]
-														}
-														SoundtrackIconPanel Transform
-														{
-															fade 0.75 
-															translation -5.2 0 1.2
-															scale 1.2 1.2 1.2
-															children
-															[
-																DEF stIconPanel Transform
-																{
-																	scale 1 1 0.75
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance { material MaxMaterial { name "SoundtrackIcon" }
-																									texture ImageTexture { url "soundtracksave64.xbx" }}
-																			geometry Mesh { url "MEM_L2_d2_savedgame_icon_02-FACES.xm" }
-																		}
-																	]
-																}
-															]
-														}
-														iconRing Transform
-														{
-															children
-															[
-															Transform
-																{
-																	rotation 1 0 0 -1.571
-																	translation -5.18 1.22 0
-																	scale 16.95 16.95 16.95 
-																	children
-																	[
-																		Shape
-																		{
-																			appearance Appearance
-																			{
-																				material MaxMaterial
-																				{
-																					//name "GameHiliteMemory"
-																					name "Black80"
-																				}
-																			}
-																			geometry DEF Torus03-FACES Mesh { url "Torus03-FACES.xm" }
-																		}
-																		Shape
-																		{
-																			appearance Appearance
-																			{
-																				material MaxMaterial
-																				{
-																					//name "GameHiliteMemory"
-																					name "EggGlowPulse"
-																				}
-																			}
-																			geometry DEF Torus03-FACES Mesh { url "Torus03-FACES.xm" }
-																		}
-																	]
-																}
-															]
-															rotation -1.000000 0.000000 0.000000 -1.571000
-															//translation 34.590000 15.080000 -213.300003
-														}
-														moreUp Transform
-														{
-															children
-															[
-																Shape
-																{
-																	appearance Appearance
-																	{
-																		material MaxMaterial
-																		{
-																			name "XBOXgreendark"
-																		}
-																	}
-																	geometry DEF MEM_L2_movearrow_up-FACES Mesh { url "MEM_L2_movearrow_up-FACES.xm" }
-																}
-															]
-															translation 11 0.35 -1.2
-														}
-														moreDown Transform
-														{
-															children
-															[
-																Shape
-																{
-																	appearance Appearance
-																	{
-																		material MaxMaterial
-																		{
-																			name "XBOXgreendark"
-																		}
-																	}
-																	geometry USE MEM_L2_movearrow_up-FACES
-																}
-															]
-															rotation 1 0 0 3.1415
-															translation 11 0.25 2.5
-														}
+														]
 													}
-												]
-											}
-
+													podSavePanel Transform
+													{
+														fade 0.75
+														translation -4.2 0.5 0.75
+														children
+														[
+															DEF mainPodPanel Transform
+															{
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance { material MaxMaterial { name "TitleIcon" } }
+																		geometry DEF MEM_L2_sc_pod_icon-FACES Mesh { url "MEM_L2_sc_pod_icon-FACES.xm" }
+																	}
+																]
+															}
+														]
+													}
+													podSoundtrackPanel Transform
+													{
+														fade 0.75
+														translation -4.2 0.5 0.75
+														children
+														[
+															DEF mainPodPanel2 Transform
+															{
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial { name "TitleSoundtrackIcon" }
+																			texture ImageTexture { url "soundtracksave3.xbx" }
+																		}
+																		geometry DEF MEM_L2_sc_pod_icon-FACES Mesh { url "MEM_L2_sc_pod_icon-FACES.xm" }
+																	}
+																]
+															}
+														]
+													}
+													podRing Transform
+													{
+														children
+														[
+															Transform
+															{
+																rotation 1 0 0 -1.571
+																translation -5.18 0 2.95
+																scale 20 20 20
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial
+																			{
+																				name "Black80"
+																			}
+																		}
+																		geometry DEF Torus01-FACES Mesh { url "Torus01-FACES.xm" }
+																	}
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial
+																			{
+																				name "EggGlowPulse"
+																			}
+																		}
+																		geometry DEF Torus01-FACES Mesh { url "Torus01-FACES.xm" }
+																	}
+																]
+															}
+														]
+														rotation -1.000000 0.000000 0.000000 -1.571000
+														//translation 34.299999 15.460000 -213.300003
+													}
+													podHilite Transform
+													{
+														translation -4.2 0.5 0.75
+														children
+														[
+															Shape
+															{
+																appearance MaxMaterial { name "EggGlowPulse" }
+																geometry Sphere { radius 2.4 }
+															}
+														]
+													}
+													//Memory Unit Header
+													MUheader Transform
+													{
+														translation -0.1 -0.25 0
+														children
+														[
+															Shape
+															{
+																appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+																geometry Mesh { url "MEM_L2_sc_panel_header01-FACES.xm" }
+															}
+														]
+													}
+													MUhiliteHeader Transform
+													{
+														translation -0.1 -0.25 0
+														children
+														[
+															Shape
+															{
+																appearance Appearance
+																{
+																	material MaxMaterial { name "MemoryHeader" }
+																	//material MaxMaterial { name "GameHilite" }
+																	//texture ImageTexture { url "menu_hilight.xbx" }
+																}
+																geometry Mesh { url "MEM_L2_sc_panel_header01-FACES.xm" }
+															}
+														]
+													}
+													firstMURow Transform
+													{
+														translation 2.8 0.1 0.18
+														children
+														[
+															Shape
+															{
+																appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+																geometry Mesh { url "MEM_L2_sc_panel_savedgames_00-FACES.xm" }
+															}
+														]
+													}
+													// Title Headers
+													header Shape
+													{
+														appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+														geometry Mesh { url "MEM_L2_hk_panel_header-FACES.xm" }
+													}
+													hiliteHeader Shape
+													{
+														appearance Appearance
+														{
+															material MaxMaterial { name "MemoryHeader" }
+															//material MaxMaterial { name "GameHilite" }
+															//texture ImageTexture { url "menu_hilight.xbx" }
+														}
+														geometry Mesh { url "MEM_L2_hk_panel_header-FACES.xm" }
+													}
+													firstRow Shape
+													{
+														appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+														geometry Mesh { url "MEM_L2_hk_panel_savedgames-FACES.xm" }
+													}
+													secondRow Shape
+													{
+														appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+														geometry Mesh { url "MEM_L2_sc_panel_savedgames_01-FACES.xm" }
+													}
+													otherRow Shape
+													{
+														appearance Appearance { material MaxMaterial { name "FlatSurfacesMemory" } }
+														geometry Mesh { url "MEM_L2_sc_panel_savedgames_02-FACES.xm" }
+													}
+													smallIconSpacing 0.227
+													smallIconHilite Transform
+													{
+														translation -5.2 0 1.2
+														children
+														[
+															Shape
+															{
+																appearance MaxMaterial { name "EggGlowPulse" }
+																geometry Sphere { radius 1.5 }
+															}
+														]
+													}
+													smallIcon Transform
+													{
+														translation -5.2 0 1.2
+														scale 1.2 1.2 1.2
+														children
+														[
+															Transform
+															{
+																translation 0 0.1 0
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance { material MaxMaterial { name "DarkenBacking" } }
+																		geometry Mesh { url "MEM_L2_sc_savedgame_backing_08-FACES.xm" }
+																	}
+																]
+															}
+															Transform
+															{
+																translation 0 -0.15 0
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance { material MaxMaterial { name "SavedGameEgg" } }
+																		//appearance Appearance { material MaxMaterial { name "GameHiliteMemory" } }
+																		geometry Mesh { url "MEM_L2_hk_savedgame_pod_00-FACES.xm" }
+																	}
+																]
+															}
+														]
+													}
+													SavedIconPanel Transform
+													{
+														fade 0.75
+														translation -5.2 0 1.2
+														scale 1.2 1.2 1.2
+														children
+														[
+															DEF svIconPanel Transform
+															{
+																scale 1 1 0.75
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance { material MaxMaterial { name "SavedGameIcon" }}
+																		geometry Mesh { url "MEM_L2_d2_savedgame_icon_02-FACES.xm" }
+																	}
+																]
+															}
+														]
+													}
+													SoundtrackIconPanel Transform
+													{
+														fade 0.75
+														translation -5.2 0 1.2
+														scale 1.2 1.2 1.2
+														children
+														[
+															DEF stIconPanel Transform
+															{
+																scale 1 1 0.75
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial { name "SoundtrackIcon" }
+																			texture ImageTexture { url "soundtracksave64.xbx" }
+																		}
+																		geometry Mesh { url "MEM_L2_d2_savedgame_icon_02-FACES.xm" }
+																	}
+																]
+															}
+														]
+													}
+													iconRing Transform
+													{
+														children
+														[
+															Transform
+															{
+																rotation 1 0 0 -1.571
+																translation -5.18 1.22 0
+																scale 16.95 16.95 16.95
+																children
+																[
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial
+																			{
+																				//name "GameHiliteMemory"
+																				name "Black80"
+																			}
+																		}
+																		geometry DEF Torus03-FACES Mesh { url "Torus03-FACES.xm" }
+																	}
+																	Shape
+																	{
+																		appearance Appearance
+																		{
+																			material MaxMaterial
+																			{
+																				//name "GameHiliteMemory"
+																				name "EggGlowPulse"
+																			}
+																		}
+																		geometry DEF Torus03-FACES Mesh { url "Torus03-FACES.xm" }
+																	}
+																]
+															}
+														]
+														rotation -1.000000 0.000000 0.000000 -1.571000
+														//translation 34.590000 15.080000 -213.300003
+													}
+													moreUp Transform
+													{
+														children
+														[
+															Shape
+															{
+																appearance Appearance
+																{
+																	material MaxMaterial
+																	{
+																		name "XBOXgreendark"
+																	}
+																}
+																geometry DEF MEM_L2_movearrow_up-FACES Mesh { url "MEM_L2_movearrow_up-FACES.xm" }
+															}
+														]
+														translation 11 0.35 -1.2
+													}
+													moreDown Transform
+													{
+														children
+														[
+															Shape
+															{
+																appearance Appearance
+																{
+																	material MaxMaterial
+																	{
+																		name "XBOXgreendark"
+																	}
+																}
+																geometry USE MEM_L2_movearrow_up-FACES
+															}
+														]
+														rotation 1 0 0 3.1415
+														translation 11 0.25 2.5
+													}
+												}
+											]
+										}
 									]
 									scale 16.830000 16.830000 16.830000
 									translation -30.559999 -26.620001 217.100006
@@ -1060,7 +1033,6 @@ DEF Saved_Game_Parent Transform
 			rotation 0.000000 1.000000 0.000000 -0.017450
 			translation 34.330002 7.930000 -213.600006
 		}
-
 		// Panel header
 		DEF HeaderPanel Transform
 		{
@@ -1092,7 +1064,6 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation -0.999200 -0.000091 -0.040560 -0.112700
 					translation 34.639999 15.630000 -213.100006
 				}
-
 				DEF MEM_L2_panel_header Transform
 				{
 					children
@@ -1136,7 +1107,6 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation -0.875800 -0.481600 0.032220 -0.169400
 					translation 33.029999 15.430000 -213.100006
 				}
-
 				DEF MEM_L2_text_stevesgames Transform
 				{
 					children
@@ -1153,15 +1123,12 @@ DEF Saved_Game_Parent Transform
 							geometry DEF TitleText2 Text { font "Heading" width -14 translate false}
 						}
 					]
-
 					//rotation -1.000000 0.000000 0.000000 -1.571000
 					scale 0.069420 0.069420 0.059420
 					scaleOrientation -0.002728 -0.789600 -0.613600 -0.005821
 					//translation 34.560001 15.650000 -213.100006
 					translation 34.170001 15.66500 -213.100006
 				}
-
-
 				DEF MEM_L2_text_total/freememory Transform
 				{
 					children
@@ -1186,7 +1153,6 @@ DEF Saved_Game_Parent Transform
 				}
 			]
 		}
-
 		// Meta Panel
 		DEF MetaDataPanel Transform
 		{
@@ -1218,7 +1184,6 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation 0.999900 0.006995 0.012820 -0.071850
 					translation 34.750000 15.130000 -213.100006
 				}
-
 				DEF MEM_L2_panel_meta_support Transform
 				{
 					children
@@ -1241,7 +1206,6 @@ DEF Saved_Game_Parent Transform
 					//translation 32.849998 15.120000 -213.100006
 					translation 32.875998 15.120000 -213.100006
 				}
-
 				DEF MEM_L2_panel_meta Transform
 				{
 					children
@@ -1263,9 +1227,8 @@ DEF Saved_Game_Parent Transform
 					scaleOrientation 0.152800 0.542100 -0.826300 -0.000243
 					translation 34.549999 15.230000 -213.100006
 				}
-
 				DEF metaTextLine1 Transform
-				{		
+				{
 					children
 					[
 						Shape
@@ -1280,14 +1243,13 @@ DEF Saved_Game_Parent Transform
 							geometry DEF MetaLine1a Text { font "Body" width -8.7 translate false text ""}
 						}
 					]
-					
 					scale 0.053420 0.053420 0.053420
 					scaleOrientation -0.025080 0.988200 -0.150800 -0.001333
 					//translation 34.169998 15.090000 -213.100006
 					translation 33.955 15.21 -213.100006
 				}
 				DEF metaTextLine2 Transform
-				{		
+				{
 					children
 					[
 						Shape
@@ -1302,14 +1264,13 @@ DEF Saved_Game_Parent Transform
 							geometry DEF MetaLine2a Text { font "Body" width -8.7 translate false text ""}
 						}
 					]
-					
 					scale 0.053420 0.053420 0.053420
 					scaleOrientation -0.025080 0.988200 -0.150800 -0.001333
 					//translation 34.169998 15.090000 -213.100006
 					translation 33.955 15.15 -213.100006
 				}
 				DEF metaTextLine3 Transform
-				{		
+				{
 					children
 					[
 						Shape
@@ -1324,16 +1285,14 @@ DEF Saved_Game_Parent Transform
 							geometry DEF MetaLine3a Text { font "Body" width -9 translate false text ""}
 						}
 					]
-					
 					//scale 0.053420 0.053420 0.053420
 					scale 0.051420 0.051420 0.051420
 					scaleOrientation -0.025080 0.988200 -0.150800 -0.001333
 					//translation 34.169998 15.090000 -213.100006
 					translation 33.955 15.09 -213.100006
 				}
-
 				DEF metaTextLine4 Transform
-				{		
+				{
 					children
 					[
 						Shape
@@ -1348,20 +1307,16 @@ DEF Saved_Game_Parent Transform
 							geometry DEF MetaLine4a Text { font "Body" width -9 translate false text ""}
 						}
 					]
-					
 					//scale 0.053420 0.053420 0.053420
 					scale 0.051420 0.051420 0.051420
 					scaleOrientation -0.025080 0.988200 -0.150800 -0.001333
 					//translation 34.169998 15.090000 -213.100006
 					translation 33.955 15.03 -213.100006
 				}
-
 			]
 		}
 	]
 }
-
-
 DEF Copy_Dest_Parent Transform
 {
 	fade 0.5
@@ -1395,7 +1350,6 @@ DEF Copy_Dest_Parent Transform
 							scale 0.068330 0.068330 0.068330
 							translation -0.261900 -0.175000 -0.135300
 						}
-
 						DEF Loft01 Transform
 						{
 							children
@@ -1696,12 +1650,9 @@ DEF Copy_Dest_Parent Transform
 							]
 							translation -0.349900 0.000000 0.002975
 						}
-
-
 					]
 					translation -8.773000 4.723000 71.959999
 				}
-
 				DEF Group06 Transform
 				{
 					fade 0.75
@@ -2049,7 +2000,6 @@ DEF Copy_Dest_Parent Transform
 					scale 0.133600 0.133600 0.133600
 					translation -8.513000 3.522000 72.169998
 				}
-
 				DEF podrails Transform
 				{
 					children
@@ -2097,7 +2047,6 @@ DEF Copy_Dest_Parent Transform
 					scale 1.299000 1.299000 1.299000
 					translation -8.187000 4.249000 72.190002
 				}
-
 				DEF CopyDestPods Transform // The sliding copy destination pods...
 				{
 					visible true
@@ -2242,7 +2191,6 @@ DEF Copy_Dest_Parent Transform
 											}
 										]
 									}
-
 									console Transform
 									{
 										children
@@ -2298,7 +2246,6 @@ DEF Copy_Dest_Parent Transform
 										scale 0.010248 0.010248 0.010248
 										translation -0.000597 0.027510 0.099250
 									}
-
 									memoryUnit Transform
 									{
 										children
@@ -2495,7 +2442,6 @@ DEF Copy_Dest_Parent Transform
 										scaleOrientation 0.420000 0.888600 0.184200 -0.755300
 										translation 0.023160 -0.155500 0.133700
 									}
-
 									panelMU Transform
 									{
 										children
@@ -2536,7 +2482,6 @@ DEF Copy_Dest_Parent Transform
 						}
 					]
 				}
-
 				DEF copy_arm Transform
 				{
 					fade 1.0
@@ -2726,7 +2671,6 @@ DEF Copy_Dest_Parent Transform
 													scaleOrientation 0.999600 0.028950 0.000000 -0.039170
 													translation 0.654100 0.015240 -0.032860
 												}
-
 												DEF MEM_panel_meta_support01 Transform
 												{
 													children
@@ -2964,13 +2908,12 @@ DEF Copy_Dest_Parent Transform
 					]
 					translation -9.043000 4.274000 71.410004
 				}
-
 				DEF Meta_arm Transform
 				{
 					fade 1.0
 					children
 					[
-/*						DEF MEM_L2_tube_01 Transform
+						/*DEF MEM_L2_tube_01 Transform
 						{
 							children
 							[
@@ -2989,8 +2932,7 @@ DEF Copy_Dest_Parent Transform
 							rotation -1.000000 0.000000 0.000000 -1.571000
 							scale 0.068330 0.068330 0.068330
 							translation -0.229500 0.378300 -0.573100
-						}
-*/
+						}*/
 						DEF ModePanel Transform
 						{
 							fade 1.0
@@ -3185,7 +3127,6 @@ DEF Copy_Dest_Parent Transform
 									scaleOrientation 1.000000 0.000000 0.000000 0.000000
 									translation -1.225000 -8.507000 3.427000
 								}
-
 								DEF MEM_L3_panel_mode_support_01 Transform
 								{
 									children
@@ -3207,7 +3148,6 @@ DEF Copy_Dest_Parent Transform
 									scaleOrientation 0.000124 0.000000 1.000000 -0.000479
 									translation -3.849000 3.754000 5.074000
 								}
-
 								DEF theMenuButtons Transform
 								{
 									children
@@ -3264,7 +3204,6 @@ DEF Copy_Dest_Parent Transform
 										}
 									]
 								}
-
 								DEF MEM_L3_panel_mode_menu Transform
 								{
 									children
@@ -3286,7 +3225,6 @@ DEF Copy_Dest_Parent Transform
 									scaleOrientation 0.000035 0.199400 0.979900 -0.001881
 									translation -1.917000 2.202000 5.413000
 								}
-								
 								DEF ButtonText Transform
 								{
 									children
@@ -3354,7 +3292,6 @@ DEF Copy_Dest_Parent Transform
 										}
 									]
 								}
-
 								DEF game_panel Transform
 								{
 									children
@@ -3552,7 +3489,6 @@ DEF Copy_Dest_Parent Transform
 											scaleOrientation -0.027220 0.840300 0.541500 -0.001690
 											translation -0.152000 0.065270 0.019810
 										}
-
 									]
 									rotation 1.000000 0.000000 0.000000 0.000000
 									scale 16.760000 16.760000 16.760000
@@ -3566,7 +3502,6 @@ DEF Copy_Dest_Parent Transform
 						}
 					]
 					translation -9.569000 4.392000 72.059998
-					
 				}
 			]
             rotation 0.000000 1.000000 0.000000 -1.239000
@@ -3576,5 +3511,3 @@ DEF Copy_Dest_Parent Transform
     rotation 0.000000 -1.000000 0.000000 -1.344000
     translation 36.369999 10.840000 -286.600006
 }
-
-
