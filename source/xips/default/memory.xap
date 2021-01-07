@@ -34,7 +34,6 @@ function ShowFileDetailView()
 
 	return false;
 }
-
 function UpdateFileMenu()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -64,7 +63,6 @@ function UpdateFileMenu()
 		}
 	}
 }
-
 function InitMemoryMenuItems()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -108,7 +106,6 @@ function InitMemoryMenuItems()
 		}
 	}
 }
-
 function UpdateCopyToInfo()
 {
 
@@ -137,7 +134,6 @@ function UpdateCopyToInfo()
 		c.MEM_text_free_blocks.children[0].children[0].children[0].appearance.material.name = "RedType";
 
 }
-
 function UpdateSavedGameInfo()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -162,7 +158,6 @@ function UpdateSavedGameInfo()
 		c.SaveGameSize.text = strBlocks + " " + theTranslator.Translate("blocks");
 	}
 }
-
 function CopyNow()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -172,7 +167,6 @@ function CopyNow()
 	ShowProgress(theTranslator.Translate("Copying"));
 	c.theSavedGameGrid.StartCopy(destDevUnit);
 }
-
 function PerformCopy()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -183,7 +177,6 @@ function PerformCopy()
 		log("No destination for copy");
 		return;
 	}
-
 	if (c.theSavedGameGrid.DoesSavedGameExists(destDevUnit))
 	{
 		bConfirmingOverwrite = true;
@@ -194,7 +187,6 @@ function PerformCopy()
 		CopyNow();
 	}
 }
-
 function OnDestinationUnitRemoved()
 {
 	if(bConfirmingOverwrite == true)
@@ -208,14 +200,11 @@ function EndCopyFailed()
 	bDoingCopy = false;
 	theMemoryMonitor.enumerationOn = true;
 }
-
 function EndCopyError()
 {
 	CloseMessage();
 	TellUser(theTranslator.Translate("The copy failed"), "theMemoryInline.children[0].EndCopyFailed()");
 }
-
-
 function UpdateCopyProgress()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -223,13 +212,11 @@ function UpdateCopyProgress()
 	SetProgress(c.theSavedGameGrid.copyProgress);
 	UpdateProgressText(c.theSavedGameGrid.GetUpdateString());
 }
-
 function OnCurDevUnitChange()
 {
 	PlaySoundMenuChange();
 	UpdateCopyToInfo();
 }
-
 function UpdateMemUnitText()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -261,7 +248,6 @@ function UpdateMemUnitText()
 		c.controller1_MU_1_HL.children[0].appearance.material.param = theMemoryMonitor.GetFreeTotalRatio(devUnit);
 	}
 }
-
 DEF fileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -269,7 +255,6 @@ DEF fileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF fileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -277,7 +262,6 @@ DEF fileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 function ResetMetaPanels()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -291,13 +275,12 @@ function ResetMetaPanels()
 	c.MetaLine3a.text = "";
 	c.MetaLine4a.text = "";
 }
-
 function ResetDetailScreen()
 {
 	var c = theFilesMenu.children[0].children[0];
 
-//  c.theCopyDestination.curDevUnit = 0;
-//  c.theCopyDestination.selDevUnit = 0;
+	//c.theCopyDestination.curDevUnit = 0;
+	//c.theCopyDestination.selDevUnit = 0;
 
 	// Rotate the menu out of the way
 	c.ModePanel.SetRotation(0.000019, 1.000000, 0.000000, -0.008727);
@@ -313,7 +296,6 @@ function ResetDetailScreen()
 	c.Group07.SetTranslation(-8.513000, 3.522000, 72.169998);
 	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.279300);
 }
-
 function ResetCopyScreen()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -332,14 +314,12 @@ function ResetCopyScreen()
 	c.Group07.SetTranslation(-8.542000, 3.420000, 72.209999);
 	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.008727);
 }
-
 function StartCopy()
 {
 	var c = theFilesMenu.children[0].children[0];
 
 	c.theCopyDestination.isActive = true;
 	c.theCopyDestination.sourceDevUnit = theMemoryMonitor.curDevUnit;
-
 
 	CurrentViewpoint = fileCopyView;
 	CurrentAltViewpoint = AlternatefileCopyView;
@@ -350,7 +330,6 @@ function StartCopy()
 	UpdateCopyToInfo();
 	bInCopy = true;
 }
-
 function EndCopy()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -366,7 +345,6 @@ function EndCopy()
 
 	ShowFileDetailView();
 }
-
 function DoMemoryItemMenuCommand()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -410,7 +388,6 @@ function DoMemoryItemMenuCommand()
 		}
 	}
 }
-
 function StartDelete()
 {
 	var msg;
@@ -440,13 +417,11 @@ function StartDelete()
 
 	AskQuestion(msg, "theMemoryInline.children[0].DoDelete()", "", 1);
 }
-
 function OnSavedGameDeleteEnd()
 {
 	CloseMessage();
 	ShowFileListView();
 }
-
 function DoDelete()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -454,7 +429,6 @@ function DoDelete()
 	BlockUser("DeletingTitle");
 	c.theSavedGameGrid.StartDelete();
 }
-
 function FinishPersonalize()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -462,7 +436,6 @@ function FinishPersonalize()
 	UpdateFileMetaPanel();
 	c.TitleText2.text = GetDeviceName(theMemoryMonitor.curDevUnit);
 }
-
 function FinishFormat()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -470,8 +443,6 @@ function FinishFormat()
 	UpdateFileMetaPanel();
 	c.TitleText2.text = GetDeviceName(theMemoryMonitor.curDevUnit);
 }
-
-
 // Device Collection ////////////////////////////////////////////////////////////////
 DEF theGlobal Transform
 {
@@ -487,7 +458,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -495,8 +465,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
-
 function initialize()
 {
 	GetCellWallType();
@@ -504,7 +472,6 @@ function initialize()
 	bSavedGameGridActivatePending = false;
 	bConfirmingOverwrite = false;
 }
-
 function GetDeviceName(devUnit)
 {
 	if (devUnit == 8)
@@ -524,7 +491,6 @@ function GetDeviceName(devUnit)
 
 	return strName;
 }
-
 
 var bDetailView;
 var bInCopy;
@@ -555,7 +521,6 @@ function EnterMemoryFiles()
 	nCurFileMenuItem = 0;
 	InitMemoryMenuItems();
 }
-
 function OnSavedGameDeviceRemoved()
 {
 	if (theFilesMenu.visible)
@@ -569,7 +534,6 @@ function OnSavedGameDeviceRemoved()
 			{
 				CloseKeyboard();
 			}
-
 			// Close the Message panel if it is visible
 			if( g_bPanelDisplayed )
 			{
@@ -582,19 +546,16 @@ function OnSavedGameDeviceRemoved()
 		}
 	}
 }
-
 function OnEnumeratingTitlesBegin()
 {
 	BlockUser("ENUMERATING SAVED GAMES:");
 }
-
 function OnEnumeratingTitlesEnd()
 {
 	var c = theFilesMenu.children[0].children[0];
 	CloseMessage();
 	EnterMemoryFiles();
 }
-
 function ShowFileListView()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -612,10 +573,9 @@ function ShowFileListView()
 	c.svIconPanel.SetAlpha(1);
 	c.stIconPanel.SetAlpha(1);
 	c.theSavedGameGrid.renderIcons = true;
-//  c.theSavedGameGrid.isActive = true;
+	//c.theSavedGameGrid.isActive = true;
 
 }
-
 function UpdateFileMetaPanel()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -745,7 +705,6 @@ function UpdateFileMetaPanel()
 	   }
 	}
 }
-
 function ResetMemoryFocus()
 {
 	var c = theFilesMenu.children[0].children[0];
@@ -761,7 +720,6 @@ function ResetMemoryFocus()
 	c.theSavedGameGrid.scroll = 0;
 	c.theSavedGameGrid.nPrefColumn = -1;
 }
-
 DEF theFilesMenu Level
 {
 	archive "memory_files.xip"
@@ -787,7 +745,6 @@ DEF theFilesMenu Level
 					children[0].theSavedGameGrid.isActive = true;
 				}
 			}
-
 			function OnTotalFreeChanged()
 			{
 				var str = "";
@@ -806,7 +763,6 @@ DEF theFilesMenu Level
 						}
 					}
 				}
-
 				if (str == "")
 				{
 					// TODO: Should make TOTAL: and FREE: yellow and the numbers white...
@@ -818,7 +774,6 @@ DEF theFilesMenu Level
 			}
 		}
 	]
-
 	shell Transform
 	{
 		scale 2.4672 2.4672 2.4672
@@ -860,7 +815,6 @@ DEF theFilesMenu Level
 			}
 		]
 	}
-
 	path DEF fileListView Viewpoint
 	{
 		fieldOfView 1.287000
@@ -868,7 +822,6 @@ DEF theFilesMenu Level
 		position 34.529999 15.290000 -212.300003
 		jump false
 	}
-
 	control DEF thefileListViewJoy Joystick
 	{
 		function OnADown()
@@ -876,7 +829,6 @@ DEF theFilesMenu Level
 			var c = theFilesMenu.children[0].children[0];
 			if (c.Dummy01.moving)
 				return;
-
 			if (bInCopy)
 			{
 				c.MU_select_pod_HL2.children[0].appearance.material.param = 1;
@@ -900,13 +852,11 @@ DEF theFilesMenu Level
 
 			}
 		}
-
 		function OnBDown()
 		{
 			var c = theFilesMenu.children[0].children[0];
 			if (c.Dummy01.moving)
 				return;
-
 			if (bInCopy)
 			{
 				PlaySoundB();
@@ -933,13 +883,11 @@ DEF theFilesMenu Level
 				theGamesSubMenuOut.Play();
 			}
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			var c = theFilesMenu.children[0].children[0];
 			if (c.Dummy01.moving)
 				return;
-
 			if (bInCopy)
 			{
 				c.theCopyDestination.selectUp();
@@ -966,7 +914,6 @@ DEF theFilesMenu Level
 					theMemorySaveSelectSound.Play();
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			var c = theFilesMenu.children[0].children[0];
@@ -999,13 +946,11 @@ DEF theFilesMenu Level
 					theMemorySaveSelectSound.Play();
 			}
 		}
-
 		function OnLeftThumbMoveRight()
 		{
 			var c = theFilesMenu.children[0].children[0];
 			if (c.Dummy01.moving)
 				return;
-
 			if (bInCopy)
 			{
 			}
@@ -1025,13 +970,11 @@ DEF theFilesMenu Level
 					theMemorySaveSelectSound.Play();
 			}
 		}
-
 		function OnLeftThumbMoveLeft()
 		{
 			var c = theFilesMenu.children[0].children[0];
 			if (c.Dummy01.moving)
 				return;
-
 			if (bInCopy)
 			{
 			}
@@ -1052,7 +995,6 @@ DEF theFilesMenu Level
 			}
 		}
 	}
-
 	function OnActivate()
 	{
 		CurrentViewpoint = fileListView;
@@ -1071,7 +1013,6 @@ DEF theFilesMenu Level
 			ResetMemoryFocus();
 		}
 	}
-
 	function OnDeactivate()
 	{
 		theMemoryMonitor.enumerationOn = false;
@@ -1079,7 +1020,6 @@ DEF theFilesMenu Level
 		c.theSavedGameGrid.isActive = false;
 		bSavedGameGridActivatePending = false;
 	}
-
 	function OnArrival()
 	{
 		CurrentViewpoint = fileListView;
@@ -1096,22 +1036,18 @@ DEF theFilesMenu Level
 		theMemoryMonitor.blockInsertion = false;
 		theMemoryMonitor.enumerationOn = true;
 	}
-
 }
-
 ////////////////////////////////////////////////////////////////////////////
 DEF theMemoryMonitor MemoryMonitor
 {
 	function onLoad()
 	{
 	}
-
 	function OnDeviceChange()
 	{
 		if (theMemoryMenu.children[0].children.length() > 0)
 			UpdateDevices();
 	}
-
 	function OnCurDevUnitChange()
 	{
 		if (theMemoryMenu.children[0].children.length() > 0)
@@ -1121,7 +1057,6 @@ DEF theMemoryMonitor MemoryMonitor
 			UpdateDevices();
 		}
 	}
-
 	function OnTotalFreeChanged()
 	{
 		if (theMemoryMenu.children[0].children.length() > 0)
@@ -1130,7 +1065,6 @@ DEF theMemoryMonitor MemoryMonitor
 			UpdateDevices();
 		}
 	}
-
 	function OnInvalidMU(devUnit, fixed)
 	{
 		var nGamePad = Math.floor(devUnit / 2);
@@ -1151,18 +1085,15 @@ DEF theMemoryMonitor MemoryMonitor
 
 		TellUser(strName, "theMemoryInline.children[0].ClearInvalidMU()");
 	}
-
 	function OnInvalidMURemoved()
 	{
 		CloseMessage();
 	}
 }
-
 function ClearInvalidMU()
 {
 	theMemoryMonitor.invalidDevUnit = -1;
 }
-
 function UpdateDeviceMetaData()
 {
 	var c = theMemoryMenu.children[0].children[0];
@@ -1178,7 +1109,6 @@ function UpdateDeviceMetaData()
 		c.UnitNameText.text = GetDeviceName(theMemoryMonitor.curDevUnit);
 	}
 
-
 	var strBlocks = " " + theTranslator.Translate("blocks");
 	var strBlock = " " + theTranslator.Translate("block");
 
@@ -1190,7 +1120,6 @@ function UpdateDeviceMetaData()
 	else
 		c.AvailableMemoryText.text = s + strBlocks;
 }
-
 function UpdateDeviceHighlight()
 {
 	var c = theMemoryMenu.children[0].children[0];
@@ -1283,7 +1212,6 @@ function UpdateDeviceHighlight()
 	else
 		c.consoleMat.name = "EggGlowPulse";
 }
-
 function UpdateDevices()
 {
 	var c = theMemoryMenu.children[0].children[0];
@@ -1307,7 +1235,6 @@ function UpdateDevices()
 	{
 		c.controller1_MU_2_HL.children[0].appearance.material.param = 100;
 	}
-
 
 	c.Controller2.SetAlpha(theMemoryMonitor.HaveDeviceTop(1) + theMemoryMonitor.HaveDeviceBottom(1) != 0);
 	c.Controller2Unit1.SetAlpha(theMemoryMonitor.HaveDeviceTop(1));
@@ -1369,7 +1296,6 @@ function UpdateDevices()
 		c.controller4_MU_2_HL.children[0].appearance.material.param = 100;
 	}
 }
-
 function StartMemoryLevel()
 {
 	UpdateDeviceMetaData();
@@ -1384,7 +1310,6 @@ function StartMemoryLevel()
 			bCleanupSpecifiedDrive = false;
 	}
 }
-
 DEF theMemoryMenu Level
 {
 	archive "memory.xip"
@@ -1402,7 +1327,6 @@ DEF theMemoryMenu Level
 			}
 		}
 	]
-
 	shell Transform
 	{
 		scale 12.336 12.336 12.336
@@ -1444,8 +1368,6 @@ DEF theMemoryMenu Level
 			}
 		]
 	}
-
-
 	tunnel Transform
 	{
 		children
@@ -1459,7 +1381,6 @@ DEF theMemoryMenu Level
 		rotation 0.356300 0.923500 -0.142100 -0.815600
 		translation 41.110001 7.940000 -140.899994
 	}
-
 	path DEF theMemoryMenuViewpoint Viewpoint
 	{
 		fieldOfView 1.775000
@@ -1469,7 +1390,6 @@ DEF theMemoryMenu Level
 		//position 41.650002 8.885000 -194.300003
 		jump false
 	}
-
 	control DEF theMemoryMenuJoy Joystick
 	{
 		function OnLeftThumbMoveUp()
@@ -1531,7 +1451,6 @@ DEF theMemoryMenu Level
 			}
 		}
 	}
-
 	function OnActivate()
 	{
 		CurrentViewpoint = theMemoryMenuViewpoint;
@@ -1539,7 +1458,6 @@ DEF theMemoryMenu Level
 		EnableAudio();
 		if (children[0].children.length() > 0) { StartMemoryLevel(); }
 	}
-
 	function OnArrival()
 	{
 		CurrentViewpoint = theMemoryMenuViewpoint;
@@ -1547,13 +1465,11 @@ DEF theMemoryMenu Level
 		theMemoryMonitor.blockInsertion = false;
 		theMemoryMonitor.enumerationOn = true;
 	}
-
 	function OnDeactivate()
 	{
 		theMemoryMonitor.enumerationOn = false;
 	}
 }
-
 DEF theMemoryMenuAlternateViewpoint Viewpoint
 {
 	fieldOfView 1.775000
@@ -1561,7 +1477,6 @@ DEF theMemoryMenuAlternateViewpoint Viewpoint
 	position 38.650002 4.000 -193
 	jump false
 }
-
 DEF fileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -1569,7 +1484,6 @@ DEF fileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF AlternatefileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -1577,7 +1491,6 @@ DEF AlternatefileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF fileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -1585,7 +1498,6 @@ DEF fileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 DEF AlternatefileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -1593,7 +1505,6 @@ DEF AlternatefileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 DEF AlternatefileListView Viewpoint
 {
 	fieldOfView 1.287000

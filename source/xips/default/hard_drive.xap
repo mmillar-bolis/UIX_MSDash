@@ -23,7 +23,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -31,7 +30,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize() { GetCellWallType(); }
 
 var launching;
@@ -44,7 +42,6 @@ DEF theTitleLauncherLevel Level
 		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
-
 	behavior
 	{
 		sleep 1.1;
@@ -55,7 +52,6 @@ DEF theTitleLauncherLevel Level
 			c.theTitlesGrid.LaunchTitle( nTitle );
 		}
 	}
-
 	function OnActivate()
 	{
 		ClosePopup();
@@ -64,13 +60,11 @@ DEF theTitleLauncherLevel Level
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
 }
-
 function RefreshCache()
 {
 	var c = theTitlesMenu.children[0].children[0];
 	c.theTitlesGrid.RefreshCache();
 }
-
 function StartHardDriveMenu()
 {
 	curMenuItem = 1;
@@ -86,7 +80,6 @@ function StartHardDriveMenu()
 	c.Menu4Text.text = IniFile.GetIniValue( "Name" );
 	UpdateHardDriveMenu();
 }
-
 function UpdateHardDriveMenu()
 {
 		var c = theHardDriveMenu.children[0].children[0];
@@ -126,7 +119,6 @@ function UpdateHardDriveMenu()
 			c.PanelText1.text = c.Menu4Text.text + " Menu";
 		}
 }
-
 DEF theHardDriveMenu Level
 {
 	archive "memory.xip"
@@ -199,7 +191,6 @@ DEF theHardDriveMenu Level
 		position 41.650002 8.885 -194.300003
 		jump false
 	}
-
 	control  DEF theHardDriveMenuJoy Joystick
 	{
 		function OnLeftThumbMoveUp()
@@ -254,7 +245,6 @@ DEF theHardDriveMenu Level
 			theGamesSubMenuOut.Play();
 		}
 	}
-
 	function OnActivate()
 	{
 		CurrentViewpoint = theHardDriveMenuViewpoint;
@@ -294,7 +284,6 @@ function ShowFileDetailView()
 	}
 	return false;
 }
-
 function UpdateFileMenu()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -322,7 +311,6 @@ function UpdateFileMenu()
 		}
 	}
 }
-
 function InitMemoryMenuItems()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -332,7 +320,6 @@ function InitMemoryMenuItems()
 	c.MenuItemText2.text = theTranslator.Translate("DELETE TITLE");
 	nFileMenuItemCount = 2;
 }
-
 DEF fileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -340,7 +327,6 @@ DEF fileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF fileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -348,7 +334,6 @@ DEF fileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 function ResetMetaPanels()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -361,7 +346,6 @@ function ResetMetaPanels()
 	c.MetaLine3a.text = "";
 	c.MetaLine4a.text = "";
 }
-
 function ResetDetailScreen()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -376,7 +360,6 @@ function ResetDetailScreen()
 	c.Group07.SetTranslation(-8.513000, 3.522000, 72.169998);
 	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.279300);
 }
-
 function ResetCopyScreen()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -391,7 +374,6 @@ function ResetCopyScreen()
 	c.Group07.SetTranslation(-8.542000, 3.420000, 72.209999);
 	c.Group07.SetRotation(0.000000, 1.000000, 0.000000, -0.008727);
 }
-
 function StartCopy()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -400,7 +382,6 @@ function StartCopy()
 	ResetCopyScreen();
 	bInCopy = true;
 }
-
 function EndCopy()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -411,21 +392,18 @@ function EndCopy()
 	c.theCopyDestination.isActive = false;
 	ShowFileDetailView();
 }
-
 function DoMemoryItemMenuCommand()
 {
 	var c = theTitlesMenu.children[0].children[0];
 	var nTitle = c.theTitlesGrid.curTitle;
-		 if(nCurFileMenuItem == 0) { theTitleLauncherLevel.GoTo(); }
+	if(nCurFileMenuItem == 0) { theTitleLauncherLevel.GoTo(); }
 	else if(nCurFileMenuItem == 1) { StartDelete(); }
 }
-
 function StartDelete()
 {
 	var msg = "ConfirmDeleteTitle";
 	AskQuestion( msg, "", "", 1 );
 }
-
 function DoDelete()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -433,7 +411,6 @@ function DoDelete()
 	BlockUser("DeletingTitle");
 	c.theTitlesGrid.StartDelete();
 }
-
 function InitializeTitles()
 {
 	bDoingCopy = false;
@@ -457,7 +434,6 @@ function EnterMemoryFiles()
 	if(curMenuItem == 2) { tempName = "Dashboards"; }
 	if(curMenuItem == 3) { tempName = "Emulators"; }
 
-
 	var IniFile = new Settings;
 	IniFile.SetIniSection(tempName);
 	var a = IniFile.GetIniValue( "Path" );
@@ -469,21 +445,20 @@ function EnterMemoryFiles()
 	UpdateFileMetaPanel();
 	nCurFileMenuItem = 0;
 
-//	var c = theTitlesMenu.children[0].children[0];
-//     c.theCopyDestination.isActive = false;
-//
-//     var IniFile = new Settings;
-//     IniFile.SetIniSection(tempName);
-//     var a = IniFile.GetIniValue( "Path" );
-//     menuName = IniFile.GetIniValue( "Name" );
-//     c.theTitlesGrid.SetPath( a );
-//
-//     c.MenuName.text = menuName;
-//     ShowFileListView();
-//     UpdateFileMetaPanel();
-//     nCurFileMenuItem = 0;
-}
+	/*var c = theTitlesMenu.children[0].children[0];
+	c.theCopyDestination.isActive = false;
 
+	var IniFile = new Settings;
+	IniFile.SetIniSection(tempName);
+	var a = IniFile.GetIniValue( "Path" );
+	menuName = IniFile.GetIniValue( "Name" );
+	c.theTitlesGrid.SetPath( a );
+
+	c.MenuName.text = menuName;
+	ShowFileListView();
+	UpdateFileMetaPanel();
+	nCurFileMenuItem = 0;*/
+}
 function ShowFileListView()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -500,7 +475,6 @@ function ShowFileListView()
 	c.stIconPanel.SetAlpha(1);
 	c.theTitlesGrid.renderIcons = true;
 }
-
 function UpdateFileMetaPanel()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -522,7 +496,6 @@ function UpdateFileMetaPanel()
 	c.MetaLine1.text = strTitleName;
 	c.MetaLine1a.text = strTitleName;
 }
-
 function ResetMemoryFocus()
 {
 	var c = theTitlesMenu.children[0].children[0];
@@ -532,7 +505,6 @@ function ResetMemoryFocus()
 	c.theTitlesGrid.scroll = 0;
 	c.theTitlesGrid.nPrefColumn = -1;
 }
-
 DEF theTitlesMenu Level
 {
 	archive "memory_files.xip"
@@ -622,7 +594,6 @@ DEF theTitlesMenu Level
 				ShowFileDetailView();
 			}
 		}
-
 		function OnBDown()
 		{
 			var c = theTitlesMenu.children[0].children[0];
@@ -640,14 +611,12 @@ DEF theTitlesMenu Level
 				theGamesSubMenuOut.Play();
 			}
 		}
-
 		function OnYDown()
 		{
 			var c = theTitlesMenu.children[0].children[0];
 			var a = c.MenuName.text;
 			AskQuestion( "\n\nRefresh " + a + " Menu Cache ?", "theHardDriveInline.children[0].RefreshCache()", "", 1 );
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			var c = theTitlesMenu.children[0].children[0];
@@ -669,7 +638,6 @@ DEF theTitlesMenu Level
 				else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			var c = theTitlesMenu.children[0].children[0];
@@ -692,7 +660,6 @@ DEF theTitlesMenu Level
 			}
 		}
 	}
-
 	function OnActivate()
 	{
 		CurrentViewpoint = fileListView;
@@ -707,14 +674,12 @@ DEF theTitlesMenu Level
 		//c.Copy_Dest_Parent.SetAlpha(0);
 		ResetMemoryFocus();
 	}
-
 	function OnDeactivate()
 	{
 		var c = theTitlesMenu.children[0].children[0];
 		c.theTitlesGrid.isActive = false;
 		bTitlesGridActivatePending = false;
 	}
-
 	function OnArrival()
 	{
 		CurrentViewpoint = fileListView;
@@ -724,7 +689,6 @@ DEF theTitlesMenu Level
 		c.theTitlesGrid.isActive = true;
 	}
 }
-
 DEF AlternateHardDriveMenuViewpoint Viewpoint
 {
 	fieldOfView 1.438000
@@ -732,7 +696,6 @@ DEF AlternateHardDriveMenuViewpoint Viewpoint
 	position 38.650002 4.000 -193
 	jump false
 }
-
 DEF fileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -740,7 +703,6 @@ DEF fileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF AlternatefileDetailView Viewpoint
 {
 	fieldOfView 1.287000
@@ -748,7 +710,6 @@ DEF AlternatefileDetailView Viewpoint
 	position 34.389999 15.300000 -212.899994
 	jump false
 }
-
 DEF fileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -756,7 +717,6 @@ DEF fileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 DEF AlternatefileCopyView Viewpoint
 {
 	fieldOfView 1.287000
@@ -764,7 +724,6 @@ DEF AlternatefileCopyView Viewpoint
 	position 35.630001 15.200000 -212.899994
 	jump false
 }
-
 DEF AlternatefileListView Viewpoint
 {
 	fieldOfView 1.287000

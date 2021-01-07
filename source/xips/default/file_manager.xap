@@ -55,7 +55,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -63,7 +62,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize()
 {
 	GetCellWallType();
@@ -72,7 +70,6 @@ function initialize()
 	InSourceRoot = true;
 	InDestinationRoot = true;
 }
-
 function GetMainDirListing()
 {
 	var d = theFileManager.children[0].children[0];
@@ -119,7 +116,6 @@ function GetMainDirListing()
 	}
 	rootlength = RootDirectory.length;
 }
-
 function UpdateDestinationFileManager()
 {
 	var d = theFileManager.children[0].children[0];
@@ -191,7 +187,6 @@ function UpdateDestinationFileManager()
 		d.theDestinationPathListing.text = CurDestinationPath;
 	}
 }
-
 function UpdateSourceFileManager()
 {
 	var d = theFileManager.children[0].children[0];
@@ -263,7 +258,6 @@ function UpdateSourceFileManager()
 		d.theSourcePathListing.text = CurSourcePath;
 	}
 }
-
 function GoBackDirectory()
 {
 	var d = theFileManager.children[0].children[0];
@@ -304,7 +298,6 @@ function GoBackDirectory()
 		}
 	}
 }
-
 function ChangeDirectory(x)
 {
 	if(InSource)
@@ -336,7 +329,6 @@ function ChangeDirectory(x)
 		GetDestinationDirectoryListing(CurDestinationPath);
 	}
 }
-
 function GetSourceDirectoryListing(x)
 {
 	sfmScroll = 0;
@@ -381,7 +373,6 @@ function GetSourceDirectoryListing(x)
 	sdirlength = arraycount;
 	UpdateSourceFileManager();
 }
-
 function GetDestinationDirectoryListing(x)
 {
 	dfmScroll = 0;
@@ -441,7 +432,6 @@ function AddItem(x)
 	tempItemNumber = tempItemNumber + 1;
 	ReturnItems();
 }
-
 function ReturnItems()
 {
 	var info = new Settings;
@@ -453,7 +443,6 @@ function ReturnItems()
 	}
 	return tempItems;
 }
-
 DEF theFileManager Level
 {
 	archive "settings_panel.xip"
@@ -481,10 +470,8 @@ DEF theFileManager Level
 				UpdateSourceFileManager();
 				UpdateDestinationFileManager();
 			}
-
 		}
 	]
-
 	shell Transform
 	{
 		scale 6.15 6.15 6.15
@@ -522,7 +509,6 @@ DEF theFileManager Level
 			}
 		]
 	}
-
 	path Viewpoint
 	{
 		fieldOfView 1.287000
@@ -530,7 +516,6 @@ DEF theFileManager Level
 		position 96.940002 4.728000 -248.600006
 		jump false
 	}
-
 	control DEF theSettingsJoystick Joystick
 	{
 
@@ -559,7 +544,6 @@ DEF theFileManager Level
 				}
 			}
 		}
-
 		function OnBDown()
 		{
 			PlaySoundB();
@@ -571,7 +555,6 @@ DEF theFileManager Level
 			}
 			else { GoBackDirectory(); }
 		}
-
 		function OnXDown()
 		{
 			if(InSource)
@@ -584,7 +567,6 @@ DEF theFileManager Level
 				}
 			}
 		}
-
 		function OnLeftThumbMoveRight()
 		{
 			PlaySoundMenuChange();
@@ -594,7 +576,6 @@ DEF theFileManager Level
 				InDestination = true;
 			}
 		}
-
 		function OnLeftThumbMoveLeft()
 		{
 			PlaySoundMenuChange();
@@ -604,7 +585,6 @@ DEF theFileManager Level
 				InDestination = false;
 			}
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			if(InSource)
@@ -626,7 +606,6 @@ DEF theFileManager Level
 				UpdateDestinationFileManager();
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			if(InSource)
@@ -664,7 +643,6 @@ DEF theFileManager Level
 		}
 	}
 }
-
 DEF theFileManagerJoystick Joystick
 {
 	function OnADown()
@@ -814,7 +792,6 @@ DEF theFileManagerJoystick Joystick
 			else { CloseFileManagerFunctions(); }
 		}
 	}
-
 	function OnLeftThumbMoveRight()
 	{
 		if(bInConfirm)
@@ -828,7 +805,6 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerButtonHighlight();
 		}
 	}
-
 	function OnLeftThumbMoveLeft()
 	{
 		if(bInConfirm)
@@ -842,7 +818,6 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerButtonHighlight();
 		}
 	}
-
 	function OnLeftThumbMoveUp()
 	{
 		if(bInConfirm) { return; }
@@ -857,7 +832,6 @@ DEF theFileManagerJoystick Joystick
 			UpdateFileManagerFunctionsMenu();
 		}
 	}
-
 	function OnLeftThumbMoveDown()
 	{
 		if(bInConfirm) { return; }

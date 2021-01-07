@@ -23,7 +23,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -31,7 +30,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize()
 {
 	GetCellWallType();
@@ -44,7 +42,6 @@ function initialize()
 	inLV2 = false;
 	settChanged = false;
 }
-
 function ParseTrans( a, b )
 {
 	var inTran = ReturnString(a);
@@ -59,14 +56,12 @@ function ParseTrans( a, b )
 	else if(b == "Y") { return yTrans; }
 	else if(b == "Z") { return zTrans; }
 }
-
 function ReturnString( x )
 {
 	theIntToString.children[0].geometry.text = x;
 	var b = theIntToString.children[0].geometry.text;
 	return b;
 }
-
 DEF theIntToString Transform
 {
 	visible false
@@ -81,7 +76,6 @@ DEF theIntToString Transform
 	scale 1 1 1
 	translation 2 -26 0
 }
-
 function BuildConfigList()
 {
 	var i = 0;
@@ -97,7 +91,6 @@ function BuildConfigList()
 	ClearText();
 	UpdateText();
 }
-
 function BuildMainList()
 {
 	var i = 0;
@@ -127,7 +120,6 @@ function BuildMainList()
 	ClearText();
 	UpdateText();
 }
-
 function BuildHDList()
 {
 	var i = 0;
@@ -169,7 +161,6 @@ function BuildHDList()
 	ClearText();
 	UpdateText();
 }
-
 function BuildMMList()
 {
 	var i = 0;
@@ -195,7 +186,6 @@ function BuildMMList()
 	ClearText();
 	UpdateText();
 }
-
 function BuildNETList()
 {
 	var i = 0;
@@ -241,7 +231,6 @@ function BuildNETList()
 	ClearText();
 	UpdateText();
 }
-
 function ToggleTF()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -249,7 +238,6 @@ function ToggleTF()
 	if(b.toLowerCase() == "true") { RefreshMenu("false"); }
 	else if(b.toLowerCase() == "false") { RefreshMenu("true"); }
 }
-
 function ToggleMM()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -257,7 +245,6 @@ function ToggleMM()
 	if(b.toLowerCase() == "modded") { RefreshMenu("stock"); }
 	else if(b.toLowerCase() == "stock") { RefreshMenu("modded"); }
 }
-
 function ToggleAutoLaunchMedia()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -266,7 +253,6 @@ function ToggleAutoLaunchMedia()
 	else if(b.toLowerCase() == "false") { RefreshMenu("ask"); }
 	else if(b.toLowerCase() == "ask") { RefreshMenu("true"); }
 }
-
 function ToggleUseXBENames()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -274,7 +260,6 @@ function ToggleUseXBENames()
 	if(b.toLowerCase() == "true") { RefreshMenu("false"); }
 	else if(b.toLowerCase() == "false") { RefreshMenu("true"); }
 }
-
 function ToggleIPType()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -282,7 +267,6 @@ function ToggleIPType()
 	if(b.toLowerCase() == "dhcp") { RefreshMenu("Static"); }
 	else if(b.toLowerCase() == "static") { RefreshMenu("DHCP"); }
 }
-
 function ConfigKeyB()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -290,7 +274,6 @@ function ConfigKeyB()
 	var b = c.theRightSlots.children[LV2Item].children[0].geometry.text; //edit
 	ShowKeyboard(a, b, "theConfigInline.children[0].RefreshMenu(strKeyboardEdit)", "");
 }
-
 function RefreshMenu( x )
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -298,7 +281,6 @@ function RefreshMenu( x )
 	c.theRightSlots.children[LV2Item].children[0].geometry.text = cValue;
 	SetConfigMenuValue(configValues[LV2Item],cValue);
 }
-
 function SafetyCheck( x, y )
 {
 	var fValue = y;
@@ -323,21 +305,18 @@ function SafetyCheck( x, y )
 	}
 	return fValue;
 }
-
 function TabSlot( x )
 {
 	var c = theConfigPanel.children[0].children[0];
 	var indentItemTrans = c.theLeftSlots.children[x].translation;
 	c.theLeftSlots.children[x].SetTranslation(2.35, ParseTrans(indentItemTrans,"Y"), ParseTrans(indentItemTrans,"Z"));
 }
-
 function UnTabSlot( x )
 {
 	var c = theConfigPanel.children[0].children[0];
 	var indentItemTrans = c.theLeftSlots.children[x].translation;
 	c.theLeftSlots.children[x].SetTranslation(2, ParseTrans(indentItemTrans,"Y"), ParseTrans(indentItemTrans,"Z"));
 }
-
 function UpdateText()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -355,7 +334,6 @@ function UpdateText()
 	}
 	if(configList.length > 12) { c.theDownArrow.visible = true; }
 }
-
 function GetConfigMenuValue( x )
 {
 	var dud = " ";
@@ -372,7 +350,6 @@ function GetConfigMenuValue( x )
 	var b = info.GetValue(vValue);
 	return b;
 }
-
 function SetConfigMenuValue( x, y )
 {
 	var vSection = x.substr(0,x.indexOf("-"));
@@ -382,7 +359,6 @@ function SetConfigMenuValue( x, y )
 	info.section = vSection;
 	info.SetValue(vValue,y);
 }
-
 function ClearText()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -396,7 +372,6 @@ function ClearText()
 		c.theRightSlots.children[i].children[0].geometry.font = "Body";
 	}
 }
-
 DEF theConfigPanel Level
 {
 	archive "config.xip"
@@ -457,7 +432,6 @@ DEF theConfigPanel Level
 		fieldOfView 1.287
 	jump false
 	}
-
 	control DEF theConfigJoystick Joystick
 	{
 		function OnADown()
@@ -529,19 +503,16 @@ DEF theConfigPanel Level
 			}
 		}
 	}
-
 	function OnArrival()
 	{
 		MakeTemp();
 	}
 }
-
 function MakeTemp()
 {
 	if(theHardDrive.FileExists( "A:\\system\\uix.temp" ) == true) { theHardDrive.DeleteThisFile( "A:\\system\\uix.temp" ); }
 	theHardDrive.CopyThisFile( "A:\\system\\uix.ini", "A:\\system\\uix.temp" );
 }
-
 function SaveSettings()
 {
 	if(theHardDrive.FileExists( "A:\\system\\uix.temp" ) == true)
@@ -552,19 +523,16 @@ function SaveSettings()
 		TellUser("Settings saved!  You may have to reboot for new settings to take effect.","theConfigInline.children[0].LeaveConfig()");
 	}
 }
-
 function DeleteTemps()
 {
 	theHardDrive.DeleteThisFile( "A:\\system\\uix.temp" );
 	TellUser("Settings NOT saved","theConfigInline.children[0].LeaveConfig()");
 }
-
 function LeaveConfig()
 {
 	theSettingsSubMenuOut.Play();
 	GoToSettings();
 }
-
 function SelectConfigDown()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -617,7 +585,6 @@ function SelectConfigDown()
 		LV2Hold = curHold;
 	}
 }
-
 function SelectConfigUp()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -673,7 +640,6 @@ function SelectConfigUp()
 		LV2Hold = curHold;
 	}
 }
-
 function ScrollConfigDown()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -694,7 +660,6 @@ function ScrollConfigDown()
 	}
 	if(configList.length == curItem + 1) { c.theDownArrow.visible = false; }
 }
-
 function ScrollConfigUp()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -715,7 +680,6 @@ function ScrollConfigUp()
 	}
 	if(curItem == 0) { c.theUpArrow.visible = false; }
 }
-
 function UpdateHeaders()
 {
 	var c = theConfigPanel.children[0].children[0];
@@ -738,7 +702,6 @@ function UpdateHeaders()
 	if(inSubs == true) { curHold = LV1Hold; }
 	else if(inLV2 == true) { curHold = LV2Hold; }
 }
-
 function ToggleBacking()
 {
 	var c = theConfigPanel.children[0].children[0];

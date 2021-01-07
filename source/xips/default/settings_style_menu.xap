@@ -22,7 +22,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -30,9 +29,7 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize() { GetCellWallType(); }
-
 function UpdateSettingsStyleMenu()
 {
 	var x = theSettingsStyleMenu.children[0].children[0];
@@ -66,7 +63,6 @@ function UpdateSettingsStyleMenu()
 	}
 	x.metaPanel.children[0].geometry.text = theGamesMenu.GetTitleName(CurrentMenuItem);
 }
-
 function StartSettingsStyleMenu()
 {
 	TotalMenuItems = theGamesMenu.titleCount;
@@ -100,7 +96,6 @@ function StartSettingsStyleMenu()
 	}
 	UpdateSettingsStyleMenu();
 }
-
 DEF theSettingsStyleMenu Level
 {
 	archive "settings.xip"
@@ -166,8 +161,6 @@ DEF theSettingsStyleMenu Level
 			}
 		]
 	}
-
-
 	path Viewpoint
 	{
 		fieldOfView 1.275000
@@ -175,7 +168,6 @@ DEF theSettingsStyleMenu Level
 		position 123.300003 -0.918000 -151.600006
 		jump false
 	}
-
 	control DEF joy Joystick
 	{
 		function OnADown()

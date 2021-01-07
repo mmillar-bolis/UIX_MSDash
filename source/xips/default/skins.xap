@@ -20,7 +20,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -28,7 +27,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize()
 {
 	GetCellWallType();
@@ -37,7 +35,6 @@ function initialize()
 	skinButton = 0;
 	nCurPlayerMenuItem = 1;
 }
-
 function GetSkins()
 {
 	var b = new Folder;
@@ -57,58 +54,55 @@ function GetSkins()
 	}
 	SkinMenuList = skinsArray.sort();
 }
-
 function UpdateSkinMenu()
 {
-		var c = theSkinsMenu.children[0].children[0];
+	var c = theSkinsMenu.children[0].children[0];
 
 	for(var i = 0; i < 9; i = i + 1)
 	{
-			var n = skinScroll + i;
+		var n = skinScroll + i;
 
 		if(n >= skinCount)
 		{
-				c.SkinNames.children[i].visible = false;
+			c.SkinNames.children[i].visible = false;
 		}
 		else
 		{
-				var str;
-				str = SkinMenuList[n];
-						c.SkinNames.children[i].visible = true;
-						c.SkinNames.children[i].visible = true;
-						c.SkinNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
-						c.SkinNames.children[i].children[0].geometry.text = str;
+			var str;
+			str = SkinMenuList[n];
+			c.SkinNames.children[i].visible = true;
+			c.SkinNames.children[i].visible = true;
+			c.SkinNames.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
+			c.SkinNames.children[i].children[0].geometry.text = str;
 
-						if(i == skinButton)
-						{
-								c.SkinNames.children[i].children[0].appearance.material.name = "NavType";
-						}
-				}
+			if(i == skinButton)
+			{
+				c.SkinNames.children[i].children[0].appearance.material.name = "NavType";
+			}
 		}
-		c.MU_L3_button_no.children[0].appearance.material.name = "FlatSurfaces";
-		c.MU_L3_button_yes.children[0].appearance.material.name = "FlatSurfaces";
+	}
+	c.MU_L3_button_no.children[0].appearance.material.name = "FlatSurfaces";
+	c.MU_L3_button_yes.children[0].appearance.material.name = "FlatSurfaces";
 
-		c.S_Home_text_no.children[0].appearance.material.name = "NavType";
-		c.S_Home_text_yes.children[0].appearance.material.name = "NavType";
+	c.S_Home_text_no.children[0].appearance.material.name = "NavType";
+	c.S_Home_text_yes.children[0].appearance.material.name = "NavType";
 
 	if (nCurPlayerMenuItem == 0)
 	{
-				c.MU_L3_button_yes.children[0].appearance.material.name = "GameHilite";
-				c.S_Home_text_yes.children[0].appearance.material.name = "Material #133";
+		c.MU_L3_button_yes.children[0].appearance.material.name = "GameHilite";
+		c.S_Home_text_yes.children[0].appearance.material.name = "Material #133";
 	}
 	if (nCurPlayerMenuItem == 1)
 	{
-				c.MU_L3_button_no.children[0].appearance.material.name = "GameHilite";
-				c.S_Home_text_no.children[0].appearance.material.name = "Material #133";
-		}
+		c.MU_L3_button_no.children[0].appearance.material.name = "GameHilite";
+		c.S_Home_text_no.children[0].appearance.material.name = "Material #133";
+	}
 }
-
 function StartSkinMenu()
 {
 	var c = theSkinsMenu.children[0].children[0];
 	nCurPlayerMenuItem = 1;
 }
-
 function ShowSkinInfo()
 {
 	var info = new Settings;
@@ -121,12 +115,10 @@ function ShowSkinInfo()
 	var credits = info.GetValue("Credits");
 	TellUser(theTranslator.Translate("Author: " + author + "\nDate: " + date + "\nVersion: " + version + "\nMade with: " + madeusing + "\nCredits: " + credits),"nada()");
 }
-
 function DoReset()
 {
 	theRestartLevel.GoTo();
 }
-
 function DoAction()
 {
 	var c = theSkinsMenu.children[0].children[0];
@@ -140,7 +132,9 @@ function DoAction()
 		AskQuestion("Skin change will not take full effect until you restart the dash.  Would you like to restart now?", "theSkinsInline.children[0].DoReset()", "", 0);
 	}
 }
+
 var restarting;
+
 DEF theRestartLevel Level
 {
 	function OnArrival()
@@ -151,13 +145,11 @@ DEF theRestartLevel Level
 		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
-
 	behavior
 	{
 		sleep 1.1;
 		if(restarting) { theConfig.ReStartDash(); }
 	}
-
 	function OnActivate()
 	{
 		DisableAmbientAudio();
@@ -166,7 +158,6 @@ DEF theRestartLevel Level
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
 }
-
 DEF theSkinsMenu Level
 {
 	archive "Settings_Panel.xip"
@@ -185,7 +176,6 @@ DEF theSkinsMenu Level
 			}
 		}
 	]
-
 	path Viewpoint
 	{
 		fieldOfView 1.287000
@@ -193,7 +183,6 @@ DEF theSkinsMenu Level
 		position 96.940002 4.728000 -248.600006
 		jump false
 	}
-
 	shell Transform
 	{
 		scale 6.15 6.15 6.15
@@ -231,7 +220,6 @@ DEF theSkinsMenu Level
 			}
 		]
 	}
-
 	control DEF theMusicPlayJoystick Joystick
 	{
 		function OnADown()
@@ -283,7 +271,6 @@ DEF theSkinsMenu Level
 						UpdateSkinMenu();
 		}
 	}
-
 	function OnActivate()
 	{
 		EnableAudio();

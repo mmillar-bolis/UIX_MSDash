@@ -15,7 +15,6 @@ DEF theMusicInline Inline
 	url "music.xap"
 	function onLoad() { theMusicInline.children[0].theMusicMenu.GoTo(); }
 }
-
 function GoToMusic()
 {
 	if(theMusicInline.visible) { theMusicInline.children[0].theMusicMenu.GoTo(); }
@@ -25,12 +24,10 @@ function GoToMusic()
 		theMusicInline.visible = true;
 	}
 }
-
 function StartBackGroundMusicPlayer()
 {
 	if (theMusicPlayer.transportMode != 1) { MusicPlayerRandom(); }
 }
-
 function MusicPlayerPlay()
 {
 	theMusicPlayer.url = "st:" + theMusicCollection.GetSoundtrackSongID( currentAlbum, currentTrack );
@@ -38,7 +35,6 @@ function MusicPlayerPlay()
 	DisableAmbientAudio();
 	theMusicPlayer.Play();
 }
-
 function MusicPlayerRandom()
 {
 	theMusicPlayer.playbackMode = 2;
@@ -50,7 +46,6 @@ function MusicPlayerRandom()
 	currentTrack = Math.round(b);
 	MusicPlayerPlay();
 }
-
 function MusicPlayerFastForward()
 {
 	var totaltracks = theMusicCollection.GetSoundtrackSongCount(currentAlbum) - 1;
@@ -65,7 +60,6 @@ function MusicPlayerFastForward()
 		MusicPlayerPlay();
 	}
 }
-
 DEF theMusicCollection  MusicCollection
 {
 	function OnCopyComplete() { theMusicInline.children[0].OnMusicCopyComplete(); }
@@ -111,7 +105,6 @@ DEF theMusicPlayer AudioClip
 		}
 	}
 }
-
 DEF audioVisualizer DynamicTexture
 {
 	palette Palette { type 7 changePeriod 3 }
@@ -135,19 +128,16 @@ DEF audioVisualizer DynamicTexture
 		}
 	]
 }
-
 function MusicPlayerVolumeUp()
 {
 	if(theMusicPlayer.volume >= 0.99) { theMusicPlayer.volume = 1.0; }
 	else { theMusicPlayer.volume = theMusicPlayer.volume + 0.01; }
 }
-
 function MusicPlayerVolumeDown()
 {
 	if(theMusicPlayer.volume <= 0.0) { theMusicPlayer.volume = 0.0; }
 	else { theMusicPlayer.volume = theMusicPlayer.volume - 0.01; }
 }
-
 function MusicOnBootCheck()
 {
 	var IniFile = new Settings;
@@ -182,60 +172,51 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 DEF theSkinsInline Inline
 {
 	visible false
 	url "skins.xap"
 	function onLoad() { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
 }
-
 function GoToSkins()
 {
 	theSettingsMenuIn.Play();
 	if( theSkinsInline.visible ) { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
 	else { theSkinsInline.visible = true; }
 }
-
 DEF theConfigInline Inline
 {
 	visible false
 	url "config.xap"
 	function onLoad() { theConfigInline.children[0].theConfigPanel.GoTo(); }
 }
-
 function GoToConfig()
 {
 	if(theConfigInline.visible) { theConfigInline.children[0].theConfigPanel.GoTo(); }
 	else { theConfigInline.visible = true; }
 }
-
 DEF theMusicPlayWithSubsInline Inline
 {
 	visible false
 	url "music_play_with_subs.xap"
 	function onLoad()  { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
 }
-
 function GoToMusicPlayWithSubs()
 {
 	if(theMusicPlayWithSubsInline.visible) { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
 	else { theMusicPlayWithSubsInline.visible = true; }
 }
-
 DEF theSettingsStyleMenuInline Inline
 {
 	visible false
 	url "settings_style_menu.xap"
 	function onLoad()  { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
 }
-
 function GoToSettingsStyleMenu()
 {
 	if(theSettingsStyleMenuInline.visible) { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
 	else { theSettingsStyleMenuInline.visible = true; }
 }
-
 function AutoLaunchCheck()
 {
 	var IniFile = new Settings;
@@ -272,7 +253,6 @@ function AutoLaunchCheck()
 	}
 	else { return; }
 }
-
 function AutoLaunch()
 {
 		 if (theDiscDrive.discType == "Audio")   { StartCDPlayer(); }
@@ -280,13 +260,11 @@ function AutoLaunch()
 	else if (theDiscDrive.discType == "Title")   { theLauncherLevel.GoTo(); }
 	else if (theDiscDrive.discType == "unknown") { TellUser("ERROR MESSAGE 1",""); }
 }
-
 function ReStartDash()
 {
 	b_restart = true;
 	theLauncherLevel.GoTo();
 }
-
 function RefreshCaches()
 {
 	theGamesMenu.RefreshCache();
@@ -294,7 +272,6 @@ function RefreshCaches()
 	theEmulatorsMenu.RefreshCache();
 	theDashboardsMenu.RefreshCache();
 }
-
 function UpDateMainMenuButtonsText()
 {
 	var IniFile = new Settings;
@@ -306,7 +283,6 @@ function UpDateMainMenuButtonsText()
 	c.Button_04_Text.geometry.text = IniFile.GetIniValue( "Main Tab 4" );
 	IniFile.CloseIniFile();
 }
-
 function MainMenuAttract()
 {
 	var a = 0.65;
@@ -333,7 +309,6 @@ function MainMenuAttract()
 	c.Modded_Orb.SetScale(43,43,43);
 	c.Rotating_Large_X.fade = 0.43;
 }
-
 DEF theMainMenuViewpoint Viewpoint
 {
 	fieldOfView 1.755000
@@ -341,7 +316,6 @@ DEF theMainMenuViewpoint Viewpoint
 	position 11.180000 -32.299999 129.300003
 	jump false
 }
-
 function ApplyDashStyle()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -374,7 +348,6 @@ function ApplyDashStyle()
 		c.Dark_Pod_Backing.visible = false;
 	}
 }
-
 function InitializeMenus() //use this to setpaths for any TitleMenu objects you create
 {
 	var IniFile = new Settings; //read in storage settings from the main data file uix.ini
@@ -405,22 +378,18 @@ function InitializeMenus() //use this to setpaths for any TitleMenu objects you 
 
 	IniFile.CloseIniFile(); //saves and closes current file - want to be sure when using uix.ini
 }
-
 function QuickLaunchA()
 {
 
 }
-
 function QuickLaunchB()
 {
 
 }
-
 function QuickLaunchX()
 {
 	theScreen.TakeScreenShot();
 }
-
 function QuickLaunchY()
 {
 	if( true == b_InWireFrame )
@@ -434,14 +403,12 @@ function QuickLaunchY()
 		b_InWireFrame = true;
 	}
 }
-
 function StartScreenSaverView()
 {
 	bInScreenSaverView = true;
 	if( CurrentViewpoint != theMainMenuViewpoint ) { theMainMenu.GoTo(); }
 	DoScreenSaverView();
 }
-
 function DoScreenSaverView()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -450,7 +417,6 @@ function DoScreenSaverView()
 	EnableCurrentAlternateViewpoint();
 	MainMenuPositionOne();
 }
-
 function StopScreenSaverView()
 {
 	bInScreenSaverView = false;
@@ -462,7 +428,6 @@ function StopScreenSaverView()
 	DisableCurrentAlternateViewpoint();
 	c.theMenuItems.SetAlpha(1);
 }
-
 function MainMenuPositionOne()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -470,7 +435,6 @@ function MainMenuPositionOne()
 	c.theMainMenuLevel.fade = 100;
 	c.theMainMenuLevel.SetTranslation( 30, -104, 4 );
 }
-
 function MainMenuPositionTwo()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -479,7 +443,6 @@ function MainMenuPositionTwo()
 	c.theMainMenuLevel.SetTranslation( 74, -46, -14 );
 	c.theMainMenuLevel.SetRotation( -0.0006, 0, 0.00005, 0.314159 );
 }
-
 function MainMenuPositionThree()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -488,13 +451,11 @@ function MainMenuPositionThree()
 	c.theMainMenuLevel.SetTranslation( -24, -36, -262 );
 	c.theMainMenuLevel.SetRotation( -0.001, 0.0003, 0.0003, 0.314159 );
 }
-
 DEF theScreen Screen
 {
 	width 640
 	height 480
 }
-
 DEF theAmbientSounds Group
 {
 	children
@@ -505,7 +466,6 @@ DEF theAmbientSounds Group
 		DEF theAmbientSound3 AudioClip { url "audio/ambient audio/amb_05_engineroom_lr.wav" loop true volume 0 fade 2 }
 	]
 }
-
 DEF thePeriodicSounds Group
 {
 	children
@@ -582,7 +542,6 @@ DEF thePeriodicSounds Group
 		}
 	]
 }
-
 function EnableAmbientAudio()
 {
 	var n = Math.round(Math.random() * (theAmbientSounds.children.length() - 1));
@@ -591,7 +550,6 @@ function EnableAmbientAudio()
 	theAmbientSounds.children[n].volume = 0.95;
 	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
 }
-
 function AmbientAudioOn(Area)
 {
 	var n = 0;
@@ -604,14 +562,12 @@ function AmbientAudioOn(Area)
 	theAmbientSounds.children[n].volume = 0.95;
 	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = true; }
 }
-
 function AmbientAudioOff()
 {
 	log("Disabling ambient audio...");
 	for(var i = 0; i < theAmbientSounds.children.length(); i = i + 1) { theAmbientSounds.children[i].volume = 0; }
 	for(i = 0; i < thePeriodicSounds.children.length(); i = i + 1) { thePeriodicSounds.children[i].isActive = false; }
 }
-
 function DisableAmbientAudio()
 {
 	log("Disabling ambient audio...");
@@ -661,7 +617,6 @@ function PlaySoundA()			{ theASound.Play();			 }
 function PlaySoundB()			{ theBSound.Play();			 }
 function PlaySoundMenuChange()	{ theMenuChangeSound.Play(); }
 
-
 DEF theScreenSaver ScreenSaver
 {
 	function OnStart()
@@ -679,7 +634,6 @@ DEF theScreenSaver ScreenSaver
 	function OnDelay2() { if( dashStyle == "modded" ) { MainMenuPositionTwo();   } }
 	function OnDelay3() { if( dashStyle == "modded" ) { MainMenuPositionThree(); } }
 }
-
 NavigationInfo
 {
 	type "sample"
@@ -696,20 +650,17 @@ DEF theBackground Background
 	skyColor 0 0 0
 	//backdrop ImageTexture { url "xboxlogo.xbx" }
 }
-
 function ClosePopup()
 {
 	if (g_bKeyboardDisplayed)	{ CloseKeyboard(); }
 	if (g_bPanelDisplayed)		{ CloseMessage();  }
 }
-
 DEF theDVDPlayerInline Inline
 {
 	visible false
 	url "dvd.xap"
 	function onLoad() { theDVDPlayerInline.children[0].theDVDLevel.GoTo(); }
 }
-
 DEF theDiscDrive DiscDrive
 {
 	function OnDiscRemoved()
@@ -746,13 +697,11 @@ DEF theDiscDrive DiscDrive
 
 	function OnDiscInserted() { AutoLaunchCheck(); }
 }
-
 function StartDVDPlayer()
 {
 	log("Starting the DVD player!");
 	theDVDPlayerInline.visible = true;
 }
-
 function StartCDPlayer()
 {
 	log("Should start the CD player now!");
@@ -760,41 +709,34 @@ function StartCDPlayer()
 	EnableInput(false);
 	GoToMusic();
 }
-
 DEF theMemoryInline Inline
 {
 	visible false
 	url "memory.xap"
 	function onLoad() { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
 }
-
 function GoToMemory()
 {
 	if(theMemoryInline.visible) { theMemoryInline.children[0].theMemoryMenu.GoTo(); }
 	else { theMemoryInline.visible = true; }
 }
-
 DEF theHardDriveInline Inline
 {
 	visible false
 	url "hard_drive.xap"
 	function onLoad() { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
 }
-
 function GoToHardDrive()
 {
 	if(theHardDriveInline.visible) { theHardDriveInline.children[0].theHardDriveMenu.GoTo(); }
 	else { theHardDriveInline.visible = true; }
 }
-
-
 DEF theFileManagerInline Inline
 {
 	visible false
 	url "file_manager.xap"
 	function onLoad() { theFileManagerInline.children[0].theFileManager.GoTo(); }
 }
-
 function GoToFileManager()
 {
 	theSettingsMenuIn.Play();
@@ -805,14 +747,12 @@ function GoToFileManager()
 		theFileManagerInline.visible = true;
 	}
 }
-
 DEF theSettingsInline Inline
 {
 	visible false
 	url "settings.xap"
 	function onLoad() { theSettingsInline.children[0].theSettingsMenu.GoTo(); }
 }
-
 function GoToSettings()
 {
 	bBackToDVDPlayer = false;
@@ -827,7 +767,6 @@ function UpdateMainMenu()
 	if( m_nbuttons == 4 ) { Update4ButtonMainMenu(); }
 	else  { Update3ButtonMainMenu(); }
 }
-
 function Update4ButtonMainMenu()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -911,7 +850,6 @@ function Update4ButtonMainMenu()
 		c.SettingsTextMaterial.name = "HilightedType";
 	}
 }
-
 function Update3ButtonMainMenu()
 {
 	var c = theMainMenu.children[0].children[0];
@@ -971,7 +909,6 @@ function Update3ButtonMainMenu()
 		c.SettingsTextMaterial.name = "HilightedType";
 	}
 }
-
 DEF theMainMenu Level
 {
 	archive "main_menu.xip"
@@ -1222,7 +1159,6 @@ function initialize()
 
 	MainInitPart3();
 }
-
 function MainInitPart3()
 {
 	var reason = theConfig.GetLaunchReason();
@@ -1283,7 +1219,6 @@ function MainInitPart3()
 		EnableAudio();
 	}
 }
-
 DEF theJapaneseKeyboardLayer Layer
 {
 	visible false
@@ -1345,21 +1280,18 @@ DEF theKeyboardLayer Layer
 		}
 	]
 }
-
 function KeyboardDone()
 {
 	var strDoneFunction = strKeyboardDoneFunction;
 	CloseKeyboard();
 	if(strDoneFunction != "") { eval(strDoneFunction); }
 }
-
 function KeyboardCancel()
 {
 	var strCancelFunction = strKeyboardCancelFunction;
 	CloseKeyboard();
 	if(strCancelFunction != "") { eval(strCancelFunction); }
 }
-
 function CloseKeyboard()
 {
 	if (g_bKeyboardDisplayed == false) { return; }
@@ -1405,7 +1337,6 @@ function CloseKeyboard()
 		ConfirmFileManager( "Create Folder:\n" + strKeyboardEdit, "");
 	}
 }
-
 function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 {
 	theDiscDrive.locked = true;
@@ -1451,7 +1382,6 @@ function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 	}
 	g_bKeyboardDisplayed = true;
 }
-
 DEF theMessageLayer Layer
 {
 	fade 0.25
@@ -1524,7 +1454,6 @@ function UpdateMessageButtonHighlight()
 		c.text_no.children[0].appearance.material.name = "Material #133";
 	}
 }
-
 DEF theMessageJoystick Joystick
 {
 	function OnADown()
@@ -1576,7 +1505,6 @@ DEF theMessageJoystick Joystick
 		}
 	}
 }
-
 function AskQuestion(strQuestion, strYesFunction, strNoFunction, nDefaultButton)
 {
 	theDiscDrive.locked = true;
@@ -1605,7 +1533,6 @@ function AskQuestion(strQuestion, strYesFunction, strNoFunction, nDefaultButton)
 	theMessageLayer.transparency = 0.25;
 	g_bPanelDisplayed = true;
 }
-
 function TellUser(strMessage, strDoneFunction)
 {
 	theDiscDrive.locked = true;
@@ -1636,7 +1563,6 @@ function TellUser(strMessage, strDoneFunction)
 	theMessageLayer.transparency = 0.25;
 	g_bPanelDisplayed = true;
 }
-
 function BlockUser(strMessage)
 {
 	BlockMemoryUnitInsert();
@@ -1665,7 +1591,6 @@ function BlockUser(strMessage)
 	theMessageLayer.transparency = 0.25;
 	g_bPanelDisplayed = true;
 }
-
 function ShowProgress(strMessage)
 {
 	theDiscDrive.locked = true;
@@ -1691,20 +1616,17 @@ function ShowProgress(strMessage)
 	theMessageLayer.transparency = 0.25;
 	g_bPanelDisplayed = true;
 }
-
 function UpdateProgressText(strMessage)
 {
 	var c = theMessageInline.children[0];
 	c.MessageText.text = strMessage;
 }
-
 function SetProgress(nProgress)
 {
 	var nTempProgress = (nProgress * 1.665) - 0.165;
 	var c = theMessageInline.children[0];
 	c.slider.children[0].appearance.material.param = nTempProgress;
 }
-
 function CloseMessage()
 {
 	if (g_bPanelDisplayed == false) { return; }
@@ -1728,33 +1650,28 @@ function CloseMessage()
 	UnblockMemoryUnitInsert();
 	g_bPanelDisplayed = false;
 }
-
 function OnQuestionYes()
 {
 	var strYesFunction = strMessageYesFunction;
 	CloseMessage();
 	if(strYesFunction != "") { eval(strYesFunction); }
 }
-
 function OnQuestionNo()
 {
 	var strNoFunction = strMessageNoFunction;
 	CloseMessage();
 	if(strNoFunction != "") {  eval(strNoFunction); }
 }
-
 DEF theXboxLogo4x3Background Background
 {
 	skyColor 0 0 0
 	backdrop ImageTexture { url "xboxlogo.xbx" }
 }
-
 DEF theXboxLogo16x9Background Background
 {
 	skyColor 0 0 0
 	backdrop ImageTexture { url "xboxlogow.xbx" }
 }
-
 DEF theLauncherLevel Level
 {
 	function OnArrival()
@@ -1788,27 +1705,22 @@ DEF theLauncherLevel Level
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
 }
-
 function BlockMemoryUnitInsert()
 {
 	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = true; }
 }
-
 function UnblockMemoryUnitInsert()
 {
 	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.blockInsertion = false; }
 }
-
 function BlockMemoryUnitEnumeration()
 {
 	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
 }
-
 function UnblockMemoryUnitEnumeration()
 {
 	if (theMemoryInline.Visible) { theMemoryInline.children[0].theMemoryMonitor.enumerationOn = false; }
 }
-
 function ReturnInteger( x )
 {
 	var a = x;
@@ -1820,17 +1732,14 @@ function ReturnInteger( x )
 	}
 	return b;
 }
-
 function EnableCurrentAlternateViewpoint()
 {
 	CurrentAltViewpoint.isBound = true;
 }
-
 function DisableCurrentAlternateViewpoint()
 {
 	CurrentViewpoint.isBound = true;
 }
-
 DEF theMainMenuAlternateViewpoint Viewpoint
 {
 	fieldOfView 1.755000
@@ -1838,7 +1747,6 @@ DEF theMainMenuAlternateViewpoint Viewpoint
 	position -15.180000 -112.299999 174.300003
 	jump false
 }
-
 function EnableAudio()
 {
 	if( musicOnBoot == true )
@@ -1903,7 +1811,6 @@ DEF theFileManagerLayer Layer
 		}
 	]
 }
-
 function ShowFileManagerFunctions()
 {
 	bInConfirm = false;
@@ -1930,7 +1837,6 @@ function ShowFileManagerFunctions()
 	theFileManagerLayer.transparency = 0.25;
 	g_bPanelDisplayed = true;
 }
-
 function UpdateFileManagerButtonHighlight()
 {
 	var c = theFileManagerLayerInline.children[0];
@@ -1949,7 +1855,6 @@ function UpdateFileManagerButtonHighlight()
 		c.text_no.children[0].appearance.material.name = "Material #133";
 	}
 }
-
 function ConfirmFileManager( x, y )//text 1, text 2
 {
 	bInConfirm = true;
@@ -1970,7 +1875,6 @@ function ConfirmFileManager( x, y )//text 1, text 2
 	nFMButtonCount = 2;
 	UpdateFileManagerButtonHighlight();
 }
-
 function ShowFileManagerError()
 {
 	inError = true;
@@ -1982,7 +1886,6 @@ function ShowFileManagerError()
 	c.MessageText4.text = "";
 	c.MessageText5.text = "";
 }
-
 function CloseFileManagerFunctions()
 {
 	if (g_bPanelDisplayed == false) { return; }
@@ -1999,7 +1902,6 @@ function CloseFileManagerFunctions()
 		ShowKeyboard( renameText, renameEdit, renameDone, renameCancel);
 	}
 }
-
 function UpdateFileManagerFunctionsMenu()
 {
 	var c = theFileManagerLayerInline.children[0];
@@ -2009,7 +1911,7 @@ function UpdateFileManagerFunctionsMenu()
 	c.message_Text04.children[0].children[0].appearance.material.name = "NavType";
 	c.message_Text05.children[0].children[0].appearance.material.name = "NavType";
 
-		 if(nCurManagerButton == 0) { c.message_Text01.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
+	if(nCurManagerButton == 0) { c.message_Text01.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 1) { c.message_Text02.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 2) { c.message_Text03.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 3) { c.message_Text04.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }

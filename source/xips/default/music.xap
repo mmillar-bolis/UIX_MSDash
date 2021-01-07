@@ -35,7 +35,6 @@ DEF theGlobal Transform
 	scale 0 0 0
 	translation 500 0 0
 }
-
 function GetCellWallType()
 {
 	var IniFile = new Settings;
@@ -43,7 +42,6 @@ function GetCellWallType()
 	var a = IniFile.GetIniValue( "Current Skin" );
 	theCellWallMesh.url = "A:/skins/" + a + "/cellwall.xm";
 }
-
 function initialize()
 {
 	GetCellWallType();
@@ -62,7 +60,6 @@ function initialize()
 	coverpath = "";
 	exists = false;
 }
-
 function EnterCopyDestMenu()
 {
 	var c = theMusicCopyMenu.children[0].children[0];
@@ -76,12 +73,10 @@ function EnterCopyDestMenu()
 	UpdateCopyDestHighlight();
 	UpdateCopyDestMenuIcon();
 }
-
 function AdjustCopyDestScroll()
 {
 	var c = theMusicCopyMenu.children[0].children[0];
 }
-
 function UpdateCopyDestMenuText()
 {
 	var c = theMusicCopyMenu.children[0].children[0];
@@ -106,7 +101,6 @@ function UpdateCopyDestMenuText()
 		}
 	}
 }
-
 function UpdateCopyDestHighlight()
 {
 	var c = theMusicCopyMenu.children[0].children[0];
@@ -130,7 +124,6 @@ function UpdateCopyDestHighlight()
 		}
 	}
 }
-
 function OnNewNamedSoundtrack()
 {
 	if (musicSelect == 0)
@@ -171,7 +164,6 @@ function OnNewNamedSoundtrack()
 	UpdateCopyDestHighlight();
 	StartCopy();
 }
-
 function StartCopy()
 {
 	DisableAmbientAudio();
@@ -195,7 +187,6 @@ function StartCopy()
 	}
 	theMusicCollection.StartCopy(nDest);
 }
-
 function CleanupSoundtackOnError()
 {
 	if (bCleanupSoundtrackOnError)
@@ -216,7 +207,6 @@ function CleanupSoundtackOnError()
 	theMusicPlayMenu.GoBackTo();
 	StartMusicCopier();
 }
-
 function UpdateCopyDestMenuIcon()
 {
 	var c = theMusicCopyMenu.children[0].children[0];
@@ -229,10 +219,9 @@ function UpdateCopyDestMenuIcon()
 	c.Group03.SetAlpha(1);
 	c.Group04.SetAlpha(1);
 }
-
 function OnMusicCopyComplete()
 {
-		 if (theMusicCollection.error == 1) { TellUser("SoundtrackCopyError1", "theMusicInline.children[0].CleanupSoundtackOnError()"); }
+	if (theMusicCollection.error == 1) { TellUser("SoundtrackCopyError1", "theMusicInline.children[0].CleanupSoundtackOnError()"); }
 	else if (theMusicCollection.error == 2) { TellUser("SoundtrackCopyError2", "theMusicInline.children[0].CleanupSoundtackOnError()"); }
 	else if (theMusicCollection.error == 3) { TellUser("SoundtrackCopyError3", "theMusicInline.children[0].CleanupSoundtackOnError()"); }
 	else if (theMusicCollection.error == 4) { TellUser("SoundtrackCopyError4", "theMusicInline.children[0].CleanupSoundtackOnError()"); }
@@ -244,7 +233,6 @@ function OnMusicCopyComplete()
 	}
 	EnableAudio();
 }
-
 DEF theMusicCopyMenu Level
 {
 	archive "Music_Copy.xip"
@@ -256,7 +244,6 @@ DEF theMusicCopyMenu Level
 			function onLoad() { EnterCopyDestMenu(); }
 		}
 	]
-
 	shell Transform
 	{
 		scale 2.15 2.15 2.15
@@ -315,7 +302,6 @@ DEF theMusicCopyMenu Level
 			if (nCurCopyDestItem == 0) { ShowKeyboard(theTranslator.Translate("NAME SOUNDTRACK"), theMusicCollection.CreateSoundtrackName(theTranslator.Translate("Soundtrack")), "theMusicInline.children[0].OnNewNamedSoundtrack()", ""); }
 			else { StartCopy(); }
 		}
-
 		function OnBDown()
 		{
 			theMusicCopyMenu.children[0].children[0].MU_back_pod_HL.children[0].appearance.material.param = 1;
@@ -324,7 +310,6 @@ DEF theMusicCopyMenu Level
 			theMusicSubMenuOut.Play();
 			StartMusicCopier();
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			if (nCurCopyDestItem <= 0) { return; }
@@ -342,7 +327,6 @@ DEF theMusicCopyMenu Level
 				UpdateCopyDestHighlight();
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			if (nCurCopyDestItem == nCopyDestItemCount - 1) { return; }
@@ -361,19 +345,16 @@ DEF theMusicCopyMenu Level
 			}
 		}
 	}
-
 	function OnActivate()
 	{
 		EnableAudio();
 		if (children[0].children.length() > 0) { EnterCopyDestMenu(); }
 	}
-
 	function OnDeactive()
 	{
 		if (g_bKeyboardDisplayed) { CloseKeyboard(); }
 	}
 }
-
 function ShufflePlaylist()
 {
 	var oldID = playlist[nPlayCursor];
@@ -385,7 +366,6 @@ function ShufflePlaylist()
 		playlist[i] = playlist[j];
 		playlist[j] = t;
 	}
-
 	for (i = 0; i < len; i = i + 1)
 	{
 		if (playlist[i] == oldID)
@@ -395,7 +375,6 @@ function ShufflePlaylist()
 		}
 	}
 }
-
 function InitPlaylist()
 {
 	playlist = new Array;
@@ -427,7 +406,6 @@ function InitPlaylist()
 		}
 	}
 }
-
 function PlayCurrentSong()
 {
 	theMusicPlayer.playbackMode = 0;//temp
@@ -448,7 +426,6 @@ function PlayCurrentSong()
 	theMusicPlayer.Play();
 	DisableAmbientAudio();
 }
-
 function SetMusicPlayPos(nPos)
 {
 	if(bTrackListVisible == true)
@@ -467,7 +444,6 @@ function SetMusicPlayPos(nPos)
 		theMusicPlayMenu.children[0].children[0].MusicTimeText.text = m + ":" + s;
 	}
 }
-
 function UpdateEditPlayerMenu()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -520,7 +496,6 @@ function UpdateEditPlayerMenu()
 		c.MU_L3_text_delete.children[0].children[0].appearance.name = "Material #133";
 	}
 }
-
 function UpdateCopyPlayerMenu()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -540,7 +515,6 @@ function UpdateCopyPlayerMenu()
 		}
 	}
 }
-
 function UpdatePlayerMenu()
 {
 	if (strMusicPlayerMode == "edit")
@@ -548,7 +522,6 @@ function UpdatePlayerMenu()
 		UpdateEditPlayerMenu();
 		return;
 	}
-
 	if (strMusicPlayerMode == "copy")
 	{
 		UpdateCopyPlayerMenu();
@@ -602,7 +575,6 @@ function UpdatePlayerMenu()
 		c.MU_L3_text_random.children[0].children[0].appearance.material.name = "Material #133";
 	}
 }
-
 function DoMusicPlayPause()
 {
 	if (playlist.length == 0)
@@ -620,7 +592,6 @@ function DoMusicPlayPause()
 	else if (theMusicPlayer.transportMode == 0) { PlayCurrentSong(); }		//stopped
 	else { theMusicPlayer.Pause(); }										//playing
 }
-
 function DoEndOfAudio()
 {
 	nPlayCursor = nPlayCursor + 1;
@@ -641,13 +612,11 @@ function DoEndOfAudio()
 	PlayCurrentSong();
 	UpdateTrackList();
 }
-
 function DoMusicStop()
 {
 	theMusicPlayer.Stop();
 	theMusicPlayer.url = "";
 }
-
 function SelectNextTrack(bPlaySong)
 {
 	if (playlist.length == 0)
@@ -675,7 +644,6 @@ function SelectNextTrack(bPlaySong)
 		}
 	}
 }
-
 function SelectPrevTrack(bCheckTime, bPlaySong)
 {
 	if (playlist.length == 0)
@@ -683,7 +651,6 @@ function SelectPrevTrack(bCheckTime, bPlaySong)
 		PlaySoundError();
 		return;
 	}
-
 	if (bCheckTime)
 	{
 		var t = theMusicPlayer.getMinutes() * 60 + theMusicPlayer.getSeconds();
@@ -713,7 +680,6 @@ function SelectPrevTrack(bCheckTime, bPlaySong)
 	{
 		if( nPlayCursor <= 0 ) { return; }
 	}
-
 	if(nPlayCursor > 0) { nPlayCursor = nPlayCursor - 1; }
 	else { nPlayCursor = playlist.length - 1; }
 	if (theMusicPlayer.transportMode == 1)
@@ -726,7 +692,6 @@ function SelectPrevTrack(bCheckTime, bPlaySong)
 	}
 	UpdateTrackList();
 }
-
 function UpdateTrackList()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -738,7 +703,6 @@ function UpdateTrackList()
 		musicButton = 0;
 		musicScroll = 0;
 	}
-
 	if(nPlayCursor < 0) { nPlayScroll = 0; }
 	else if( (nPlayCursor >= (nPlayVisible - 1)) & (nPreviousPlayCursor < nPlayCursor) & (nPlayCursor > (nPlayScroll + (nPlayVisible - 1)) )) { nPlayScroll = nPlayCursor - (nPlayVisible - 1); }
 	else if(nPlayCursor < nPlayScroll) { nPlayScroll = nPlayCursor; }
@@ -804,7 +768,6 @@ function UpdateTrackList()
 	if(nTracks == 1) { c.TrackCountText.text = nTracks + " " + theTranslator.Translate("TRACK"); }
 	else { c.TrackCountText.text = nTracks + " " + theTranslator.Translate("TRACKS"); }
 }
-
 function UpdateTransportIndicators()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -852,7 +815,6 @@ function UpdateTransportIndicators()
 	if(bPlayerRandom) { c.MU_L3_text_random_0.visible = true; }
 	if(bPlayerRepeat) { c.MU_L3_icon_repeat.visible = true; }
 }
-
 DEF musicMenuViewpoint Viewpoint
 {
 	fieldOfView 1.287000
@@ -860,7 +822,6 @@ DEF musicMenuViewpoint Viewpoint
 	position -47.889999 54.630001 -202.399994
 	jump false
 }
-
 DEF musicPlayerViewpoint Viewpoint
 {
 	fieldOfView 1.316000
@@ -868,7 +829,6 @@ DEF musicPlayerViewpoint Viewpoint
 	position -45.230000 54.810001 -202.399994
 	jump false
 }
-
 DEF visualizerViewpoint Viewpoint
 {
 	fieldOfView 1.287000
@@ -876,7 +836,6 @@ DEF visualizerViewpoint Viewpoint
 	position -46.832825 55.132828 -204.205643
 	jump false
 }
-
 function SetVisualizerAlpha(Alpha)
 {
 	var c = theMusicPlayMenu.children[0].children[0].theWholeThing;
@@ -894,7 +853,6 @@ function SetVisualizerAlpha(Alpha)
 		}
 	}
 }
-
 function NoVisualizer()
 {
 	if (visualizerViewpoint.isBound)
@@ -906,7 +864,6 @@ function NoVisualizer()
 		g_bFullVis = false;
 	}
 }
-
 function UpdateMusicMenuIcon()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -934,7 +891,6 @@ function UpdateMusicMenuIcon()
 		c.Group04.SetAlpha(1);
 	}
 }
-
 function ShowMusicMenu()
 {
 	//bInMusicMenu = false;
@@ -956,7 +912,6 @@ function ShowMusicMenu()
 	bMusicMenuVisible = true;
 	EnableAudio();
 }
-
 function StartMusicPlayer()
 {
 	bInMusicMenu = true;
@@ -995,7 +950,6 @@ function StartMusicPlayer()
 	UpdateTransportIndicators();
 	DisableAmbientAudio();
 }
-
 function StartMusicCopier()
 {
 	bInMusicMenu = true;
@@ -1028,7 +982,6 @@ function StartMusicCopier()
 	UpdateTransportIndicators();
 	DisableAmbientAudio();
 }
-
 function StartMusicEditor()
 {
 	bInMusicMenu = true;
@@ -1061,7 +1014,6 @@ function StartMusicEditor()
 	UpdateTransportIndicators();
 	DisableAmbientAudio();
 }
-
 function DoDeleteSoundtrack()
 {
 	if(musicSelect == 0)  { return; }
@@ -1072,7 +1024,6 @@ function DoDeleteSoundtrack()
 	UpdateMusicSelection();
 	theMusicMenu.GoBackTo();
 }
-
 function EnterMusicPlay()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -1126,7 +1077,6 @@ function EnterMusicPlay()
 		DoMusicPlayPause();
 	}
 }
-
 function UpdateMusicMenu()
 {
 	var c = theMusicPlayMenu.children[0].children[0];
@@ -1145,7 +1095,6 @@ function UpdateMusicMenu()
 			c.theMenuButtons.children[i].children[1].children[0].appearance.name = "NavType";
 		}
 	}
-
 	if (musicSelect == 0)
 	{
 		c.theMenuButtons.children[2].visible = false;
@@ -1172,7 +1121,6 @@ function UpdateMusicMenu()
 		c.menubutton_05_text.text = "Delete Soundtrack";
 	}
 }
-
 function StartSoundtrackRename()
 {
 	var nSoundtrack = musicSelect - 1;
@@ -1180,7 +1128,6 @@ function StartSoundtrackRename()
 	g_nSoundtrackId = theMusicCollection.GetSoundtrackID(nSoundtrack);
 	ShowKeyboard(theTranslator.Translate("NAME SOUNDTRACK"), strName, "theMusicInline.children[0].FinishSoundtrackRename()", "");
 }
-
 function UpdateMusicSelection()
 {
 	musicCount = theMusicCollection.GetSoundtrackCount() + 1; // plus 1 for audio cd
@@ -1205,7 +1152,6 @@ function UpdateMusicSelection()
 
 	UpdateMusicList();
 }
-
 function FinishSoundtrackRename()
 {
 	theMusicCollection.SetSoundtrackName(musicSelect-1, strKeyboardEdit);
@@ -1220,7 +1166,6 @@ function FinishSoundtrackRename()
 	c.TitleText1.text = strTitle;
 	c.TitleText.text = strTitle;
 }
-
 function StartSongRename()
 {
 	if (nPlayCursor < 0)
@@ -1233,7 +1178,6 @@ function StartSongRename()
 	var strName = theMusicCollection.GetSoundtrackSongName(nSoundtrack, nSong);
 	ShowKeyboard(theTranslator.Translate("NAME SONG"), strName, "theMusicInline.children[0].FinishSongRename()", "");
 }
-
 function FinishSongRename()
 {
 	var nSoundtrack = musicSelect - 1;
@@ -1241,7 +1185,6 @@ function FinishSongRename()
 	theMusicCollection.SetSongName(nSoundtrack, nSong, strKeyboardEdit);
 	UpdateTrackList();
 }
-
 function HandlePlayerEditMenu()
 {
 	if (playlist.length == 0)
@@ -1250,7 +1193,6 @@ function HandlePlayerEditMenu()
 		return;
 	}
 	if(nPlayCursor < 0) { nPlayCursor = 0; }
-
 	if(nCurPlayerMenuItem == 0) { DoMusicPlayPause(); }
 	else if (nCurPlayerMenuItem == 1) { DoMusicStop(); }
 	else if (nCurPlayerMenuItem == 2)
@@ -1285,7 +1227,6 @@ function HandlePlayerEditMenu()
 		AskQuestion(theTranslator.Translate("ConfirmDeleteSong"), "theMusicInline.children[0].DoDeleteSong()", "", 1);
 	}
 }
-
 function DoDeleteSong()
 {
 	log("DoDeleteSong: " + nPlayCursor);
@@ -1297,7 +1238,6 @@ function DoDeleteSong()
 	if(nPlayCursor > playlist.length - 1) { nPlayCursor = playlist.length - 1; }
 	UpdateTrackList();
 }
-
 function HandlePlayerCopyMenu()
 {
 	if (playlist.length == 0)
@@ -1306,7 +1246,6 @@ function HandlePlayerCopyMenu()
 		return;
 	}
 	if(nPlayCursor < 0) { nPlayCursor = 0; }
-
 	if(nCurPlayerMenuItem == 0)  { DoMusicPlayPause(); }
 	else if(nCurPlayerMenuItem == 1) { DoMusicStop();  }
 	else if(nCurPlayerMenuItem == 2)
@@ -1337,7 +1276,6 @@ function HandlePlayerCopyMenu()
 		theMusicSubMenuIn.Play();
 	}
 }
-
 function HandlePlayerMenu()
 {
 	if(playlist.length == 0)
@@ -1346,7 +1284,6 @@ function HandlePlayerMenu()
 		return;
 	}
 	if(nPlayCursor < 0) { nPlayCursor = 0; }
-
 	if(nCurPlayerMenuItem == 0) { SelectPrevTrack(true, true); }// rewind
 	else if (nCurPlayerMenuItem == 1) { DoMusicPlayPause(); }// play
 	else if (nCurPlayerMenuItem == 2) { DoMusicStop(); }// stop
@@ -1366,7 +1303,6 @@ function HandlePlayerMenu()
 	}
 	UpdateTransportIndicators();
 }
-
 DEF theMusicPlayMenu Level
 {
 	archive "Music_Play_Edit.xip"
@@ -1385,7 +1321,6 @@ DEF theMusicPlayMenu Level
 			}
 		}
 	]
-
 	shell Transform
 	{
 		scale 4.3176 4.3176 4.3176
@@ -1429,6 +1364,7 @@ DEF theMusicPlayMenu Level
 	}
 	tunnel Transform
 	{
+
 		children
 		[
 			Shape
@@ -1507,7 +1443,6 @@ DEF theMusicPlayMenu Level
 				HandlePlayerMenu();
 			}
 		}
-
 		function OnWhiteDown()
 		{
 			NoVisualizer();
@@ -1519,21 +1454,17 @@ DEF theMusicPlayMenu Level
 				UpdatePlayerMenu();
 				nCurPlayerMenuItem = nCurPlayerMenuItemSave;
 			}
-
 			if(theMusicPlayer.transportMode != 1) { PlaySoundA(); }
 			DoMusicPlayPause();
 		}
-
 		function OnWhiteUp()
 		{
 			UpdatePlayerMenu();
 		}
-
 		function OnBlackDown()
 		{
 			NoVisualizer();
 			if (bMusicMenuVisible) { return; }
-
 			if (playlist.length == 0)
 			{
 				PlaySoundError();
@@ -1549,12 +1480,10 @@ DEF theMusicPlayMenu Level
 			PlaySoundA();
 			DoMusicStop();
 		}
-
 		function OnBlackUp()
 		{
 			UpdatePlayerMenu();
 		}
-
 		function OnLeftDown()
 		{
 			NoVisualizer();
@@ -1569,17 +1498,14 @@ DEF theMusicPlayMenu Level
 				SelectPrevTrack(true, true);
 			}
 		}
-
 		function OnLeftUp()
 		{
 			UpdatePlayerMenu();
 		}
-
 		function OnRightDown()
 		{
 			NoVisualizer();
 			if (bMusicMenuVisible) { return; }
-
 			if (strMusicPlayerMode == "play")
 			{
 				if (theMusicPlayer.transportMode != 1) { PlaySoundA(); }
@@ -1590,12 +1516,10 @@ DEF theMusicPlayMenu Level
 				SelectNextTrack(true);
 			}
 		}
-
 		function OnRightUp()
 		{
 			UpdatePlayerMenu();
 		}
-
 		function OnBDown()
 		{
 			NoVisualizer();
@@ -1614,7 +1538,6 @@ DEF theMusicPlayMenu Level
 				thePlayerPanelOut.Play();
 			}
 		}
-
 		function OnLeftThumbMoveLeft()
 		{
 			NoVisualizer();
@@ -1626,7 +1549,6 @@ DEF theMusicPlayMenu Level
 				UpdatePlayerMenu();
 			}
 		}
-
 		function OnLeftThumbMoveRight()
 		{
 			NoVisualizer();
@@ -1638,7 +1560,6 @@ DEF theMusicPlayMenu Level
 				UpdatePlayerMenu();
 			}
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			NoVisualizer();
@@ -1660,7 +1581,6 @@ DEF theMusicPlayMenu Level
 				}
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			NoVisualizer();
@@ -1684,7 +1604,6 @@ DEF theMusicPlayMenu Level
 				}
 			}
 		}
-
 		function OnPlay()
 		{
 			NoVisualizer();
@@ -1699,7 +1618,6 @@ DEF theMusicPlayMenu Level
 			if (theMusicPlayer.transportMode != 1) { PlaySoundA(); }
 			DoMusicPlayPause();
 		}
-
 		function OnYDown()
 		{
 			if( nCurMusicMenuItem == 3 )
@@ -1709,13 +1627,11 @@ DEF theMusicPlayMenu Level
 			}
 			else { NoVisualizer(); }
 		}
-
 		function OnPause() { if (theMusicPlayer.transportMode != 0) { theMusicPlayer.Pause(); } }
 		function OnStop() { DoMusicStop(); }
 		function OnSkipForward() { SelectNextTrack(true); }
 		function OnSkipBack() { SelectPrevTrack(true, true); }
 		function OnXDown() { NoVisualizer(); }
-
 		function OnInfo()
 		{
 			if (g_bFullVis) { NoVisualizer(); }
@@ -1728,7 +1644,6 @@ DEF theMusicPlayMenu Level
 				g_bFullVis = true;
 			}
 		}
-
 		function OnKeyVerified()
 		{
 			if (theMusicPlayer.transportMode == 1)
@@ -1741,9 +1656,7 @@ DEF theMusicPlayMenu Level
 			}
 		}
 	}
-
 	function OnActivate() { if (children[0].children.length() > 0) { EnterMusicPlay(); } }
-
 	function OnDeactivate()
 	{
 		EnableAudio();
@@ -1767,7 +1680,6 @@ function FillMusicList()
 	else { c.MusicCountText.text = musicCount + " " + theTranslator.Translate("ITEMS"); }
 	UpdateMusicList();
 }
-
 function UpdateMusicMetaData()
 {
 	var c = theMusicMenu.children[0].children[0];
@@ -1797,7 +1709,6 @@ function UpdateMusicMetaData()
 		c.TimeNum.text = str;
 	}
 }
-
 function UpdateMusicList()
 {
 	var c = theMusicMenu.children[0].children[0];
@@ -1837,7 +1748,6 @@ function UpdateMusicList()
 	UpdateMusicMetaData();
 	UpdateMusicIcon();
 }
-
 function UpdateMusicIcon()
 {
 	var c = theMusicMenu.children[0].children[0];
@@ -1864,13 +1774,11 @@ function UpdateMusicIcon()
 		c.Group04.SetAlpha(1);
 	}
 }
-
 function StartMusicLevel()
 {
 	FillMusicList();
 	if(bGoToCDPlayer) { theMusicPlayMenu.GoTo(); }
 }
-
 DEF theMusicMenu Level
 {
 	archive "Music.xip"
@@ -1888,7 +1796,6 @@ DEF theMusicMenu Level
 			}
 		}
 	]
-
 	shell Transform
 	{
 		scale 21.504 21.504 21.504
@@ -1948,7 +1855,6 @@ DEF theMusicMenu Level
 		position -47.840000 53.889999 -172.199997
 		jump false
 	}
-
 	control Joystick
 	{
 		function OnADown()
@@ -1962,7 +1868,6 @@ DEF theMusicMenu Level
 				theMusicSubMenuIn.Play();
 			}
 		}
-
 		function OnBDown()
 		{
 			var c = theMusicMenu.children[0].children[0];
@@ -1976,7 +1881,6 @@ DEF theMusicMenu Level
 			else { theMainMenu.GoBackTo(); }
 			theMusicMenuOut.Play();
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			if(bGoToCDPlayer) { return; }
@@ -1988,7 +1892,6 @@ DEF theMusicMenu Level
 			else { musicButton = musicButton - 1; }
 			UpdateMusicList();
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			if(bGoToCDPlayer) { return; }
@@ -2001,7 +1904,6 @@ DEF theMusicMenu Level
 			UpdateMusicList();
 		}
 	}
-
 	function OnActivate()
 	{
 		EnableAudio();
