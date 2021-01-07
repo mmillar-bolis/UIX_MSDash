@@ -1,19 +1,18 @@
-
 DEF auto_off Transform
 {
-    children 
-    [
+	children
+	[
 		DEF Group02 Transform
 		{
-			children 
+			children
 			[
 				DEF S_Home_tube_attachment_03 Transform
 				{
-					children 
+					children
 					[
 						DEF S_Home_GameModule_142 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -38,11 +37,11 @@ DEF auto_off Transform
 				}
 				DEF S_Home_tube_attachment_02 Transform
 				{
-					children 
+					children
 					[
 						DEF S_Home_GameModule_144 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -67,11 +66,11 @@ DEF auto_off Transform
 				}
 				DEF S_Home_tube_attachment_01 Transform
 				{
-					children 
+					children
 					[
 						DEF S_Home_GameModule_140 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -96,7 +95,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_podsocket_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -117,7 +116,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_pod_shell_01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -136,7 +135,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_tube_04 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -155,7 +154,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_pod_support_02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -174,9 +173,9 @@ DEF auto_off Transform
 					scaleOrientation 0.000000 0.000000 -1.000000 -0.477700
 					translation 3.985000 -12.040000 -8.418000
 				}
-		/*        DEF S_Home_videopod_backing Transform
+				/*DEF S_Home_videopod_backing Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -194,11 +193,10 @@ DEF auto_off Transform
 					scale 1.420000 1.420000 1.420000
 					scaleOrientation 1.000000 0.000000 0.000000 0.000000
 					translation 10.780000 -5.057000 -6.674000
-				}
-		*/
+				}*/
 				DEF S_Home_tube_01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -217,7 +215,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_tube_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -236,7 +234,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_tube_02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -255,7 +253,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_pod_support_01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -276,7 +274,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_pod_support_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -295,9 +293,9 @@ DEF auto_off Transform
 					scaleOrientation 0.001085 0.003347 1.000000 -0.307700
 					translation 15.680000 -0.338300 -8.418000
 				}
-		/*        DEF S_Home_videopod_backing01 Transform
+				/*DEF S_Home_videopod_backing01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -314,11 +312,10 @@ DEF auto_off Transform
 					rotation 1.000000 0.000000 0.000000 -1.571000
 					scale 1.380000 0.537000 1.380000
 					translation 12.040000 -5.057000 -9.169000
-				}
-		*/
+				}*/
 				DEF S_Home_podsocket_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -339,7 +336,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_pod_support_04 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -358,7 +355,6 @@ DEF auto_off Transform
 					scaleOrientation 0.105500 -0.014910 -0.994300 -0.050620
 					translation 3.985000 2.638000 -8.418000
 				}
-
 				DEF ConsoleIcon Transform
 				{
 					fade 0.25
@@ -429,7 +425,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_videopod Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -451,14 +447,13 @@ DEF auto_off Transform
 			]
 			translation 3.595000 5.057000 46.650002
 		}
-
 		DEF Group01 Transform
 		{
-			children 
+			children
 			[
 				DEF S_Home_Arm_01 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -479,7 +474,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_Arm_02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -500,7 +495,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_Arm_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -521,7 +516,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_Arm_05 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -542,7 +537,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_Arm_04 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -562,7 +557,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_panel_backing Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -588,7 +583,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_panel_header Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -607,7 +602,7 @@ DEF auto_off Transform
 				}
 				DEF S_Home_panel_support_03 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -624,11 +619,9 @@ DEF auto_off Transform
 					rotation -1.000000 0.000000 0.000000 -1.571000
 					translation 7.363000 -8.224000 9.582000
 				}
-
-
 				DEF S_Aud_panel_support_22 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -647,10 +640,9 @@ DEF auto_off Transform
 					scaleOrientation 0.740900 0.612500 0.275500 -0.055200
 					translation 2.775000 3.079000 9.310000
 				}
-
 				DEF S_Home_panel_support_02 Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -670,53 +662,52 @@ DEF auto_off Transform
 			]
 			translation -9.331000 -1.420000 51.580002
 		}
-
 		DEF Group02_supports Transform
 		{
-			children 
+			children
 			[
 				DEF panel_supports Transform
 				{
-					children 
+					children
 					[
-                        DEF S_Home_panel_support_04 Transform
-                        {
-                            children 
-                            [
-                                Shape
-                                {
-                                    appearance Appearance
-                                    {
-                                        material MaxMaterial
-                                        {
-                                            name "NavType"
-                                        }
-                                    }
-                                    geometry DEF S_Home_panel_support_04-FACES Mesh { url "S_Home_panel_support_04-FACES.xm" }
-                                }
-                            ]
-                            rotation -1.000000 0.000000 0.000000 -1.571000
-                            translation 0.078160 -3.173000 0.000019
-                        }
-                        DEF S_Home_panel_support_05 Transform
-                        {
-                            children 
-                            [
-                                Shape
-                                {
-                                    appearance Appearance
-                                    {
-                                        material MaxMaterial
-                                        {
-                                            name "NavType"
-                                        }
-                                    }
-                                    geometry DEF S_Home_panel_support_05-FACES Mesh { url "S_Home_panel_support_05-FACES.xm" }
-                                }
-                            ]
-                            rotation -1.000000 0.000000 0.000000 -1.571000
-                            translation 0.078160 -1.765000 0.000019
-                        }
+						DEF S_Home_panel_support_04 Transform
+						{
+							children
+							[
+								Shape
+								{
+									appearance Appearance
+									{
+										material MaxMaterial
+										{
+											name "NavType"
+										}
+									}
+									geometry DEF S_Home_panel_support_04-FACES Mesh { url "S_Home_panel_support_04-FACES.xm" }
+								}
+							]
+							rotation -1.000000 0.000000 0.000000 -1.571000
+							translation 0.078160 -3.173000 0.000019
+						}
+						DEF S_Home_panel_support_05 Transform
+						{
+							children
+							[
+								Shape
+								{
+									appearance Appearance
+									{
+										material MaxMaterial
+										{
+											name "NavType"
+										}
+									}
+									geometry DEF S_Home_panel_support_05-FACES Mesh { url "S_Home_panel_support_05-FACES.xm" }
+								}
+							]
+							rotation -1.000000 0.000000 0.000000 -1.571000
+							translation 0.078160 -1.765000 0.000019
+						}
 					]
 					translation 0.000000 1.625000 0.387100
 				}
@@ -725,15 +716,15 @@ DEF auto_off Transform
 		}
 		DEF Group03 Transform
 		{
-			children 
+			children
 			[
 				DEF text_auto_off Transform
 				{
-					children 
+					children
 					[
 						DEF S_Home_text_games01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -750,10 +741,9 @@ DEF auto_off Transform
 							//rotation -1.000000 0.000000 0.000000 -1.571000
 							translation -4.8 -0.60000 0.000000
 						}
-
 						DEF S_Home_text_games Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -768,7 +758,7 @@ DEF auto_off Transform
 								}
 							]
 							//rotation -1.000000 0.000000 0.000000 -1.571000
-							scale 0.955 0.955 0.955 
+							scale 0.955 0.955 0.955
 							translation -5.580000 1.700000 0.000000
 						}
 					]
@@ -779,11 +769,11 @@ DEF auto_off Transform
 		}
 		DEF Group06 Transform
 		{
-			children 
+			children
 			[
 				DEF MU_back_probearm Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -804,7 +794,7 @@ DEF auto_off Transform
 				}
 				DEF MU_back_probe Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -825,7 +815,7 @@ DEF auto_off Transform
 				}
 				DEF MU_back_pod_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -845,7 +835,7 @@ DEF auto_off Transform
 				}
 				DEF MU_Text_b Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -866,7 +856,7 @@ DEF auto_off Transform
 				}
 				DEF MU_Text_back Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -887,7 +877,7 @@ DEF auto_off Transform
 				}
 				DEF MU_back_pod_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -907,7 +897,7 @@ DEF auto_off Transform
 				}
 				DEF MU_back_tube Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -928,7 +918,7 @@ DEF auto_off Transform
 				}
 				DEF MU_back_pod_HL Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -947,18 +937,18 @@ DEF auto_off Transform
 					translation 11.010000 -11.290000 3.150000
 				}
 			]
-            rotation 0.000000 -1.000000 0.000000 -0.034910
-            scale 2.171000 2.171000 2.171000
-            scaleOrientation 0.000000 1.000000 0.000000 -0.033020
-            translation -16.490000 -18.490000 58.980000
+			rotation 0.000000 -1.000000 0.000000 -0.034910
+			scale 2.171000 2.171000 2.171000
+			scaleOrientation 0.000000 1.000000 0.000000 -0.033020
+			translation -16.490000 -18.490000 58.980000
 		}
 		DEF Group07 Transform
 		{
-			children 
+			children
 			[
 				DEF MU_Text_a Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -979,7 +969,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_probearm Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1000,7 +990,7 @@ DEF auto_off Transform
 				}
 				DEF MU_text_select Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1021,7 +1011,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_probe Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1042,7 +1032,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_pod_inner Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1061,7 +1051,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_pod_outer Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1080,7 +1070,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_tube Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1101,7 +1091,7 @@ DEF auto_off Transform
 				}
 				DEF MU_select_pod_HL Transform
 				{
-					children 
+					children
 					[
 						Shape
 						{
@@ -1119,110 +1109,108 @@ DEF auto_off Transform
 					translation 0.178000 -10.330000 3.150000
 				}
 			]
-            rotation 0.000000 1.000000 0.000000 -0.183300
-            scale 2.171000 2.171000 2.171000
-            scaleOrientation 0.000000 -1.000000 0.000000 -0.148100
-            translation 8.965000 -19.209999 60.529999
+			rotation 0.000000 1.000000 0.000000 -0.183300
+			scale 2.171000 2.171000 2.171000
+			scaleOrientation 0.000000 -1.000000 0.000000 -0.148100
+			translation 8.965000 -19.209999 60.529999
 		}
-    ]
-    scale 0.202100 0.202100 0.202100
-    translation 98.070000 5.357000 -264.000000
+	]
+	scale 0.202100 0.202100 0.202100
+	translation 98.070000 5.357000 -264.000000
 }
-
 DEF ButtonGroup Transform
 {
-    children 
-    [
-        DEF MU_L3_button_yes Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF ChamferBox01-FACES Mesh { url "ChamferBox01-FACES.xm" }
-                }
-            ]
-            scale 1.8 1 1
-            rotation -1.000000 0.000000 0.000000 -1.571000
-            translation -2.286000 -1.500000 -0.629200
-        }
-        DEF MU_L3_button_no Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "GameHilite"
-                        }
-                        texture ImageTexture
-                        {
-                            url "menu_hilight.xbx"
-                        }
-                    }
-                    geometry DEF ChamferBox02-FACES Mesh { url "ChamferBox02-FACES.xm" }
-                }
-            ]
-            scale 1.8 1 1
-            rotation -1.000000 0.000000 0.000000 -1.571000
-            translation 2.706000 -1.500000 -0.629200
-        }
-        DEF S_Home_text_yes Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "NavType"
-                        }
-                    }
-                    geometry DEF the1stPlayerTab Text { font "Body" translate true justify "middle" text "Select Skin" }
-                }
-            ]
-            scale 0.85 0.85 0
-            translation -2.264000 -1.685700 0.233100
-        }
-        DEF S_Home_text_no Transform
-        {
-            children 
-            [
-                Shape
-                {
-                    appearance Appearance
-                    {
-                        material MaxMaterial
-                        {
-                            name "NavType"
-                        }
-                    }
-                    geometry DEF the2ndPlayerTab Text { font "Body" translate true justify "middle" text "Skin Info" }
-                }
-            ]
-			
-            scale 0.85 0.85 0
-            translation 2.684000 -1.685700 0.233100
-        }
-    ]
-    scale 0.200500 0.200500 0.200500
-    translation 96.839996 4.207000 -251.600006
+	children
+	[
+		DEF MU_L3_button_yes Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF ChamferBox01-FACES Mesh { url "ChamferBox01-FACES.xm" }
+				}
+			]
+			scale 1.8 1 1
+			rotation -1.000000 0.000000 0.000000 -1.571000
+			translation -2.286000 -1.500000 -0.629200
+		}
+		DEF MU_L3_button_no Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "GameHilite"
+						}
+						texture ImageTexture
+						{
+							url "menu_hilight.xbx"
+						}
+					}
+					geometry DEF ChamferBox02-FACES Mesh { url "ChamferBox02-FACES.xm" }
+				}
+			]
+			scale 1.8 1 1
+			rotation -1.000000 0.000000 0.000000 -1.571000
+			translation 2.706000 -1.500000 -0.629200
+		}
+		DEF S_Home_text_yes Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "NavType"
+						}
+					}
+					geometry DEF the1stPlayerTab Text { font "Body" translate true justify "middle" text "Select Skin" }
+				}
+			]
+			scale 0.85 0.85 0
+			translation -2.264000 -1.685700 0.233100
+		}
+		DEF S_Home_text_no Transform
+		{
+			children
+			[
+				Shape
+				{
+					appearance Appearance
+					{
+						material MaxMaterial
+						{
+							name "NavType"
+						}
+					}
+					geometry DEF the2ndPlayerTab Text { font "Body" translate true justify "middle" text "Skin Info" }
+				}
+			]
+			scale 0.85 0.85 0
+			translation 2.684000 -1.685700 0.233100
+		}
+	]
+	scale 0.200500 0.200500 0.200500
+	translation 96.839996 4.207000 -251.600006
 }
 DEF thePanel1Text Transform
 {
@@ -1230,15 +1218,15 @@ DEF thePanel1Text Transform
 	[
 		DEF Group03 Transform
 		{
-			children 
+			children
 			[
 				DEF SkinNames Transform
 				{
-					children 
+					children
 					[
 						DEF S_Home_text_games01 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1257,7 +1245,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games02 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1276,7 +1264,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games03 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1295,7 +1283,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games04 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1314,7 +1302,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games05 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1333,7 +1321,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games06 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1352,7 +1340,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games07 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1371,7 +1359,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games08 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
@@ -1390,7 +1378,7 @@ DEF thePanel1Text Transform
 						}
 						DEF S_Home_text_games09 Transform
 						{
-							children 
+							children
 							[
 								Shape
 								{
