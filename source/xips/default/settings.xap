@@ -2396,8 +2396,8 @@ function StartSettingsMenu()
 	var index = 0;
 	sSettingsMenu[index] = theTranslator.Translate("FILE MANAGER");
 	index = index + 1;
-	sSettingsMenu[index] = theTranslator.Translate("MEMORY MANAGER");
-	index = index + 1;
+	/*sSettingsMenu[index] = theTranslator.Translate("MEMORY MANAGER");
+	index = index + 1;*/
 	sSettingsMenu[index] = theTranslator.Translate("DASH CONFIGURATION");
 	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("NETWORK SETTINGS");
@@ -2475,7 +2475,7 @@ function MenuIcon()
 {
 	var c = theSettingsMenu.children[0].children[0];
 	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { ShowIcon(c.ConsoleIcon); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
+	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { ShowIcon(c.GlobeIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SKINS")) { SetVideoModeIcon(nCurVideoMode); }
@@ -2500,7 +2500,7 @@ function UpdateRootMeta()
 	var c = theSettingsMenu.children[0].children[0];
 	var metaString = "";
 	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { metaString = theTranslator.Translate("FILE MANAGER"); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); }
+	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { metaString = theTranslator.Translate("NETWORK SETTINGS"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { metaString = theTranslator.Translate("DASH CONFIGURATION"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SKINS"))  { metaString = theTranslator.Translate("SKINS"); }
@@ -2673,11 +2673,11 @@ DEF theSettingsMenu Level
 				strCurMenu = "FILE MANAGER";
 				GoToFileManager();
 			}
-			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER"))
+			/*else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER"))
 			{
 				strCurMenu = "MEMORY MANAGER";
 				GoToMemory();
-			}
+			}*/
 			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS"))
 			{
 				strCurMenu = "NETWORK SETTINGS";

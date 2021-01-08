@@ -995,16 +995,18 @@ DEF theMainMenu Level
 			PlaySoundA();
 			if(nCurMainMenuItem == 0)
 			{
-				theMusicMenuIn.Play();
-				GoToMusic();
+				theSettingsMenuIn.Play();
+				GoToMemory();
 			}
 			else if(nCurMainMenuItem == 1)
 			{
-				theSettingsMenuIn.Play();
-				GoToHardDrive();
+				theMusicMenuIn.Play();
+				GoToMusic();
 			}
 			else if(nCurMainMenuItem == 2)
 			{
+				theSettingsMenuIn.Play();
+				HardDriveCheck();
 			}
 			else if(nCurMainMenuItem == 3)
 			{
@@ -1104,7 +1106,7 @@ function initialize()
 	theScreenSaver.SetDelay3 (  1200 );
 	theConfig.SetAutoOffTime( 3.0 ); //how long till system powers itself off after inactivity
 	//InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
-	m_nbuttons = 3;//number of buttons in main menu
+	m_nbuttons = 4;//number of buttons in main menu
 	b_InWireFrame = false;
 	bInScreenSaverView = false;
 	bBackToDVDPlayer = false;
