@@ -1,8 +1,8 @@
 //only need these if you are going to use the old drop down style hd menus...
-//DEF theGamesMenu			TitleMenu
-//DEF theApplicationsMenu	TitleMenu
-//DEF theEmulatorsMenu		TitleMenu
-//DEF theDashboardsMenu		TitleMenu
+DEF theGamesMenu			TitleMenu
+DEF theApplicationsMenu		TitleMenu
+DEF theEmulatorsMenu		TitleMenu
+DEF theDashboardsMenu		TitleMenu
 
 DEF theConfig			Config
 DEF theHardDrive		HardDrive
@@ -1105,7 +1105,7 @@ function initialize()
 	theScreenSaver.SetDelay2 (  900  );
 	theScreenSaver.SetDelay3 (  1200 );
 	theConfig.SetAutoOffTime( 3.0 ); //how long till system powers itself off after inactivity
-	//InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
+	InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
 	m_nbuttons = 4;//number of buttons in main menu
 	b_InWireFrame = false;
 	bInScreenSaverView = false;

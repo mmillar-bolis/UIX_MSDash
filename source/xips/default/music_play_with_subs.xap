@@ -186,7 +186,7 @@ function EnterMusicPlay()
 	b_two = theDashboardsMenu.GetMenuName();
 	b_three = theEmulatorsMenu.GetMenuName();
 	b_four = theGamesMenu.GetMenuName();
-	b_five = "none";
+	b_five = "(refresh cache)";
 	tempIconPath = "";
 
 	m_itemcount = 0;
@@ -267,11 +267,26 @@ function UpdateMusicPlayWithSubs()
 	c.New_Line11.visible = true;
 	c._button_surround_0.visible = false;
 
-	if (nCurMusicPlayWithSubsItem0 == 0) { c.MenuMetaText.text = b_one; }
-	else if (nCurMusicPlayWithSubsItem0 == 1) { c.MenuMetaText.text = b_two; }
-	else if (nCurMusicPlayWithSubsItem0 == 2) { c.MenuMetaText.text = b_three; }
-	else if (nCurMusicPlayWithSubsItem0 == 3) { c.MenuMetaText.text = b_four; }
-	else if (nCurMusicPlayWithSubsItem0 == 4) { c.MenuMetaText.text = b_five; }
+	if (nCurMusicPlayWithSubsItem0 == 0)
+	{
+		theTranslator.Translate("Browse the applications stored on the Xbox hard drive");
+	}
+	else if (nCurMusicPlayWithSubsItem0 == 1)
+	{
+		theTranslator.Translate("Browse the dashboards stored on the Xbox hard drive");
+	}
+	else if (nCurMusicPlayWithSubsItem0 == 2)
+	{
+		theTranslator.Translate("Browse the emulators stored on the Xbox hard drive");
+	}
+	else if (nCurMusicPlayWithSubsItem0 == 3)
+	{
+		theTranslator.Translate("Browse the games stored on the Xbox hard drive");
+	}
+	else if (nCurMusicPlayWithSubsItem0 == 4)
+	{
+		theTranslator.Translate("Update the items in each menu above");
+	}
 }
 DEF theMusicPlayWithSubs Level
 {
@@ -393,9 +408,10 @@ DEF theMusicPlayWithSubs Level
 					if(b_five == "") { return; }
 					else
 					{
-						subTitle0 = b_five;
-						thePlayerPanelIn.Play();
-						StartMusicEditor();
+						theGamesMenu.RefreshCache();
+						theApplicationsMenu.RefreshCache();
+						theEmulatorsMenu.RefreshCache();
+						theDashboardsMenu.RefreshCache();
 					}
 				}
 			}
