@@ -118,11 +118,11 @@ function BuildMainList()
 	configSelect[i] = "ConfigKeyB()";
 	i = i + 1;
 	configList[i] = "Memory Style Hard Drive Menu:";
-	configValues[i] = "c-Memory Hard Drive-Enabled";
+	configValues[i] = "c-Dashboard Settings-Mem Style HDD Menu";
 	configSelect[i] = "ToggleTF()";
 	i = i + 1;
 	configList[i] = "Fan Speed:";
-	configValues[i] = "c-Sys Config-FanSpeed";
+	configValues[i] = "c-Dashboard Settings-Fan Speed";
 	configSelect[i] = "ToggleFan()";
 	i = i + 1;
 	ClearText();
