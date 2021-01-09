@@ -186,7 +186,7 @@ function EnterMusicPlay()
 	b_two = theDashboardsMenu.GetMenuName();
 	b_three = theEmulatorsMenu.GetMenuName();
 	b_four = theGamesMenu.GetMenuName();
-	b_five = "(refresh cache)";
+	b_five = "[refresh cache]";
 	tempIconPath = "";
 
 	m_itemcount = 0;
