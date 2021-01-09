@@ -485,7 +485,6 @@ DEF thePeriodicSounds Group
 				AudioClip { url "audio/ambient audio/amb_ec_steam7.wav" volume 0.80 }
 			]
 		}
-
 		PeriodicAudioGroup
 		{
 			period 120 // how many seconds between sounds (minimum)
@@ -506,7 +505,6 @@ DEF thePeriodicSounds Group
 				AudioClip { url "audio/ambient audio/amb_ec_voices12.wav" volume 0.80 }
 			]
 		}
-
 		PeriodicAudioGroup
 		{
 			period 45 // how many seconds between sounds (minimum)
@@ -528,7 +526,6 @@ DEF thePeriodicSounds Group
 				AudioClip { url "audio/ambient audio/comm voice 9.wav"  fade 2 volume 0.85 }
 			]
 		}
-
 		PeriodicAudioGroup
 		{
 			period 300
@@ -1260,7 +1257,7 @@ DEF theJapaneseKeyboardLayer Layer
 		DEF theJapaneseKeyboardTransform Transform
 		{
 			fade 0.25
-//          fade 1
+			//fade 1
 			scale 0 0 0
 			children
 			[
