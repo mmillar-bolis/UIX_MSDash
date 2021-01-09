@@ -488,7 +488,7 @@ DEF theMusicPlayWithSubs Level
 			if (bMusicPlayWithSubsVisible0)
 			{
 				var nMenuItemCount = m_submenucount;			//number of submenus
-				if (nCurMusicPlayWithSubsItem0 < nMenuItemCount - 1)
+				if (nCurMusicPlayWithSubsItem0 < nMenuItemCount)
 				{
 					PlaySoundMenuChange();
 					nCurMusicPlayWithSubsItem0 = nCurMusicPlayWithSubsItem0 + 1;
