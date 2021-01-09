@@ -117,6 +117,10 @@ function BuildMainList()
 	configValues[i] = "c-Music On Boot-volume";
 	configSelect[i] = "ConfigKeyB()";
 	i = i + 1;
+	configList[i] = "Memory Style Hard Drive Menu:";
+	configValues[i] = "c-Memory Hard Drive-Enabled";
+	configSelect[i] = "ToggleTF()";
+	i = i + 1;
 	ClearText();
 	UpdateText();
 }

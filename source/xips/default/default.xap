@@ -1919,3 +1919,14 @@ function UpdateFileManagerFunctionsMenu()
 	else if(nCurManagerButton == 3) { c.message_Text04.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 	else if(nCurManagerButton == 4) { c.message_Text05.children[0].children[0].appearance.material.name = "CellEgg/Partsz"; }
 }
+function HardDriveCheck() // Function to toggle list or hdd view for games
+{
+	var IniFile = new Settings;
+	IniFile.SetIniSection( "Memory Hard Drive" );
+	var a = IniFile.GetIniValue( "Enabled" );
+	IniFile.CloseIniFile();
+
+	if( a == "true" ) { GoToHardDrive(); }
+	else if( a == "false" ) { GoToMusicPlayWithSubs(); }
+	else { return; }
+}
