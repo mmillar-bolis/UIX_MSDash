@@ -590,6 +590,84 @@ DEF theDVDLevel Level
 				theDVDPlayer.selectRight();
 			}
 		}
+		function OnMoveUp()
+		{
+			if (theDVDMenu.visible)
+			{
+			}
+			else if (nZoom > 1)
+			{
+				yZoom = yZoom - 0.125;
+				if (yZoom < -1)
+					yZoom = -1;
+				theDVDPlayer.setZoomPos(xZoom, yZoom);
+			}
+			else
+			{
+				theDVDPlayer.selectUp();
+			}
+		}
+		function OnMoveDown()
+		{
+			if (theDVDMenu.visible)
+			{
+			}
+			else if (nZoom > 1)
+			{
+				yZoom = yZoom + 0.125;
+				if (yZoom > 1)
+					yZoom = 1;
+				theDVDPlayer.setZoomPos(xZoom, yZoom);
+			}
+			else
+			{
+				theDVDPlayer.selectDown();
+			}
+		}
+		function OnMoveLeft()
+		{
+			if (theDVDMenu.visible)
+			{
+				if (curMenuItem > 0)
+					curMenuItem = curMenuItem - 1;
+				else
+					curMenuItem = 5;
+				UpdateMenuHilight();
+			}
+			else if (nZoom > 1)
+			{
+				xZoom = xZoom - 0.125;
+				if (xZoom < -1)
+					xZoom = -1;
+				theDVDPlayer.setZoomPos(xZoom, yZoom);
+			}
+			else
+			{
+				theDVDPlayer.selectLeft();
+			}
+		}
+		function OnMoveRight()
+		{
+			if (theDVDMenu.visible)
+			{
+				if (curMenuItem < 5)
+					curMenuItem = curMenuItem + 1;
+				else
+					curMenuItem = 0;
+				UpdateMenuHilight();
+			}
+			else if (nZoom > 1)
+			{
+				xZoom = xZoom + 0.125;
+				if (xZoom > 1)
+					xZoom = 1;
+				theDVDPlayer.setZoomPos(xZoom, yZoom);
+			}
+			else
+			{
+				theDVDPlayer.selectRight();
+			}
+		}
 		function OnWhiteDown()
 		{
 			theDVDPlayer.playOrPause();

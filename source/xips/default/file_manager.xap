@@ -641,6 +641,80 @@ DEF theFileManager Level
 				UpdateDestinationFileManager();
 			}
 		}
+		function OnMoveRight()
+		{
+			PlaySoundMenuChange();
+			if(InSource)
+			{
+				InSource = false;
+				InDestination = true;
+			}
+		}
+		function OnMoveLeft()
+		{
+			PlaySoundMenuChange();
+			if(InDestination)
+			{
+				InSource = true;
+				InDestination = false;
+			}
+		}
+		function OnMoveUp()
+		{
+			if(InSource)
+			{
+				if (sfmSelect <= 0) { return; }
+				PlaySoundMenuChange();
+				sfmSelect = sfmSelect - 1;
+				if (sfmButton == 0) { sfmScroll = sfmScroll - 1; }
+				else { sfmButton = sfmButton - 1; }
+				UpdateSourceFileManager();
+			}
+			if(InDestination)
+			{
+				if (dfmSelect <= 0) { return; }
+				PlaySoundMenuChange();
+				dfmSelect = dfmSelect - 1;
+				if (dfmButton == 0) { dfmScroll = dfmScroll - 1; }
+				else { dfmButton = dfmButton - 1; }
+				UpdateDestinationFileManager();
+			}
+		}
+		function OnMoveDown()
+		{
+			if(InSource)
+			{
+				if(InSourceRoot)
+				{
+					if (sfmSelect >= rootlength - 1) { return; }
+				}
+				else
+				{
+					if (sfmSelect >= sdirlength - 1) {  return; }
+				}
+				PlaySoundMenuChange();
+				sfmSelect = sfmSelect + 1;
+				if (sfmButton == 8) { sfmScroll = sfmScroll + 1; }
+				else { sfmButton = sfmButton + 1; }
+				UpdateSourceFileManager();
+			}
+			if(InDestination)
+			{
+				if(InDestinationRoot)
+				{
+					if (dfmSelect >= rootlength - 1) { return; }
+				}
+				else
+				{
+					if (dfmSelect >= ddirlength - 1) { return; }
+				}
+				PlaySoundMenuChange();
+				dfmSelect = dfmSelect + 1;
+				if (dfmButton == 8) { dfmScroll = dfmScroll + 1; }
+				else { dfmButton = dfmButton + 1; }
+				UpdateDestinationFileManager();
+			}
+		}
 	}
 }
 DEF theFileManagerJoystick Joystick
@@ -833,6 +907,60 @@ DEF theFileManagerJoystick Joystick
 		}
 	}
 	function OnLeftThumbMoveDown()
+	{
+		if(bInConfirm) { return; }
+		else
+		{
+			if(nCurManagerButton >= nManagerButtonCount) { return; }
+			else
+			{
+				nCurManagerButton = nCurManagerButton + 1;
+				PlaySoundMenuChange();
+			}
+			UpdateFileManagerFunctionsMenu();
+		}
+	}
+	function OnMoveRight()
+	{
+		if(bInConfirm)
+		{
+			if(nCurFMButton == 1) { return; }
+			else
+			{
+				nCurFMButton = 1;
+				PlaySoundMenuChange();
+			}
+			UpdateFileManagerButtonHighlight();
+		}
+	}
+	function OnMoveLeft()
+	{
+		if(bInConfirm)
+		{
+			if(nCurFMButton == 0) { return; }
+			else
+			{
+				nCurFMButton = 0;
+				PlaySoundMenuChange();
+			}
+			UpdateFileManagerButtonHighlight();
+		}
+	}
+	function OnMoveUp()
+	{
+		if(bInConfirm) { return; }
+		else
+		{
+			if(nCurManagerButton == 0) { return; }
+			else
+			{
+				nCurManagerButton = nCurManagerButton - 1;
+				PlaySoundMenuChange();
+			}
+			UpdateFileManagerFunctionsMenu();
+		}
+	}
+	function OnMoveDown()
 	{
 		if(bInConfirm) { return; }
 		else

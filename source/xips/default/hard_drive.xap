@@ -201,7 +201,6 @@ DEF theHardDriveMenu Level
 			theMemoryControllerSelectSound.Play();
 			UpdateHardDriveMenu();
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			if((curMenuItem == 1) | (curMenuItem == 2)) { return; }
@@ -210,7 +209,6 @@ DEF theHardDriveMenu Level
 			theMemoryControllerSelectSound.Play();
 			UpdateHardDriveMenu();
 		}
-
 		function OnLeftThumbMoveRight()
 		{
 			if((curMenuItem == 3) | (curMenuItem == 2)) { return; }
@@ -219,7 +217,6 @@ DEF theHardDriveMenu Level
 			theMemoryControllerSelectSound.Play();
 			UpdateHardDriveMenu();
 		}
-
 		function OnLeftThumbMoveLeft()
 		{
 			if((curMenuItem == 0) | (curMenuItem == 1)) { return; }
@@ -228,7 +225,38 @@ DEF theHardDriveMenu Level
 			theMemoryControllerSelectSound.Play();
 			UpdateHardDriveMenu();
 		}
-
+		function OnMoveUp()
+		{
+			if((curMenuItem == 0) | (curMenuItem == 3)) { return; }
+			else if(curMenuItem == 1) { curMenuItem = 0; }
+			else if(curMenuItem == 2) { curMenuItem = 3; }
+			theMemoryControllerSelectSound.Play();
+			UpdateHardDriveMenu();
+		}
+		function OnMoveDown()
+		{
+			if((curMenuItem == 1) | (curMenuItem == 2)) { return; }
+			else if(curMenuItem == 0) { curMenuItem = 1; }
+			else if(curMenuItem == 3) { curMenuItem = 2; }
+			theMemoryControllerSelectSound.Play();
+			UpdateHardDriveMenu();
+		}
+		function OnMoveRight()
+		{
+			if((curMenuItem == 3) | (curMenuItem == 2)) { return; }
+			else if(curMenuItem == 0) { curMenuItem = 3; }
+			else if(curMenuItem == 1) { curMenuItem = 2; }
+			theMemoryControllerSelectSound.Play();
+			UpdateHardDriveMenu();
+		}
+		function OnMoveLeft()
+		{
+			if((curMenuItem == 0) | (curMenuItem == 1)) { return; }
+			else if(curMenuItem == 2) { curMenuItem = 1; }
+			else if(curMenuItem == 3) { curMenuItem = 0; }
+			theMemoryControllerSelectSound.Play();
+			UpdateHardDriveMenu();
+		}
 		function OnADown()
 		{
 			PlaySoundA();
@@ -236,7 +264,6 @@ DEF theHardDriveMenu Level
 			theTitlesMenu.GoTo();
 			theGamesSubMenuIn.Play();
 		}
-
 		function OnBDown()
 		{
 			PlaySoundB();
@@ -639,6 +666,48 @@ DEF theTitlesMenu Level
 			}
 		}
 		function OnLeftThumbMoveDown()
+		{
+			var c = theTitlesMenu.children[0].children[0];
+			if (bDetailView)
+			{
+				if (nCurFileMenuItem < nFileMenuItemCount - 1)
+				{
+					PlaySoundMenuChange();
+					nCurFileMenuItem = nCurFileMenuItem + 1;
+					UpdateFileMenu();
+				}
+			}
+			else
+			{
+				var oldCurTitle = c.theTitlesGrid.curTitle;
+				var oldCurSave = c.theTitlesGrid.curSavedGame;
+				c.theTitlesGrid.selectDown();
+				if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
+				else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
+			}
+		}
+		function OnMoveUp()
+		{
+			var c = theTitlesMenu.children[0].children[0];
+			if (bDetailView)
+			{
+				if (nCurFileMenuItem > 0)
+				{
+					PlaySoundMenuChange();
+					nCurFileMenuItem = nCurFileMenuItem - 1;
+					UpdateFileMenu();
+				}
+			}
+			else
+			{
+				var oldCurTitle = c.theTitlesGrid.curTitle;
+				var oldCurSave = c.theTitlesGrid.curSavedGame;
+				c.theTitlesGrid.selectUp();
+				if(oldCurTitle != c.theTitlesGrid.curTitle) { theMemoryTitleSelectSound.Play(); }
+				else if(oldCurSave != c.theTitlesGrid.curSavedGame) { theMemorySaveSelectSound.Play(); }
+			}
+		}
+		function OnMoveDown()
 		{
 			var c = theTitlesMenu.children[0].children[0];
 			if (bDetailView)

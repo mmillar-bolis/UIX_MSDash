@@ -508,6 +508,66 @@ DEF theMusicPlayWithSubs Level
 				UpdateTrackList();
 			}
 		}
+		function OnMoveLeft()
+		{
+			if( bMusicPlayWithSubsVisible0 == false )
+				//IconsOnCube();
+		}
+		function OnMoveRight()
+		{
+			if( bMusicPlayWithSubsVisible0 == false )
+				//IconsOnScreen();
+		}
+		function OnMoveUp()
+		{
+			if (bMusicPlayWithSubsVisible0)
+			{
+				if (nCurMusicPlayWithSubsItem0 > 0)
+				{
+					PlaySoundMenuChange();
+					nCurMusicPlayWithSubsItem0 = nCurMusicPlayWithSubsItem0 - 1;
+					UpdateMusicPlayWithSubs();
+				}
+			}
+			else
+			{
+				if (nPlayCursor0 <= 0) { nPlayCursor0 = 0; }
+				else
+				{
+					if(nPlayCursor0 != 0)
+					{
+						PlaySoundMenuChange();
+						nPlayCursor0 = nPlayCursor0 - 1;
+					}
+				}
+				UpdateTrackList();
+			}
+		}
+		function OnMoveDown()
+		{
+			if (bMusicPlayWithSubsVisible0)
+			{
+				var nMenuItemCount = m_submenucount;			//number of submenus
+				if (nCurMusicPlayWithSubsItem0 < nMenuItemCount)
+				{
+					PlaySoundMenuChange();
+					nCurMusicPlayWithSubsItem0 = nCurMusicPlayWithSubsItem0 + 1;
+					UpdateMusicPlayWithSubs();
+				}
+			}
+			else
+			{
+				var a = (m_itemcount - 1);
+				if (nPlayCursor0 < 0) { nPlayCursor0 = 0; }
+				if (nPlayCursor0 == a) { return; }
+				else
+				{
+					PlaySoundMenuChange();
+					nPlayCursor0 = nPlayCursor0 + 1;
+				}
+				UpdateTrackList();
+			}
+		}
 	}
 	function OnActivate()
 	{

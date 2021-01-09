@@ -207,6 +207,30 @@ DEF theSettingsStyleMenu Level
 				UpdateSettingsStyleMenu();
 			}
 		}
+		function OnMoveUp()
+		{
+			if (CurrentMenuItem == 0) { return; }
+			else
+			{
+				PlaySoundMenuChange();
+				if(CurrentMenuButton == 0) { ScrollPlaceHolder = ScrollPlaceHolder - 1; }
+				else { CurrentMenuButton = CurrentMenuButton - 1; }
+				CurrentMenuItem = CurrentMenuItem - 1;
+				UpdateSettingsStyleMenu();
+			}
+		}
+		function OnMoveDown()
+		{
+			if (CurrentMenuItem == TotalMenuItems - 1) { return; }
+			else
+			{
+				PlaySoundMenuChange();
+				if(CurrentMenuButton == ( NumberOfMenuItems - 1 ) ) { ScrollPlaceHolder = ScrollPlaceHolder + 1; }
+				else { CurrentMenuButton = CurrentMenuButton + 1; }
+				CurrentMenuItem = CurrentMenuItem + 1;
+				UpdateSettingsStyleMenu();
+			}
+		}
 	}
 	function OnActivate()
 	{

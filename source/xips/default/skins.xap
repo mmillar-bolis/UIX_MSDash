@@ -262,7 +262,39 @@ DEF theSkinsMenu Level
 
 		function OnLeftThumbMoveDown()
 		{
-				if (skinSelect >= skinCount - 1) {  return; }
+				if (skinSelect >= skinCount - 1) { return; }
+						PlaySoundMenuChange();
+						skinSelect = skinSelect + 1;
+						if (skinButton == 8) { skinScroll = skinScroll + 1; }
+						else { skinButton = skinButton + 1; }
+						theConfig.ChangeSkin( SkinMenuList[skinSelect] );
+						UpdateSkinMenu();
+		}
+		function OnMoveLeft()
+		{
+			if (nCurPlayerMenuItem == 0) { return; }
+			else { nCurPlayerMenuItem = 0; }
+			UpdateSkinMenu();
+		}
+		function OnMoveRight()
+		{
+			if (nCurPlayerMenuItem == 1) { return; }
+			else { nCurPlayerMenuItem = 1; }
+			UpdateSkinMenu();
+		}
+		function OnMoveUp()
+		{
+						if (skinSelect <= 0) { return; }
+						PlaySoundMenuChange();
+						skinSelect = skinSelect - 1;
+						if (skinButton == 0) { skinScroll = skinScroll - 1; }
+						else { skinButton = skinButton - 1; }
+						theConfig.ChangeSkin( SkinMenuList[skinSelect] );
+						UpdateSkinMenu();
+		}
+		function OnMoveDown()
+		{
+				if (skinSelect >= skinCount - 1) { return; }
 						PlaySoundMenuChange();
 						skinSelect = skinSelect + 1;
 						if (skinButton == 8) { skinScroll = skinScroll + 1; }

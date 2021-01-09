@@ -487,6 +487,8 @@ DEF theConfigPanel Level
 
 		function OnLeftThumbMoveDown() { SelectConfigDown(); }
 		function OnLeftThumbMoveUp() { SelectConfigUp(); }
+		function OnMoveDown() { SelectConfigDown(); }
+		function OnMoveUp() { SelectConfigUp(); }
 
 		function OnBDown()
 		{

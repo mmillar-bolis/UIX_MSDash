@@ -944,7 +944,6 @@ DEF theMainMenu Level
 			}
 		}
 	]
-
 	shell Transform
 	{
 		scale 150 150 150
@@ -987,7 +986,6 @@ DEF theMainMenu Level
 		]
 	}
 	path USE theMainMenuViewpoint
-
 	control DEF theMainMenuJoy Joystick
 	{
 		function OnADown()
@@ -1014,7 +1012,6 @@ DEF theMainMenu Level
 				GoToSettings();
 			}
 		}
-
 		function OnLeftThumbMoveUp()
 		{
 			if (nCurMainMenuItem > 0)
@@ -1028,7 +1025,6 @@ DEF theMainMenu Level
 				UpdateMainMenu();
 			}
 		}
-
 		function OnLeftThumbMoveDown()
 		{
 			if (nCurMainMenuItem < 3)
@@ -1042,8 +1038,33 @@ DEF theMainMenu Level
 				UpdateMainMenu();
 			}
 		}
+		function OnMoveUp()
+		{
+			if (nCurMainMenuItem > 0)
+			{
+				nCurMainMenuItem = nCurMainMenuItem - 1;
+				if( m_nbuttons == 3)
+				{
+					if( 2 == nCurMainMenuItem ) {nCurMainMenuItem = nCurMainMenuItem - 1; }
+				}
+				theMainMenuBackward.Play();
+				UpdateMainMenu();
+			}
+		}
+		function OnMoveDown()
+		{
+			if (nCurMainMenuItem < 3)
+			{
+				nCurMainMenuItem = nCurMainMenuItem + 1;
+				if( m_nbuttons == 3 )
+				{
+					if( 2 == nCurMainMenuItem ) { nCurMainMenuItem = nCurMainMenuItem + 1; }
+				}
+				theMainMenuForward.Play();
+				UpdateMainMenu();
+			}
+		}
 	}
-
 	function OnActivate()
 	{
 		EnableAudio();
@@ -1468,7 +1489,6 @@ DEF theMessageJoystick Joystick
 			else { OnQuestionNo(); }
 		}
 	}
-
 	function OnBDown()
 	{
 		if (nMessageButtonCount == 1)
@@ -1485,7 +1505,6 @@ DEF theMessageJoystick Joystick
 			OnQuestionNo();
 		}
 	}
-
 	function OnLeftThumbMoveLeft()
 	{
 		if (nMessageButtonCount < 2) { return; }
@@ -1496,8 +1515,27 @@ DEF theMessageJoystick Joystick
 			UpdateMessageButtonHighlight();
 		}
 	}
-
 	function OnLeftThumbMoveRight()
+	{
+		if (nMessageButtonCount < 2) { return; }
+		if (nCurMessageButton == 0)
+		{
+			PlaySoundMenuChange();
+			nCurMessageButton = 1;
+			UpdateMessageButtonHighlight();
+		}
+	}
+	function OnMoveLeft()
+	{
+		if (nMessageButtonCount < 2) { return; }
+		if (nCurMessageButton == 1)
+		{
+			PlaySoundMenuChange();
+			nCurMessageButton = 0;
+			UpdateMessageButtonHighlight();
+		}
+	}
+	function OnMoveRight()
 	{
 		if (nMessageButtonCount < 2) { return; }
 		if (nCurMessageButton == 0)

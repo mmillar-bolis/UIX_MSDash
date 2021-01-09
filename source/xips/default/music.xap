@@ -344,6 +344,40 @@ DEF theMusicCopyMenu Level
 				UpdateCopyDestHighlight();
 			}
 		}
+		function OnMoveUp()
+		{
+			if (nCurCopyDestItem <= 0) { return; }
+			PlaySoundMenuChange();
+			nCurCopyDestItem = nCurCopyDestItem - 1;
+			if (nCurCopyDestButton == 0)
+			{
+				nCopyDestItemScroll = nCopyDestItemScroll - 1;
+				AdjustCopyDestScroll();
+				UpdateCopyDestMenuText();
+			}
+			else
+			{
+				nCurCopyDestButton = nCurCopyDestButton - 1;
+				UpdateCopyDestHighlight();
+			}
+		}
+		function OnMoveDown()
+		{
+			if (nCurCopyDestItem == nCopyDestItemCount - 1) { return; }
+			PlaySoundMenuChange();
+			nCurCopyDestItem = nCurCopyDestItem + 1;
+			if (nCurCopyDestButton == 7)
+			{
+				nCopyDestItemScroll = nCopyDestItemScroll + 1;
+				AdjustCopyDestScroll();
+				UpdateCopyDestMenuText();
+			}
+			else
+			{
+				nCurCopyDestButton = nCurCopyDestButton + 1;
+				UpdateCopyDestHighlight();
+			}
+		}
 	}
 	function OnActivate()
 	{
@@ -1604,6 +1638,72 @@ DEF theMusicPlayMenu Level
 				}
 			}
 		}
+		function OnMoveLeft()
+		{
+			NoVisualizer();
+			if (bMusicMenuVisible) { return; }
+			else if (nCurPlayerMenuItem > 0)
+			{
+				if (theMusicPlayer.transportMode != 1) { PlaySoundMenuChange(); }
+				nCurPlayerMenuItem = nCurPlayerMenuItem - 1;
+				UpdatePlayerMenu();
+			}
+		}
+		function OnMoveRight()
+		{
+			NoVisualizer();
+			if (bMusicMenuVisible) { return; }
+			else if (nCurPlayerMenuItem < nPlayerMenuItemCount - 1)
+			{
+				if (theMusicPlayer.transportMode != 1) { PlaySoundMenuChange(); }
+				nCurPlayerMenuItem = nCurPlayerMenuItem + 1;
+				UpdatePlayerMenu();
+			}
+		}
+		function OnMoveUp()
+		{
+			NoVisualizer();
+			if (bMusicMenuVisible)
+			{
+				if (nCurMusicMenuItem > 0)
+				{
+					PlaySoundMenuChange();
+					nCurMusicMenuItem = nCurMusicMenuItem - 1;
+					UpdateMusicMenu();
+				}
+			}
+			else
+			{
+				if (nPlayCursor > 0)
+				{
+					if (theMusicPlayer.transportMode != 1) { PlaySoundA(); }
+					SelectPrevTrack( false,false );
+				}
+			}
+		}
+		function OnMoveDown()
+		{
+			NoVisualizer();
+			if (bMusicMenuVisible)
+			{
+				var nMenuItemCount = 5;
+				if (musicSelect == 0) { nMenuItemCount = 2; }
+				if (nCurMusicMenuItem < nMenuItemCount - 1)
+				{
+					PlaySoundMenuChange();
+					nCurMusicMenuItem = nCurMusicMenuItem + 1;
+					UpdateMusicMenu();
+				}
+			}
+			else
+			{
+				if (nPlayCursor < playlist.length - 1)
+				{
+					if (theMusicPlayer.transportMode != 1) { PlaySoundA(); }
+					SelectNextTrack( false );
+				}
+			}
+		}
 		function OnPlay()
 		{
 			NoVisualizer();
@@ -1893,6 +1993,28 @@ DEF theMusicMenu Level
 			UpdateMusicList();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(bGoToCDPlayer) { return; }
+			if(musicSelect >= musicCount - 1) { return; }
+			PlaySoundMenuChange();
+			musicSelect = musicSelect + 1;
+			if(musicSelect == 1) { theCDExpand.Play(); }
+			if(musicButton == 7) { musicScroll = musicScroll + 1; }
+			else { musicButton = musicButton + 1; }
+			UpdateMusicList();
+		}
+		function OnMoveUp()
+		{
+			if(bGoToCDPlayer) { return; }
+			if(musicSelect <= 0) { return; }
+			PlaySoundMenuChange();
+			musicSelect = musicSelect - 1;
+			if(musicSelect == 0) { theCDExpand.Play(); }
+			if(musicButton == 0) { musicScroll = musicScroll - 1; }
+			else { musicButton = musicButton - 1; }
+			UpdateMusicList();
+		}
+		function OnMoveDown()
 		{
 			if(bGoToCDPlayer) { return; }
 			if(musicSelect >= musicCount - 1) { return; }

@@ -533,6 +533,40 @@ DEF theSetClockMenu Level
 			DecrementClock();
 			PlaySoundMenuChange();
 		}
+		function OnMoveLeft()
+		{
+			if(nCurClockMenuItem > 0)
+			{
+				PlaySoundMenuChange();
+				nCurClockMenuItem = nCurClockMenuItem - 1;
+				if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem - 1; } }
+				UpdateClockMenu();
+			}
+		}
+		function OnMoveRight()
+		{
+			if(nCurClockMenuItem < 5)
+			{
+				PlaySoundMenuChange();
+				nCurClockMenuItem = nCurClockMenuItem + 1;
+				if(b24hour) { if(nCurClockMenuItem == 2) { nCurClockMenuItem = nCurClockMenuItem + 1; } }
+				UpdateClockMenu();
+			}
+		}
+		function OnMoveUp()
+		{
+			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "Typesdsafsda";
+			theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "HilightedType";
+			IncrementClock();
+			PlaySoundMenuChange();
+		}
+		function OnMoveDown()
+		{
+			theSetClockMenu.children[0].children[0].Clock_morearrow_down.children[0].appearance.material.name = "Typesdsafsda";
+			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
+			DecrementClock();
+			PlaySoundMenuChange();
+		}
 		function OnMoveCenter()
 		{
 			theSetClockMenu.children[0].children[0].Clock_morearrow_up.children[0].appearance.material.name = "HilightedType";
@@ -768,6 +802,24 @@ DEF theSetTimezoneMenu Level
 			UpdateTimezoneMenu();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(nCurTimezoneMenuItem == nTimezoneItemCount - 1) { return; }
+			PlaySoundMenuChange();
+			nCurTimezoneMenuItem = nCurTimezoneMenuItem + 1;
+			if(nCurTimezoneMenuButton == nNumTimezoneMenuItems - 1) { nTimezoneScroll = nTimezoneScroll + 1; }
+			else { nCurTimezoneMenuButton = nCurTimezoneMenuButton + 1; }
+			UpdateTimezoneMenu();
+		}
+		function OnMoveUp()
+		{
+			if(nCurTimezoneMenuItem <= 0) { return; }
+			PlaySoundMenuChange();
+			nCurTimezoneMenuItem = nCurTimezoneMenuItem - 1;
+			if(nCurTimezoneMenuButton == 0) { nTimezoneScroll = nTimezoneScroll - 1; }
+			else { nCurTimezoneMenuButton = nCurTimezoneMenuButton - 1; }
+			UpdateTimezoneMenu();
+		}
+		function OnMoveDown()
 		{
 			if(nCurTimezoneMenuItem == nTimezoneItemCount - 1) { return; }
 			PlaySoundMenuChange();
@@ -1175,6 +1227,20 @@ DEF theChooseClockMenu Level
 			UpdateListHighlight();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(nCurListItems >= (nCurListItemCount - 1)) { return; }
+			PlaySoundMenuChange();
+			nCurListItems = nCurListItems + 1;
+			UpdateListHighlight();
+		}
+		function OnMoveUp()
+		{
+			if(nCurListItems <= 0) { return; }
+			PlaySoundMenuChange();
+			nCurListItems = nCurListItems - 1;
+			UpdateListHighlight();
+		}
+		function OnMoveDown()
 		{
 			if(nCurListItems >= (nCurListItemCount - 1)) { return; }
 			PlaySoundMenuChange();
@@ -1707,6 +1773,62 @@ DEF theSetPanelMenu Level
 				UpdatePanelMenu();
 			}
 		}
+		function OnMoveUp()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("u");
+				return;
+			}
+		}
+		function OnMoveDown()
+		{
+			if((strCurMenu == "ENTER PASSWORD") +  (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("d");
+				return;
+			}
+		}
+		function OnMoveLeft()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("l");
+				return;
+			}
+			else if(strCurMenu == "SYSTEM INFO") { }
+			else
+			{
+				if(nCurPanelMenuItem == 0)
+				{
+					PlaySoundMenuChange();
+					nCurPanelMenuItem = 1;
+				}
+				UpdatePanelMenu();
+			}
+		}
+		function OnMoveRight()
+		{
+			if((strCurMenu == "ENTER PASSWORD") + (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
+			{
+				PlaySoundA();
+				PasswordChar("r");
+				return;
+			}
+			else if(strCurMenu == "SYSTEM INFO") { }
+			else
+			{
+				if(nCurPanelMenuItem == 1)
+				{
+					PlaySoundMenuChange();
+					nCurPanelMenuItem = 0;
+				}
+				UpdatePanelMenu();
+			}
+		}
 		function OnXDown()
 		{
 			if((strCurMenu == "ENTER PASSWORD")+ (strCurMenu == "SET PASSWORD") + (strCurMenu == "VERIFY PASSWORD"))
@@ -1930,6 +2052,24 @@ DEF theSetPCMenu Level
 			}
 			UpdatePCMenu();
 		}
+		function OnMoveUp()
+		{
+			if(nCurPCMenuItem > 0)
+			{
+				PlaySoundMenuChange();
+				nCurPCMenuItem = nCurPCMenuItem - 1;
+			}
+			UpdatePCMenu();
+		}
+		function OnMoveDown()
+		{
+			if(nCurPCMenuItem < nNumPCElements - 1)
+			{
+				PlaySoundMenuChange();
+				nCurPCMenuItem = nCurPCMenuItem + 1;
+			}
+			UpdatePCMenu();
+		}
 	}
 	function OnActivate()
 	{
@@ -2094,6 +2234,24 @@ DEF theSetLanguageMenu Level
 			UpdateLanguageMenu();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(nCurLanguageMenuItem < 5)
+			{
+				PlaySoundMenuChange();
+				nCurLanguageMenuItem = nCurLanguageMenuItem + 1;
+			}
+			UpdateLanguageMenu();
+		}
+		function OnMoveUp()
+		{
+			if(nCurLanguageMenuItem > 0)
+			{
+				PlaySoundMenuChange();
+				nCurLanguageMenuItem = nCurLanguageMenuItem - 1;
+			}
+			UpdateLanguageMenu();
+		}
+		function OnMoveDown()
 		{
 			if(nCurLanguageMenuItem < 5)
 			{
@@ -2319,6 +2477,24 @@ DEF theSetModeMenu Level
 			UpdateModeMenu();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(nCurModeMenuItem < 2)
+			{
+				PlaySoundMenuChange();
+				nCurModeMenuItem = nCurModeMenuItem + 1;
+			}
+			UpdateModeMenu();
+		}
+		function OnMoveUp()
+		{
+			if(nCurModeMenuItem > 0)
+			{
+				PlaySoundMenuChange();
+				nCurModeMenuItem = nCurModeMenuItem - 1;
+			}
+			UpdateModeMenu();
+		}
+		function OnMoveDown()
 		{
 			if(nCurModeMenuItem < 2)
 			{
@@ -2807,6 +2983,24 @@ DEF theSettingsMenu Level
 			else { nCurSettingsMenuButton = nCurSettingsMenuButton + 1; }
 			UpdateSettingsMenu();
 		}
+		function OnMoveUp()
+		{
+			if(nCurSettingsMenuItem <= 0) { return; }
+			PlaySoundMenuChange();
+			nCurSettingsMenuItem = nCurSettingsMenuItem - 1;
+			if(nCurSettingsMenuButton == 0) { nSettingsScroll = nSettingsScroll - 1; }
+			else { nCurSettingsMenuButton = nCurSettingsMenuButton - 1; }
+			UpdateSettingsMenu();
+		}
+		function OnMoveDown()
+		{
+			if(nCurSettingsMenuItem == nSettingsItemCount - 1) { return; }
+			PlaySoundMenuChange();
+			nCurSettingsMenuItem = nCurSettingsMenuItem + 1;
+			if(nCurSettingsMenuButton == nNumSettingsMenuItems - 1)  { nSettingsScroll = nSettingsScroll + 1; }
+			else { nCurSettingsMenuButton = nCurSettingsMenuButton + 1; }
+			UpdateSettingsMenu();
+		}
 	}
 	function OnActivate() { if(children[0].children.length() > 0) { StartSettingsMenu(); } }
 	behavior
@@ -3068,6 +3262,20 @@ DEF theNetworkMenu Level
 			UpdateNetworkListHighlight();
 		}
 		function OnLeftThumbMoveDown()
+		{
+			if(nCurNetworkItems >= (nCurNetworkItemCount - 1)) { return; }
+			PlaySoundMenuChange();
+			nCurNetworkItems = nCurNetworkItems + 1;
+			UpdateNetworkListHighlight();
+		}
+		function OnMoveUp()
+		{
+			if(nCurNetworkItems <= -1) { return; }
+			PlaySoundMenuChange();
+			nCurNetworkItems = nCurNetworkItems - 1;
+			UpdateNetworkListHighlight();
+		}
+		function OnMoveDown()
 		{
 			if(nCurNetworkItems >= (nCurNetworkItemCount - 1)) { return; }
 			PlaySoundMenuChange();
