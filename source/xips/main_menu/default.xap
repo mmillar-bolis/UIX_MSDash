@@ -165,7 +165,7 @@ DEF theMainMenuLevel Transform
 				}//DEF Rotating_Large_X Transform
 				DEF theMenuItems Transform
 				{
-					fade 0.43
+					fade 0.25
 					children
 					[
 						DEF Main_memory_ringpin_2 Transform
@@ -174,7 +174,7 @@ DEF theMainMenuLevel Transform
 							[
 								DEF theMusicItem Transform
 								{
-									fade 0.43
+									fade 0.25
 									children
 									[
 										DEF music_arm03 Transform
@@ -545,7 +545,7 @@ DEF theMainMenuLevel Transform
 							[
 								DEF theMemoryItem Transform
 								{
-									fade 0.43
+									fade 0.25
 									children
 									[
 										DEF game_arm1 Transform
@@ -913,7 +913,7 @@ DEF theMainMenuLevel Transform
 							[
 								DEF theOnlineItem Transform
 								{
-									fade 0.43
+									fade 0.25
 									children
 									[
 										DEF game_arm1 Transform
@@ -1281,7 +1281,7 @@ DEF theMainMenuLevel Transform
 							[
 								DEF theSettingsItem Transform
 								{
-									fade 0.43
+									fade 0.25
 									children
 									[
 										DEF settings_arm03 Transform
