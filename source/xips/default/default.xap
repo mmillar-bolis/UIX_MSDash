@@ -153,8 +153,8 @@ function MusicOnBootCheck()
 
 //Start and Back buttons are no longer bound to be the same as A and B buttons
 //putting these functions here saves alot of pasting to make them all global
-//function OnBackDown()	{ MusicPlayerVolumeUp();   } //back and start buttons
-//function OnStartDown()	{ MusicPlayerVolumeDown(); } //repeat when held down
+function OnBackDown()	{ MusicPlayerVolumeUp();   } //back and start buttons
+function OnStartDown()	{ MusicPlayerVolumeDown(); } //repeat when held down
 function OnBlackDown()	{ theDiscDrive.OpenTray(); }
 function OnWhiteDown()	{ theDiscDrive.CloseTray();}
 
@@ -1012,30 +1012,6 @@ DEF theMainMenu Level
 				GoToSettings();
 			}
 		}
-		function OnStartDown()
-		{
-			PlaySoundA();
-			if(nCurMainMenuItem == 0)
-			{
-				theSettingsMenuIn.Play();
-				GoToMemory();
-			}
-			else if(nCurMainMenuItem == 1)
-			{
-				theMusicMenuIn.Play();
-				GoToMusic();
-			}
-			else if(nCurMainMenuItem == 2)
-			{
-				theSettingsMenuIn.Play();
-				HardDriveCheck();
-			}
-			else if(nCurMainMenuItem == 3)
-			{
-				theSettingsMenuIn.Play();
-				GoToSettings();
-			}
-		}
 		function OnLeftThumbMoveUp()
 		{
 			if (nCurMainMenuItem > 0)
@@ -1518,31 +1494,6 @@ DEF theMessageJoystick Joystick
 		if (nMessageButtonCount == 1)
 		{
 			OnADown();
-			return;
-		}
-
-		if (nCurMessageButton != -1)
-		{
-			PlaySoundB();
-			nCurMessageButton = 1;
-			UpdateMessageButtonHighlight();
-			OnQuestionNo();
-		}
-	}
-	function OnStartDown()
-	{
-		if (nCurMessageButton != -1)
-		{
-			PlaySoundA();
-			if(nCurMessageButton == 0) { OnQuestionYes(); }
-			else { OnQuestionNo(); }
-		}
-	}
-	function OnBackDown()
-	{
-		if (nMessageButtonCount == 1)
-		{
-			OnStartDown();
 			return;
 		}
 
