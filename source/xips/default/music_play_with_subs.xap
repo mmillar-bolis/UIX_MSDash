@@ -296,7 +296,7 @@ DEF theMusicPlayWithSubs Level
 	[
 		Inline
 		{
-			url "music_play_edit/menu.xap"
+			url "music_play_edit/default3.xap"
 			function onLoad() { EnterMusicPlay(); }
 		}
 	]
