@@ -121,6 +121,10 @@ function BuildMainList()
 	configValues[i] = "c-Memory Hard Drive-Enabled";
 	configSelect[i] = "ToggleTF()";
 	i = i + 1;
+	configList[i] = "Fan Speed:";
+	configValues[i] = "c-Sys Config-FanSpeed";
+	configSelect[i] = "ToggleFan()";
+	i = i + 1;
 	ClearText();
 	UpdateText();
 }
@@ -711,4 +715,18 @@ function ToggleBacking()
 	var c = theConfigPanel.children[0].children[0];
 	if(c.panel02_backing.visible == true) { c.panel02_backing.visible = false; }
 	else if(c.panel02_backing.visible == false) { c.panel02_backing.visible = true; }
+}
+function ToggleFan()
+{
+	var c = theConfigPanel.children[0].children[0];
+	var b = c.theRightSlots.children[LV2Item].children[0].geometry.text;
+	if(b.toLowerCase() == "20") { RefreshMenu("30"); }
+	else if(b.toLowerCase() == "30") { RefreshMenu("40"); }
+	else if(b.toLowerCase() == "40") { RefreshMenu("50"); }
+	else if(b.toLowerCase() == "50") { RefreshMenu("60"); }
+	else if(b.toLowerCase() == "60") { RefreshMenu("70"); }
+	else if(b.toLowerCase() == "70") { RefreshMenu("80"); }
+	else if(b.toLowerCase() == "80") { RefreshMenu("90"); }
+	else if(b.toLowerCase() == "90") { RefreshMenu("100"); }
+	else if(b.toLowerCase() == "100") { RefreshMenu("20"); }
 }

@@ -1142,6 +1142,7 @@ function initialize()
 
 	theXboxNetwork.StartServices();
 	theXboxNetwork.StartFTPServices();
+	SetFanSpeed();
 
 	var nLanguage = theConfig.GetLanguage();
 	if (nLanguage != 0) nLanguage = nLanguage - 1;
@@ -1929,4 +1930,22 @@ function HardDriveCheck() // Function to toggle list or hdd view for games
 	if( a == "true" ) { GoToHardDrive(); }
 	else if( a == "false" ) { GoToMusicPlayWithSubs(); }
 	else { return; }
+}
+function SetFanSpeed() // Function to set fan speed
+{
+	var IniFile = new Settings;
+	IniFile.SetIniSection( "Sys Config" );
+	var FanSpeedST = IniFile.GetIniValue( "FanSpeed" );
+	var FanSpeedS = ReturnInteger(FanSpeedST);
+
+	if (FanSpeedS==20) { theConfig.SetFanSpeed(20); }
+	else if (FanSpeedS==30) { theConfig.SetFanSpeed(30); }
+	else if (FanSpeedS==40) { theConfig.SetFanSpeed(40); }
+	else if (FanSpeedS==50) { theConfig.SetFanSpeed(50); }
+	else if (FanSpeedS==60) { theConfig.SetFanSpeed(60); }
+	else if (FanSpeedS==70) { theConfig.SetFanSpeed(70); }
+	else if (FanSpeedS==80) { theConfig.SetFanSpeed(80); }
+	else if (FanSpeedS==90) { theConfig.SetFanSpeed(90); }
+	else if (FanSpeedS==100) { theConfig.SetFanSpeed(100); }
+	else { theConfig.SetFanSpeed(100); }
 }
