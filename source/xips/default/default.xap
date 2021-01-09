@@ -2010,8 +2010,8 @@ function UpdateFileManagerFunctionsMenu()
 function HardDriveCheck() // Function to toggle list or hdd view for games
 {
 	var IniFile = new Settings;
-	IniFile.SetIniSection( "Memory Hard Drive" );
-	var a = IniFile.GetIniValue( "Enabled" );
+	IniFile.SetIniSection( "Dashboard Settings" );
+	var a = IniFile.GetIniValue( "Mem Style HDD Menu" );
 	IniFile.CloseIniFile();
 
 	if( a == "true" ) { GoToHardDrive(); }
@@ -2021,8 +2021,9 @@ function HardDriveCheck() // Function to toggle list or hdd view for games
 function SetFanSpeed() // Function to set fan speed
 {
 	var IniFile = new Settings;
-	IniFile.SetIniSection( "Sys Config" );
-	var FanSpeedST = IniFile.GetIniValue( "FanSpeed" );
+	IniFile.SetIniSection( "Dashboard Settings" );
+	var FanSpeedST = IniFile.GetIniValue( "Fan Speed" );
+	IniFile.CloseIniFile();
 	var FanSpeedS = ReturnInteger(FanSpeedST);
 
 	if (FanSpeedS==20) { theConfig.SetFanSpeed(20); }
