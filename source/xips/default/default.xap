@@ -255,7 +255,7 @@ function AutoLaunchCheck()
 }
 function AutoLaunch()
 {
-		 if (theDiscDrive.discType == "Audio")   { StartCDPlayer(); }
+	if (theDiscDrive.discType == "Audio")   { StartCDPlayer(); }
 	else if (theDiscDrive.discType == "Video")   { ReStartDash(); }
 	else if (theDiscDrive.discType == "Title")   { theLauncherLevel.GoTo(); }
 	else if (theDiscDrive.discType == "unknown") { TellUser("ERROR MESSAGE 1",""); }
