@@ -42,6 +42,26 @@ DEF theEnglishKeyboard Transform
 					theKeyboard.selectRight();
 					theKeySelectSound.Play();
 				}
+				function OnMoveUp()
+				{
+					theKeyboard.selectUp();
+					theKeySelectSound.Play();
+				}
+				function OnMoveDown()
+				{
+					theKeyboard.selectDown();
+					theKeySelectSound.Play();
+				}
+				function OnMoveLeft()
+				{
+					theKeyboard.selectLeft();
+					theKeySelectSound.Play();
+				}
+				function OnMoveRight()
+				{
+					theKeyboard.selectRight();
+					theKeySelectSound.Play();
+				}
 				function OnWhiteDown()
 				{
 					theKeyboard.Backspace();

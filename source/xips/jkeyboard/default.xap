@@ -42,6 +42,26 @@ DEF theJapaneseKeyboard Transform
 					theJKeyboard.selectRight();
 					theJKeySelectSound.Play();
 				}
+				function OnMoveUp()
+				{
+					theJKeyboard.selectUp();
+					theJKeySelectSound.Play();
+				}
+				function OnMoveDown()
+				{
+					theJKeyboard.selectDown();
+					theJKeySelectSound.Play();
+				}
+				function OnMoveLeft()
+				{
+					theJKeyboard.selectLeft();
+					theJKeySelectSound.Play();
+				}
+				function OnMoveRight()
+				{
+					theJKeyboard.selectRight();
+					theJKeySelectSound.Play();
+				}
 				function OnWhiteDown()
 				{
 					theJKeyboard.Backspace();
