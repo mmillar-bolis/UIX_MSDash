@@ -281,11 +281,11 @@ function UpdateMusicPlayWithSubs()
 	}
 	else if (nCurMusicPlayWithSubsItem0 == 3)
 	{
-		c.MenuMetaText.text = theTranslator.Translate("Browse the games stored on the Xbox hard drive");
+		c.MenuMetaText.text = theTranslator.Translate("Browse the      games stored on the Xbox hard drive");
 	}
 	else if (nCurMusicPlayWithSubsItem0 == 4)
 	{
-		c.MenuMetaText.text = theTranslator.Translate("Update the item lists within each menu above");
+		c.MenuMetaText.text = theTranslator.Translate("Update the      item lists within each menu above");
 	}
 }
 DEF theMusicPlayWithSubs Level
