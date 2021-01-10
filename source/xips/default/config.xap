@@ -216,6 +216,10 @@ function BuildNETList()
 	configValues[i] = "c-Network Settings-SubnetMask";
 	configSelect[i] = "ConfigKeyB()";
 	i = i + 1;
+	configList[i] = "FTP Service Enabled:";
+	configValues[i] = "c-Network Settings-FTP Enabled";
+	configSelect[i] = "ToggleTF()";
+	i = i + 1;
 	configList[i] = "FTP Port:";
 	configValues[i] = "c-Network Settings-FTP Port";
 	configSelect[i] = "ConfigKeyB()";

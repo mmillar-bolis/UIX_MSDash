@@ -1159,7 +1159,8 @@ function initialize()
 	theAmbientSound3.Play();
 
 	theXboxNetwork.StartServices();
-	theXboxNetwork.StartFTPServices();
+	//theXboxNetwork.StartFTPServices();
+	StartFTPServer();
 	SetFanSpeed();
 
 	var nLanguage = theConfig.GetLanguage();
@@ -1984,4 +1985,14 @@ function SetFanSpeed() // Function to set fan speed
 	else if (FanSpeedS==90) { theConfig.SetFanSpeed(90); }
 	else if (FanSpeedS==100) { theConfig.SetFanSpeed(100); }
 	else { theConfig.SetFanSpeed(100); }
+}
+function StartFTPServer()
+{
+	var IniFile = new Settings;
+	IniFile.SetIniSection( "Network Settings" );
+	var a = IniFile.GetIniValue( "FTP Enabled" );
+	IniFile.CloseIniFile();
+
+	if( a == "true" ) { theXboxNetwork.StartFTPServices(); }
+	else { return; }
 }
