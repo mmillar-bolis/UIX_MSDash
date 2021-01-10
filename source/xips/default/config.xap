@@ -105,6 +105,10 @@ function BuildMainList()
 	configValues[i] = "c-Naming Method-use xbe names";
 	configSelect[i] = "ToggleUseXBENames()";
 	i = i + 1;
+	configList[i] = "Quick Launch:";
+	configValues[i] = "c-Dashboard Settings-Quick Launch";
+	configSelect[i] = "ConfigKeyB()";
+	i = i + 1;
 	configList[i] = "AutoLaunch Inserted Media:";
 	configValues[i] = "c-AutoLaunch Media-Launch On Insert";
 	configSelect[i] = "ToggleAutoLaunchMedia()";
