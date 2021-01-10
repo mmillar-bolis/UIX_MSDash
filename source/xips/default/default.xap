@@ -1117,6 +1117,7 @@ function initialize()
 	IniFile.SetIniSection( "Dashboard Settings" );
 	dashStyle = IniFile.GetIniValue( "Dash Style" );
 	skinName = IniFile.GetIniValue( "Current Skin" );
+	IniFile.CloseIniFile();
 	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm";
 
 	theScreenSaver.StartAfter(  600  );
