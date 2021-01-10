@@ -380,11 +380,9 @@ function InitializeMenus() //use this to setpaths for any TitleMenu objects you 
 }
 function QuickLaunchA()
 {
-
 }
 function QuickLaunchB()
 {
-
 }
 function QuickLaunchX()
 {
@@ -392,7 +390,7 @@ function QuickLaunchX()
 }
 function QuickLaunchY()
 {
-	if( true == b_InWireFrame )
+	/*if( true == b_InWireFrame )
 	{
 		theScreen.WireFrameStop();
 		b_InWireFrame = false;
@@ -401,7 +399,7 @@ function QuickLaunchY()
 	{
 		theScreen.WireFrameStart();
 		b_InWireFrame = true;
-	}
+	}*/
 }
 function StartScreenSaverView()
 {
