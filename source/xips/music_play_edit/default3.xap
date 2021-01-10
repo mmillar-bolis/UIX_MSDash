@@ -758,7 +758,7 @@ DEF theWholeThing Transform
 					[
 						Shape
 						{
-							appearance Appearance { material MaxMaterial { name "MainMenuOrb" } texture ImageTexture { url "xboxlogo.xbx" } }
+							appearance Appearance { material MaxMaterial { name "MainMenuOrb" } texture ImageTexture { url "panel_apps.xbx" } }
 							geometry Mesh { url "MEM_L2_sc_pod_icon-FACES.xm" }
 						}
 					]
@@ -2321,7 +2321,7 @@ DEF theWholeThing Transform
 								}
 								texture ImageTexture
 								{
-									url "xboxlogo.xbx"
+									url "panel_apps.xbx"
 								}
 							}
 							geometry DEF MU_L3_panel_tracklist-FACES Mesh { url "MU_L3_panel_tracklist-FACES.xm" }
