@@ -1978,39 +1978,39 @@ function HardDriveCheck() // Function to toggle list or hdd view for games
 {
 	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
-	var a = IniFile.GetIniValue( "Mem Style HDD Menu" );
+	var memMenu = IniFile.GetIniValue( "Mem Style HDD Menu" );
 	IniFile.CloseIniFile();
 
-	if( a == "true" ) { GoToHardDrive(); }
-	else if( a == "false" ) { GoToMusicPlayWithSubs(); }
+	if( memMenu == "true" ) { GoToHardDrive(); }
+	else if( memMenu == "false" ) { GoToMusicPlayWithSubs(); }
 	else { return; }
 }
 function SetFanSpeed() // Function to set fan speed
 {
 	var IniFile = new Settings;
 	IniFile.SetIniSection( "Dashboard Settings" );
-	var FanSpeedST = IniFile.GetIniValue( "Fan Speed" );
+	var fanSpeedStr = IniFile.GetIniValue( "Fan Speed" );
 	IniFile.CloseIniFile();
-	var FanSpeedS = ReturnInteger(FanSpeedST);
+	var fanSpeedInt = ReturnInteger(fanSpeedStr);
 
-	if (FanSpeedS==20) { theConfig.SetFanSpeed(20); }
-	else if (FanSpeedS==30) { theConfig.SetFanSpeed(30); }
-	else if (FanSpeedS==40) { theConfig.SetFanSpeed(40); }
-	else if (FanSpeedS==50) { theConfig.SetFanSpeed(50); }
-	else if (FanSpeedS==60) { theConfig.SetFanSpeed(60); }
-	else if (FanSpeedS==70) { theConfig.SetFanSpeed(70); }
-	else if (FanSpeedS==80) { theConfig.SetFanSpeed(80); }
-	else if (FanSpeedS==90) { theConfig.SetFanSpeed(90); }
-	else if (FanSpeedS==100) { theConfig.SetFanSpeed(100); }
+	if (fanSpeedInt==20) { theConfig.SetFanSpeed(20); }
+	else if (fanSpeedInt==30) { theConfig.SetFanSpeed(30); }
+	else if (fanSpeedInt==40) { theConfig.SetFanSpeed(40); }
+	else if (fanSpeedInt==50) { theConfig.SetFanSpeed(50); }
+	else if (fanSpeedInt==60) { theConfig.SetFanSpeed(60); }
+	else if (fanSpeedInt==70) { theConfig.SetFanSpeed(70); }
+	else if (fanSpeedInt==80) { theConfig.SetFanSpeed(80); }
+	else if (fanSpeedInt==90) { theConfig.SetFanSpeed(90); }
+	else if (fanSpeedInt==100) { theConfig.SetFanSpeed(100); }
 	else { theConfig.SetFanSpeed(100); }
 }
 function StartFTPServer()
 {
 	var IniFile = new Settings;
 	IniFile.SetIniSection( "Network Settings" );
-	var a = IniFile.GetIniValue( "FTP Enabled" );
+	var enableFTP = IniFile.GetIniValue( "FTP Enabled" );
 	IniFile.CloseIniFile();
 
-	if( a == "true" ) { theXboxNetwork.StartFTPServices(); }
+	if( enableFTP == "true" ) { theXboxNetwork.StartFTPServices(); }
 	else { return; }
 }
