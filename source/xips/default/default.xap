@@ -392,7 +392,7 @@ function QuickLaunchX()
 }
 function QuickLaunchY()
 {
-	if( true == b_InWireFrame )
+	/*if( true == b_InWireFrame )
 	{
 		theScreen.WireFrameStop();
 		b_InWireFrame = false;
@@ -401,7 +401,24 @@ function QuickLaunchY()
 	{
 		theScreen.WireFrameStart();
 		b_InWireFrame = true;
-	}
+	}*/
+	var IniFile = new Settings;
+	IniFile.SetIniSection( "Dashboard Settings" );
+	var fullPath = IniFile.GetIniValue("Quick Launch");
+	IniFile.CloseIniFile();
+	var itemDrive = fullPath.charAt(0);
+	var itemPath = fullPath.substr(2, fullPath.lastIndexOf("\\") - 2);
+	var itemXBE = fullPath.substr(fullPath.lastIndexOf("\\") + 1, fullPath.length());
+
+	var partNum;
+	if(itemDrive == "C") { partNum = 2; }
+	else if(itemDrive == "E") { partNum = 1; }
+	else if(itemDrive == "F") { partNum = 6; }
+	else if(itemDrive == "G") { partNum = 7; }
+
+	itemLaunchPath = "\\Device\\Harddisk0\\Partition" + partNum + itemPath;
+	itemLaunchXBE = itemXBE;
+	launch(itemLaunchXBE, itemLaunchPath);
 }
 function StartScreenSaverView()
 {
@@ -1117,6 +1134,7 @@ function initialize()
 	IniFile.SetIniSection( "Dashboard Settings" );
 	dashStyle = IniFile.GetIniValue( "Dash Style" );
 	skinName = IniFile.GetIniValue( "Current Skin" );
+	IniFile.CloseIniFile();
 	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm";
 
 	theScreenSaver.StartAfter(  600  );
