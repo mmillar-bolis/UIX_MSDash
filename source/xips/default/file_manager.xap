@@ -555,7 +555,7 @@ DEF theFileManager Level
 			}
 			else { GoBackDirectory(); }
 		}
-		function OnXDown()
+		/*function OnXDown()
 		{
 			if(InSource)
 			{
@@ -566,7 +566,7 @@ DEF theFileManager Level
 					ShowFileManagerFunctions();
 				}
 			}
-		}
+		}*/
 		function OnLeftThumbMoveRight()
 		{
 			PlaySoundMenuChange();
