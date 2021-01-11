@@ -1362,14 +1362,16 @@ function StartPanelMenu()
 		bInRecoveryKeySequence = false;
 		c.PanelHeading.text = theTranslator.Translate("SYSTEM INFO");
 		if(theConfig.GetGameRegion() == "JAPAN") { c.QuestionText.text = theTranslator.Translate("JapanSystemInfo"); }
-		else
+		/*else
 		{
 			var theSysInfoFile = new File;
 			theSysInfoFile.path = "A:\\system\\systeminfo.dat";
 			c.QuestionText.text = theSysInfoFile.readText();
-		}
-		c.QuestionText.text = c.QuestionText.text + "\nK:" + theConfig.GetROMVersion();
-		c.QuestionText.text = c.QuestionText.text + "\rD:" + theConfig.GetXdashVersion();
+		}*/
+		c.QuestionText.text = c.QuestionText.text + "\nKernel:" + theConfig.GetROMVersion();
+		c.QuestionText.text = c.QuestionText.text + "\rDashboard: User Interface X";
+		c.QuestionText.text = c.QuestionText.text + "\rDash Ver: 01.05.01.03";
+		c.QuestionText.text = c.QuestionText.text + "\rBase Ver:" + theConfig.GetXdashVersion();
 		c.ButtonGroup.visible = false;
 		c.ConsoleIcon.visible = true;
 		c.Group07.visible = false;
