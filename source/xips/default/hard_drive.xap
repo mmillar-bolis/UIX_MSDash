@@ -424,7 +424,7 @@ function DoMemoryItemMenuCommand()
 	var c = theTitlesMenu.children[0].children[0];
 	var nTitle = c.theTitlesGrid.curTitle;
 	if(nCurFileMenuItem == 0) { theTitleLauncherLevel.GoTo(); }
-	else if(nCurFileMenuItem == 1) { return; }
+	else if(nCurFileMenuItem == 1) { StartDelete(); }
 }
 function StartDelete()
 {
