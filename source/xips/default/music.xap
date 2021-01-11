@@ -1444,8 +1444,15 @@ DEF theMusicPlayMenu Level
 				{
 					if (nCurMusicMenuItem == 0)//"Music Player"
 					{
-						StartMusicPlayer();
-						thePlayerPanelIn.Play();
+						if (theDiscDrive.discType == "Audio")
+						{
+							StartMusicPlayer();
+							thePlayerPanelIn.Play();
+						}
+						else
+						{
+							TellUser("Please insert an audio CD", "");
+						}
 					}
 					else if (nCurMusicMenuItem == 1)//"Copy Song(s)"
 					{
