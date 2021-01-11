@@ -109,7 +109,7 @@ function DoAction()
 	if (nCurPlayerMenuItem == 1)
 	{
 		PlaySoundB();
-		theMainMenu.GoBackTo();
+		GoToSettings();
 		theGamesSubMenuOut.Play();
 	}
 	else if (nCurPlayerMenuItem == 0)
@@ -215,7 +215,7 @@ DEF thePowerOptionsMenu Level
 		{
 			//theConfig.ChangePowerOpt( currentPowerOpt );
 			PlaySoundB();
-			theMainMenu.GoBackTo();
+			GoToSettings();
 			theMusicSubMenuOut.Play();
 		}
 		function OnLeftThumbMoveLeft()
