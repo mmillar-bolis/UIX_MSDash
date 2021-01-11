@@ -2576,6 +2576,8 @@ function StartSettingsMenu()
 	}
 	var sSettingsMenu = new Array(7);
 	var index = 0;
+	sSettingsMenu[index] = theTranslator.Translate("POWER");
+	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("FILE MANAGER");
 	index = index + 1;
 	/*sSettingsMenu[index] = theTranslator.Translate("MEMORY MANAGER");
@@ -2603,14 +2605,6 @@ function StartSettingsMenu()
 		index = index + 1;
 	}
 	sSettingsMenu[index] = theTranslator.Translate("AUTO OFF");
-	index = index + 1;
-	sSettingsMenu[index] = theTranslator.Translate("POWER OFF");
-	index = index + 1;
-	sSettingsMenu[index] = theTranslator.Translate("CYCLE");
-	index = index + 1;
-	sSettingsMenu[index] = theTranslator.Translate("RESTART");
-	index = index + 1;
-	sSettingsMenu[index] = theTranslator.Translate("REBOOT");
 	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("SYSTEM INFO");
 	index = index + 1;
@@ -2656,7 +2650,8 @@ function SetVideoModeIcon(nMode)
 function MenuIcon()
 {
 	var c = theSettingsMenu.children[0].children[0];
-	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { ShowIcon(c.ConsoleIcon); }
+	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER")) { ShowIcon(c.AutoOffIcon); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { ShowIcon(c.ConsoleIcon); }
 	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { ShowIcon(c.GlobeIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { ShowIcon(c.ConsoleIcon); }
@@ -2666,10 +2661,6 @@ function MenuIcon()
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO")) { SetVideoModeIcon(nCurVideoMode); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("PARENTAL CONTROL")) { ShowIcon(c.LockIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUTO OFF")) { ShowIcon(c.AutoOffIcon); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT")) { ShowIcon(c.AutoOffIcon); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF")) { ShowIcon(c.AutoOffIcon); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE")) { ShowIcon(c.AutoOffIcon); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART")) { ShowIcon(c.AutoOffIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CLOCK"))
 	{
@@ -2681,7 +2672,8 @@ function UpdateRootMeta()
 {
 	var c = theSettingsMenu.children[0].children[0];
 	var metaString = "";
-	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { metaString = theTranslator.Translate("FILE MANAGER"); }
+	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER")) { metaString = theTranslator.Translate("POWER"); }
+	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { metaString = theTranslator.Translate("FILE MANAGER"); }
 	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { metaString = theTranslator.Translate("NETWORK SETTINGS"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("DASH CONFIGURATION")) { metaString = theTranslator.Translate("DASH CONFIGURATION"); }
@@ -2690,7 +2682,7 @@ function UpdateRootMeta()
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("LANGUAGE"))
 	{
 		var nLanguage = theConfig.GetLanguage();
-			 if(nLanguage == 1) { metaString = "English"; }
+		if(nLanguage == 1) { metaString = "English"; }
 		else if(nLanguage == 2) { metaString = "\u65e5\u672c\u8a9e"; }
 		else if(nLanguage == 3) { metaString = "DEUTSCH"; }
 		else if(nLanguage == 4) { metaString = "FRANÇAIS"; }
@@ -2700,14 +2692,14 @@ function UpdateRootMeta()
 	}
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("AUDIO"))
 	{
-			 if(nCurAudioMode == 0) { metaString = theTranslator.Translate("MONO"); }
+		if(nCurAudioMode == 0) { metaString = theTranslator.Translate("MONO"); }
 		else if(nCurAudioMode == 1) { metaString = theTranslator.Translate("STEREO"); }
 		else if(nCurAudioMode == 2) { metaString = theTranslator.Translate("DOLBY SURROUND"); }
 		else { metaString = ""; }
 	}
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("VIDEO"))
 	{
-			 if(nCurVideoMode == 0) { metaString = theTranslator.Translate("NORMAL"); }
+		if(nCurVideoMode == 0) { metaString = theTranslator.Translate("NORMAL"); }
 		else if(nCurVideoMode == 1) { metaString = theTranslator.Translate("LETTERBOX"); }
 		else if(nCurVideoMode == 2) { metaString = theTranslator.Translate("WIDESCREEN"); }
 		else { metaString = ""; }
@@ -2722,10 +2714,6 @@ function UpdateRootMeta()
 		if(theConfig.GetAutoOff()) { metaString = theTranslator.Translate("ENABLED"); }
 		else { metaString = theTranslator.Translate("DISABLED"); }
 	}
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE")) { metaString = theTranslator.Translate("CYCLE"); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART")) { metaString = theTranslator.Translate("RESTART"); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT")) { metaString = theTranslator.Translate("REBOOT"); }
-	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF")) { metaString = theTranslator.Translate("POWER OFF"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO")) { metaString = theTranslator.Translate("SYSTEM INFO"); }
 	c.metaPanel.children[0].geometry.text = metaString;
 }
@@ -2850,7 +2838,12 @@ DEF theSettingsMenu Level
 			PlaySoundA();
 			theSettingsMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			strPrevMenu = "SETTINGS";
-			if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER"))
+			if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER"))
+			{
+				strCurMenu = "POWER";
+				GoToPowerOpts();
+			}
+			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER"))
 			{
 				strCurMenu = "FILE MANAGER";
 				GoToFileManager();
@@ -2929,28 +2922,11 @@ DEF theSettingsMenu Level
 				strCurMenu = "AUTO OFF";
 				theSetPanelMenu.GoTo();
 			}
-			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("REBOOT"))
-			{
-				theConfig.Reset();
-			}
-			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER OFF"))
-			{
-				theConfig.PowerOff();
-			}
-			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("CYCLE"))
-			{
-				theConfig.PowerCycle();
-			}
-			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("RESTART"))
-			{
-				theConfig.ReStartDash();
-			}
 			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("SYSTEM INFO"))
 			{
 				strCurMenu = "SYSTEM INFO";
 				theSetPanelMenu.GoTo();
 			}
-
 			theSettingsSubMenuIn.Play();
 		}
 		function OnBDown()

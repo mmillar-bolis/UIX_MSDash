@@ -184,6 +184,18 @@ function GoToSkins()
 	if( theSkinsInline.visible ) { theSkinsInline.children[0].theSkinsMenu.GoTo(); }
 	else { theSkinsInline.visible = true; }
 }
+DEF theOptsInline Inline
+{
+	visible false
+	url "power_style_menu.xap"
+	function onLoad() { theOptsInline.children[0].thePowerOptionsMenu.GoTo(); }
+}
+function GoToPowerOpts()
+{
+	theSettingsMenuIn.Play();
+	if (theOptsInline.visible) { theOptsInline.children[0].thePowerOptionsMenu.GoTo(); }
+	else { theOptsInline.visible = true; }
+}
 DEF theConfigInline Inline
 {
 	visible false

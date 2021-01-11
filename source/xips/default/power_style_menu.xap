@@ -1,0 +1,257 @@
+var nCurPlayerMenuItem;
+var PowerOptCount;
+var PowerOptMenuList;
+var PowerOptScroll;
+var PowerOptButton;
+var PowerOptSelect;
+var currentPowerOpt;
+
+DEF theGlobal Transform
+{
+	visible false
+	children
+	[
+		Shape
+		{
+			appearance Appearance { material Material {  } }
+			geometry DEF theCellWallMesh Mesh
+		}
+	]
+	scale 0 0 0
+	translation 500 0 0
+}
+function GetCellWallType()
+{
+	var IniFile = new Settings;
+	IniFile.SetIniSection( "Dashboard Settings" );
+	var skinName = IniFile.GetIniValue( "Current Skin" );
+	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm";
+	IniFile.CloseIniFile();
+}
+function initialize()
+{
+	GetCellWallType();
+	PowerOptSelect = 0;
+	PowerOptScroll = 0;
+	PowerOptButton = 0;
+	nCurPlayerMenuItem = 1;
+}
+function GetPowerOpts()
+{
+	PowerOptCount = 4;
+	var PowerOptsArray = new Array();
+	PowerOptsArray[0] = "Restart Dashboard";
+	PowerOptsArray[1] = "Restart Kernel";
+	PowerOptsArray[2] = "Reboot System";
+	PowerOptsArray[3] = "Shutdown System";
+	PowerOptMenuList = PowerOptsArray;
+}
+function UpdatePowerOptMenu()
+{
+	var c = thePowerOptionsMenu.children[0].children[0];
+	for(var i = 0; i < 4; i = i + 1)
+	{
+		var n = PowerOptScroll + i;
+		if(n >= PowerOptCount)
+		{
+			c.PowerOptions.children[i].visible = false;
+		}
+		else
+		{
+			var str;
+			str = PowerOptMenuList[n];
+			c.PowerOptions.children[i].visible = true;
+			c.PowerOptions.children[i].visible = true;
+			c.PowerOptions.children[i].children[0].appearance.material.name = "CellEgg/Partsz";
+			c.PowerOptions.children[i].children[0].geometry.text = str;
+			if(i == PowerOptButton)
+			{
+				c.PowerOptions.children[i].children[0].appearance.material.name = "NavType";
+			}
+		}
+	}
+	c.MU_L3_button_no.children[0].appearance.material.name = "FlatSurfaces";
+	c.MU_L3_button_yes.children[0].appearance.material.name = "FlatSurfaces";
+	c.S_Home_text_no.children[0].appearance.material.name = "NavType";
+	c.S_Home_text_yes.children[0].appearance.material.name = "NavType";
+	if (nCurPlayerMenuItem == 0)
+	{
+		c.MU_L3_button_yes.children[0].appearance.material.name = "GameHilite";
+		c.S_Home_text_yes.children[0].appearance.material.name = "Material #133";
+	}
+	if (nCurPlayerMenuItem == 1)
+	{
+		c.MU_L3_button_no.children[0].appearance.material.name = "GameHilite";
+		c.S_Home_text_no.children[0].appearance.material.name = "Material #133";
+	}
+}
+function StartPowerOptMenu()
+{
+	var c = thePowerOptionsMenu.children[0].children[0];
+	nCurPlayerMenuItem = 1;
+}
+function DoReset()
+{
+	theRestartLevel.GoTo();
+}
+function DoAction()
+{
+	/*var c = thePowerOptionsMenu.children[0].children[0];
+	var info = new Settings;
+	info.file = "A:\\system\\uix.ini";
+	info.section = "Dashboard Settings";
+	if (nCurPlayerMenuItem == 1) { ShowPowerOptInfo(); }
+	else if (nCurPlayerMenuItem == 0)
+	{
+		theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
+		AskQuestion("PowerOpt change will not take full effect until you restart the dash.  Would you like to restart now?", "thePowerOptionsInline.children[0].DoReset()", "", 0);
+	}*/
+	if (nCurPlayerMenuItem == 1)
+	{
+		PlaySoundB();
+		theSettingsMenu.GoBackTo();
+		theGamesSubMenuOut.Play(); }
+	else if (nCurPlayerMenuItem == 0)
+	{
+		if (PowerOptSelect==0) {theConfig.ReStartDash();}
+		if (PowerOptSelect==1) {theConfig.Reset();}
+		if (PowerOptSelect==2) {theConfig.PowerCycle();}
+		if (PowerOptSelect==3) {theConfig.PowerOff();}
+	}
+}
+
+var restarting;
+DEF theRestartLevel Level
+{
+	function OnArrival()
+	{
+		DisableAmbientAudio();
+		ClosePopup();
+		restarting = true;
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
+	behavior
+	{
+		sleep 1.1;
+		if(restarting) { theConfig.ReStartDash(); }
+	}
+	function OnActivate()
+	{
+		DisableAmbientAudio();
+		ClosePopup();
+		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
+		else { theXboxLogo4x3Background.isBound = true; }
+	}
+}
+DEF thePowerOptionsMenu Level
+{
+	archive "settings_panel.xip"
+	children
+	[
+		Inline
+		{
+			url "settings_panel/default4.xap"
+			function onLoad()
+			{
+				StartPowerOptMenu();
+				GetPowerOpts();
+				UpdatePowerOptMenu();
+			}
+		}
+	]
+	path Viewpoint
+	{
+		fieldOfView 1.287000
+		orientation 0.103700 0.994600 0.006310 -0.122200
+		position 96.940002 4.728000 -248.600006
+		jump false
+	}
+	shell Transform
+	{
+		scale 6.15 6.15 6.15
+		translation 97.67 4.819000 -251.870003
+		children
+		[
+			DEF theSettingsMenuShellSpinner Spinner
+			{
+				rpm 0
+				axis 0 0 0
+				children
+				[
+					DEF theSettingsMenuShellWaver Waver
+					{
+						rpm 2.25//rpm 0.75
+						children
+						[
+							Shape
+							{
+								appearance Appearance
+								{
+									material MaxMaterial { name "InnerWall_01" }
+									texture ImageTexture { alpha true url "shell.xbx" }
+								}
+								geometry USE theCellWallMesh
+							}
+							Shape
+							{
+								appearance MaxMaterial { name "InnerWall_02" }
+								geometry Sphere
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+	control DEF theMusicPlayJoystick Joystick
+	{
+		function OnADown()
+		{
+			DoAction();
+		}
+		function OnBDown()
+		{
+			//theConfig.ChangePowerOpt( currentPowerOpt );
+			PlaySoundB();
+			theMainMenu.GoBackTo();
+			theMusicSubMenuOut.Play();
+		}
+		function OnLeftThumbMoveLeft()
+		{
+			if (nCurPlayerMenuItem == 0) { return; }
+			else { nCurPlayerMenuItem = 0; }
+			UpdatePowerOptMenu();
+		}
+		function OnLeftThumbMoveRight()
+		{
+			if (nCurPlayerMenuItem == 1) { return; }
+			else { nCurPlayerMenuItem = 1; }
+			UpdatePowerOptMenu();
+		}
+		function OnLeftThumbMoveUp()
+		{
+			if (PowerOptSelect <= 0) { return; }
+			PlaySoundMenuChange();
+			PowerOptSelect = PowerOptSelect - 1;
+			if (PowerOptButton == 0) { PowerOptScroll = PowerOptScroll - 1; }
+			else { PowerOptButton = PowerOptButton - 1; }
+			//theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
+			UpdatePowerOptMenu();
+		}
+		function OnLeftThumbMoveDown()
+		{
+			if (PowerOptSelect >= PowerOptCount - 1) {  return; }
+			PlaySoundMenuChange();
+			PowerOptSelect = PowerOptSelect + 1;
+			if (PowerOptButton == 8) { PowerOptScroll = PowerOptScroll + 1; }
+			else { PowerOptButton = PowerOptButton + 1; }
+			//theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
+			UpdatePowerOptMenu();
+		}
+	}
+	function OnActivate()
+	{
+		EnableAudio();
+	}
+}
