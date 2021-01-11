@@ -1362,17 +1362,21 @@ function StartPanelMenu()
 		bInRecoveryKeySequence = false;
 		c.PanelHeading.text = theTranslator.Translate("SYSTEM INFO");
 		if(theConfig.GetGameRegion() == "JAPAN") { c.QuestionText.text = theTranslator.Translate("JapanSystemInfo"); }
-		/*else
+		else
 		{
-			var theSysInfoFile = new File;
+			/*var theSysInfoFile = new File;
 			theSysInfoFile.path = "A:\\system\\systeminfo.dat";
-			c.QuestionText.text = theSysInfoFile.readText();
-		}*/
-		c.QuestionText.text = c.QuestionText.text + "\n   Kernel:" + theConfig.GetROMVersion();
-		c.QuestionText.text = c.QuestionText.text + "\rDashboard: User Interface X";
-		c.QuestionText.text = c.QuestionText.text + "\r Base Ver:" + theConfig.GetXdashVersion();
-		c.QuestionText.text = c.QuestionText.text + "\rPatch Ver: 1.05.01.03";
-		c.QuestionText.text = c.QuestionText.text + "\r  Res Ver: 1.00.01.00";
+			c.QuestionText.text = theSysInfoFile.readText();*/
+			c.QuestionText.text = theTranslator.Translate("--------------------------------");
+			c.QuestionText.text = c.QuestionText.text + "\rSystem: Xbox\u2122";
+			c.QuestionText.text = c.QuestionText.text + "\rKernel: NT";
+			c.QuestionText.text = c.QuestionText.text + "\rVersion: " + theConfig.GetROMVersion();
+			c.QuestionText.text = c.QuestionText.text + "\nDash: User Interface X";
+			c.QuestionText.text = c.QuestionText.text + "\rBase Ver: " + theConfig.GetXdashVersion();
+			c.QuestionText.text = c.QuestionText.text + "\rPatch Ver: 1.05.01.03";
+			c.QuestionText.text = c.QuestionText.text + "\rXIP Ver: 1.00.01.00";
+			c.QuestionText.text = c.QuestionText.text + "\r--------------------------------";
+		}
 		c.ButtonGroup.visible = false;
 		c.ConsoleIcon.visible = true;
 		c.Group07.visible = false;
