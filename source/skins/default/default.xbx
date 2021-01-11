@@ -4,7 +4,7 @@
 #
 #	Xbox Dash Skin Material Data
 #
-#	Skin Name - MS Dash - Green
+#	Skin Name - MS Dash - Default
 #
 #	
 #	example...
@@ -17,11 +17,11 @@
 #
 
 [SkinInfo]
-Author=TeamUIX
-DateCreated=10-31-04
+Author=M.Millar
+DateCreated=01-10-21
 Version=1.0
-MadeUsing=MS Presets/Photoshop
-Credits=foood.net for DVD icons
+MadeUsing=Vim
+Credits=TeamUIX
 
 [BGMesh]
 BGMesh1-rpm=2
