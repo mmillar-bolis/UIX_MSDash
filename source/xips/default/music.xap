@@ -462,7 +462,7 @@ function PlayCurrentSong()
 }
 function SetMusicPlayPos(nPos)
 {
-	if(bTrackListVisible == true)
+	/*if (bTrackListVisible == true)
 	{
 		var nNewPos = nPos;
 		if(nNewPos < 0) { nNewPos = 0; }
@@ -476,7 +476,28 @@ function SetMusicPlayPos(nPos)
 		if(m < 10) { m = "0" + m; }
 		if(s < 10) { s = "0" + s; }
 		theMusicPlayMenu.children[0].children[0].MusicTimeText.text = m + ":" + s;
-	}
+	}*/
+	if (bTrackListVisible == true)
+	{
+		var track_length;
+		var current_track_pos;
+		var nNewPos = nPos;
+		if (nNewPos <0) {nNewPos = 0; }
+		else if (nNewPos> 1) {nNewPos = 1; }
+
+		var x = -1.579 + (0.730 * nNewPos);
+		var y = -0.6701;
+		var z = 0.1081;
+		theMusicPlayMenu.children[0].children[0].MU_L3_timeslider.SetTranslation(x, y, z);
+		var m = theMusicPlayer.getMinutes();
+		var s = theMusicPlayer.getSeconds();
+		if (m <10) {m = "0" + m; }
+		if (s <10) {s = "0" + s; }
+
+		theMusicPlayMenu.children[0].children[0].MusicTimeText.text = m + ":" + s;
+		current_track_pos = m + ":" + s;
+		track_length = theDiscDrive.FormatTrackTime(playlist [nPlayCursor]);
+		if (current_track_pos == track_length) {DoEndOfAudio (); }}
 }
 function UpdateEditPlayerMenu()
 {
