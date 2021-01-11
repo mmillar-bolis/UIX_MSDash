@@ -1364,9 +1364,8 @@ function StartPanelMenu()
 		if(theConfig.GetGameRegion() == "JAPAN") { c.QuestionText.text = theTranslator.Translate("JapanSystemInfo"); }
 		else
 		{
-			/*var theSysInfoFile = new File;
-			theSysInfoFile.path = "A:\\system\\systeminfo.dat";
-			c.QuestionText.text = theSysInfoFile.readText();*/
+			var theSysInfoFile = new File;
+			theSysInfoFile.path = "A:\\system\\version.dat";
 			c.QuestionText.text = theTranslator.Translate("\rSystem: Xbox\u2122");
 			c.QuestionText.text = c.QuestionText.text + "\rProc: Pentium III";
 			c.QuestionText.text = c.QuestionText.text + "\rTemp: " + theConfig.GetInternalTemp() + "\u00B0C";
@@ -1374,9 +1373,8 @@ function StartPanelMenu()
 			c.QuestionText.text = c.QuestionText.text + "\rVersion: " + theConfig.GetROMVersion();
 			c.QuestionText.text = c.QuestionText.text + "\rArch: x86 (32-Bit)";
 			c.QuestionText.text = c.QuestionText.text + "\nDash: User Interface X";
-			c.QuestionText.text = c.QuestionText.text + "\rBase Ver: " + theConfig.GetXdashVersion();
-			c.QuestionText.text = c.QuestionText.text + "\rPatch Ver: 1.05.01.03";
-			c.QuestionText.text = c.QuestionText.text + "\rXIP Ver: 1.00.01.00";
+			c.QuestionText.text = c.QuestionText.text + "\rBase Ver: " + theConfig.GetXdashVersion() + "\r";
+			c.QuestionText.text = c.QuestionText.text + theSysInfoFile.readText();
 		}
 		c.ButtonGroup.visible = false;
 		c.ConsoleIcon.visible = true;
