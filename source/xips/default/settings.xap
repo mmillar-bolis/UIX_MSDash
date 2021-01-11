@@ -1368,10 +1368,11 @@ function StartPanelMenu()
 			theSysInfoFile.path = "A:\\system\\systeminfo.dat";
 			c.QuestionText.text = theSysInfoFile.readText();
 		}*/
-		c.QuestionText.text = c.QuestionText.text + "\nKernel:" + theConfig.GetROMVersion();
+		c.QuestionText.text = c.QuestionText.text + "\n   Kernel:" + theConfig.GetROMVersion();
 		c.QuestionText.text = c.QuestionText.text + "\rDashboard: User Interface X";
-		c.QuestionText.text = c.QuestionText.text + "\rDash Ver: 01.05.01.03";
-		c.QuestionText.text = c.QuestionText.text + "\rBase Ver:" + theConfig.GetXdashVersion();
+		c.QuestionText.text = c.QuestionText.text + "\r Base Ver:" + theConfig.GetXdashVersion();
+		c.QuestionText.text = c.QuestionText.text + "\rPatch Ver: 1.05.01.03";
+		c.QuestionText.text = c.QuestionText.text + "\r  Res Ver: 1.00.01.00";
 		c.ButtonGroup.visible = false;
 		c.ConsoleIcon.visible = true;
 		c.Group07.visible = false;
