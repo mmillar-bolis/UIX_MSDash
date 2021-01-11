@@ -109,8 +109,9 @@ function DoAction()
 	if (nCurPlayerMenuItem == 1)
 	{
 		PlaySoundB();
-		theSettingsMenu.GoBackTo();
-		theGamesSubMenuOut.Play(); }
+		theMainMenu.GoBackTo();
+		theGamesSubMenuOut.Play();
+	}
 	else if (nCurPlayerMenuItem == 0)
 	{
 		if (PowerOptSelect==0) {theConfig.ReStartDash();}
