@@ -2576,7 +2576,7 @@ function StartSettingsMenu()
 	}
 	var sSettingsMenu = new Array(7);
 	var index = 0;
-	sSettingsMenu[index] = theTranslator.Translate("POWER");
+	sSettingsMenu[index] = theTranslator.Translate("MEMORY MANAGER"); // Reusing string var for power menu
 	index = index + 1;
 	sSettingsMenu[index] = theTranslator.Translate("FILE MANAGER");
 	index = index + 1;
@@ -2650,7 +2650,7 @@ function SetVideoModeIcon(nMode)
 function MenuIcon()
 {
 	var c = theSettingsMenu.children[0].children[0];
-	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER")) { ShowIcon(c.AutoOffIcon); }
+	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.AutoOffIcon); } // Reusing string var for power menu
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { ShowIcon(c.ConsoleIcon); }
 	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { ShowIcon(c.ConsoleIcon); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { ShowIcon(c.GlobeIcon); }
@@ -2672,7 +2672,7 @@ function UpdateRootMeta()
 {
 	var c = theSettingsMenu.children[0].children[0];
 	var metaString = "";
-	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER")) { metaString = theTranslator.Translate("POWER"); }
+	if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); } // Reusing string var for power menu
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER")) { metaString = theTranslator.Translate("FILE MANAGER"); }
 	//else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) { metaString = theTranslator.Translate("MEMORY MANAGER"); }
 	else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("NETWORK SETTINGS")) { metaString = theTranslator.Translate("NETWORK SETTINGS"); }
@@ -2838,9 +2838,9 @@ DEF theSettingsMenu Level
 			PlaySoundA();
 			theSettingsMenu.children[0].children[0].MU_select_pod_HL.children[0].appearance.material.param = 1;
 			strPrevMenu = "SETTINGS";
-			if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("POWER"))
+			if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("MEMORY MANAGER")) // Reusing string var for power menu
 			{
-				strCurMenu = "POWER";
+				strCurMenu = "MEMORY MANAGER";
 				GoToPowerOpts();
 			}
 			else if(sSettingsElements[nCurSettingsMenuItem] == theTranslator.Translate("FILE MANAGER"))
