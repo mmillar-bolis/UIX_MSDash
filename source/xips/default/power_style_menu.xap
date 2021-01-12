@@ -250,6 +250,38 @@ DEF thePowerOptionsMenu Level
 			//theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
 			UpdatePowerOptMenu();
 		}
+		function OnMoveLeft()
+		{
+			if (nCurPlayerMenuItem == 0) { return; }
+			else { nCurPlayerMenuItem = 0; }
+			UpdatePowerOptMenu();
+		}
+		function OnMoveRight()
+		{
+			if (nCurPlayerMenuItem == 1) { return; }
+			else { nCurPlayerMenuItem = 1; }
+			UpdatePowerOptMenu();
+		}
+		function OnMoveUp()
+		{
+			if (PowerOptSelect <= 0) { return; }
+			PlaySoundMenuChange();
+			PowerOptSelect = PowerOptSelect - 1;
+			if (PowerOptButton == 0) { PowerOptScroll = PowerOptScroll - 1; }
+			else { PowerOptButton = PowerOptButton - 1; }
+			//theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
+			UpdatePowerOptMenu();
+		}
+		function OnMoveDown()
+		{
+			if (PowerOptSelect >= PowerOptCount - 1) {  return; }
+			PlaySoundMenuChange();
+			PowerOptSelect = PowerOptSelect + 1;
+			if (PowerOptButton == 8) { PowerOptScroll = PowerOptScroll + 1; }
+			else { PowerOptButton = PowerOptButton + 1; }
+			//theConfig.ChangePowerOpt( PowerOptMenuList[PowerOptSelect] );
+			UpdatePowerOptMenu();
+		}
 	}
 	function OnActivate()
 	{
