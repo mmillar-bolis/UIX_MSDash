@@ -63,13 +63,11 @@ function MusicPlayerFastForward()
 DEF theMusicCollection  MusicCollection
 {
 	function OnCopyComplete() { theMusicInline.children[0].OnMusicCopyComplete(); }
-
 	function OnCopyProgressChanged()
 	{
 		UpdateProgressText(theMusicCollection.GetUpdateString());
 		SetProgress(copyProgress);
 	}
-
 	function OnAddSoundtrackNewSongFailed(ErrorCode)
 	{
 		g_nRec = ErrorCode;
@@ -92,9 +90,9 @@ DEF theMusicPlayer AudioClip
 	url "cd:"
 	sendProgress true
 	volume 0.86
-	function OnProgressChanged()	  { if (bInMusicMenu == true) { theMusicInline.children[0].SetMusicPlayPos(progress); } }
+	function OnProgressChanged() { if (bInMusicMenu == true) { theMusicInline.children[0].SetMusicPlayPos(progress); } }
 	function OnTransportModeChanged() { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTransportIndicators(); } }
-	function OnTrackChanged()		  { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTrackList(); } }
+	function OnTrackChanged() { if (bInMusicMenu == true) { theMusicInline.children[0].UpdateTrackList(); } }
 	function OnEndOfAudio()
 	{
 		if (bInMusicMenu == true) { theMusicInline.children[0].DoEndOfAudio(); }
@@ -165,7 +163,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -211,7 +209,7 @@ DEF theMusicPlayWithSubsInline Inline
 {
 	visible false
 	url "music_play_with_subs.xap"
-	function onLoad()  { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
+	function onLoad() { theMusicPlayWithSubsInline.children[0].theMusicPlayWithSubs.GoTo(); }
 }
 function GoToMusicPlayWithSubs()
 {
@@ -222,7 +220,7 @@ DEF theSettingsStyleMenuInline Inline
 {
 	visible false
 	url "settings_style_menu.xap"
-	function onLoad()  { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
+	function onLoad() { theSettingsStyleMenuInline.children[0].theSettingsStyleMenu.GoTo(); }
 }
 function GoToSettingsStyleMenu()
 {
@@ -267,9 +265,9 @@ function AutoLaunchCheck()
 }
 function AutoLaunch()
 {
-	if (theDiscDrive.discType == "Audio")   { StartCDPlayer(); }
-	else if (theDiscDrive.discType == "Video")   { ReStartDash(); }
-	else if (theDiscDrive.discType == "Title")   { theLauncherLevel.GoTo(); }
+	if (theDiscDrive.discType == "Audio") { StartCDPlayer(); }
+	else if (theDiscDrive.discType == "Video") { ReStartDash(); }
+	else if (theDiscDrive.discType == "Title") { theLauncherLevel.GoTo(); }
 	else if (theDiscDrive.discType == "unknown") { TellUser("ERROR MESSAGE 1",""); }
 }
 function ReStartDash()
@@ -334,29 +332,29 @@ function ApplyDashStyle()
 	if( dashStyle == "modded" )//we're using the modded look so enable all the eye candy
 	{
 		theScreen.MotionStart();
-		c.Large_X_Spinner.rpm	= 1;
-		c.Pod_1_Spinner.rpm		= 1.3;
-		c.Pod_1a_Spinner.rpm	= 5.75;
-		c.Pod_1b_Spinner.rpm	= 5.75;
-		c.Pod_2_Spinner.rpm		= 1.3;
-		c.Pod_2a_Spinner.rpm	= 5.75;
-		c.Pod_2b_Spinner.rpm	= 5.75;
-		c.Pod_3_Spinner.rpm		= 1.3;
-		c.Pod_3a_Spinner.rpm	= 5.75;
-		c.Pod_3b_Spinner.rpm	= 5.75;
-		c.Pod_4_Spinner.rpm		= 1.3;
-		c.Pod_4a_Spinner.rpm	= 5.75;
-		c.Pod_4b_Spinner.rpm	= 5.75;
+		c.Large_X_Spinner.rpm = 1;
+		c.Pod_1_Spinner.rpm = 1.3;
+		c.Pod_1a_Spinner.rpm = 5.75;
+		c.Pod_1b_Spinner.rpm = 5.75;
+		c.Pod_2_Spinner.rpm = 1.3;
+		c.Pod_2a_Spinner.rpm = 5.75;
+		c.Pod_2b_Spinner.rpm = 5.75;
+		c.Pod_3_Spinner.rpm = 1.3;
+		c.Pod_3a_Spinner.rpm = 5.75;
+		c.Pod_3b_Spinner.rpm = 5.75;
+		c.Pod_4_Spinner.rpm = 1.3;
+		c.Pod_4a_Spinner.rpm = 5.75;
+		c.Pod_4b_Spinner.rpm = 5.75;
 		c.MainPod_1_Spinner.rpm = -1;
 		c.MainPod_2_Spinner.rpm = 1.3;
 		c.MainPod_3_Spinner.rpm = -2.3;
 		c.MainPod_4_Spinner.rpm = -1.0;
-		c.Stock_Orb.visible		   = false;
-		c.podsupport_ring.visible  = false;
+		c.Stock_Orb.visible = false;
+		c.podsupport_ring.visible = false;
 	}
 	else//we're going with the stock look so make sure it'll pass the 'Gcue stock test' ;)
 	{
-		c.Modded_Orb.visible	   = false;
+		c.Modded_Orb.visible = false;
 		c.Dark_Pod_Backing.visible = false;
 	}
 }
@@ -521,19 +519,19 @@ DEF thePeriodicSounds Group
 			periodNoise 15 // maximum random seconds to add to period
 			children
 			[
-				AudioClip { url "audio/ambient audio/comm voice 1.wav"  fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 2.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 1.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 2.wav" fade 2 volume 0.85 }
 				AudioClip { url "audio/ambient audio/comm static 1.wav" fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 3.wav"  fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 4.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 3.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 4.wav" fade 2 volume 0.85 }
 				AudioClip { url "audio/ambient audio/comm static 2.wav" fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 5.wav"  fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 6.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 5.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 6.wav" fade 2 volume 0.85 }
 				AudioClip { url "audio/ambient audio/comm static 3.wav" fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 7.wav"  fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 8.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 7.wav" fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 8.wav" fade 2 volume 0.85 }
 				AudioClip { url "audio/ambient audio/comm static 4.wav" fade 2 volume 0.85 }
-				AudioClip { url "audio/ambient audio/comm voice 9.wav"  fade 2 volume 0.85 }
+				AudioClip { url "audio/ambient audio/comm voice 9.wav" fade 2 volume 0.85 }
 			]
 		}
 		PeriodicAudioGroup
@@ -618,26 +616,25 @@ DEF theMemorySaveSelectSound AudioClip { url "audio/memory audio/memory memory s
 DEF theSettingsLangSound AudioClip { url "audio/settings audio/settings lang submenu sel.wav" volume 0.90 }
 DEF theSettingsParentSound AudioClip { url "audio/settings audio/settings parent submenu sel.wav" volume 0.90 }
 
-function PlaySoundError()		{ theErrorSound.Play();		 }
-function PlaySoundDelete()		{ theDeleteSound.Play();	 }
-function PlaySoundA()			{ theASound.Play();			 }
-function PlaySoundB()			{ theBSound.Play();			 }
-function PlaySoundMenuChange()	{ theMenuChangeSound.Play(); }
+function PlaySoundError() { theErrorSound.Play(); }
+function PlaySoundDelete() { theDeleteSound.Play(); }
+function PlaySoundA() { theASound.Play(); }
+function PlaySoundB() { theBSound.Play(); }
+function PlaySoundMenuChange() { theMenuChangeSound.Play(); }
 
 DEF theScreenSaver ScreenSaver
 {
 	function OnStart()
 	{
-		if( dashStyle == "modded" ) { StartScreenSaverView();  }
+		if( dashStyle == "modded" ) { StartScreenSaverView(); }
 		else { theScreen.brightness = 0.1; }
 	}
 
 	function OnEnd()
 	{
-		if( dashStyle == "modded" ) { StopScreenSaverView();   }
+		if( dashStyle == "modded" ) { StopScreenSaverView(); }
 		else { theScreen.brightness = 1; }
 	}
-
 	function OnDelay2() { if( dashStyle == "modded" ) { MainMenuPositionTwo();   } }
 	function OnDelay3() { if( dashStyle == "modded" ) { MainMenuPositionThree(); } }
 }
@@ -646,12 +643,9 @@ NavigationInfo
 	type "sample"
 	headlight false
 }
-
 DEF HighlightTexture ImageTexture { url "menu_hilight.xbx" }
-
-function GetLanguage()			{ return theConfig.GetLanguage(); }
+function GetLanguage() { return theConfig.GetLanguage(); }
 function SetLanguage(nLanguage) { return theConfig.SetLanguage(nLanguage); }
-
 DEF theBackground Background
 {
 	skyColor 0 0 0
@@ -659,8 +653,8 @@ DEF theBackground Background
 }
 function ClosePopup()
 {
-	if (g_bKeyboardDisplayed)	{ CloseKeyboard(); }
-	if (g_bPanelDisplayed)		{ CloseMessage();  }
+	if (g_bKeyboardDisplayed) { CloseKeyboard(); }
+	if (g_bPanelDisplayed) { CloseMessage(); }
 }
 DEF theDVDPlayerInline Inline
 {
@@ -701,7 +695,6 @@ DEF theDiscDrive DiscDrive
 		}
 		else { CloseMessage(); }
 	}
-
 	function OnDiscInserted() { AutoLaunchCheck(); }
 }
 function StartDVDPlayer()
@@ -772,7 +765,7 @@ var nCurMainMenuItem;
 function UpdateMainMenu()
 {
 	if( m_nbuttons == 4 ) { Update4ButtonMainMenu(); }
-	else  { Update3ButtonMainMenu(); }
+	else { Update3ButtonMainMenu(); }
 }
 function Update4ButtonMainMenu()
 {
@@ -782,7 +775,7 @@ function Update4ButtonMainMenu()
 	c.game_select_pod_inner04.visible = false;      // Button 3 Flashing Orb
 	c.game_select_pod_inner03.visible = false;      // Button 4 Flashing Orb
 
-	if (nCurMainMenuItem == 0)  // Button 1
+	if (nCurMainMenuItem == 0) // Button 1
 	{
 		c.game_select_pod_inner02.visible = true;
 		//simple 'if' check to make the pod supports move with menu change to comply with stock look
@@ -802,7 +795,7 @@ function Update4ButtonMainMenu()
 		c.SettingsTextMaterial.name = "NavType";
 
 	}
-	else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
+	else if (nCurMainMenuItem == 1) // Button 2 (Default position)
 	{
 		c.game_select_pod_inner.visible = true;
 		c.theMenuItems.SetRotation(0, 0, 1, 0.0);
@@ -864,7 +857,7 @@ function Update3ButtonMainMenu()
 	c.game_select_pod_inner.visible = false;        // Button 2 Flashing Orb
 	c.game_select_pod_inner03.visible = false;      // Button 3 Flashing Orb
 
-	if (nCurMainMenuItem == 0)  // Button 1
+	if (nCurMainMenuItem == 0) // Button 1
 	{
 		c.game_select_pod_inner02.visible = true;
 		c.theMenuItems.SetRotation(0, 0, 1, -0.45);
@@ -878,9 +871,8 @@ function Update3ButtonMainMenu()
 		c.MemoryTextMaterial.name = "HilightedType";
 		c.MusicTextMaterial.name = "NavType";
 		c.SettingsTextMaterial.name = "NavType";
-
 	}
-	else if (nCurMainMenuItem == 1)  // Button 2 (Default position)
+	else if (nCurMainMenuItem == 1) // Button 2 (Default position)
 	{
 		c.game_select_pod_inner.visible = true;
 		c.theMenuItems.SetRotation(0, 0, 1, 0.0);
@@ -984,7 +976,7 @@ DEF theMainMenu Level
 							Shape
 							{
 								appearance Appearance { material MaxMaterial { name "InnerWall_02" } }
-								geometry Sphere  { radius 1 }
+								geometry Sphere { radius 1 }
 							}
 						]
 					}
@@ -1130,9 +1122,9 @@ function initialize()
 	IniFile.CloseIniFile();
 	theCellWallMesh.url = "A:/skins/" + skinName + "/cellwall.xm";
 
-	theScreenSaver.StartAfter(  600  );
-	theScreenSaver.SetDelay2 (  900  );
-	theScreenSaver.SetDelay3 (  1200 );
+	theScreenSaver.StartAfter(600);
+	theScreenSaver.SetDelay2(900);
+	theScreenSaver.SetDelay3(1200);
 	theConfig.SetAutoOffTime( 3.0 ); //how long till system powers itself off after inactivity
 	InitializeMenus(); //not needed with new hd menu - use to init menus if using drop down menus
 	m_nbuttons = 4;//number of buttons in main menu
@@ -1263,7 +1255,6 @@ DEF theJapaneseKeyboardLayer Layer
 		fieldOfView 1.2
 		position 10 9 145
 	}
-
 	children
 	[
 		DEF theJapaneseKeyboardTransform Transform
@@ -1330,7 +1321,7 @@ function CloseKeyboard()
 	if (g_bKeyboardDisplayed == false) { return; }
 
 	var nKeyboardLanguage = theConfig.GetLanguage();
-	if (nKeyboardLanguage == 2)  // Japanese Language
+	if (nKeyboardLanguage == 2) // Japanese Language
 	{
 		var c = theJapaneseKeyboardTransform.children[0].children[0];
 		strKeyboardEdit = c.theJKeyboard.string;
@@ -1381,10 +1372,10 @@ function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 	strKeyboardCancelFunction = strCancelFunction;
 
 	var nKeyboardLanguage = theConfig.GetLanguage();
-	if (nKeyboardLanguage == 2)  // Japanese Language
+	if (nKeyboardLanguage == 2) // Japanese Language
 	{
 		var c = theJapaneseKeyboardTransform.children[0].children[0];
-		c.theJKeyboard.selectKey( 8, 10 );        // Default the key selection to the DONE key
+		c.theJKeyboard.selectKey( 8, 10 ); // Default the key selection to the DONE key
 		c.theJKeyboard.string = "";
 		c.theJKeyboard.string = strKeyboardEdit;
 		c.theJKeyboard.shift = 0;
@@ -1400,7 +1391,7 @@ function ShowKeyboard(strTitle, strEdit, strDoneFunction, strCancelFunction)
 	else
 	{
 		var c = theKeyboardTransform.children[0].children[0];
-		c.theKeyboard.selectKey( 0, 0 );        // Default the key selection to the DONE key
+		c.theKeyboard.selectKey( 0, 0 ); // Default the key selection to the DONE key
 		c.theKeyboard.string = "";
 		c.theKeyboard.string = strKeyboardEdit;
 		c.theKeyboard.shift = 0;
@@ -1710,7 +1701,7 @@ function OnQuestionNo()
 {
 	var strNoFunction = strMessageNoFunction;
 	CloseMessage();
-	if(strNoFunction != "") {  eval(strNoFunction); }
+	if(strNoFunction != "") { eval(strNoFunction); }
 }
 DEF theXboxLogo4x3Background Background
 {
@@ -1733,7 +1724,6 @@ DEF theLauncherLevel Level
 		if(theConfig.GetVideoMode() == 2) { theXboxLogo16x9Background.isBound = true; }
 		else { theXboxLogo4x3Background.isBound = true; }
 	}
-
 	behavior
 	{
 		sleep 1.1;
@@ -1880,7 +1870,7 @@ function ShowFileManagerFunctions()
 	c.MessageText5.text = "New Folder";
 	if(rename) { nCurManagerButton = 3; }
 	else if(create) { nCurManagerButton = 4; }
-	else  { nCurManagerButton = 0; }
+	else { nCurManagerButton = 0; }
 	nManagerButtonCount = 4;
 	UpdateFileManagerFunctionsMenu();
 	if (g_bPanelDisplayed == false) { theFileManagerInline.children[0].theFileManagerJoystick.isBound = true; }

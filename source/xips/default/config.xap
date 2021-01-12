@@ -16,7 +16,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -442,7 +442,7 @@ DEF theConfigPanel Level
 		position 107.8 1.422000 -219.050006
 		orientation 0.03682 0.9993 0.00299 -0.1622
 		fieldOfView 1.287
-	jump false
+		jump false
 	}
 	control DEF theConfigJoystick Joystick
 	{
@@ -488,12 +488,10 @@ DEF theConfigPanel Level
 				eval(configSelect[LV2Item]);
 			}
 		}
-
 		function OnLeftThumbMoveDown() { SelectConfigDown(); }
 		function OnLeftThumbMoveUp() { SelectConfigUp(); }
 		function OnMoveDown() { SelectConfigDown(); }
 		function OnMoveUp() { SelectConfigUp(); }
-
 		function OnBDown()
 		{
 			PlaySoundB();
@@ -501,7 +499,7 @@ DEF theConfigPanel Level
 			c.MU_back_pod_HL.children[0].appearance.material.param = 1;
 			if(inSubs == false)
 			{
-				inLV2  = false;
+				inLV2 = false;
 				inSubs = true;
 				BuildConfigList();
 				UnTabSlot(LV2Hold);
@@ -534,7 +532,7 @@ function SaveSettings()
 		theHardDrive.DeleteThisFile( "A:\\system\\uix.ini" );
 		theHardDrive.CopyThisFile( "A:\\system\\uix.temp", "A:\\system\\uix.ini" );
 		theHardDrive.DeleteThisFile( "A:\\system\\uix.temp" );
-		TellUser("Settings saved!  You may have to reboot for new settings to take effect.","theConfigInline.children[0].LeaveConfig()");
+		TellUser("Settings saved! You may have to reboot for new settings to take effect.","theConfigInline.children[0].LeaveConfig()");
 	}
 }
 function DeleteTemps()
