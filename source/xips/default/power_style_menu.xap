@@ -40,10 +40,10 @@ function GetPowerOpts()
 {
 	PowerOptCount = 4;
 	var PowerOptsArray = new Array();
-	PowerOptsArray[0] = "RESTART";
-	PowerOptsArray[1] = "REBOOT";
-	PowerOptsArray[2] = "CYCLE";
-	PowerOptsArray[3] = "POWER_OFF";
+	PowerOptsArray[0] = theTranslator.Translate("RESTART");
+	PowerOptsArray[1] = theTranslator.Translate("REBOOT");
+	PowerOptsArray[2] = theTranslator.Translate("CYCLE");
+	PowerOptsArray[3] = theTranslator.Translate("POWER OFF");
 	PowerOptMenuList = PowerOptsArray;
 }
 function UpdatePowerOptMenu()
