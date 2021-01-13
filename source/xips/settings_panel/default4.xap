@@ -355,7 +355,7 @@ DEF auto_off Transform
 					scaleOrientation 0.105500 -0.014910 -0.994300 -0.050620
 					translation 3.985000 2.638000 -8.418000
 				}
-				DEF ConsoleIcon Transform
+				DEF AutoOffIcon Transform
 				{
 					fade 0.25
 					translation 9.409000 -5.418000 -0.554700
@@ -364,60 +364,114 @@ DEF auto_off Transform
 					[
 						Waver
 						{
-							axis 0 1 0
 							rpm 5
-							field 0.392
 							children
 							[
-								Transform
+								DEF S_Main_clock_hourhand01 Transform
 								{
-									scale 1.9 1.9 1.9
 									children
 									[
-										DEF Console Transform
+										Shape
 										{
-											children
-											[
-												Shape
+											appearance Appearance
+											{
+												material MaxMaterial
 												{
-													appearance Appearance
-													{
-														material MaxMaterial
-														{
-															name "IconParts"
-														}
-													}
-													geometry DEF console-FACES Mesh { url "console-FACES.xm" }
+													name "Metal_Chrome"
 												}
-											]
-											rotation -0.013930 -0.925800 -0.377700 -3.633000
-											scale 0.010248 0.010248 0.010248
-											//scaleOrientation -0.673100 -0.699600 -0.239800 -0.693000
-											translation -2.3 0 0
-										}
-										DEF ConsoleShell Transform
-										{
-											children
-											[
-												Shape
-												{
-													appearance Appearance
-													{
-														material MaxMaterial
-														{
-															//name "FlatSurfaces"
-															name "Metal_Chrome"
-														}
-													}
-													geometry USE console-FACES
-												}
-											]
-											rotation -0.013930 -0.925800 -0.377700 -3.633000
-											scale 0.010248 0.010248 0.010248
-											//scaleOrientation -0.673100 -0.699600 -0.239800 -0.693000
-											translation -2.3 0 0
+											}
+											geometry DEF S_Main_clock_hourhand01-FACES Mesh { url "S_Main_clock_hourhand01-FACES.xm" }
 										}
 									]
+									rotation -0.946900 -0.227300 0.227300 -1.625000
+									scale 0.026890 0.026890 0.026890
+									scaleOrientation 0.331400 0.226900 0.915800 -0.049850
+									translation 12.270000 10.920000 10.120000
+								}
+								DEF S_Main_clock_body02 Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "Metal_Chrome"
+												}
+											}
+											geometry DEF S_Main_clock_body02-FACES Mesh { url "S_Main_clock_body02-FACES.xm" }
+										}
+									]
+									rotation 0.167400 -0.697100 0.697100 -3.473000
+									scale 0.018250 0.018250 0.018250
+									scaleOrientation -0.102900 0.214700 0.971200 -0.034500
+									translation 4.064000 3.633000 4.144000
+								}
+								DEF S_Main_clock_face01 Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "IconParts1"
+												}
+											}
+											geometry DEF S_Main_clock_face01-FACES Mesh { url "S_Main_clock_face01-FACES.xm" }
+										}
+									]
+									rotation -0.946900 -0.227300 0.227300 -1.625000
+									scale 0.048900 0.048900 0.048900
+									scaleOrientation -0.160100 -0.735100 -0.658800 -0.021210
+									translation 5.038000 8.445000 -4.173000
+								}
+								DEF S_Main_clock_body01 Transform
+								{
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "Metal_Chrome"
+												}
+											}
+											geometry DEF S_Main_clock_body01-FACES Mesh { url "S_Main_clock_body01-FACES.xm" }
+										}
+									]
+									rotation 0.167400 -0.697100 0.697100 -3.473000
+									scale 0.042530 0.042530 0.042530
+									scaleOrientation 0.079140 0.925900 -0.369300 -0.010200
+									translation 7.598000 8.311000 1.162000
+								}
+								DEF S_Main_Circle02 Transform
+								{
+									visible false
+									children
+									[
+										Shape
+										{
+											appearance Appearance
+											{
+												material MaxMaterial
+												{
+													name "PanelBacking_02"
+												}
+											}
+											geometry DEF S_Main_Circle02-FACES Mesh { url "S_Main_Circle02-FACES.xm" }
+										}
+									]
+									rotation -0.946900 -0.227300 0.227300 -1.625000
+									scale 0.042530 0.042530 0.042530
+									scaleOrientation -0.467200 -0.084210 0.880100 -0.023830
+									translation 11.610000 8.289000 8.715000
 								}
 							]
 						}
