@@ -28,7 +28,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -469,7 +469,7 @@ function SetMusicPlayPos(nPos)
 		else if (nNewPos > 1) { nNewPos = 1; }
 		var x = -1.579 + ( 0.730 * nNewPos );
 		var y = -0.6701;
-		var z =  0.1081;
+		var z = 0.1081;
 		theMusicPlayMenu.children[0].children[0].MU_L3_timeslider.SetTranslation(x, y, z);
 		var m = theMusicPlayer.getMinutes();
 		var s = theMusicPlayer.getSeconds();
@@ -680,7 +680,7 @@ function SelectNextTrack(bPlaySong)
 		return;
 	}
 	log("bPlayerRepeat - " + bPlayerRepeat );
-	log("nPlayCursor   - " + nPlayCursor );
+	log("nPlayCursor - " + nPlayCursor );
 	if( bPlayerRepeat == false )
 	{
 		if( nPlayCursor == ( playlist.length - 1 ) ) { return; }
@@ -1071,7 +1071,7 @@ function StartMusicEditor()
 }
 function DoDeleteSoundtrack()
 {
-	if(musicSelect == 0)  { return; }
+	if(musicSelect == 0) { return; }
 	var nSoundtrack = musicSelect - 1;
 	PlaySoundDelete();
 	theMusicCollection.DeleteSoundtrack(nSoundtrack);
@@ -1301,8 +1301,8 @@ function HandlePlayerCopyMenu()
 		return;
 	}
 	if(nPlayCursor < 0) { nPlayCursor = 0; }
-	if(nCurPlayerMenuItem == 0)  { DoMusicPlayPause(); }
-	else if(nCurPlayerMenuItem == 1) { DoMusicStop();  }
+	if(nCurPlayerMenuItem == 0) { DoMusicPlayPause(); }
+	else if(nCurPlayerMenuItem == 1) { DoMusicStop(); }
 	else if(nCurPlayerMenuItem == 2)
 	{
 		if(copyflag.length == 0) { return; }
@@ -1419,7 +1419,6 @@ DEF theMusicPlayMenu Level
 	}
 	tunnel Transform
 	{
-
 		children
 		[
 			Shape
@@ -1844,7 +1843,7 @@ function UpdateMusicList()
 	for (var i = 0; i < 8; i = i + 1)
 	{
 		var nSoundtrack = musicScroll + i - 1;
-		if (nSoundtrack >= nSoundtrackCount)  { c.MenuButtons.children[i].visible = false; }
+		if (nSoundtrack >= nSoundtrackCount) { c.MenuButtons.children[i].visible = false; }
 		else
 		{
 			var str;

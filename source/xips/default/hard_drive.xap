@@ -16,7 +16,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -191,7 +191,7 @@ DEF theHardDriveMenu Level
 		position 41.650002 8.885 -194.300003
 		jump false
 	}
-	control  DEF theHardDriveMenuJoy Joystick
+	control DEF theHardDriveMenuJoy Joystick
 	{
 		function OnLeftThumbMoveUp()
 		{

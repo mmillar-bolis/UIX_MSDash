@@ -228,11 +228,11 @@ function UpdateMemUnitText()
 	c.MemUnit1.text = GetDeviceName(devUnit);
 	c.MemUnit2.text = GetDeviceName(devUnit);
 
-	if((devUnit == 8) & (devUnit == selUnit))  // selected hard drive
+	if((devUnit == 8) & (devUnit == selUnit)) // selected hard drive
 		c.consoleMat.children[0].appearance.material.name = "EggGlowPulse";
-	else if(devUnit == 8)  // hard drive
+	else if(devUnit == 8) // hard drive
 		c.consoleMat.children[0].appearance.material.name = "GamePod";
-	else  // memory units
+	else // memory units
 	{
 		if(devUnit == selUnit)
 		{
@@ -451,7 +451,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -599,7 +599,7 @@ function UpdateFileMetaPanel()
 	c.MetaLine1.text = strTitleName;
 	c.MetaLine1a.text = strTitleName;
 
-	if ((nTitle == -1) & (c.theSavedGameGrid.curSavedGame == -1))  // is it a memory unit?
+	if ((nTitle == -1) & (c.theSavedGameGrid.curSavedGame == -1)) // is it a memory unit?
 	{
 		var strMUTitle = "";
 		if(c.theSavedGameGrid.curDevUnit == 0)
@@ -627,7 +627,7 @@ function UpdateFileMetaPanel()
 		c.MetaLine3.text = theTranslator.Translate("FREE:") + " " + c.theSavedGameGrid.FormatFreeBlocks();
 		c.MetaLine3a.text = theTranslator.Translate("FREE:") + " " + c.theSavedGameGrid.FormatFreeBlocks();
 	}
-	else if (nTitle >= 0)   // if it's a game title
+	else if (nTitle >= 0) // if it's a game title
 	{
 		var nSavedGame = c.theSavedGameGrid.curSavedGame;
 		if (nSavedGame >= 0)
@@ -663,7 +663,7 @@ function UpdateFileMetaPanel()
 				c.MetaLine4a.text = strBlocks + " " + theTranslator.Translate("blocks");
 			}
 		}
-		else  // it's a soundtrack or title
+		else // it's a soundtrack or title
 		{
 			var nCount = c.theSavedGameGrid.GetSavedGameCount(nTitle);
 			var strType;
@@ -702,14 +702,14 @@ function UpdateFileMetaPanel()
 				c.MetaLine3.text = strBlocks + " " + theTranslator.Translate("blocks");
 				c.MetaLine3a.text = strBlocks + " " + theTranslator.Translate("blocks");
 			}
-	   }
+		}
 	}
 }
 function ResetMemoryFocus()
 {
 	var c = theFilesMenu.children[0].children[0];
 	// Reset focus on entry
-	if(c.theSavedGameGrid.curDevUnit == 8)  //hard drive
+	if(c.theSavedGameGrid.curDevUnit == 8) //hard drive
 		c.theSavedGameGrid.curTitle = 0;
 	else
 		c.theSavedGameGrid.curTitle = -1;
@@ -1253,7 +1253,7 @@ function UpdateDeviceHighlight()
 	c.controller4_MU_2_HL.children[0].appearance.texture.url = "MU_gauge1.xbx";
 
 	c.MEM_L1_controller1_panel.children[0].appearance.material.name = "GamePod";
-	c.MEM_L1_controller2_panel.children[0].appearance.material.name = "GamePod";  //orig
+	c.MEM_L1_controller2_panel.children[0].appearance.material.name = "GamePod"; //orig
 	c.MEM_L1_controller3_panel.children[0].appearance.material.name = "GamePod";
 	c.MEM_L1_controller4_panel.children[0].appearance.material.name = "GamePod";
 	c.controllerText1Mat.name = "NavType";
@@ -1410,7 +1410,7 @@ function StartMemoryLevel()
 {
 	UpdateDeviceMetaData();
 	UpdateDevices();
-	UpdateDeviceHighlight();    // This will ensure that when the user enters this level, the proper item has the focus
+	UpdateDeviceHighlight(); // This will ensure that when the user enters this level, the proper item has the focus
 
 	if (bCleanupSpecifiedDrive)
 	{

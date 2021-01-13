@@ -13,7 +13,7 @@ DEF theGlobal Transform
 	[
 		Shape
 		{
-			appearance Appearance { material Material {  } }
+			appearance Appearance { material Material { } }
 			geometry DEF theCellWallMesh Mesh
 		}
 	]
@@ -129,7 +129,7 @@ function DoAction()
 	else if (nCurPlayerMenuItem == 0)
 	{
 		theConfig.ChangeSkin( SkinMenuList[skinSelect] );
-		AskQuestion("Skin change will not take full effect until you restart the dash.  Would you like to restart now?", "theSkinsInline.children[0].DoReset()", "", 0);
+		AskQuestion("Skin change will not take full effect until you restart the dash. Would you like to restart now?", "theSkinsInline.children[0].DoReset()", "", 0);
 	}
 }
 
