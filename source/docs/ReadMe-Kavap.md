@@ -27,7 +27,7 @@ My novice web translation:
 > To Odb718 for his new pod.\
 > and of course thanks to the UIX team for their fabulous dash.
 >
-> If you have any questions about this dash go to the [Gueux.be][2] forums in the UIX section.\
+> If you have any questions about this dash go to the [Gueux.be][2] forums, UIX section.\
 > You should be able to find some answers.
 >
 > Caution: It is not recommended to use the fan speed setting options on 1.6 Xboxes.
