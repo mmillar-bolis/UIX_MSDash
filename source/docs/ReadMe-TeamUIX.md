@@ -132,9 +132,9 @@ Back and Start buttons are globally mapped to raise/lower music volume. White an
 
 ## Thanks:
 
-I personally would like to thank h3inrich - he knows why. Thanks to Voltaic (where did you go??), team avalaunch, complex/wam, team Xecuter, damajor, team iND and everyone who has helped and supported our efforts. Special thanks to jokko for being such a positive role model - seen anything good on a newsgroup lately ? A monster special thx to BLeST as this would never be complete atm if not for him. A massive shout out to all the ppl who have stuck with us through 'the cold war' and make up the coolest chan on irc #teamUIX :) Thanks to XanTium and HSDEMONZ at www.xbox-scene.com for all the support they have given us from day 1. Thanks to Ben Jeremy for not only trying to help when asked for it - but also for xselect, if you're gonna script anything xselect is your best friend and #1 error 21 avoider :) finally, thanks to everyone who spends their time building and rebuilding, writing and rewriting, creating and tweaking, and giving up their free time so our free time can be that much cooler. we all owe them a tremendous thx. and finally thanks to you, there is no scene without users, and the user is who we do this all for...
+I personally would like to thank h3inrich - he knows why. Thanks to Voltaic (where did you go??), team avalaunch, complex/wam, team Xecuter, damajor, team iND and everyone who has helped and supported our efforts. Special thanks to jokko for being such a positive role model - seen anything good on a newsgroup lately ? A monster special thx to BLeST as this would never be complete atm if not for him. A massive shout out to all the ppl who have stuck with us through 'the cold war' and make up the coolest chan on irc #teamUIX :) Thanks to XanTium and HSDEMONZ at [www.xbox-scene.com][2] for all the support they have given us from day 1. Thanks to Ben Jeremy for not only trying to help when asked for it - but also for xselect, if you're gonna script anything xselect is your best friend and #1 error 21 avoider :) finally, thanks to everyone who spends their time building and rebuilding, writing and rewriting, creating and tweaking, and giving up their free time so our free time can be that much cooler. we all owe them a tremendous thx. and finally thanks to you, there is no scene without users, and the user is who we do this all for...
 
-...now get to scripting :) below is the list of changes and features added, as always there are plenty of helpfull ppl in #teamUIX and in our forum on www.xbox-scene.com
+...now get to scripting :) below is the list of changes and features added, as always there are plenty of helpfull ppl in #teamUIX and in our forum on [www.xbox-scene.com][2]
 
 ...enjoy\
 TeamUIX
@@ -145,6 +145,7 @@ TeamUIX
 
 - returned dpad to it's original functionality until such time as the extra controls are actually needed. also made Start and Back buttons no longer the same as A and B. now OnStartDown, OnStartUp, OnBackDown, and OnBackUp can be used. by default they are scripted as music volume up(OnBackDown)/down(OnStartDown), and yes they repeat while holding the button
 - added ability to make individual meshes render in wireframe... simple add 'wireFrame true' to the mesh DEF, default is false ie:
+
 	```
 	geometry Mesh
 	{
@@ -154,12 +155,14 @@ TeamUIX
 	```
 
 - added launch and format back to ftp commands as well... ie: (entered as raw comands in ftp client)
+
 	```
 	launch f:\games\somegame\somexbe.xbe
 	format f:\
 	```
 
 - dded use of cache for menu items. added in save dir/cache. they're out of the way cuz there should be no need for an enduser to touch them. cache is created on first boot of uix and then all menu loads will be done from cache until a refresh is called. this cuts the boot time down tremendously :)
+
 	```
 	theMenuName.RefreshCache(); //will delete current cache file for only that menu and reload the menu/create new cache file. CAN be executed from in the menu in question since the reads 'pause' the dash and no conflicts arise - so far hehe - test this more plz
 	```
@@ -171,6 +174,7 @@ TeamUIX
 	                            //conflicts arise - so far hehe - test this more plz
 	```
 - added to Config object a skin change function. will reload all colors from new skin ini in realtime :)
+
 	```
 	theConfig.ChangeSkin( "skinname" );
 	```
@@ -179,6 +183,7 @@ TeamUIX
 - changed theHardDrive.GetThisFileSize( "*:\path\file.ext" ); to return file sizes in bytes.
 
 - new functions for "Settings" file... \*will only access A:\system\uix.ini\* example:
+
 	```
 	IniFile = new Settings;
 	IniFile.SetIniSection( sectionname );
@@ -377,3 +382,9 @@ TeamUIX
 	```
 
 ---
+
+[1]: https://teamuix.net
+[2]: https://xbox-scene.xbins.org/forums/index.php/board,44.0.html
+
+---
+

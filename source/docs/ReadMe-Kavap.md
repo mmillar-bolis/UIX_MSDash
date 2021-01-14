@@ -1,4 +1,4 @@
-Original ReadMe in French:
+Original ReadMe by [kavap][1], in French:
 
 > voici une version non officielle d'UIX modifier principalement à l'aide\
 > de code trouvé sur xbox-scene.\
@@ -10,7 +10,7 @@ Original ReadMe in French:
 > à Odb718 pour son nouveau pod\
 > et merci évidement à la team UIX pour leur fabuleux dash
 >
-> si vous avez la moindre question à propos de ce dash rendez vous sur le forum de Gueux.be section UIX\
+> si vous avez la moindre question à propos de ce dash rendez vous sur le forum de [Gueux.be][2] section UIX\
 > vous devriez pouvoir y trouver quelques réponses
 >
 > attention : il est deconseillé d'utiliser l'option de réglage de la vitesse du ventilateur sur les xbox 1.6
@@ -27,10 +27,15 @@ My novice web translation:
 > To Odb718 for his new pod.\
 > and of course thanks to the UIX team for their fabulous dash.
 >
-> If you have any questions about this dash go to the Gueux.be forums in the UIX section.\
+> If you have any questions about this dash go to the [Gueux.be][2] forums in the UIX section.\
 > You should be able to find some answers.
 >
 > Caution: It is not recommended to use the fan speed setting options on 1.6 Xboxes.
+
+---
+
+[1]: http://kavap.free.fr
+[2]: https://gueux-forum.net/index.php?/forum/89-uix/
 
 ---
 
