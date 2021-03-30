@@ -285,7 +285,7 @@ function UpdateMusicPlayWithSubs()
 	}
 	else if (nCurMusicPlayWithSubsItem0 == 4)
 	{
-		c.MenuMetaText.text = theTranslator.Translate("Update the      item lists within each menu above");
+		c.MenuMetaText.text = theTranslator.Translate("Update the        item lists within each menu above");
 	}
 }
 DEF theMusicPlayWithSubs Level
